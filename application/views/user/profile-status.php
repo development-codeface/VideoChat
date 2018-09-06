@@ -110,7 +110,9 @@ include 'header.php' ;?>
 													<button class="btnChat" data-username=' <?php echo $frq->full_name;?>'>chat</button>
 													
 												</div>
-												<span><i class="fa fa-video-camera" aria-hidden="true"></i></span>
+												<span><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera" aria-hidden="true"></i></i></a>
+												
+												</span>
 											</div>
 										<?php }}else{ ?>
 						
@@ -203,5 +205,40 @@ include 'footer.php';?>
     <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
     <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
 </div>
+
+
+
+
+
+<?php
+include 'footer.php';?>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script type="text/javascript" >
+var APIKEY 		= "";
+var SESSIONID 	= "";
+var TOKEN     	= "";
+$(document).ready(function() {	
+ $('.follow_friend').click(function() { 
+     var uid =$(this).data('id'); 
+    $.ajax({
+	      type: "POST",
+            url: "../Auth/fetch_data",
+            data:{uid:uid},
+			dataType:"text", 
+			success: function(result){
+				var resultObj = JSON.parse(result)
+              //  alert(resultObj.sessionId+""+resultObj.tokenId);
+            }               
+        }); 				
+		
+		
+		
+		
+
+
+
+    }); });
+</script>
 
 	

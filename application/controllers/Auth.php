@@ -39,19 +39,17 @@ class Auth extends   CI_Controller {
 			
 			
 			
+				
 			
-			
-			
-			
-			
-			
-			 $opentok = new OpenTok('46163292', '436f0b34f67e82089f741ff6509c9608919f8d82');
+			 $opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
         
+		
         $session = $opentok->createSession(array(
             'mediaMode' => MediaMode::ROUTED
         ));
 		
         $sessionId = $session->getSessionId();
+		echo "sessionId";exit;
        // $opentokData['sessionid']  = $sessionId;
        // $opentokData['tokenid']    = $opentok->generateToken($sessionId);
         $data['records'] = $sessionId;
@@ -161,7 +159,7 @@ public function logout() {
 }
 
 public function fetch_data() {
-	$opentok = new OpenTok('46163292', '436f0b34f67e82089f741ff6509c9608919f8d82');
+	$opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
 	$session = $opentok->createSession(array(
 		'mediaMode' => MediaMode::ROUTED
 	));

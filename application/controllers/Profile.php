@@ -55,8 +55,8 @@ class Profile extends  CI_Controller {
 		
 	}
 	public function messages()
-	{   
-		$opentok = new OpenTok('46163292', '436f0b34f67e82089f741ff6509c9608919f8d82');
+	{  
+		$opentok = new OpenTok( $this->config->item('opentok_key'), $this->config->item('opentok_secret'));//'46163292', '436f0b34f67e82089f741ff6509c9608919f8d82'
 	    if (isset($_GET['user'])){
 			$userid=$_GET['user']; 
 		} else {
