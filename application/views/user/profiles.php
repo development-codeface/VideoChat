@@ -1,6 +1,6 @@
 <?php
 include 'header.php';?>
-		<section class="companies-info">
+		<section class="companies-info min8">
 			<div class="container min800">
 				
 					
@@ -60,13 +60,13 @@ include 'header.php';?>
 	  <img src="images/resources/pf-icon1.png" alt="">
         <form role="form">
           <div class="form-group">
-          <label class="checkbox-inline"><b>Name</b>:<span id="full_namesf">  </span></label>
+          <label class="checkbox-inline"><b>Name</b> : <span id="full_namesf">  </span></label>
           </div>
 		 <div class="form-group">
-        <label class="checkbox-inline"><b>Nick Name</b> :<span id="nick_namesf"></span></label>
+        <label class="checkbox-inline"><b>Nick Name</b>  : <span id="nick_namesf"></span></label>
           </div>
 		   <div class="form-group">
-		  <label class="checkbox-inline"><b>Date of birth</b> :<span id="dobsf"></span></label>		  
+		  <label class="checkbox-inline"><b>Date of birth</b> : <span id="dobsf"></span></label>		  
          </div>
         </form>
       </div>
@@ -104,7 +104,7 @@ include 'header.php';?>
 									
 										<ul class="job-dt jobint"><li>Interest :  <a href="" title=""> Girl</a></li></ul>
 										<ul>
-										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend msgch"><i class="fa fa-video-camera" aria-hidden="true"></i></a></li>
+										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend msgch"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
 										
 										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
 									</ul>

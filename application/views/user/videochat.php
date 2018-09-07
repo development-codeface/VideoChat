@@ -6,7 +6,7 @@ include 'header.php';?>
  
  
 
-<section class="banner-img1 text-white py-55">
+<section class="banner-img1 text-white py-55 min8">
     <div class="container">
       
         <div class="row">

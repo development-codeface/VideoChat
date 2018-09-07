@@ -1,6 +1,6 @@
 <?php
 include 'header.php';?>
-		<section class="pubsec"style="    margin-bottom: 26px;">
+		<section class="pubsec min8"style="    margin-bottom: 26px;">
 		<div class="container">
 		<div class="row">
 		

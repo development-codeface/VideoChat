@@ -1,6 +1,6 @@
 <?php
 include 'header.php';?>
-		<section class="messages-page">
+		<section class="messages-page min8">
 			<div class="container">
 				<div class="messages-sec">
 					<div class="row">

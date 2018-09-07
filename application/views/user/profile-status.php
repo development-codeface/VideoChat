@@ -1,8 +1,8 @@
 <?php
 include 'header.php' ;?>	
 	<script src="https://static.opentok.com/v2/js/opentok.js"></script>	
-	<section class="pubsec">
-		<div class="container min800" >
+	<section class="pubsec min8">
+		<div class="container " >
 		<div class="row">
 		
 		<div class="col-md-8">
@@ -121,8 +121,8 @@ include 'header.php' ;?>
 													
 												</div>
 												<span>
-												<a href=" data-username=' <?php echo $frq->full_name;?>'" class="follow follow_friend btnChat"><i class="fa fa-video-camera" aria-hidden="true"></i></i></a>
-												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera" aria-hidden="true"></i></i></a>
+												<a href=" data-username=' <?php echo $frq->full_name;?>'" class="follow follow_friend btnChat "><i class="fa fa-comments-o chatq" aria-hidden="true"></i></a>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera cmsgq" aria-hidden="true"></i></i></a>
 												
 												</span>
 											</div>

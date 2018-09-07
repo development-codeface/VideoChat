@@ -1,6 +1,6 @@
 <?php
 include 'header.php';?>
-<section class=" text-white py-5">
+<section class=" text-white py-5 min8">
     <div class="container">
       
         <div class="pb-3"></div>
