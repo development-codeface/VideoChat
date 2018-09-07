@@ -6136,3 +6136,7 @@ float: left;
     position: relative;
     min-height: 600px !important;
 }
+.min800
+{
+	min-height:650px;
+	}

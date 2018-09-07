@@ -1,7 +1,7 @@
 <?php
 include 'header.php';?>
 		<section class="companies-info">
-			<div class="container">
+			<div class="container min800">
 				
 					
 				<div class="companies-list">
@@ -168,7 +168,7 @@ include 'header.php';?>
 									</div><!--product-feed-tab end-->
 									<div class="product-feed-tab" id="portfolio-dd">
 								<div class="acc-setting">
-							  			<h3>My Friend Requests ddd</h3>
+							  			<h3>My Friend Requests</h3>
 										<div class="requests-list">
 										<?php if(!empty($friendsRequest)){
 											$i=1;

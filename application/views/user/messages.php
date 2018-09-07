@@ -6,7 +6,7 @@ $open_token=base64_decode(urldecode($openSession));
 
 include 'header.php';?>
 <section>
-<div class="container con49">
+<div class="container con49 min800">
 <div class="row">
 <div class="col-md-2"></div>
 <div class="col-md-8">

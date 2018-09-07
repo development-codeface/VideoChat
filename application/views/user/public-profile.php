@@ -1,7 +1,7 @@
 <?php
 include 'header.php';?>
 <section class="banner-img1 text-white py-55">
-    <div class="container">
+    <div class="container min800">
       
         <div class="row">
             <div class="col-md-12">
