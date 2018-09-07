@@ -32,24 +32,39 @@ class Auth extends   CI_Controller {
 				$session_array = array('user_id'=>$users_id,'user_name'=>$users_name);
 				$this->session->set_userdata($session_array);
 				$param['user_id']=$users_id;
-				
+				$uid=$users_id;
 			/////
 			
 			
-			
-			
-			
-				
+	
 			
 			 $opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
         
 		
-        $session = $opentok->createSession(array(
-            'mediaMode' => MediaMode::ROUTED
-        ));
+			$session = $opentok->createSession(array(
+				'mediaMode' => MediaMode::ROUTED
+			));
 		
-        $sessionId = $session->getSessionId();
-		echo "sessionId";exit;
+		
+			$res=$this->obj_model->check_session($uid);
+		
+			foreach($res as $row)
+			{
+			if($row==null)
+				{
+						$sessionId = $session->getSessionId();
+				}
+			else
+				{
+						$sessionId=$row;
+	
+				}
+		
+			}
+		
+		
+      
+		
        // $opentokData['sessionid']  = $sessionId;
        // $opentokData['tokenid']    = $opentok->generateToken($sessionId);
         $data['records'] = $sessionId;
