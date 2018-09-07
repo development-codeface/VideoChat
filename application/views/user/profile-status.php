@@ -117,10 +117,12 @@ include 'header.php' ;?>
 													<span class="fa fa-circle msg-topaa"></span>
 												<div class="sgt-text">
 													<h4><a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>"><?php echo $frq->full_name;?></a></h4>
-													<button class="btnChat" data-username=' <?php echo $frq->full_name;?>'>chat</button>
+													
 													
 												</div>
-												<span><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera" aria-hidden="true"></i></i></a>
+												<span>
+												<a href=" data-username=' <?php echo $frq->full_name;?>'" class="follow follow_friend btnChat"><i class="fa fa-video-camera" aria-hidden="true"></i></i></a>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera" aria-hidden="true"></i></i></a>
 												
 												</span>
 											</div>

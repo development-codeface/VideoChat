@@ -104,7 +104,7 @@ include 'header.php';?>
 									
 										<ul class="job-dt jobint"><li>Interest :  <a href="" title=""> Girl</a></li></ul>
 										<ul>
-										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera" aria-hidden="true"></i></a></li>
+										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend msgch"><i class="fa fa-video-camera" aria-hidden="true"></i></a></li>
 										
 										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
 									</ul>
@@ -152,7 +152,7 @@ include 'header.php';?>
 										
 								<ul class="job-dt jobint"><li>Interest :  <a href="" title=""> Girl</a></li></ul>
 										<ul>
-										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="" class="follow" data-id="<?php $frq->user_id; ?>"><i class="fa fa-video-camera" aria-hidden="true"></i></a></li>
+										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="" class="follow msgch" data-id="<?php $frq->user_id; ?>"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
 										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
 									</ul>
 								</div>
