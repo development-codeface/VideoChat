@@ -1,8 +1,8 @@
 <?php
 include 'header.php' ;?>	
 	<script src="https://static.opentok.com/v2/js/opentok.js"></script>	
-	<section class="pubsec">
-		<div class="container">
+	<section class="pubsec min8">
+		<div class="container " >
 		<div class="row">
 		
 		<div class="col-md-8">
@@ -42,9 +42,19 @@ include 'header.php' ;?>
 1 hr</span> &nbsp;<span><i class="fa fa-flag" aria-hidden="true"></i> <?php echo $fd->country_id;?></span>
 														</div>
 													</div>
-													<div class="ed-opts">
-													<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-													<ul class="ed-options">
+													<div class="ed-opts form_wrapper"  >
+													<a href="#" title=""  class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													
+													<ul class="ed-options" id="myModal">
 															<?php if($fd->user_id==$this->session->userdata('user_id')){?>
 															<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post</a></li>
 														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
@@ -83,10 +93,10 @@ include 'header.php' ;?>
 												</div>
 		</div><?php } }else{ ?>
 						
-						<div class="download-box alert">
+					<!--	<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
-										</div><?php }?>
+										</div>--><?php }?>
 						
 											
 										
@@ -107,19 +117,21 @@ include 'header.php' ;?>
 													<span class="fa fa-circle msg-topaa"></span>
 												<div class="sgt-text">
 													<h4><a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>"><?php echo $frq->full_name;?></a></h4>
-													<button class="btnChat" data-username=' <?php echo $frq->full_name;?>'>chat</button>
+													
 													
 												</div>
-												<span><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera" aria-hidden="true"></i></i></a>
+												<span>
+												<a href=" data-username=' <?php echo $frq->full_name;?>'" class="follow follow_friend btnChat "><i class="fa fa-comments-o chatq" aria-hidden="true"></i></a>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera cmsgq" aria-hidden="true"></i></i></a>
 												
 												</span>
 											</div>
 										<?php }}else{ ?>
 						
-						<div class="download-box alert">
+					<!--	<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
-										</div><?php }?>
+										</div>--><?php }?>
 						
 											
 											
@@ -210,8 +222,6 @@ include 'footer.php';?>
 
 
 
-<?php
-include 'footer.php';?>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script type="text/javascript" >
@@ -239,6 +249,13 @@ $(document).ready(function() {
 
 
     }); });
+	
+	
+	
+	
+
+
+
 </script>
 
 	

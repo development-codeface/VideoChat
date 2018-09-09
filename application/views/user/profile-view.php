@@ -12,7 +12,7 @@ include 'header.php' ;?>
 
 
 		<main>
-			<div class="main-section">
+			<div class="main-section min8">
 				<div class="container">
 					<div class="main-section-data">
 						<div class="row">
@@ -284,7 +284,7 @@ include 'header.php' ;?>
 										<h3><a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>"><?php echo $frq->full_name;?></a></h3>
 									
 									<ul>
-										<li><a href="#" title="" class="follow"><i class="fa fa-video-camera" aria-hidden="true"></i></a></li>
+										<li><a href="#" title="" class="follow msgch"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
 										
 										<li><a href="#" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
 									</ul>

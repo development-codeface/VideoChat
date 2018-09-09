@@ -286,6 +286,11 @@ public function InsertOnline($param)
 			return $query->row_array();
 		}
 				
+public function check_session($uid){
+			$query = $this->db->query("SELECT session_id from users WHERE  user_id=$uid" );
+			return $query->row_array();
+		}
+				
 
 	
 }

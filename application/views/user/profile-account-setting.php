@@ -1,6 +1,6 @@
 <?php
 include 'header.php';?>
-		<section class="profile-account-setting">
+		<section class="profile-account-setting min8">
 			<div class="container">
 				<div class="account-tabs-setting">
 					<div class="row">
