@@ -1,5 +1,7 @@
 <?php
 include 'header.php';?>
+
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>	
 <section class="banner-img1 text-white py-55 min8">
     <div class="container ">
       
@@ -328,7 +330,14 @@ include 'header.php';?>
     </div>
 </section>
 	
+	<script>
 	
+		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
+		var SESSIONID = "<?php echo $sessionId;?>";
+		var TOKEN = "<?php echo $token;?>";
+		
+		//alert(apiKey +' == '+ sessionId);
+	</script>
 <script>
 var x, i, j, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/

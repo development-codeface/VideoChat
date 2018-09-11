@@ -1,5 +1,7 @@
 <?php
 include 'header.php';?>
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>	
+
 <section class=" text-white py-5 min8">
     <div class="container">
       
@@ -528,6 +530,18 @@ include 'header.php';?>
 		</footer>
 
 	</div><!--theme-layout end-->
+	
+	<script>
+	
+		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
+		var SESSIONID = "<?php echo $sessionId;?>";
+		var TOKEN = "<?php echo $token;?>";
+		
+		//alert(apiKey +' == '+ sessionId);
+	</script>
+	
+	
+	
 
 <script>
 var x, i, j, selElmnt, a, b, c;

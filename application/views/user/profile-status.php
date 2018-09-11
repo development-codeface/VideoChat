@@ -54,6 +54,8 @@ include 'header.php' ;?>
 													
 													
 													
+													
+													
 													<ul class="ed-options" id="myModal">
 															<?php if($fd->user_id==$this->session->userdata('user_id')){?>
 															<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post</a></li>
@@ -116,12 +118,14 @@ include 'header.php' ;?>
 												<img src="<?php echo base_url(); ?>assets/images/resources/s1.png" alt=""></a>
 													<span class="fa fa-circle msg-topaa"></span>
 												<div class="sgt-text">
+												
+												
 													<h4><a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>"><?php echo $frq->full_name;?></a></h4>
 													
 													
 												</div>
 												<span>
-												<a href=" data-username=' <?php echo $frq->full_name;?>'" class="follow follow_friend btnChat "><i class="fa fa-comments-o chatq" aria-hidden="true"></i></a>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" data-username=' <?php echo $frq->full_name;?>'  data-id="<?php echo $frq->user_id;?>" data-id="<?php echo $frq->user_id;?>"  class="follow btnChat "><i class="fa fa-comments-o chatq" aria-hidden="true"></i></a>
 												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera cmsgq" aria-hidden="true"></i></i></a>
 												
 												</span>
@@ -238,7 +242,7 @@ $(document).ready(function() {
 			dataType:"text", 
 			success: function(result){
 				var resultObj = JSON.parse(result)
-              //  alert(resultObj.sessionId+""+resultObj.tokenId);
+               alert(resultObj.sessionId+""+resultObj.tokenId);
             }               
         }); 				
 		
@@ -248,12 +252,65 @@ $(document).ready(function() {
 
 
 
-    }); });
+    }); 
+	 $('.btnChat').click(function() { 
+     var uid =$(this).data('id'); 
+	
+    $.ajax({
+	      type: "POST",
+            url: "../User/fetch_data",
+			
+            data:{uid:uid},
+			dataType:"text", 
+			success: function(result){
+				var resultObj = JSON.parse(result)
+               alert(resultObj.sessionId+""+resultObj.tokenId);
+            }               
+        }); 				
+		
+		
+		
+		
+
+
+
+    }); 
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	});
+
 	
 
+        var box = $('.ed-options');
+      //  var box1 = $('.la-sort-down');
+        var link = $('.ed-opts-open');
+
+       
+
+
+        $(document).click(function() {
+            box.hide(); //box1.hide();
+        });
+
+        box.click(function(e) {
+            e.stopPropagation();
+        });
+//		box1.click(function(e) {
+       //     e.stopPropagation();
+     //   });
+
+$(".ed-opts-open").on("click", function(){
+$(this).parent('.form_wrapper').find(box).show();
+//$(this).parent('.form_wrapper').find(box1).show();
+});
 
 
 </script>

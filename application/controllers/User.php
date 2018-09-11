@@ -21,6 +21,16 @@ class User extends  CI_Controller {
 		  
 		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		$this->load->view("user/profile-status",$this->data);
 		
 	}
@@ -98,6 +108,22 @@ public function videochat(){
 	  $this->load->view("user/videochat",$data);
 		//$this->load->view('videochat', $data);
 	}
+
+public function fetch_data() {
+	
+	
+	
+	$opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
+	$session = $opentok->createSession(array(
+		'mediaMode' => MediaMode::ROUTED
+	));
+	$sessionId = $session->getSessionId();
+	$userid=$_POST['uid'];
+	$result=$this->obj_model->fetch_session($userid);
+	$opentok_sessionid = $result['session_id'];
+	$opntok_tokenId = $opentok->generateToken($opentok_sessionid);
+	echo json_encode(array('sessionId'=>$opentok_sessionid,'tokenId'=>$opntok_tokenId));
+}
 
 
 	

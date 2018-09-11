@@ -1,5 +1,8 @@
 <?php
 include 'header.php' ;?>	
+
+
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>	
 		<section class="cover-sec">
 		<?php if($mydata['cover_photo']!=""){?>
 			<img src="<?php echo base_url() .'uploads/cover_photo/'.$mydata['cover_photo'] ;?>" alt="">
@@ -574,6 +577,16 @@ include 'header.php' ;?>
 
 	</div><!--theme-layout end-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox-plus-jquery.min.js"></script>
+
+<script>
+	
+		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
+		var SESSIONID = "<?php echo $sessionId;?>";
+		var TOKEN = "<?php echo $token;?>";
+		
+		//alert(apiKey +' == '+ sessionId);
+	</script>
+
 <script>
   var site_url='<?php  echo base_url();?>index.php/';
   </script>

@@ -58,6 +58,9 @@ include 'header.php';?>
           <div class="chatcntrl">
           <input type="text" id="txtMsg" name="chatmsg">
           <button id="btnSendchat">send</button>
+		  
+		  
+		    <button id="btnstart">test</button>
           <div>
         </div>
          

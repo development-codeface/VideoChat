@@ -1,5 +1,8 @@
 <?php
 include 'header.php';?>
+
+
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>	
 		<section class="companies-info min8">
 			<div class="container min800">
 				
