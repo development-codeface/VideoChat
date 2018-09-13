@@ -21,7 +21,7 @@ class User extends  CI_Controller {
 		  
 		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
-		
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		
 		
 		
@@ -40,7 +40,7 @@ class User extends  CI_Controller {
 		  
 		$this->data['feeds']    =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['onlinef']    =    $this->users_model->GetOnlineFriends($this->UserId) ;
-		
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		$this->load->view("user/public-profile",$this->data);
 		
 	}

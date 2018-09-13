@@ -122,6 +122,25 @@
 														<i class="la la-phone"></i>
 													</div>
 												</div>
+													<div class="col-lg-12 no-pdd">
+													<div class="sn-field">
+												 <label class="checkbox-inline"><b>Gender </b> :</label>
+		 
+		  <label class="checkbox-inline"><input type="radio" name="gender" checked="checked" id="gender"style=" width: 15px;
+    height: 15px;" value="1" >&nbsp;male </label>
+<label class="checkbox-inline"><input type="radio" name="gender"  id="gender" style="width: 15px;
+    height: 15px;"  value="2">&nbsp;Female </label>
+</div>
+												
+	</div>												
+												
+												
+												
+												
+												
+												
+												
+												
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
 														<input type="text" name="u_name" placeholder="Username" id="user_name" required>

@@ -18,69 +18,10 @@ include 'header.php';?>
 								  					<span>2 min ago</span>
 								  				</div><!--notification-info -->
 							  				</div><!--notfication-details end-->
-							  				<div class="notfication-details">
-								  				<div class="noty-user-img">
-								  					<img src="images/resources/ny-img2.png" alt="">
-								  				</div>
-								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Poonam Verma</a> Bid on your Latest project.</h3>
-								  					<span>2 min ago</span>
-								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
-							  				<div class="notfication-details">
-								  				<div class="noty-user-img">
-								  					<img src="images/resources/ny-img3.png" alt="">
-								  				</div>
-								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Tonney Dhman</a> Comment on your project.</h3>
-								  					<span>2 min ago</span>
-								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
-							  				<div class="notfication-details">
-								  				<div class="noty-user-img">
-								  					<img src="images/resources/ny-img1.png" alt="">
-								  				</div>
-								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
-								  					<span>2 min ago</span>
-								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
-							  				<div class="notfication-details">
-								  				<div class="noty-user-img">
-								  					<img src="images/resources/ny-img1.png" alt="">
-								  				</div>
-								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
-								  					<span>2 min ago</span>
-								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
-							  				<div class="notfication-details">
-								  				<div class="noty-user-img">
-								  					<img src="images/resources/ny-img2.png" alt="">
-								  				</div>
-								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Poonam Verma </a> Bid on your Latest project.</h3>
-								  					<span>2 min ago</span>
-								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
-							  				<div class="notfication-details">
-								  				<div class="noty-user-img">
-								  					<img src="images/resources/ny-img3.png" alt="">
-								  				</div>
-								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Tonney Dhman</a> Comment on your project</h3>
-								  					<span>2 min ago</span>
-								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
-							  				<div class="notfication-details">
-								  				<div class="noty-user-img">
-								  					<img src="images/resources/ny-img1.png" alt="">
-								  				</div>
-								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
-								  					<span>2 min ago</span>
-								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
+							  		
+							  		
+							  			
+							  		
 							  			</div><!--notifications-list end-->
 							  		</div>
 								

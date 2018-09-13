@@ -5,22 +5,34 @@ $open_token=base64_decode(urldecode($openSession));
 //print_r($openSessionId);
 
 include 'header.php';?>
-<section>
-  <div class="container con49 min8">
+<section class="bl">
+  <div class="min8">
     <div class="row">
-      <div class="col-md-2"></div>
+     <div class="videoview">
+
+								  					<h3>Jassica William.</h3>
+								  					<span>2:44 pm</span>
+													
+<a href="#" onclick="openFullscreen();"><i class="fa fa-expand jaic" aria-hidden="true"></i></a>
+												
+								  				
+</div>
       <div class="col-md-8">
 
-        <div class="bgvid">
-          <a class="btn icon-btn btn-warning" href="#">
-            <span class="glyphicon btn-glyphicon glyphicon-minus fa fa-video-camera img-circle text-warning"></span>Video Chat
-          </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a class="btn icon-btn btn-warning" href="messages_user.html">
-            <span class="glyphicon btn-glyphicon glyphicon-minus fa fa-comments-o img-circle text-warning"></span>Messages
-          </a>
+ <div id="myvideo" class="" style="display:block; width:100%">
+          <div class="row">
+            <div class="col-md-12">	
+              <div id="videos">
+                <div class="row">
+                 
+                  <div class="col-md-12"><div id="publisher"></div></div>
+				   <div class="col-md-3 vpos"><div id="subscriber"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>    
         </div>
-
-        <div id="London" class="tabcontent tabb" style="display:block;">
+        <!--div id="London" class="tabcontent tabb" style="display:block;">
           <div class="row">
             <div class="col-md-12">	
               <div id="videos">
@@ -31,7 +43,7 @@ include 'header.php';?>
               </div>
             </div>
           </div>    
-        </div>
+        </div-->
 
         <div id="Paris" class="tabcontent">
           <div class="row">
@@ -51,25 +63,45 @@ include 'header.php';?>
         </div>
 
       </div>
-      <div class="col-md-2">
+      <div class="col-md-4">
+	  <div class="cw">
+	  <div class="chat_window">
+	  <div class="top_menu">
+	
+	  <div class="title"><span class="glyphicon btn-glyphicon glyphicon-minus fa fa-comments-o img-circle text-warning"></span>Live Chat</div></div>
         <div class="chatContainer">
           <div id="chatHistory">
           </div>
           <div class="chatcntrl">
           <input type="text" id="txtMsg" name="chatmsg">
-          <button id="btnSendchat">send</button>
-		  
-		  
-		    <button id="btnstart">test</button>
+          <button id="btnSendchat"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
           <div>
         </div>
          
       </div>
     </div>
   </div>
+  </div>
+  </div>
 </section>
 
+
 <?php include 'footer.php'; ?>
+<script>
+var elem = document.getElementById("myvideo");
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+</script>
+
 <script> 
   var APIKEY = '<?php echo $openTokapi ?>'; 
   var TOKEN ='<?php echo $open_token ?>'; 
@@ -80,6 +112,7 @@ include 'header.php';?>
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script>
 <script>
     openOpentokConnection ('<?php echo $openSessionId ?>');
 </script>

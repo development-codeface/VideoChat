@@ -134,9 +134,11 @@ class Auth extends   CI_Controller {
 			$this->form_validation->set_rules('phone_no','Phone Number','required');
 			$this->form_validation->set_rules('u_name','User name','required');
 			$this->form_validation->set_rules('u_pass','Password','required');
+			$this->form_validation->set_rules('gender','gender','required');
 			$this->form_validation->set_rules('cc','agreement','required');
+			
 			if($this->form_validation->run() == TRUE){
-				$insertData=array('full_name'=>$this->input->post("name"),'email'=>$this->input->post("email"),'mobile'=>$this->input->post("phone_no"),'user_name'=>$this->input->post("u_name"),'password'=>md5($this->input->post("u_pass")));
+				$insertData=array('full_name'=>$this->input->post("name"),'email'=>$this->input->post("email"),'mobile'=>$this->input->post("phone_no"),'gender'=>$this->input->post("gender"),'user_name'=>$this->input->post("u_name"),'password'=>md5($this->input->post("u_pass")));
 				$result_data = $this->users_model->InsertUser($insertData);
 				if($result_data['success'])
 				{

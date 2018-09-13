@@ -8,7 +8,9 @@ class Profile extends  CI_Controller {
 		parent::__construct();
 		//error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 		$this->load->library(array( 'upload','form_validation'));
-		
+		   $this->load->helper('url');
+	$this->load->helper('form');
+	$this->load->database();
 		if ($this->session->userdata('user_name') == ''){
 						redirect('login');
 		}
@@ -18,11 +20,14 @@ class Profile extends  CI_Controller {
     }
 	public function myProfile()
 	{
-		  
+		
 		$this->data['friendList']  = $this->users_model->GetFriendList($this->UserId) ;
 		$this->data['profileViewer']  = $this->profile_model->GetProfileViewerList($this->UserId) ;
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
 		$this->data['mydata'] =    $this->users_model->GetMyData($this->UserId) ;
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+	
+	
 		$this->data['feeds']   =    $this->profile_model->GetUserfeeds($this->UserId) ;
 		$this->load->view("user/my-profile",$this->data);
 		
@@ -36,6 +41,7 @@ class Profile extends  CI_Controller {
 		$this->data['profileViewer']  = $this->profile_model->GetProfileViewerList($friendId) ;
 		$this->data['mydata'] =    $this->users_model->GetMyData($friendId) ;
 		$this->data['feeds']   =    $this->profile_model->GetUserfeeds($friendId) ;
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		$result= $this->profile_model->checkVisit(array('visitor_id'=>$this->UserId,'user_id'=>$friendId)) ;
 		if(empty($result)){
 		$s= $this->profile_model->InsertVisit(array('user_id'=>$friendId,'visitor_id'=>$this->UserId)) ;
@@ -50,7 +56,7 @@ class Profile extends  CI_Controller {
 	{
 		  
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
-		
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		$this->load->view("user/profile-account-setting",$this->data);
 		
 	}
@@ -82,14 +88,14 @@ $this->data['openSession']=urlencode($str);
             'sessionId' => $opentok_sessionid,
             'token'=>$opntok_tokenId
         ));
-		
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		//print_r($this->data);
 		$this->load->view("user/messages",$this->data);
 		
 	}
 	public function messagesUser()
 	{
-	   
+	   $this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['onlinef']    =    $this->users_model->GetOnlineFriends($this->UserId) ;
 		
@@ -101,7 +107,7 @@ $this->data['openSession']=urlencode($str);
 		  
 		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['onlinef']    =    $this->users_model->GetOnlineFriends($this->UserId) ;
-		
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		$this->load->view("user/notification",$this->data);
 		
 	}
@@ -115,16 +121,18 @@ $this->data['openSession']=urlencode($str);
 		$this->load->view("user/public-profile",$this->data);
 		
 	}
+	
 	public function friends()
 	{
 		 // print_r($_SESSION);exit;
 		$this->data['friendList']  = $this->users_model->GetFriendList($this->UserId) ;
 		$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
-		
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		$this->load->view("user/profiles",$this->data);
 		
 	}
+	
 	
 	public function UpdateLike(){
 		
@@ -164,6 +172,26 @@ $this->data['openSession']=urlencode($str);
 	}
 }
 
+
+public function deleteFeed($product_id = NULL){
+ 
+ $del= $this->uri->segment('3');
+ 
+ $result_data = $this->profile_model->deleteFeed($del);
+ 	if($result_data['success'])
+				{
+					
+					redirect('/user/profile', "refresh");
+				}
+			
+		redirect('/user/profile', "refresh");
+}
+
+
+
+
+
+
 public function postFeed(){
 		
 		
@@ -181,12 +209,58 @@ public function postFeed(){
 		}
 		redirect('/user/profile', "refresh");
 	}
+	
+	
+	public function edit_data(){
+		$feed_id =$this->input->post('val');
 
-public function getprofile(){
+		$result = $this->profile_model->editfeed($feed_id);
+	
+
+	$value = $result['feeds'];
+	$id= $result['id'];
+	echo json_encode(array('feed'=>$value,'feedid'=>$id));
+		
+		
+	
+	}
+	
+		public function updateFeed(){ 
+		
+		$feed=$_POST['feed-edit'];
+		$feedid=$_POST['feed-id'];
+		
+		$result = $this->profile_model->updatefeed($feed,$feedid);
+		redirect('/user/profile', "refresh");
+		}
+		
+		
+		public function hideFeed(){ 
+		$id= $this->uri->segment('3');
+		$result = $this->profile_model->hideFeed($id);
+		redirect('/user/profile', "refresh");
+		}
+			
+	
+		
+
+        public function getprofile(){
 		$user_id =$this->input->post('user_id');
 		$return=$this->users_model->GetMyData($user_id);
 		if(!empty($return)){echo json_encode(array('status'=>1,'pr'=>$return));}else{echo json_encode(array('status'=>0));}
-	}
+	    }
+
+		
+		
+		///////////////////////////////////////////////////////////////////
+		//////////////////////////////////////////////////////////////////
+		
+			public function UploadProfile(){ 
+			
+		
+			
+			
+        }
 
 	
 }

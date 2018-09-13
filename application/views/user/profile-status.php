@@ -1,5 +1,6 @@
-<?php
+<?php  
 include 'header.php' ;?>	
+
 	<script src="https://static.opentok.com/v2/js/opentok.js"></script>	
 	<section class="pubsec min8">
 		<div class="container " >
@@ -27,6 +28,7 @@ include 'header.php' ;?>
 		</div>
 		<?php  if(!empty($feeds)){
 			foreach($feeds as $fd){?>
+			
 		<div class="post-bar">
 													<div class="post_topbar">
 													<div class="usy-dt">
@@ -68,6 +70,28 @@ include 'header.php' ;?>
 												</div>
 												</div>
 												
+												
+												<div class="overview-box" id="education-box">
+			<div class="overview-edit">
+				<h3>Edit Feed</h3>
+				
+				<form method="POST" action="<?php echo base_url(); ?>index.php/Profile/updateFeed" name="editform" id="editform">
+				<input type="hidden" name="feed-id"  id="feed-id" />
+					<textarea id="feed-edit" name="feed-edit"  ></textarea>
+					<button type="submit" class="save" id="feedsave" name="feedsave"  >Save</button>
+				<a href="<?php echo base_url()."index.php/User/Profile/"?>	<button type="button" class="cancel">Cancel</button></a>
+				</form>
+				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+			</div><!--overview-edit end-->
+		</div><!--overview-box end-->
+		
+		
+		
+		
+		
+		
+		
+												
 												<div class="job_descp">
 													
 													
@@ -93,7 +117,17 @@ include 'header.php' ;?>
 													</ul>
 												
 												</div>
-		</div><?php } }else{ ?>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<?php } }else{ ?>
 						
 					<!--	<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
@@ -125,7 +159,7 @@ include 'header.php' ;?>
 													
 												</div>
 												<span>
-												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" data-username=' <?php echo $frq->full_name;?>'  data-id="<?php echo $frq->user_id;?>" data-id="<?php echo $frq->user_id;?>"  class="follow btnChat "><i class="fa fa-comments-o chatq" aria-hidden="true"></i></a>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" data-username=' <?php echo $frq->full_name;?>'  data-id="<?php echo $frq->user_id;?>"  class="follow btnChat "><i class="fa fa-comments-o chatq" aria-hidden="true"></i></a>
 												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera cmsgq" aria-hidden="true"></i></i></a>
 												
 												</span>
@@ -150,19 +184,8 @@ include 'header.php' ;?>
 		</section>
 		
 		
-		<div class="overview-box" id="education-box">
-			<div class="overview-edit">
-				<h3>Edit Feed</h3>
-				
-				<form method="POST">
-				<input type="hidden" name="feed-id"  id="feed-id" />
-					<textarea id="feed-edit" name="feed-edit"></textarea>
-					<button type="button" class="save" id="feedsave" name="feededit">Save</button>
-					<button type="button" class="cancel">Cancel</button>
-				</form>
-				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
-			</div><!--overview-edit end-->
-		</div><!--overview-box end-->
+		
+		
 <!-- testing -->
 <script>
 	
@@ -312,6 +335,27 @@ $(this).parent('.form_wrapper').find(box).show();
 //$(this).parent('.form_wrapper').find(box1).show();
 });
 
+
+
+function getFeeds(intValue) {
+ var val=intValue;
+
+         $.ajax({
+	      type: "POST",
+            url: "../Profile/edit_data",
+			
+            data:{val:val},
+			dataType:"text", 
+	     	success: function(result){
+			var resultObjt = JSON.parse(result)
+				
+              $("#feed-edit").val(resultObjt.feed); 
+			  $("#feed-id").val(resultObjt.feedid);
+			  
+             }                
+             }); 				
+ 
+}
 
 </script>
 

@@ -281,6 +281,8 @@ public function InsertOnline($param)
 				
 			}
 			
+			
+			
 		public function fetch_session($uid){
 			$query = $this->db->query("SELECT session_id from users WHERE  user_id=$uid" );
 			return $query->row_array();
@@ -292,5 +294,16 @@ public function check_session($uid){
 		}
 				
 
+ public function userinfo($userId){
+	$query = $this->db->query("SELECT gender from users WHERE  user_id=$userId" );
+			return $query->row_array();
+    }
+	
+	
+	
+		function FileUpload($data){
+				$query = $this->db->query("update user_profile set profile_pic='$data' where user_id= 17 " );
+			echo $this->db->last_query();
+	}
 	
 }

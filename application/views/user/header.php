@@ -38,7 +38,29 @@
 
 
 <body>
+  <div class="modal fade" id="myModalchat" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content contentimg">
+        <div class="modal-header">
+		  <h4 class="modal-title vich">&nbsp;</h4>
+          <button type="button" class="close cloimg" data-dismiss="modal"><img src="<?php echo base_url(); ?>assets/images/close-button-.png"></button>
+        
+        </div>
+		 <h4 class="plsech">Please Select  Chat</h4>
+        <div class="modal-body modb">
+		
+         <a href="<?php echo base_url(); ?>index.php/Profile/friends" class="bgpopup"><!--i class="fa fa fa-users" aria-hidden="true"></i--> Friends &nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <a href="<?php echo base_url(); ?>index.php/user/profileSearch" class="bgpopup"><!--i class="fa fa-question-circle" aria-hidden="true"></i--> Stranger&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 
+
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
 
 
 	<div class="wrapper">
@@ -62,9 +84,8 @@
 								
 							</li>
 								<li>
-								<a href="<?php echo base_url(); ?>index.php/user/videochat"><span><i class="fa fa-video-camera" aria-hidden="true"></i></span>
-									Video Chat
-								</a>
+							<!--a href="<!?php echo base_url(); ?>index.php/user/videochat"><span><i class="fa fa-video-camera" aria-hidden="true"></i></span>	Video Chat</a-->
+								<a href=""  data-toggle="modal" data-target="#myModalchat"><span><i class="fa fa-video-camera" aria-hidden="true"></i></span>	Video Chat</a>
 								<!--<a href=""  data-toggle="modal" data-target="#myModalchat">
 									<span><i class="fa fa-video-camera" aria-hidden="true"></i></span>
 									Video Chat
@@ -87,7 +108,7 @@
 								<a href="#"  id=""  class="not-box-open"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a>
 								<div class="notification-box msg">
 									<div class="nt-title">
-										<h4>Setting</h4>
+									
 										<a href="#" title="">Clear all</a>
 									</div>
 									<div class="nott-list">
@@ -143,7 +164,24 @@
 						
 						 $rss=$this->users_model->GetMyData($this->session->userdata('user_id'));
 						    if($rss['profile_pic']==""){?>
-							<img src="<?php echo base_url(); ?>assets/images/resources/user.png" alt="">
+							
+							
+							<?php if($user['gender']==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+							
+							
+							
+							
+							
+						
 							<?php } else{?>
 							<img src="<?php echo base_url() .'uploads/profile_pic/'.$rss['profile_pic'] ;?>" alt="">
 							<?php }?>

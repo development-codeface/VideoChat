@@ -178,6 +178,26 @@ public function check_pass($params,$id){
 		$query = $this->db->query("DELETE FROM  feed_like where feed_id=".$id );
 		
 	}
+	public function editfeed($id)
+	{
+		
+		 
+		$query = $this->db->query("SELECT feeds,id from user_feed WHERE  id=$id" );
+			return $query->row_array();
+		 
+		 
+		
+	}
+	public function updatefeed($feed,$feedid)
+	{
+		
+		 
+		$query = $this->db->query("UPDATE user_feed  SET feeds='$feed' WHERE id =$feedid");
+			return true;
+		 
+		 
+		
+	}
 	public function hideFeed($id)
 	{
 		$query = $this->db->query("UPDATE user_feed  SET status = 0 WHERE id =". $id );

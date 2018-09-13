@@ -1,4 +1,5 @@
 <?php
+ 
 include 'header.php' ;?>	
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>	
 		<section class="cover-sec">
@@ -24,7 +25,18 @@ include 'header.php' ;?>
 										  <?php if($mydata['profile_pic']!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$mydata['profile_pic'] ;?>" alt="">
 											<?php }else{?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/user-pro-img.png" alt="">
+											<?php if($user['gender']==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
 											<?php }?>
 										
 										
@@ -69,10 +81,10 @@ include 'header.php' ;?>
 										<?php }}
 										else{ ?>
 						
-						<div class="download-box alert">
+						<!--<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
-										</div><?php }?>
+										</div>---><?php }?>
 						
 											
 											
@@ -187,10 +199,11 @@ include 'header.php' ;?>
 												</div>
 		</div><?php } }else{ ?>
 						
-						<div class="download-box alert">
+					<!--	<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
-										</div><?php }?>
+										</div>-->
+										<?php }?>
 						
 		
 											
@@ -284,10 +297,10 @@ include 'header.php' ;?>
 			</div>
 		<?php }}else{ ?>
 						
-						<div class="download-box alert">
+				<!--		<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
-										</div><?php }?>
+										</div> --><?php }?>
 						
 					
 
@@ -326,10 +339,10 @@ include 'header.php' ;?>
 							  				
 							  				else{ ?>
 						
-						<div class="download-box alert">
+					<!--	<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
-										</div><?php }?>
+										</div> --><?php }?>
 						
 							  				
 							  				
@@ -918,7 +931,7 @@ include 'header.php' ;?>
 										
 												<div class="job_descp">
 											<br>
-<input  type="file" name="photo">
+<input  type="file" name="photopro" id="photopro">
 										
 												</div>
 				
