@@ -1,5 +1,5 @@
 <?php
- 
+
 include 'header.php' ;?>	
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>	
 		<section class="cover-sec">
@@ -182,6 +182,9 @@ include 'header.php' ;?>
 													
 													
 													<p><?php echo $fd->feeds;?>..... </p>
+													<br>
+											
+													
 										
 												</div>
 				
@@ -266,19 +269,15 @@ include 'header.php' ;?>
  <div class="row">
 <div class="post-bar">
 													
-			  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadPhoto/'; ?>" id="">
+			  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadPhotos/'; ?>" id="">
 
 										
 												<div class="job_descp">
+												<input type ="hidden" name="abc" id="abc" value=<?php echo $mydata['user_id'] ?> >
 											
-											  <div class="files-wr" data-count-files="1">
-  <div class="one-file ">
-    <label for="file-1">Upload  Photo</label>
-    <input name="photo" id="photo" type="file" >
-    <div class="file-item hide-btn">
-      <span class="file-name"></span>
-      <span class="btn btn-del-file">x</span>
-    </div>
+  
+    <input name="photopublic" id="photopublic" type="file" >
+ 
   </div>
 </div>
 										
@@ -289,6 +288,61 @@ include 'header.php' ;?>
 												</div>
 												</form>
 		</div>
+		
+		
+		
+		
+		
+		
+		
+				<div class="gallery_pf">
+				
+				
+												<div class="row">
+												<?php	foreach( $image as $row )
+												{?>
+													<div class="col-lg-4 col-md-4 col-sm-4 col-6">
+														<div class="gallery_pt">
+												
+												
+												<?php	print_r($row['id']);?>
+													
+													
+													<div><img src="<?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" alt=""></div>
+													
+												</div><!--gallery_pt end-->
+													</div>
+												
+													<?php
+												}
+												?>
+													</div>
+												</div>
+												
+												
+												
+												<div id="myModal" class="modal">
+  <span class="close">×</span>
+  <img class="modal-content" id="img01">
+  <div id="caption"></div>
+</div>
+											</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		<?php if(!empty($photos)){
 			foreach($photos as $ph){?>
      
@@ -402,10 +456,10 @@ include 'header.php' ;?>
 						</div>
 										<?php }}else{ ?>
 						
-						<div class="download-box alert">
+						<!-- <div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
-										</div><?php }?>
+										</div>  --><?php }?>
 						
 								</div>
 									</div>
@@ -596,16 +650,16 @@ include 'header.php' ;?>
 			<div class="overview-edit">
 				<h3>Edit Feed</h3>
 				
-				<form method="POST">
+				<form name="editform" id="editform">
 				<input type="hidden" name="feed-id"  id="feed-id" />
-					<textarea id="feed-edit" name="feed-edit"></textarea>
-					<button type="button" class="save" id="feedsave" name="feededit">Save</button>
-					<button type="button" class="cancel">Cancel</button>
+					<textarea id="feed-edit" name="feed-edit"  ></textarea>
+					<button type="submit" class="save">Save</button>
+				<a href="<?php echo base_url()."index.php/User/Profile/"?>	<button type="button" class="cancel">Cancel</button></a>
 				</form>
 				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
 			</div><!--overview-edit end-->
 		</div><!--overview-box end-->
-
+		
 		<div class="overview-box" id="location-box">
 			<div class="overview-edit">
 				<h3>Location</h3>
@@ -930,6 +984,7 @@ include 'header.php' ;?>
 												  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadProfile/'; ?>" id="">
 										
 												<div class="job_descp">
+												<input type ="hidden" name="abc" id="abc" value=<?php echo $mydata['user_id'] ?> >
 											<br>
 <input  type="file" name="photopro" id="photopro">
 										
@@ -946,7 +1001,12 @@ include 'header.php' ;?>
 
   </div>
 </div>
-
+<style>
+.cover-sec img {
+    width: 100%;
+    height: 396px;
+}
+</style>
 	<div id="myModal12" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -963,8 +1023,8 @@ include 'header.php' ;?>
 												  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadCover/'; ?>" id="">
 										
 												<div class="job_descp">
-											<br>
-<input  type="file" name="photo">
+											<br>	<input type ="hidden" name="abc" id="abc" value=<?php echo $mydata['user_id'] ?> >
+<input  type="file" name="photocover" id="photocover">
 										
 												</div>
 				
@@ -1052,8 +1112,12 @@ $(function() {
 <script>
   var site_url='<?php  echo base_url();?>index.php/';
   </script>
+  
+
 
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/popper.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/flatpickr.min.js"></script>
@@ -1063,3 +1127,53 @@ $(function() {
 </body>
 
 </html>
+
+<script>
+
+function getFeeds(intValue) {
+ var val=intValue;
+
+         $.ajax({
+	      type: "POST",
+            url: "../Profile/edit_data",
+			
+            data:{val:val},
+			dataType:"text", 
+	     	success: function(result){
+			var resultObjt = JSON.parse(result)
+				
+              $("#feed-edit").val(resultObjt.feed); 
+			  $("#feed-id").val(resultObjt.feedid);
+			  
+             }                
+             }); 				
+ 
+}
+$("#editform").validate({
+   
+    errorPlacement: function(error, element) {
+        console.log(element.attr('name'));
+        $( error ).insertAfter( element);
+    },
+    submitHandler: function(form) {
+
+        // do other things for a valid form
+        var formData = $("#editform").serialize();
+    
+        $.ajax({
+            type: 'post',
+            url:"../Profile/updateFeed",
+            data:formData,
+            success: function(data){
+               setInterval(function(){
+                  
+                window.location.href="../Profile/myProfile";
+                }, 1500);
+
+
+            }
+        });
+        return false;
+    }
+});
+</script>

@@ -297,13 +297,30 @@ public function check_session($uid){
  public function userinfo($userId){
 	$query = $this->db->query("SELECT gender from users WHERE  user_id=$userId" );
 			return $query->row_array();
+    } public function imageinfo($userId){
+	$query = $this->db->query("SELECT * from user_photos WHERE  user_id=$userId" );
+			return $query->result_array();
     }
 	
 	
 	
-		function FileUpload($data){
-				$query = $this->db->query("update user_profile set profile_pic='$data' where user_id= 17 " );
-			echo $this->db->last_query();
+		function updatephoto($user_id,$file_name)
+		{
+				$query = $this->db->query("update user_profile set profile_pic='$file_name' where user_id=$user_id " );
+			return 1;
+	}	function updatecover($user_id,$file_name)
+		{
+				$query = $this->db->query("update user_profile set cover_photo='$file_name' where user_id=$user_id " );
+			return 1;
+	}
+	function updatepublicphoto($user_id,$file_name)
+		{
+			
+			
+				$query = $this->db->query("INSERT INTO user_photos (user_id , file_name)
+VALUES ($user_id,'$file_name') " );
+// echo $this->db->last_query();
+			return 1;
 	}
 	
 }

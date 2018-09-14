@@ -8,8 +8,18 @@ class Profile extends  CI_Controller {
 		parent::__construct();
 		//error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 		$this->load->library(array( 'upload','form_validation'));
-		   $this->load->helper('url');
-	$this->load->helper('form');
+		
+	$this->load->library(array( 'upload','form_validation'));
+		
+		
+
+$this->load->library('upload');
+
+
+$this->load->helper(array('form', 'url'));
+
+		
+	
 	$this->load->database();
 		if ($this->session->userdata('user_name') == ''){
 						redirect('login');
@@ -26,7 +36,8 @@ class Profile extends  CI_Controller {
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
 		$this->data['mydata'] =    $this->users_model->GetMyData($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
-	
+	    $this->data['image'] =    $this->users_model->imageinfo($this->UserId) ;
+	//print_r($this->data['image']);exit;
 	
 		$this->data['feeds']   =    $this->profile_model->GetUserfeeds($this->UserId) ;
 		$this->load->view("user/my-profile",$this->data);
@@ -255,12 +266,111 @@ public function postFeed(){
 		///////////////////////////////////////////////////////////////////
 		//////////////////////////////////////////////////////////////////
 		
+		
+		
+		
+		
+		
+		
+		
+		///////////////////////
+		
 			public function UploadProfile(){ 
 			
 		
+	
+               $user_id=$_POST['abc'];
+		          
+                     $flag=0;
+               $file=$_FILES['photopro'];
+               $file_name = $file['name'];
+               $file_tmp = $file['tmp_name'];   
+               $file_ext = explode('.',$file_name); 
+               $file_ext = strtolower(end($file_ext));
+               $allowed = array("gif","png","jpg","jpeg");
+           if(in_array($file_ext,$allowed)){
+               $file_name_new = uniqid('',true).'.'.$file_ext;
+
+               $file_destination = './uploads/profile_pic/' .$file_name;
+                if(move_uploaded_file($file_tmp,$file_destination)){
+
+               $flag= 1 ;
+                        }                  }     
+          if($flag==1){  
+
+           $data=$this->users_model->updatephoto($user_id,$file_name);
+           
+               }
+		
+		redirect('/profile/myprofile', "refresh");
+
+
+			}	
 			
+     
+			public function UploadCover(){ 
 			
-        }
+		
+	
+               $user_id=$_POST['abc'];
+		          
+                     $flag=0;
+               $file=$_FILES['photocover'];
+               $file_name = $file['name'];
+               $file_tmp = $file['tmp_name'];   
+               $file_ext = explode('.',$file_name); 
+               $file_ext = strtolower(end($file_ext));
+               $allowed = array("gif","png","jpg","jpeg");
+           if(in_array($file_ext,$allowed)){
+               $file_name_new = uniqid('',true).'.'.$file_ext;
+
+               $file_destination = './uploads/cover_photo/' .$file_name;
+                if(move_uploaded_file($file_tmp,$file_destination)){
+
+               $flag= 1 ;
+                        }                  }     
+          if($flag==1){  
+
+           $data=$this->users_model->updatecover($user_id,$file_name);
+           
+               }
+		
+		redirect('/profile/myprofile', "refresh");
+
+
+			}	
+			public function UploadPhotos()
+			{ 
+			
+		       $user_id=$_POST['abc'];
+		     
+                     $flag=0;
+               $file=$_FILES['photopublic'];
+               $file_name = $file['name'];
+               $file_tmp = $file['tmp_name'];   
+               $file_ext = explode('.',$file_name); 
+               $file_ext = strtolower(end($file_ext));
+               $allowed = array("gif","png","jpg","jpeg");
+           if(in_array($file_ext,$allowed)){
+               $file_name_new = uniqid('',true).'.'.$file_ext;
+
+               $file_destination = './uploads/photos/' .$file_name;
+                if(move_uploaded_file($file_tmp,$file_destination)){
+
+               $flag= 1 ;
+                        }                  }     
+          if($flag==1){  
+
+           $data=$this->users_model->updatepublicphoto($user_id,$file_name);
+           
+               }
+		
+		redirect('/profile/myprofile', "refresh");
+	
+         
+			}	
+			
+     
 
 	
 }

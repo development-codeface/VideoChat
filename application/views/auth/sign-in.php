@@ -122,7 +122,7 @@
 														<i class="la la-phone"></i>
 													</div>
 												</div>
-													<div class="col-lg-12 no-pdd">
+									<!--				<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
 												 <label class="checkbox-inline"><b>Gender </b> :</label>
 		 
@@ -132,10 +132,21 @@
     height: 15px;"  value="2">&nbsp;Female </label>
 </div>
 												
-	</div>												
+	</div>		-->										
 												
 												
-												
+								<div class="col-lg-12 no-pdd">
+													<div class="sn-field">
+														<select name="gender"  id="gender">
+															<option >Select Gender</option>
+															<option value="1">Male</option>
+															<option value="2">Female</option>
+															<option value="3">Other</option>
+														</select>
+														<i class="la la-user"></i>
+														<span><i class="fa fa-ellipsis-h"></i></span>
+													</div>
+												</div>					
 												
 												
 												

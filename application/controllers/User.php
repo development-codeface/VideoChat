@@ -54,6 +54,8 @@ class User extends  CI_Controller {
           $this->data['results']    =    $this->users_model->GetSearchFriends($params) ;
 		  
           }
+		  	$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		
 		
 		$this->load->view("user/public-profile-search",$this->data);
 		

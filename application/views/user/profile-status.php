@@ -60,7 +60,7 @@ include 'header.php' ;?>
 													
 													<ul class="ed-options" id="myModal">
 															<?php if($fd->user_id==$this->session->userdata('user_id')){?>
-															<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post</a></li>
+																<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post</a></li>
 														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
 													<?php } else{
 														?>
