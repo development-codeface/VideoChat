@@ -37,7 +37,6 @@ $this->load->helper(array('form', 'url'));
 		$this->data['mydata'] =    $this->users_model->GetMyData($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 	    $this->data['image'] =    $this->users_model->imageinfo($this->UserId) ;
-	//print_r($this->data['image']);exit;
 	
 		$this->data['feeds']   =    $this->profile_model->GetUserfeeds($this->UserId) ;
 		$this->load->view("user/my-profile",$this->data);
@@ -60,9 +59,6 @@ $this->load->helper(array('form', 'url'));
 		$this->load->view("user/profile-view",$this->data);
 		
 	}
-	
-	
-
 	public function settings()
 	{
 		  
@@ -88,12 +84,8 @@ $this->load->helper(array('form', 'url'));
 		$this->data['openTokapi']  = $this->config->item('opentok_key');
 		$this->date['opentokenid']     = $opntok_tokenId;
 		$this->data['openSessionId']    = $opentok_sessionid;
-	
-	
-	
-$str=base64_encode($opntok_tokenId);
-$this->data['openSession']=urlencode($str);
-
+        $str=base64_encode($opntok_tokenId);
+        $this->data['openSession']=urlencode($str);
 		$this->date['responsedata'] = json_encode(array(
             'apiKey' => $this->config->item('opentok_key'),
             'sessionId' => $opentok_sessionid,
@@ -139,6 +131,9 @@ $this->data['openSession']=urlencode($str);
 		$this->data['friendList']  = $this->users_model->GetFriendList($this->UserId) ;
 		$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
+		
+		//print_r($this->data);exit;
+		
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		$this->load->view("user/profiles",$this->data);
 		
@@ -248,7 +243,9 @@ public function postFeed(){
 		
 		public function hideFeed(){ 
 		$id= $this->uri->segment('3');
-		$result = $this->profile_model->hideFeed($id);
+		$uid= $this->uri->segment('4');
+		
+		$result = $this->profile_model->hideFeed($id,$uid);
 		redirect('/user/profile', "refresh");
 		}
 			
@@ -260,18 +257,6 @@ public function postFeed(){
 		$return=$this->users_model->GetMyData($user_id);
 		if(!empty($return)){echo json_encode(array('status'=>1,'pr'=>$return));}else{echo json_encode(array('status'=>0));}
 	    }
-
-		
-		
-		///////////////////////////////////////////////////////////////////
-		//////////////////////////////////////////////////////////////////
-		
-		
-		
-		
-		
-		
-		
 		
 		///////////////////////
 		

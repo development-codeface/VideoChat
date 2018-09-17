@@ -42,11 +42,10 @@ class Auth extends   CI_Controller {
 							$sessionId=$row;
 						}
 					}
-					$this->session->set_userdata($session_array);	
 					$data['tokenid'] = $opentok->generateToken($sessionId);	
 					$this->obj_model->insert_session($uid,$sessionId);
 					$session_array = array('user_id'=>$users_id,'user_name'=>$users_name,'token' => $data['tokenid'],'openSessionId' =>$sessionId );
-					$this->session->set_userdata($session_array);	
+					$this->session->set_userdata($session_array);
 					$unameTest=$this->users_model->checkUserOnline($users_id);
 					if(!empty($unameTest)){
 						$unameTest=$this->users_model->UpdateOnline($users_id,1);

@@ -358,14 +358,14 @@ include 'header.php';?>
 										 $i++;
 										 if($i==6){
 											 ?>
-										 </div>
-										 <div class="requests-list">
+										
+										 
 										<?php 	} 
 											}
 											 
 										 } ?>
-							  				
-							  			</div><!--requests-list end-->	
+							  				 </div>
+							  			 <!--requests-list end-->	
 							  		</div>
 			</div>
                 </div>

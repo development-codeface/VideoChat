@@ -13,6 +13,7 @@
 	$this->db->join('friends um', 'um.friend_id=us.user_id','LEFT');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
 	$this->db->join('user_feed uf', 'uf.user_id= us.user_id','INNER');
+	
 	$this->db->where('um.user_id',$userId);
 	$this->db->or_where('us.user_id',$userId);
 	$this->db->where('uf.status',1);
@@ -198,9 +199,12 @@ public function check_pass($params,$id){
 		 
 		
 	}
-	public function hideFeed($id)
+	public function hideFeed($id,$uid)
 	{
-		$query = $this->db->query("UPDATE user_feed  SET status = 0 WHERE id =". $id );
+		$query = $this->db->query("INSERT INTO hide_post (user_id ,feed_id)
+			VALUES ($uid,$id) " );
+		//	echo $this->db->last_query();exit;
+			return 1;
 		
 	}
 	

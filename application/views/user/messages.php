@@ -25,8 +25,8 @@ include 'header.php';?>
               <div id="videos">
                 <div class="row">
                  
-                  <div class="col-md-12"><div id="publisher"></div></div>
-				   <div class="col-md-3 vpos"><div id="subscriber"></div></div>
+                  <div class="col-md-12"><div id="subscriber"></div></div>
+				   <div class="col-md-3 vpos"><div id="publisher"></div></div>
                 </div>
               </div>
             </div>

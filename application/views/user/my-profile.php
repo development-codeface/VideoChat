@@ -24,7 +24,8 @@ include 'header.php' ;?>
 										<div class="user-pro-img">
 										  <?php if($mydata['profile_pic']!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$mydata['profile_pic'] ;?>" alt="">
-											<?php }else{?>
+											<?php }
+											else{?>
 											<?php if($user['gender']==1)
 											{
 												?>

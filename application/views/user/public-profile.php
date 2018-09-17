@@ -27,7 +27,7 @@ include 'header.php';?>
 			  <label for="focusedInput">I'm looking for:</label>
 			  <div class="custom-select">
 				<select name="looking">
-				<option value="3">friends</option>
+				<option value="3">Friends</option>
 				<option value="2">A guy</option>
 				<option value="1">A girl</option>
 			</select>
@@ -49,10 +49,10 @@ include 'header.php';?>
     </div>
     </div>
 	    <div class="col-lg-2">
-    <div class="form-group frmlook">
+    <div class="form-group frmlook ">
       <label for="focusedInput">From:</label>
-	   		  <div class="custom-select">
-  <select name="country">
+	   		  <div class="custom-select ">
+  <select name="country" >
 			<option value="All">All</option>
             	<option value="Afghanistan" title="Afghanistan">Afghanistan</option>
 	<option value="Åland Islands" title="Åland Islands">Åland Islands</option>

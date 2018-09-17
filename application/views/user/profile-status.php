@@ -25,11 +25,11 @@ include 'header.php' ;?>
 												<button type="submit" name="register" class="btn btn-success">post</button>
 												</div>
 												</form>
-		</div>
-		<?php  if(!empty($feeds)){
-			foreach($feeds as $fd){?>
-			
-		<div class="post-bar">
+											</div>
+											<?php  if(!empty($feeds)){
+												foreach($feeds as $fd){?>
+												
+											<div class="post-bar">
 													<div class="post_topbar">
 													<div class="usy-dt">
 														<?php 
@@ -41,30 +41,18 @@ include 'header.php' ;?>
 														<div class="usy-name">
 															<h3><?php if($fd->full_name!=""){ echo $fd->full_name ;}else { echo $fd->nick_name;}?></h3>
 															<span>
-1 hr</span> &nbsp;<span><i class="fa fa-flag" aria-hidden="true"></i> <?php echo $fd->country_id;?></span>
+                                                             1 hr</span> &nbsp;<span><i class="fa fa-flag" aria-hidden="true"></i> <?php echo $fd->country_id;?></span>
 														</div>
 													</div>
 													<div class="ed-opts form_wrapper"  >
 													<a href="#" title=""  class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-													
-													
-													
-													
-													
-													
-													
-													
-													
-													
-													
-													
 													<ul class="ed-options" id="myModal">
 															<?php if($fd->user_id==$this->session->userdata('user_id')){?>
 																<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post</a></li>
 														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
 													<?php } else{
 														?>
-														<li><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Hide Post</a></li>
+														<li><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" onclick="return confirm('Are you sure?')">Hide Post</a></li>
 													<?php }?>
 													</ul>
 												</div>
@@ -103,10 +91,10 @@ include 'header.php' ;?>
 												<div class="job-status-bar">
 													<ul class="like-com">
 														<li>
-														<?php if($fd->user_id==$this->session->userdata('user_id')){?>
-														<i class="la la-heart "></i> <?php }else{?>
+													
+													
 														<a href="javascript:void(0)" onclick="setLike(<?php echo $fd->id;?>)"><i class="la la-heart heartr"></i> </a>
-														<?php }?>
+													
 															<img src="<?php echo base_url(); ?>assets/images/liked-img.png" alt="">
 															<?php if($fd->no_likes!=0){?>
 															<span id="<?php echo $fd->id;?>"><?php echo $fd->no_likes;?></span><?php }else {?>
