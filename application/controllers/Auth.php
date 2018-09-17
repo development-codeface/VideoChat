@@ -13,99 +13,51 @@ class Auth extends   CI_Controller {
 	
 	public function index(){
 		$data['tab'] = 'index';
-		if($this->input->post("submit"))
-		{
+		if($this->input->post("submit")){
 			$this->form_validation->set_rules('username','User name','required');
 			$this->form_validation->set_rules('password','Password','required');
-			if($this->form_validation->run() == TRUE)
-			{
-			$uname = stripslashes($this->input->post("username"));
-			$paswrd = stripslashes(md5($this->input->post("password")));
-			$result = $this->users_model->getUserLogin($uname, $paswrd);
-			if(!$result || $result == FALSE)
-			{
-				$this->session->set_flashdata('err_msg','Incorrect Username/Password');
-				redirect('/',"refresh");
-			} else {
-				$users_id = $result['user_id'];
-				$users_name = $result['user_name'];
-				$session_array = array('user_id'=>$users_id,'user_name'=>$users_name);
-				$this->session->set_userdata($session_array);
-				$param['user_id']=$users_id;
-				$uid=$users_id;
-			/////
-			
-			
-	
-			
-			 $opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
-        
-		
-			$session = $opentok->createSession(array(
-				'mediaMode' => MediaMode::ROUTED
-			));
-		
-		
-			$res=$this->obj_model->check_session($uid);
-		
-			foreach($res as $row)
-			{
-			if($row==null)
+			if($this->form_validation->run() == TRUE){
+				$uname = stripslashes($this->input->post("username"));
+				$paswrd = stripslashes(md5($this->input->post("password")));
+				$result = $this->users_model->getUserLogin($uname, $paswrd);
+				if(!$result || $result == FALSE)
 				{
-						$sessionId = $session->getSessionId();
+					$this->session->set_flashdata('err_msg','Incorrect Username/Password');
+					redirect('/',"refresh");
+				} else {
+					$users_id = $result['user_id'];
+					$users_name = $result['user_name'];
+					$session_array = array('user_id'=>$users_id,'user_name'=>$users_name);
+					$this->session->set_userdata($session_array);
+					$param['user_id']=$users_id;
+					$uid=$users_id;
+					$res=$this->obj_model->check_session($uid);
+					$sessionId;
+					$opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
+					foreach($res as $row){
+						if($row==null){
+							$session = $opentok->createSession(array('mediaMode' => MediaMode::ROUTED));
+							$sessionId = $session->getSessionId();
+						}else{
+							$sessionId=$row;
+						}
+					}
+					$this->session->set_userdata($session_array);	
+					$data['tokenid'] = $opentok->generateToken($sessionId);	
+					$this->obj_model->insert_session($uid,$sessionId);
+					$session_array = array('user_id'=>$users_id,'user_name'=>$users_name,'token' => $data['tokenid'],'openSessionId' =>$sessionId );
+					$this->session->set_userdata($session_array);	
+					$unameTest=$this->users_model->checkUserOnline($users_id);
+					if(!empty($unameTest)){
+						$unameTest=$this->users_model->UpdateOnline($users_id,1);
+					}else{
+						$result = $this->users_model->InsertOnline($param);
+					}
+					redirect('user/profile',"refresh");
+					
 				}
-			else
-				{
-						$sessionId=$row;
-	
-				}
-		
 			}
-		
-		
-      
-		
-       // $opentokData['sessionid']  = $sessionId;
-       // $opentokData['tokenid']    = $opentok->generateToken($sessionId);
-        $data['records'] = $sessionId;
-        $data['tokenid'] = $opentok->generateToken($sessionId);
-		$uid=$users_id;
-		$sess=$sessionId;
-		$this -> session -> set_userdata($data['tokenid']);
-		$this->obj_model->insert_session($uid,$sess);
-       //	   $this->load->view('login',$data);
-	//	print_r($data['records']);exit;	
-			
-			$_SESSION['token_id']= $data['tokenid'];
-			
-			  $sess_data = array(
-               'u_id'           => $users_id,
-               'token'     => $data['tokenid']
-              
-             );
-  
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			//////////
-				 
-				 
-				$unameTest=$this->users_model->checkUserOnline($users_id);
-				if(!empty($unameTest)){
-					$unameTest=$this->users_model->UpdateOnline($users_id,1);
-				}else{
-					$result = $this->users_model->InsertOnline($param);
-				}
-				redirect('user/profile',"refresh");
-				
 		}
-		}}
 		$this->load->view('auth/sign-in', $data);
 	}
 	

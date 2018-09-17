@@ -9,7 +9,7 @@ class User extends  CI_Controller {
 	parent::__construct();
 	//error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 	$this->load->library(array( 'upload','form_validation'));
-	
+	$this->load->library(array('session', 'upload','form_validation'));
 	if ($this->session->userdata('user_name') == ''){
 					redirect('login');
 	}
@@ -22,15 +22,8 @@ class User extends  CI_Controller {
 		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	    $token_id=$this->session->userdata('token');
+		$session_id=$this->session->userdata('openSessionId');
 		$this->load->view("user/profile-status",$this->data);
 		
 	}
