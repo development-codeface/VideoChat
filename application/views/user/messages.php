@@ -87,6 +87,17 @@ include 'header.php';?>
 
 
 <?php include 'footer.php'; ?>
+<div id="callModal" class="modal">
+            <div class="modal-content text-center">
+                <div class="modal-header" id="callerInfo"></div>
+
+                <div class="modal-body">
+                    <button type="button" class="btn btn-danger btn-sm" id='endCall'>
+                        <i class="fa fa-times-circle"></i> End Call
+                    </button>
+                </div>
+            </div>
+        </div>
 <script>
 var elem = document.getElementById("myvideo");
 function openFullscreen() {
@@ -108,11 +119,12 @@ function openFullscreen() {
 </script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/socket.js"></script>
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script>
 <script>
+    $("#subscriber").hide();
     openOpentokConnection ('<?php echo $openSessionId ?>');
+    
 </script>

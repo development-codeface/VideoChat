@@ -7,22 +7,13 @@ class Profile extends  CI_Controller {
 	function __construct() {
 		parent::__construct();
 		//error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+		$this->load->library(array( 'upload','form_validation'));	
 		$this->load->library(array( 'upload','form_validation'));
-		
-	$this->load->library(array( 'upload','form_validation'));
-		
-		
-
-$this->load->library('upload');
-
-
-$this->load->helper(array('form', 'url'));
-
-		
-	
-	$this->load->database();
+		$this->load->library('upload');
+		$this->load->helper(array('form', 'url'));
+		$this->load->database();
 		if ($this->session->userdata('user_name') == ''){
-						redirect('login');
+			redirect('login');
 		}
 		$this->load->model('profile_model');
 		$this->load->model('Users_model', 'obj_model', TRUE); 
@@ -37,8 +28,6 @@ $this->load->helper(array('form', 'url'));
 		$this->data['mydata'] =    $this->users_model->GetMyData($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 	    $this->data['image'] =    $this->users_model->imageinfo($this->UserId) ;
-	//print_r($this->data['image']);exit;
-	
 		$this->data['feeds']   =    $this->profile_model->GetUserfeeds($this->UserId) ;
 		$this->load->view("user/my-profile",$this->data);
 		
@@ -88,11 +77,8 @@ $this->load->helper(array('form', 'url'));
 		$this->data['openTokapi']  = $this->config->item('opentok_key');
 		$this->date['opentokenid']     = $opntok_tokenId;
 		$this->data['openSessionId']    = $opentok_sessionid;
-	
-	
-	
-$str=base64_encode($opntok_tokenId);
-$this->data['openSession']=urlencode($str);
+		$str=base64_encode($opntok_tokenId);
+		$this->data['openSession']=urlencode($str);
 
 		$this->date['responsedata'] = json_encode(array(
             'apiKey' => $this->config->item('opentok_key'),
@@ -100,7 +86,6 @@ $this->data['openSession']=urlencode($str);
             'token'=>$opntok_tokenId
         ));
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
-		//print_r($this->data);
 		$this->load->view("user/messages",$this->data);
 		
 	}
@@ -135,13 +120,11 @@ $this->data['openSession']=urlencode($str);
 	
 	public function friends()
 	{
-		 // print_r($_SESSION);exit;
 		$this->data['friendList']  = $this->users_model->GetFriendList($this->UserId) ;
 		$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
-		$this->load->view("user/profiles",$this->data);
-		
+		$this->load->view("user/profiles",$this->data);	
 	}
 	
 	

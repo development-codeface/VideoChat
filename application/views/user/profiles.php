@@ -222,31 +222,24 @@ include 'header.php';?>
 
 <?php
 include 'footer.php';?>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" >
 var APIKEY 		= "";
 var SESSIONID 	= "";
 var TOKEN     	= "";
 $(document).ready(function() {	
- $('.follow_friend').click(function() { 
-     var uid =$(this).data('id'); 
-    $.ajax({
-	      type: "POST",
-            url: "../Auth/fetch_data",
-            data:{uid:uid},
-			dataType:"text", 
-			success: function(result){
-				var resultObj = JSON.parse(result)
-              //  alert(resultObj.sessionId+""+resultObj.tokenId);
-            }               
-        }); 				
-		
-		
-		
-		
-
-
-
-    }); });
+	$('.follow_friend').click(function() { 
+        var uid =$(this).data('id'); 
+		$.ajax({
+			type: "POST",
+				url: "../Auth/fetch_data",
+				data:{uid:uid},
+				dataType:"text", 
+				success: function(result){
+					var resultObj = JSON.parse(result)
+				//  alert(resultObj.sessionId+""+resultObj.tokenId);
+				}               
+		}); 						
+	}); 
+});
 </script>
