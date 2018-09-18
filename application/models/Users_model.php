@@ -317,5 +317,23 @@
             // echo $this->db->last_query();
 			return 1;
 	    }
+		
+		 public function GetFriendListsearch($userId,$check){
+			$this->db->select( 'us.user_id,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status');
+			$this->db->from('users us');
+			$this->db->join('friends um', 'um.friend_id=us.user_id','INNER');
+			$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
+			$this->db->join('online_user od', 'od.user_id= us.user_id','LEFT');
+			$this->db->where('um.user_id',$userId);
+			$this->db->where('um.status',1);
+			
+		    $this->db->like('us.full_name',$check);  
+			$this->db->group_by('us.user_id'); 
+			$this->db->order_by("od.logged_time", "ASC");
+			$result=$this->db->get()->result();
+			return $result;
+    }
+		
+		
 	
 }

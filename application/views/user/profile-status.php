@@ -34,7 +34,27 @@ include 'header.php' ;?>
 													<div class="usy-dt">
 														<?php 
 															if($fd->profile_pic==""){?>
-														<img src="<?php echo base_url(); ?>assets/images/resources/user.png" alt="">
+															
+															
+														<?php if($fd->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
+														
+														
+														
+														
+														
+														
+														
 													<?php } else{?>
 													<img src="<?php echo base_url() .'uploads/profile_pic/'.$fd->profile_pic ;?>" alt="">
 														<?php }?>
@@ -52,26 +72,27 @@ include 'header.php' ;?>
 														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
 													<?php } else{
 														?>
-														<li><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" onclick="return confirm('Are you sure?')">Hide Post</a></li>
+														<!--li><a href="<!?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" onclick="return confirm('Are you sure?')">Hide Post</a></li-->
+														<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Hide Post</a></li>
 													<?php }?>
 													</ul>
 												</div>
 												</div>
 												
 												
-												<div class="overview-box" id="education-box">
-			<div class="overview-edit">
-				<h3>Edit Feed</h3>
-				
-				<form method="POST" action="<?php echo base_url(); ?>index.php/Profile/updateFeed" name="editform" id="editform">
-				<input type="hidden" name="feed-id"  id="feed-id" />
-					<textarea id="feed-edit" name="feed-edit"  ></textarea>
-					<button type="submit" class="save" id="feedsave" name="feedsave"  >Save</button>
-				<a href="<?php echo base_url()."index.php/User/Profile/"?>	<button type="button" class="cancel">Cancel</button></a>
+											    <div class="overview-box fade" id="education-box">
+        <div class="overview-edit">
+            <h3 class="ayu">Are you sure delete !</h3>
+
+            <form name="editform" id="editform" class="">
+               
+				   <button type="submit" class="btn btn-danger btn-success padc bgreen" href=""><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" style="color:white;">Yes </a> </button>
+				   <button type="submit" class="btn btn-danger btn-default  " data-dismiss="modal">   No </button>
+                <!--a href="<!?php echo base_url()." index.php/User/Profile/ "?>">	<button type="button" class="cancel">Cancel</button></a-->
 				</form>
-				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+				<a href="# " title=" " class="close-box "><i class="la la-close "></i></a>
 			</div><!--overview-edit end-->
-		</div><!--overview-box end-->
+		</div><!--overview-box end-->	
 		
 		
 		

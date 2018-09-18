@@ -70,14 +70,36 @@ include 'header.php' ;?>
 											  <?php if($frq->profile_pic!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
 											<?php }else{?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/s1.png" alt="">
+											
+											
+												
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
+											
+										
+											
+											
+											
+											
+											
 											<?php }?>
 											
 											<div class="sgt-text">
 													<h4><?php if($frq->full_name!=""){ echo $frq->full_name ;}else { echo $frq->nick_name;}?>
 													
 												</div>
-												<span><i class="fa fa-video-camera" aria-hidden="true"></i></span>
+													<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
+												<span><i class="fa fa-video-camera" aria-hidden="true"></i></span></a>
 											</div>
 										<?php }}
 										else{ ?>
@@ -169,12 +191,12 @@ include 'header.php' ;?>
 													</div>
 													<div class="ed-opts">
 													<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-													<ul class="ed-options">
+												<!--	<ul class="ed-options">
 													<?php if($fd->user_id==$this->session->userdata('user_id')){?>
 															<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post</a></li>
 														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
 													<?php } ?>
-													</ul>
+													</ul>-->
 												</div>
 												</div>
 												
@@ -292,33 +314,97 @@ include 'header.php' ;?>
 		
 		
 		
+			<style>
+.containerg {
+    position: relative;
+    width: 100%;
+}
+
+.imageg {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middleg {
+   transition: .5s ease;
+                                                        opacity: 0;
+                                                        position: absolute;
+                                                        margin-top: 16%;
+                                                        left: 89%;
+                                                        transform: translate(-50%, -50%);
+                                                        -ms-transform: translate(-50%, -50%);
+                                                        text-align: center;
+}
+
+.containerg:hover .imageg {
+  opacity: 0.3;
+}
+
+.containerg:hover .middleg {
+  opacity: 1;
+}
+
+.textg {
+    background-color: #e06788;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}
+.textg a{color: white;}
+</style>
 		
-		
-		
-		
-				<div class="gallery_pf">
-				
-				
-												<div class="row">
+		<div class="gallery_pf">
+		<div class="row">
 												<?php	foreach( $image as $row )
 												{?>
-													<div class="col-lg-4 col-md-4 col-sm-4 col-6">
-														<div class="gallery_pt">
-												
-												
-												<?php	print_r($row['id']);?>
+												 <div class="col-lg-3  thumb containerg">
+                                                                <a class="thumbnail" href="<?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" data-lightbox="imgGLR"><img class="img-responsive" border="0" height="300" src="<?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" ></a>
+                                                                <div class="middleg">
+                                                                    <div class="textg"><a href="" data-toggle="modal" data-target="#myModalhid"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
+                                                                </div>
+                                                            </div>
+													<!--div class="col-lg-4 col-md-4 col-sm-4 col-6">
+													    <div class="containerg">
+  <img src="<!?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" alt="Avatar" class="imageg" style="width:100%">
+  <div class="middleg">
+    <div class="textg"><a href="" data-toggle="modal" data-target="#myModalhid"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
+  </div>
+</div>
 													
-													
-													<div><img src="<?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" alt=""></div>
-													
-												</div><!--gallery_pt end-->
-													</div>
+													</div-->
 												
 													<?php
 												}
 												?>
 													</div>
+													</div>
+				<!--div class="gallery_pf">
+				
+				
+												<div class="row">
+												<!?php	foreach( $image as $row )
+												{?>
+													<div class="col-lg-4 col-md-4 col-sm-4 col-6">
+														<div class="gallery_pt">
+												
+												
+												<!?php	print_r($row['id']);?>
+													
+													
+													<div><img src="<!?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" alt=""></div>
+													
 												</div>
+													</div>
+												
+													<!?php
+												}
+												?>
+													</div>
+												</div-->
 												
 												
 												
@@ -1038,6 +1124,28 @@ include 'header.php' ;?>
       
     </div>
 
+  </div>
+</div>
+	<div class="modal fade" id="myModalhid" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content mp50">
+      
+      <div class="modal-body">
+     <p class="ays">Are you sure delete image</p>
+	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-footer">
+	  <button type="submit" class="btn btn-success btn-default pull-left" d>
+        Yes
+        </button>
+        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+       No
+        </button>
+      
+      </div>
+    </div>
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox-plus-jquery.min.js"></script>

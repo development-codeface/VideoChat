@@ -8,21 +8,24 @@
 	
 
 	public function GetAllfeeds($userId){
-	$this->db->select( 'DISTINCT(us.user_id),up.profile_pic,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id');
+	$this->db->select( 'DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id');
 	$this->db->from('users us');
 	$this->db->join('friends um', 'um.friend_id=us.user_id','LEFT');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
 	$this->db->join('user_feed uf', 'uf.user_id= us.user_id','INNER');
+	//$this->db->join('hide_post hd', 'hd.feed_id = uf.id','LEFT OUTER');
+	
 	
 	$this->db->where('um.user_id',$userId);
 	$this->db->or_where('us.user_id',$userId);
+	//$this->db->where_not_in('uf.id' ,'hd.feed_id');
 	$this->db->where('uf.status',1);
 	
 	//$this->db->group_by('us.user_id'); 
 
 	//$this->db->where('dm.ParentID',$params['DepartmentID']);
 	$this->db->order_by("uf.created_at", "desc");
-    $result=$this->db->get()->result();
+    $result=$this->db->get()->result(); //echo $this->db->last_query();exit;
 	return $result;
     }
 
@@ -60,7 +63,7 @@
 
 
     public function GetProfileViewerList($userId){
-	$this->db->select( 'us.user_id,up.profile_pic,up.nick_name,us.full_name');
+	$this->db->select( 'us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name');
 	$this->db->from('users us');
 	$this->db->join('profile_visit um', 'um.visitor_id=us.user_id','INNER');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');

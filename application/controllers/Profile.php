@@ -48,8 +48,10 @@ $this->load->helper(array('form', 'url'));
 	{
 		  
 		$this->data['friendList']  = $this->users_model->GetFriendList($friendId) ;
+		$this->data['photos']  = $this->profile_model->GetUserPhotos($friendId) ;
 		$this->data['profileViewer']  = $this->profile_model->GetProfileViewerList($friendId) ;
 		$this->data['mydata'] =    $this->users_model->GetMyData($friendId) ;
+		//print_r($this->data['photos']);exit;
 		$this->data['feeds']   =    $this->profile_model->GetUserfeeds($friendId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		$result= $this->profile_model->checkVisit(array('visitor_id'=>$this->UserId,'user_id'=>$friendId)) ;
@@ -336,25 +338,42 @@ public function postFeed(){
                $file_ext = explode('.',$file_name); 
                $file_ext = strtolower(end($file_ext));
                $allowed = array("gif","png","jpg","jpeg");
-           if(in_array($file_ext,$allowed)){
+               if(in_array($file_ext,$allowed)){
                $file_name_new = uniqid('',true).'.'.$file_ext;
 
                $file_destination = './uploads/photos/' .$file_name;
                 if(move_uploaded_file($file_tmp,$file_destination)){
 
                $flag= 1 ;
-                        }                  }     
-          if($flag==1){  
+                } }     
+                if($flag==1){  
 
-           $data=$this->users_model->updatepublicphoto($user_id,$file_name);
+                $data=$this->users_model->updatepublicphoto($user_id,$file_name);
            
                }
 		
-		redirect('/profile/myprofile', "refresh");
+		        redirect('/profile/myprofile', "refresh");
 	
          
 			}	
 			
+			public function searchFreiend()
+			{
+				
+				$check=$_POST['search'];
+				
+				$this->data['friendList']  = $this->users_model->GetFriendListsearch($this->UserId,$check) ;
+			
+	        	$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
+		        $this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
+		
+		//print_r($this->data);exit;
+		
+		        $this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		        $this->load->view("user/profiles",$this->data);
+		
+			}
+						
      
 
 	
