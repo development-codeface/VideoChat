@@ -38,8 +38,8 @@ include 'header.php';?>
 										</div><!-- tab-feed end-->
 													<div class="company-title">
 					<div class="search-bar">
-						<form>
-							<input type="text" name="search" placeholder="Search...">
+						<form method="post" action="<?php echo base_url(); ?>index.php/Profile/searchFreiend" name="serachfriend" id="serachfriend">
+							<input type="text" name="search" id="search" placeholder="Search...">
 							<button type="submit"><i class="la la-search"></i></button>
 						</form>
 					</div>

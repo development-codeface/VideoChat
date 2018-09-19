@@ -30,6 +30,38 @@
 			<div class="signin-popup">
 				<div class="signin-pop">
 					<div class="row">
+					<div class="modal fade" id="myModalfor" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+		     <h4 class="modal-title">Reset your password</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+     
+        </div>
+        <div class="modal-body sign_in_sec forg">
+         <form method="post" action="" name="signupform" id="signupform">
+								
+													<div class="sn-field">
+														<input type="email" name="email"  id="email" placeholder="Enter your username or email" required>
+													<i class="fa fa-envelope-o" aria-hidden="true"></i>
+													</div>
+										</form>
+		  
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success">Get New Password</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  
+  
+  
 						<div class="col-lg-7">
 							<img src="<?php echo base_url(); ?>assets/images/vid2.jpg" class="logimg">
 						</div>
@@ -77,7 +109,7 @@
 														</label>
 														<small>Remember me</small>
 													</div><!--fgt-sec end-->
-													<a href="#" title="">Forgot Password?</a>
+													<a href="#" title="" data-toggle="modal" data-target="#myModalfor">Forgot Password?</a>
 												</div>
 											</div>
 											<div class="col-lg-12 no-pdd">

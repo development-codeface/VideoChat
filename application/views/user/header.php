@@ -52,7 +52,7 @@
         <div class="modal-body modb">
 		
          <a href="<?php echo base_url(); ?>index.php/Profile/friends" class="bgpopup"><!--i class="fa fa fa-users" aria-hidden="true"></i--> Friends &nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       <a href="<?php echo base_url(); ?>index.php/user/profileSearch" class="bgpopup"><!--i class="fa fa-question-circle" aria-hidden="true"></i--> Stranger&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+       <a href="<?php echo base_url(); ?>index.php/user/profileSearch" class="bgpopup bgpopups"><!--i class="fa fa-question-circle" aria-hidden="true"></i--> Stranger&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 
 
         </div>
@@ -227,7 +227,7 @@
         <div class="modal-body modb">
 		
          <a href="Friends_mess_chat.html" class="bgpopup"><!--i class="fa fa fa-users" aria-hidden="true"></i--> Friends &nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-       <a href="messages.html" class="bgpopup"><!--i class="fa fa-question-circle" aria-hidden="true"></i--> Stranger&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></a>
+       <a href="messages.html" class="bgpopup bgpopups"><!--i class="fa fa-question-circle" aria-hidden="true"></i--> Stranger&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></a>
 
 
         </div>

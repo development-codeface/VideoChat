@@ -34,7 +34,7 @@
 		return  array('success'=>true,'message'=>'User data successfully  entered');
 	}
 //Online friends	
-public function GetOnlineFriends($userId){
+	public function GetOnlineFriends($userId){
 	$this->db->select( 'us.user_id,up.profile_pic,up.nick_name,us.full_name,od.logged_time');
 	$this->db->from('users us');
 	$this->db->join('friends um', 'um.friend_id=us.user_id','INNER');
@@ -65,7 +65,7 @@ public function GetOnlineFriends($userId){
 	return $result;
     }
 
-//friendRequest
+	//friendRequest
     public function GetFriendsRequest($userId){
 	$this->db->select( 'us.user_id,up.profile_pic,up.nick_name,us.full_name');
 	$this->db->from('users us');
@@ -74,11 +74,11 @@ public function GetOnlineFriends($userId){
 	$this->db->where('um.user_id',$userId);
 	$this->db->where('um.status',0);
 	$this->db->order_by("um.friend_id", "ASC");
-    $result=$this->db->get()->result();
+    $result=$this->db->get()->result();//echo $this->db->last_query();exit;
 	return $result;
     }
 
-public function getCustomerById($id){
+	public function getCustomerById($id){
 	$this->db->select( 'ph.*');
 	$this->db->from('ci_customer_npr ph');
 
@@ -96,7 +96,7 @@ public function getCustomerById($id){
 		     return 1;
 	}
 	
-public function check_pass($params,$id){
+	public function check_pass($params,$id){
  	$this->db->select( 'ph.*,');
 	$this->db->from('users ph');
 	$this->db->where('ph.password', $params);
@@ -147,7 +147,7 @@ public function check_pass($params,$id){
 	return $result;  }
 
 
-public function checkEmail($params){
+	public function checkEmail($params){
  	$this->db->select( 'ph.*,');
 	$this->db->from('users ph');
 	$this->db->like('ph.email', $params);
@@ -156,7 +156,7 @@ public function checkEmail($params){
 
 	}
 	
-public function checkUserOnline($params){
+	public function checkUserOnline($params){
  	$this->db->select( 'ph.*,');
 	$this->db->from('online_user ph');
 	$this->db->like('ph.user_id', $params);
@@ -193,7 +193,7 @@ public function checkUserOnline($params){
 	
 	
 	
- public function GetMyData($userId){
+	public function GetMyData($userId){
 	$this->db->select( 'us.*,up.*');
 	$this->db->from('users us');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
@@ -215,12 +215,12 @@ public function checkUserOnline($params){
 		     $this->db->update('user_profile',$params);
 		     return 1;
 	}
-public function UpdateOverview($params,$user_id){
+	public function UpdateOverview($params,$user_id){
 	         $this->db->where('user_id',$user_id);
 		     $this->db->update('user_profile',$params);
 		     return 1;
 	}
-public function InsertOnline($param)
+     public function InsertOnline($param)
 	{
 	    $this->db->insert('online_user',$param);
 		return 1;
@@ -267,10 +267,7 @@ public function InsertOnline($param)
 		}
 	   
 	}
-		
-		
-			
-			public function insert_session($uid,$sess){
+	public function insert_session($uid,$sess){
 				
 				
 				
@@ -278,49 +275,65 @@ public function InsertOnline($param)
 		
        // echo $this->db->last_query();
 		//return $query->result();
-				
+			
 			}
-			
-			
 			
 		public function fetch_session($uid){
 			$query = $this->db->query("SELECT session_id from users WHERE  user_id=$uid" );
 			return $query->row_array();
 		}
 				
-public function check_session($uid){
+        public function check_session($uid){
 			$query = $this->db->query("SELECT session_id from users WHERE  user_id=$uid" );
 			return $query->row_array();
 		}
 				
 
- public function userinfo($userId){
-	$query = $this->db->query("SELECT gender from users WHERE  user_id=$userId" );
+        public function userinfo($userId){
+	        $query = $this->db->query("SELECT gender from users WHERE  user_id=$userId" );
 			return $query->row_array();
-    } public function imageinfo($userId){
-	$query = $this->db->query("SELECT * from user_photos WHERE  user_id=$userId" );
+        } 
+		public function imageinfo($userId){
+	        $query = $this->db->query("SELECT * from user_photos WHERE  user_id=$userId" );
 			return $query->result_array();
-    }
+        }
 	
 	
 	
 		function updatephoto($user_id,$file_name)
 		{
-				$query = $this->db->query("update user_profile set profile_pic='$file_name' where user_id=$user_id " );
+	     	$query = $this->db->query("update user_profile set profile_pic='$file_name' where user_id=$user_id " );
 			return 1;
-	}	function updatecover($user_id,$file_name)
+	    }	
+		function updatecover($user_id,$file_name)
 		{
-				$query = $this->db->query("update user_profile set cover_photo='$file_name' where user_id=$user_id " );
+			$query = $this->db->query("update user_profile set cover_photo='$file_name' where user_id=$user_id " );
 			return 1;
-	}
-	function updatepublicphoto($user_id,$file_name)
-		{
-			
-			
-				$query = $this->db->query("INSERT INTO user_photos (user_id , file_name)
-VALUES ($user_id,'$file_name') " );
-// echo $this->db->last_query();
+	    }
+	    function updatepublicphoto($user_id,$file_name)
+	   	{
+			$query = $this->db->query("INSERT INTO user_photos (user_id , file_name)
+              VALUES ($user_id,'$file_name') " );
+            // echo $this->db->last_query();
 			return 1;
-	}
+	    }
+		
+		 public function GetFriendListsearch($userId,$check){
+			$this->db->select( 'us.user_id,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status');
+			$this->db->from('users us');
+			$this->db->join('friends um', 'um.friend_id=us.user_id','INNER');
+			$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
+			$this->db->join('online_user od', 'od.user_id= us.user_id','LEFT');
+			$this->db->where('um.user_id',$userId);
+			$this->db->where('um.status',1);
+			
+		    $this->db->like('us.full_name',$check);  
+			$this->db->group_by('us.user_id'); 
+			$this->db->order_by("od.logged_time", "ASC");
+			$result=$this->db->get()->result();
+			return $result;
+    }
+		
+		
 	
 }

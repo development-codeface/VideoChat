@@ -24,9 +24,30 @@ include 'header.php' ;?>
 									<div class="user_profile">
 										<div class="user-pro-img">
 										  <?php if($mydata['profile_pic']!=""){?>
-											<img src="<?php echo base_url() .'uploads/cover_photo/'.$mydata['profile_pic'] ;?>" alt="">
+											<img src="<?php echo base_url() .'uploads/profile_pic/'.$mydata['profile_pic'] ;?>" alt="">
 											<?php }else{?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/user-pro-img.png" alt="">
+											
+											
+												
+											<?php if($mydata['gender']==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
+											
+										
+											
+											
+											
+											
+											
 											<?php }?>
 										<ul class="flw-status">
 												<li>
@@ -55,14 +76,37 @@ include 'header.php' ;?>
 											  <?php if($frq->profile_pic!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
 											<?php }else{?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/s1.png" alt="">
+											
+											
+												
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
+											
+										
+											
+											
+											
+											
+											
 											<?php }?>
 											
 											<div class="sgt-text">
 													<h4><a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>"><?php echo $frq->full_name;?></a></h4>
 													
 												</div>
-												<span><i class="fa fa-video-camera" aria-hidden="true"></i></span>
+												<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
+									
+												<span><i class="fa fa-video-camera" aria-hidden="true">   </i></span></a>
 											</div>
 										<?php }}?>
 											
@@ -128,7 +172,23 @@ include 'header.php' ;?>
 											<div class="post-bar">
 													<div class="post_topbar">
 													<div class="usy-dt">
-														<img src="<?php echo base_url(); ?>assets/images/m-img2.png" alt="">
+													 <?php if($mydata['profile_pic']!=""){?>
+											<img src="<?php echo base_url() .'uploads/profile_pic/'.$mydata['profile_pic'] ;?>" alt="">
+											<?php }
+											else{?>
+											<?php if($user['gender']==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
+											<?php }?>
 														<div class="usy-name">
 															<h3><?php if($fd->full_name!=""){ echo $fd->full_name ;}else { echo $fd->nick_name;}?></h3>
 															<span>
@@ -218,10 +278,11 @@ include 'header.php' ;?>
 			</div>
 		<?php }}else{ ?>
 						
-						<div class="download-box alert">
+					<!--	<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
-										</div><?php }?>		
+										</div>-->
+										<?php }?>		
 
 	</div>	
 										</div><!--portfolio-gallery-sec end-->
@@ -279,8 +340,26 @@ include 'header.php' ;?>
 									 <?php if($frq->profile_pic!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
 											<?php }else{?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/pf-icon8.png" alt="">
+											
+											
+											
+											
+										
+											<?php if($user['gender']==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
 											<?php }?>
+											
+										
 									
 									
 									</a>
