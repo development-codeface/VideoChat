@@ -312,7 +312,7 @@ include 'header.php';?>
 	    <div class="col-lg-2">
     <div class="form-group">
      
-  <button type="submit" name="search" class="btn btn-default btn-success mg24">Search</button>
+  <button type="submit" name="search" class="btn acceptser mg24">Search</button>
     </div>
     </div>
   </form>
@@ -530,8 +530,46 @@ include 'header.php';?>
 		</footer>
 
 	</div><!--theme-layout end-->
+	<!--Modal to show that we are calling-->
+        <div id="callModal" class="modal">
+            <div class="modal-content text-center">
+                <div class="modal-header" id="callerInfo"></div>
+
+                <div class="modal-body">
+                    <button type="button" class="btn btn-danger btn-sm" id='endCall'>
+                        <i class="fa fa-times-circle"></i> End Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+
+
+        <!--Modal to give options to receive call-->
+        <div id="rcivModal" class="modal">
+            <div class="modal-content text-center">
+                <div class="modal-header" id="calleeInfo"></div>
+
+                <div class="modal-body">
+                    <button type="button" class="btn btn-success btn-sm answerCall" id='startVideo'>
+                        <i class="fa fa-video-camera"></i> Video Call
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" id='rejectCall'>
+                        <i class="fa fa-times-circle"></i> Reject Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+        
+        <!--Snackbar -->
+        <div id="snackbar"></div>
+        <!-- Snackbar -->
+           
 	
-	<script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>
+<script type="text/javascript" >
 	
 		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
 		var SESSIONID = "<?php echo $sessionId;?>";
@@ -632,3 +670,12 @@ document.addEventListener("click", closeAllSelect);</script>
 </body>
 
 </html>
+<audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
+<audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script>
+<script>
+    normalConnection();
+</script>
+
+	

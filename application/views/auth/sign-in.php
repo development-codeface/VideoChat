@@ -120,6 +120,10 @@
 									</form>
 									<div class="login-resources">
 										<h4>Login Via Social Account</h4>
+																						<div class="login-or">
+        <hr class="hr-or">
+        <span class="span-or">or</span>
+      </div>
 										<ul>
 											<li><a href="#" title="" class="fb"><i class="fa fa-facebook"></i>Login Via Facebook</a></li>
 											<li><a href="#" title="" class="tw"><i class="fa fa-twitter"></i>Login Via Twitter</a></li>

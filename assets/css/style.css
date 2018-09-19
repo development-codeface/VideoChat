@@ -43,6 +43,7 @@ body {
 }
 
 
+
 .alert {
 	padding: 19px 15px;
 	color: #fefefe;
@@ -80,7 +81,9 @@ body {
     /* margin-bottom: 10px; */
 	    margin-top: 15px;
 	}
-
+.sign_in_sec form input:focus {
+border: 2px solid #F26E93;
+}
 .fhed{font-size: 21px;
     font-weight: 700;
     color: #db325b;}
@@ -531,7 +534,7 @@ body {
 /* img popup */
 .jobint li a{    height: 22px!important;
     line-height: 20px!important;}
-	.jobint{    margin-bottom: 14px!important;}
+	.jobint{    margin-bottom: 20px!important;}
 /* img popup */
 .switch input {display:none;}
 
@@ -1400,7 +1403,7 @@ color: #000000;
 main {
 	float: left;
 	width: 100%;
-	padding: 10px 0;
+	padding: 10px 0;    
 }
 .main-section {
 	float: left;
@@ -1611,6 +1614,8 @@ main {
 	-ms-border-radius: 100px;
 	-o-border-radius: 100px;
 	border-radius: 100px;
+	    width: 35px;
+    height: 35px;background: #eaeaea;
 }
 .sgt-text {
 	float: left;
@@ -1621,6 +1626,12 @@ main {
 	font-size: 14px;
 	font-weight: 700;
 	margin-bottom: 4px;    text-transform: capitalize;
+}
+.enqclve {
+    float: right;
+    font-size: 14px;
+    color: #009688;
+    margin-top: 10px;
 }
 .sgt-text h4 a {color: #232121;
 }
@@ -1951,7 +1962,12 @@ float: right;
 	text-align: center;
 	line-height: 30px;
 }
-.pubsec{    margin-top: 30px;}
+.alert-success {
+    color:white;
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+.pubsec{    padding-top: 30px;    background: #ececec;}
 .bk-links li i.la-envelope {
 	background-color: #db325b;
 }
@@ -2860,6 +2876,11 @@ select {
 	/* border-radius: 100px; */
 	/* background-color: #fff; */
 /* } */
+.alert-danger {
+    color: whites;
+    background-color: #d82c16;
+    border-color: #d92d17;
+}
 .sign-control {
 
 	width: 100%;
@@ -2907,7 +2928,7 @@ select {
 	display: block;
 }
 .sign_in_sec h3 {
-    font-size: 36px;
+    font-size: 32px;
     color: #3D404A;
     font-weight: 700;
     position: relative;
@@ -2920,7 +2941,7 @@ select {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	width: 30px;
+	width: 60px;
 	height: 2px;
 	background-color: #db325b;
 }
@@ -2980,6 +3001,9 @@ input,button{outline:none;}
 	color: #231e1e;
 	font-size: 14px;
 	border:1px solid #e5e5e5;    border-radius: .25rem;
+}
+.sign_in_sec form input:focus {
+border: 2px solid #F26E93;
 }
 .sign_in_sec form input:hover,
 .sign_in_sec form select:hover {
@@ -3405,7 +3429,7 @@ footer {
 	float: none;
 	border: 5px solid #fff;
 	    width: 180px;
-    height: 180px;    background: whit
+    height: 180px;       background: white;
 }
 .user_pro_status {
 	float: left;
@@ -4313,7 +4337,7 @@ a:hover {
 /* ============== companies-info ============== */
 
 .companies-info {
-    padding: 40px 0 60px 0;min-height:700px;
+    padding: 40px 0 60px 0;min-height:700px;   
 }
 .company-title {
 	float: left;
@@ -5104,7 +5128,7 @@ a:hover {
 
 /* ============= account-tabs-setting ============ */
 
-.profile-account-setting {
+.profile-account-setting {    background: #ececec;
 }
 .account-tabs-setting {
 	float: left;
@@ -5137,6 +5161,65 @@ a:hover {
 	border-radius: 0;
 	border-top: 0;
 }
+.cover-sec img {
+    width: 100%;
+    height: 400px;
+}
+.acceptser{    padding: 7px 32px!important;    background-color: #1f9e97!important;}
+.acceptser:hover {
+   
+background-color: #33aca5!important;}
+.login-or {
+    position: relative;
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.hr-or {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+.span-or {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    margin-left: -25px;
+    background-color: #fff;
+    width: 50px;
+    text-align: center;
+}
+.hidvideo{    margin-top: 50px;}
+.company-upv ul li a {
+    display: inline-block;
+    padding: 4px 15px 6px;
+    color: #fff;
+    /* height: 35px; */
+    line-height: 18px;
+    font-size: 14px;    border-radius: 4px;
+}
+.company-upv ul li {
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 13px;
+    font-weight: 500;
+}
+.company-upv ul li a i {
+    font-size: 16px;
+    position: relative;
+    top: 2px;
+}
+.enqclqq {
+    float: right;
+    font-size: 14px;
+    color: #009688;
+    margin-top: 9px;
+}
 .nav-tabs {
 	border-bottom: 0;
 }
@@ -5164,7 +5247,7 @@ a:hover {
 	float: left;
 	width: 100%;
 	background-color: #fff;
-	     margin-top: 25px;    border-radius: 6px;
+	     margin-top: 0px;    border-radius: 6px;
 	-webkit-box-shadow: 1px 5px 24px rgba(0, 0, 0, 0.32);
 	-moz-box-shadow: 1px 5px 24px rgba(0, 0, 0, 0.32);
 	-ms-box-shadow: 1px 5px 24px rgba(0, 0, 0, 0.32);
@@ -6842,54 +6925,3 @@ button.close:hover {
 @media only screen and (min-width: 700px) and (max-width: 767px){ }    
 @media only screen and (min-width: 768px) and (max-width: 991px){ }  
 @media only screen and (min-width: 992px) and (max-width: 1199px){ }
-
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: auto; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Header */
-.modal-header {
-    padding: 15px;
-    border-bottom: 1px solid #e5e5e5;
-}
-
-/* Modal Body */
-.modal-body {
-    position: relative;
-    padding: 15px;
-}
-
-/* Modal Content */
-.modal-content {        
-    position: relative;
-    width: auto;
-    margin: 10px;
-    background-color: #fff;
-    -webkit-background-clip: padding-box;
-        background-clip: padding-box;
-    border: 1px solid #999;
-    border: 1px solid rgba(0, 0, 0, .2);
-    border-radius: 6px;
-    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-}
-
-@media (min-width: 768px) {
-  .modal-content {
-    width: 600px;
-    margin: 30px auto;
-  }
-}

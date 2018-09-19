@@ -35,7 +35,7 @@
 	}
 //Online friends	
 	public function GetOnlineFriends($userId){
-	$this->db->select( 'us.user_id,up.profile_pic,up.nick_name,us.full_name,od.logged_time');
+	$this->db->select( 'us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name,od.logged_time');
 	$this->db->from('users us');
 	$this->db->join('friends um', 'um.friend_id=us.user_id','INNER');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
@@ -67,7 +67,7 @@
 
 	//friendRequest
     public function GetFriendsRequest($userId){
-	$this->db->select( 'us.user_id,up.profile_pic,up.nick_name,us.full_name');
+	$this->db->select( 'us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name');
 	$this->db->from('users us');
 	$this->db->join('friends um', 'um.friend_id=us.user_id','INNER');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
@@ -294,7 +294,7 @@
 			return $query->row_array();
         } 
 		public function imageinfo($userId){
-	        $query = $this->db->query("SELECT * from user_photos WHERE  user_id=$userId" );
+	        $query = $this->db->query("SELECT * from user_photos WHERE  user_id=$userId and status='0'" );
 			return $query->result_array();
         }
 	
@@ -332,8 +332,12 @@
 			$this->db->order_by("od.logged_time", "ASC");
 			$result=$this->db->get()->result();
 			return $result;
-    }
-		
+        }
+		function update_img_status($img_id)
+		{
+	     	$query = $this->db->query("update  user_photos set status='1' where id=$img_id " );
+			return 1;
+	    }	
 		
 	
 }

@@ -74,16 +74,29 @@ $open_tokenId=base64_decode(urldecode($openToken));
 														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
 													<?php } else{
 														?>
-														<!--li><a href="<!?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" onclick="return confirm('Are you sure?')">Hide Post</a></li-->
-														<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Hide Post</a></li>
+														<!--li><a href="<!?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" onclick="return confirm('Are you sure?')" class="exp-bx-open">Hide Post</a></li-->
+															<li><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>"  class="exp-bx-open">Hide Post</a></li>
+														
 													<?php }?>
 													</ul>
 												</div>
 												</div>
-												
-												
-											    <div class="overview-box fade" id="education-box">
-        <div class="overview-edit">
+										
+																				<div class="overview-box" id="education-box">
+								<div class="overview-edit">
+								<h3>Edit Feed</h3>
+
+								<form method="POST" action="<?php echo base_url(); ?>index.php/Profile/updateFeed" name="editform" id="editform">
+								<input type="hidden" name="feed-id"  id="feed-id" />
+								<textarea id="feed-edit" name="feed-edit"  ></textarea>
+								<button type="submit" class="save" id="feedsave" name="feedsave"  >Save</button>
+								<a href="<?php echo base_url()."index.php/User/Profile/"?>	<button type="button" class="cancel">Cancel</button></a>
+								</form>
+								<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+								</div><!--overview-edit end-->
+								</div><!--overview-box end-->
+								<div class="overview-box fade" id="experience-box">
+										<div class="overview-edit">
             <h3 class="ayu">Are you sure delete !</h3>
 
             <form name="editform" id="editform" class="">
@@ -96,13 +109,7 @@ $open_tokenId=base64_decode(urldecode($openToken));
 			</div><!--overview-edit end-->
 		</div><!--overview-box end-->	
 		
-		
-		
-		
-		
-		
-		
-												
+					
 												<div class="job_descp">
 													
 													
@@ -131,13 +138,6 @@ $open_tokenId=base64_decode(urldecode($openToken));
 		</div>
 		
 		
-		
-		
-		
-		
-		
-		
-		
 		<?php } }else{ ?>
 						
 					<!--	<div class="download-box alert">
@@ -158,9 +158,45 @@ $open_tokenId=base64_decode(urldecode($openToken));
 										<?php if(!empty($friendOnline)){
 											$i=1;
 											foreach($friendOnline as $frq){?>
+										
+											
 											<div class="suggestion-usd">
 										       <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
-												<img src="<?php echo base_url(); ?>assets/images/resources/s1.png" alt=""></a>
+											   
+											   
+											    <?php if($frq->profile_pic!=""){?>
+											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
+											<?php }else{?>
+											
+											
+												
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
+											
+										
+											
+											
+											
+											
+											
+											<?php }?>
+											
+											   
+											   
+											   
+											   
+											   
+												</a>
 													<span class="fa fa-circle msg-topaa"></span>
 												<div class="sgt-text">
 												
@@ -181,10 +217,6 @@ $open_tokenId=base64_decode(urldecode($openToken));
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
 										</div>--><?php }?>
-						
-											
-											
-											
 											
 										
 										</div><!--suggestions-list end-->
@@ -266,7 +298,7 @@ include 'footer.php';?>
 					dataType:"text", 
 					success: function(result){
 						var resultObj = JSON.parse(result)
-					alert(resultObj.sessionId+""+resultObj.tokenId);
+					//alert(resultObj.sessionId+""+resultObj.tokenId);
 				}               
 			}); 				
 		}); 
@@ -300,11 +332,13 @@ function getFeeds(intValue) {
 			}                
 	}); 				
 }
+
+
 </script>
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script>
+<!--<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script> -->
 <script>
     normalConnection();
 </script>

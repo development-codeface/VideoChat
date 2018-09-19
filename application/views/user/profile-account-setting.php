@@ -159,6 +159,43 @@ include 'header.php';?>
 
 <?php
 include 'footer.php';?>
+<!--Modal to show that we are calling-->
+        <div id="callModal" class="modal">
+            <div class="modal-content text-center">
+                <div class="modal-header" id="callerInfo"></div>
+
+                <div class="modal-body">
+                    <button type="button" class="btn btn-danger btn-sm" id='endCall'>
+                        <i class="fa fa-times-circle"></i> End Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+
+
+        <!--Modal to give options to receive call-->
+        <div id="rcivModal" class="modal">
+            <div class="modal-content text-center">
+                <div class="modal-header" id="calleeInfo"></div>
+
+                <div class="modal-body">
+                    <button type="button" class="btn btn-success btn-sm answerCall" id='startVideo'>
+                        <i class="fa fa-video-camera"></i> Video Call
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" id='rejectCall'>
+                        <i class="fa fa-times-circle"></i> Reject Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+        
+        <!--Snackbar -->
+        <div id="snackbar"></div>
+        <!-- Snackbar -->
+
+
 <script>
 	
 		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
@@ -167,3 +204,12 @@ include 'footer.php';?>
 		
 		//alert(apiKey +' == '+ sessionId);
 	</script>
+	
+
+<audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
+<audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script>
+<script>
+    normalConnection();
+</script>
