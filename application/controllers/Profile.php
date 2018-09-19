@@ -63,9 +63,11 @@ class Profile extends  CI_Controller {
 	{  
 		$opentok = new OpenTok( $this->config->item('opentok_key'), $this->config->item('opentok_secret'));//'46163292', '436f0b34f67e82089f741ff6509c9608919f8d82'
 	    if (isset($_GET['user'])){
-			$userid=$_GET['user']; 
+			$userid=$_GET['user'];
+			$this->data['caller'] = "Y";  
 		} else {
 			$userid=$this->UserId;
+			$this->data['caller'] = "N";
 		} 
 		$result=$this->users_model->fetch_session($userid);
 		$opentok_sessionid = $result['session_id'];
