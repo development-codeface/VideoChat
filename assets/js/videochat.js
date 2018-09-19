@@ -15,7 +15,6 @@ function openOpentokConnection(sessionId) {
     connectionCreated: function (event) {
       connectionCount++;
       openTokErrormessage("Connection created !!!");
-      startVideoCall();
     },
     sessionReconnected : function (){
       openTokErrormessage("Connection Reconnected !!!");
@@ -68,6 +67,7 @@ function openOpentokConnection(sessionId) {
       handleError(error);
     } else {
       session.publish(publisher, handleErrorOpen);
+      startVideoCall();
     }
   });
 
@@ -88,7 +88,8 @@ function disconnect() {
   session.disconnect();
 }
 function sendMessage(type,message,clearfunction){
-  session.signal({
+  if(typeof(session) == 'undefined'){
+    noramlSession.signal({
       type: type,
       data: message
     }, function(error) {
@@ -98,10 +99,28 @@ function sendMessage(type,message,clearfunction){
       clearfunction();
     }
   });
+  }else {
+    session.signal({
+        type: type,
+        data: message
+      }, function(error) {
+      if (error) {
+        console.log('Error sending signal:', error.name, error.message);
+      } else {
+        clearfunction();
+      }
+    });
+  }
+
+  
 }
 function sessageCallback(event){
    switch (event.type){
-      case "signal:SENDMESSAGE" : recicveChat(event);break;
+      case "signal:SENDMESSAGE" : console.log("SENDMESSAGE"); recicveChat(event);break;
+      case 'signal:INITIATECALL' : console.log("INITIATECALL"); reciveVideoCallInChat(event);break;
+      case 'signal:ACCEPTCALL'   : console.log("ACCEPTCALL"); callAccepted(event);break;
+      case 'signal:CALLSTOPPED'  : console.log("CALLSTOPPED"); callStopped(event);break;
+      case 'signal:CUTCALL'      : console.log("CUTCALL"); callAccepted(event);break;
    }
 }
 function recicveChat(event){
@@ -161,53 +180,103 @@ function normalConnection(){
 }
 function normalMessageCallback(event){
   switch (event.type){
-     case 'signal:SENDMESSAGE'  : normalRecicveChat(event);break;
-     case 'signal:INITIATECALL' : reciveVideoCall(event);break;
-     case 'signal:ACCEPTCALL'   : callAccepted(event);break;
-     case 'signal:CALLSTOPPED'  : callStopped(event);break;
-     case 'signal:CUTCALL'      : callAccepted(event);break;
+     case 'signal:SENDMESSAGE'  : console.log("Normal :: SENDMESSAGE"); normalRecicveChat(event);break;
+     case 'signal:INITIATECALL' : console.log("Normal :: INITIATECALL");reciveVideoCall(event);break;
+     case 'signal:ACCEPTCALL'   : console.log("Normal :: ACCEPTCALL");callAccepted(event);break;
+     case 'signal:CALLSTOPPED'  : console.log("Normal :: CALLSTOPPED");callStopped(event);break;
+     case 'signal:CUTCALL'      : console.log("Normal :: CUTCALL"); callRejected(event);break;
   }
 }
 
 function openTokErrormessage(msg){
   console.log(msg);
 }
+//Caller End 
+function startVideoCall(){
+  if(IsCaller == 'Y'){
+    document.getElementById("callModal").style.display = 'block';
+    sendMessage("INITIATECALL","try it",function (){});
+    awaitingResponse = setTimeout(function(){
+      stopCall();
+    }, 30000);
+  }
+}
 
-function reciveVideoCall(){
-  document.getElementById('callerTone').play();
-  document.getElementById("rcivModal").style.display = 'block';
+function stopCall(){
+  document.getElementById('callerTone').pause();
+  document.getElementById("callModal").style.display = 'none';
+  if(typeof(awaitingResponse) != "undefined")
+         clearTimeout(awaitingResponse);
+  sendMessage("CALLSTOPPED","try it",function (){}); 
+}
+
+function callAccepted(event){
+  if(!isSameSesssion(event)){
+    document.getElementById('callerTone').pause();
+    document.getElementById("callModal").style.display = 'none';
+    if(typeof(awaitingResponse) != "undefined")
+         clearTimeout(awaitingResponse);
+  }
+}
+
+function callRejected(event){
+  if(!isSameSesssion(event)){
+    document.getElementById('callerTone').pause();
+    document.getElementById("callModal").style.display = 'none';
+    if(typeof(awaitingResponse) != "undefined")
+         clearTimeout(awaitingResponse);
+  }
+}
+
+
+//Reciver End
+function reciveVideoCall(event){
+  if(!isSameSesssion(event)){
+    document.getElementById('callerTone').play();
+    document.getElementById("rcivModal").style.display = 'block';
+    clearTimeout(awaitingResponse);
+  } 
+}
+
+function reciveVideoCallInChat(event){
+  if(!isSameSesssion(event)){
+    document.getElementById('callerTone').play();
+    document.getElementById("callModal").style.display = 'none';
+    clearTimeout(awaitingResponse);
+  } 
 }
 
 function acceptCall(){
   document.getElementById('callerTone').pause();
-  document.location.href = '../Profile/messages';
   sendMessage("ACCEPTCALL","try it",function (){});
+  document.location.href = '../Profile/messages';
 }
-
 function callStopped(){
   document.getElementById('callerTone').pause();
   document.getElementById("rcivModal").style.display = 'none';
 }
 
-function startVideoCall(){
-  sendMessage("INITIATECALL","try it",function (){});
-  document.getElementById("callModal").style.display = 'block';
-  awaitingResponse = setTimeout(function(){
-    stopCall();
-  }, 30000);
-}
 function cutVideoCall(){
   document.getElementById('callerTone').pause();
+  document.getElementById("rcivModal").style.display = 'none';
   sendMessage("CUTCALL","try it",function (){});
 }
-function stopCall(){
-  document.getElementById('callerTone').pause();
-  sendMessage("CALLSTOPPED","try it",function (){}); 
+
+
+
+function getSesssion (){
+  return (typeof(session) == 'undefined') ? noramlSession : session;
 }
-function callAccepted(){
-  document.getElementById('callerTone').pause();
-  document.getElementById("callModal").style.display = 'none';
+
+function isSameSesssion(event){
+  var isSame =false;
+  if(event.from.connectionId === getSesssion().connection.connectionId)
+    isSame = true;
+  return isSame 
 }
+
+
+
 
 $("#startVideo").click(function() {
   acceptCall();
@@ -215,9 +284,9 @@ $("#startVideo").click(function() {
 
 $("#endCall").click(function(){
   stopCall();
-})
+});
 
 $("#rejectCall").click(function(){
   cutVideoCall();
-})
+});
 

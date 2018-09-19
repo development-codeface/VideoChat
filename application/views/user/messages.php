@@ -116,6 +116,7 @@ function openFullscreen() {
 <script> 
   var APIKEY = '<?php echo $openTokapi ?>'; 
   var TOKEN ='<?php echo $open_token ?>'; 
+  var IsCaller = '<?php echo $caller ?>';
 </script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>
@@ -126,5 +127,4 @@ function openFullscreen() {
 <script>
     $("#subscriber").hide();
     openOpentokConnection ('<?php echo $openSessionId ?>');
-    
 </script>
