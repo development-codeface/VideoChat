@@ -19,12 +19,15 @@
 	$this->db->or_where('us.user_id',$userId);
 	//$this->db->where_not_in('uf.id' ,'hd.feed_id');
 	$this->db->where('uf.status',1);
+	$this->db->where("uf.id NOT IN (SELECT feed_id FROM hide_post WHERE user_id =$userId)" 	, NULL, FALSE);
 	
 	//$this->db->group_by('us.user_id'); 
 
 	//$this->db->where('dm.ParentID',$params['DepartmentID']);
 	$this->db->order_by("uf.created_at", "desc");
-    $result=$this->db->get()->result(); //echo $this->db->last_query();exit;
+	$result=$this->db->get()->result(); 
+	echo $this->db->last_query();
+	exit;
 	return $result;
     }
 
