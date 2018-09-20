@@ -20,8 +20,11 @@ include 'header.php' ;?>
 						<div class="row">
 							<div class="col-lg-3">
 								<div class="main-left-sidebar">
-									<div class="user_profile company-upv">
-										<div class="user-pro-img">
+
+									<div class="user_profile">
+										<div class="user-pro-img company-upv">
+
+
 										  <?php if($mydata['profile_pic']!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$mydata['profile_pic'] ;?>" alt="">
 											<?php }
@@ -50,11 +53,13 @@ include 'header.php' ;?>
 												</li>
 												
 											</ul>
+
+											<ul class="hidvideo">
+												<li><a href="http://localhost/VideoChat/index.php/Profile/messages?user=36" title="" data-id="36" class="follow follow_friend msgch"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
 										
-										
-										</div><!--user-pro-img end-->
-										
-										
+												<li><a href="http://localhost/VideoChat/index.php/Profile/messages?user=36" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
+											</ul>
+										</div><!--user-pro-img end-->	
 									</div><!--user_profile end-->
 									<div class="suggestions full-width">
 										<div class="sd-title">
@@ -101,7 +106,7 @@ include 'header.php' ;?>
 													
 												</div>
 													<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
-												<span><i class="fa fa-eye enqclqq" aria-hidden="true" ></i></span></a>
+												<span> <i class="fa fa-eye enqclqq" aria-hidden="true" ></i></span></a>
 											</div>
 											<?php }}}
 										else{ ?>
@@ -303,7 +308,7 @@ include 'header.php' ;?>
 										<div class="portfolio-gallery-sec">
 											<h3>Photos</h3>
  <div class="row">
-<div class="post-bar">
+<div class="">
 													
 			  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadPhotos/'; ?>" id="">
 
@@ -428,6 +433,7 @@ include 'header.php' ;?>
   <div id="caption"></div>
 </div>
 											</div>
+		
 		
 		
 		
