@@ -29,6 +29,9 @@ class Profile extends  CI_Controller {
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 	    $this->data['image'] =    $this->users_model->imageinfo($this->UserId) ;
 		$this->data['feeds']   =    $this->profile_model->GetUserfeeds($this->UserId) ;
+		$this->data['openToken']=base64_encode($this->session->userdata('token'));
+		$this->data['openSessionId']=$this->session->userdata('openSessionId');
+		$this->data['apiKey']= $this->config->item('opentok_key');
 		$this->load->view("user/my-profile",$this->data);
 		
 	}
@@ -48,6 +51,9 @@ class Profile extends  CI_Controller {
 		if(empty($result)){
 		$s= $this->profile_model->InsertVisit(array('user_id'=>$friendId,'visitor_id'=>$this->UserId)) ;
 		}
+		$this->data['openToken']=base64_encode($this->session->userdata('token'));
+		$this->data['openSessionId']=$this->session->userdata('openSessionId');
+		$this->data['apiKey']= $this->config->item('opentok_key');
 		$this->load->view("user/profile-view",$this->data);
 		
 	}
@@ -56,6 +62,9 @@ class Profile extends  CI_Controller {
 		  
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+			$this->data['openToken']=base64_encode($this->session->userdata('token'));
+		$this->data['openSessionId']=$this->session->userdata('openSessionId');
+		$this->data['apiKey']= $this->config->item('opentok_key');
 		$this->load->view("user/profile-account-setting",$this->data);
 		
 	}
@@ -104,6 +113,9 @@ class Profile extends  CI_Controller {
 		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['onlinef']    =    $this->users_model->GetOnlineFriends($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		$this->data['openToken']=base64_encode($this->session->userdata('token'));
+		$this->data['openSessionId']=$this->session->userdata('openSessionId');
+		$this->data['apiKey']= $this->config->item('opentok_key');
 		$this->load->view("user/notification",$this->data);
 		
 	}
@@ -113,7 +125,9 @@ class Profile extends  CI_Controller {
 		  
 		$this->data['feeds']    =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['onlinef']    =    $this->users_model->GetOnlineFriends($this->UserId) ;
-		
+		$this->data['openToken']=base64_encode($this->session->userdata('token'));
+		$this->data['openSessionId']=$this->session->userdata('openSessionId');
+		$this->data['apiKey']= $this->config->item('opentok_key');
 		$this->load->view("user/public-profile",$this->data);
 		
 	}
@@ -123,7 +137,10 @@ class Profile extends  CI_Controller {
 		$this->data['friendList']  = $this->users_model->GetFriendList($this->UserId) ;
 		$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
-		
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		$this->data['openToken']=base64_encode($this->session->userdata('token'));
+		$this->data['openSessionId']=$this->session->userdata('openSessionId');
+		$this->data['apiKey']= $this->config->item('opentok_key');
 		//print_r($this->data);exit;
 		
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;

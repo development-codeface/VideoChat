@@ -52,7 +52,7 @@
     //friendsList(all)
 
     public function GetFriendList($userId){
-	$this->db->select( 'us.user_id,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status');
+	$this->db->select( 'us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status');
 	$this->db->from('users us');
 	$this->db->join('friends um', 'um.friend_id=us.user_id','INNER');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');

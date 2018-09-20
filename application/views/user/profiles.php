@@ -1,5 +1,6 @@
 <?php
-include 'header.php';?>
+include 'header.php';
+$open_tokenId=base64_decode(urldecode($openToken));?>
 		<section class="companies-info min8">
 			<div class="container min800">
 				
@@ -80,6 +81,7 @@ include 'header.php';?>
 											$i=1;
 											foreach($friendList as $frq)
 											{
+												
 												?>
 										<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="company_profile_info">
@@ -94,7 +96,23 @@ include 'header.php';?>
 									<?php if($frq->profile_pic!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
 											<?php }else{?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/pf-icon1.png" alt="">
+											
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
+											
+											
+											
+											
 											<?php }?>
 									
 									
@@ -257,13 +275,17 @@ include 'footer.php';?>
         <!--Snackbar -->
         <div id="snackbar"></div>
         <!-- Snackbar -->
-          
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox-plus-jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>
-<script type="text/javascript" >
-var APIKEY 		= "";
-var SESSIONID 	= "";
-var TOKEN     	= "";
+<script>
+	
+		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
+		var SESSIONID = "<?php echo $openSessionId;?>";
+		var TOKEN = "<?php echo $open_tokenId;?>";
+		
+		//alert(apiKey +' == '+ sessionId);
+
 $(document).ready(function() {	
 	$('.follow_friend').click(function() { 
         var uid =$(this).data('id'); 

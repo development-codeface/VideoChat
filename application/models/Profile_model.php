@@ -26,8 +26,8 @@
 	//$this->db->where('dm.ParentID',$params['DepartmentID']);
 	$this->db->order_by("uf.created_at", "desc");
 	$result=$this->db->get()->result(); 
-	echo $this->db->last_query();
-	exit;
+	//echo $this->db->last_query();
+	//exit;
 	return $result;
     }
 

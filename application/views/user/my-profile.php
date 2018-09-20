@@ -1,6 +1,7 @@
 <?php
 
-include 'header.php' ;?>	
+include 'header.php' ;
+$open_tokenId=base64_decode(urldecode($openToken));?>	
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>	
 		<section class="cover-sec">
 		<?php if($mydata['cover_photo']!=""){?>
@@ -1074,8 +1075,8 @@ include 'header.php' ;?>
 <script>
 	
 		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
-		var SESSIONID = "<?php echo $sessionId;?>";
-		var TOKEN = "<?php echo $token;?>";
+		var SESSIONID = "<?php echo $openSessionId;?>";
+		var TOKEN = "<?php echo $open_tokenId;?>";
 		
 		//alert(apiKey +' == '+ sessionId);
 	</script>

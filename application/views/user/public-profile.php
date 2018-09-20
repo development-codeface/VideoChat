@@ -1,6 +1,6 @@
 <?php
-include 'header.php';?>
-
+include 'header.php' ;
+$open_tokenId=base64_decode(urldecode($openToken));?>	
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>	
 <section class="banner-img1 text-white py-55 min8">
     <div class="container ">
@@ -330,11 +330,14 @@ include 'header.php';?>
     </div>
 </section>
 	
-	<script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox-plus-jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>
+<script>
 	
 		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
-		var SESSIONID = "<?php echo $sessionId;?>";
-		var TOKEN = "<?php echo $token;?>";
+		var SESSIONID = "<?php echo $openSessionId;?>";
+		var TOKEN = "<?php echo $open_tokenId;?>";
 		
 		//alert(apiKey +' == '+ sessionId);
 	</script>
@@ -451,14 +454,7 @@ include 'footer.php';?> <!--Modal to show that we are calling-->
         <div id="snackbar"></div>
         <!-- Snackbar -->
 		
-		
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://static.opentok.com/v2/js/opentok.js"></script>
-<script type="text/javascript" >
-	var APIKEY 		= "<?php echo $apiKey ?>";
-	var SESSIONID 	= "<?php echo $openSessionId ?>";
-	var TOKEN     	= "<?php echo $open_tokenId ?>";
-	</script>
+	
 	
 	<audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
