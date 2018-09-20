@@ -20,9 +20,9 @@ include 'header.php' ;?>
 					<div class="main-section-data">
 						<div class="row">
 							<div class="col-lg-3">
-								<div class="main-left-sidebar">
+								<div class="main-left-sidebar company-upv">
 									<div class="user_profile">
-										<div class="user-pro-img">
+										<div class="user-pro-img ">
 										  <?php if($mydata['profile_pic']!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$mydata['profile_pic'] ;?>" alt="">
 											<?php }else{?>
@@ -56,6 +56,10 @@ include 'header.php' ;?>
 												</li>
 												
 											</ul>
+												<ul class="hidvideo">
+										<li><a href="" title="" data-id="" class="follow follow_friend msgch"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
+										
+									</ul>
 										</div><!--user-pro-img end-->
 										
 										
@@ -79,6 +83,8 @@ include 'header.php' ;?>
 										<?php if(!empty($profileViewer)){
 											$i=1;
 											foreach($profileViewer as $frq){?>
+											
+												<?php if($frq->user_id!=$mydata['user_id'] ){?>
 										
 											<div class="suggestion-usd">
 											
@@ -115,9 +121,10 @@ include 'header.php' ;?>
 												</div>
 												<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
 									
+
 												<span><i class="fa fa-eye enqclve" aria-hidden="true"></i></span></a>
 											</div>
-										<?php }}?>
+										<?php }}}?>
 											
 											
 											
@@ -207,8 +214,14 @@ include 'header.php' ;?>
 													<div class="ed-opts">
 													<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
 													<ul class="ed-options">
-															<li><a href="#" title="">Edit Post</a></li>
-														<li><a href="#" title="">Delete Post</a></li>
+															<?php if($fd->user_id==$this->session->userdata('user_id')){?>
+																<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post</a></li>
+														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
+													<?php } else{
+														?>
+														<li><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" onclick="return confirm('Are you sure?')">Hide Post</a></li>
+														
+													<?php }?>
 													</ul>
 												</div>
 												</div>
@@ -304,6 +317,7 @@ include 'header.php' ;?>
 										<?php if(!empty($friendsRequest)){
 											$i=1;
 											foreach($friendsRequest as $frq){?>
+											
 							  				<div class="request-details" id="<?php echo $frq->user_id;?>">
 							  					<div class="noty-user-img">
 													<?php if($frq->profile_pic!=""){?>
@@ -510,6 +524,43 @@ include 'header.php' ;?>
 				</div>
 			</div>
 		</footer>
+		
+		
+		 <!--Modal to show that we are calling-->
+        <div id="callModal" class="modal">
+            <div class="modal-content text-center">
+                <div class="modal-header" id="callerInfo"></div>
+
+                <div class="modal-body">
+                    <button type="button" class="btn btn-danger btn-sm" id='endCall'>
+                        <i class="fa fa-times-circle"></i> End Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+
+
+        <!--Modal to give options to receive call-->
+        <div id="rcivModal" class="modal">
+            <div class="modal-content text-center">
+                <div class="modal-header" id="calleeInfo"></div>
+
+                <div class="modal-body">
+                    <button type="button" class="btn btn-success btn-sm answerCall" id='startVideo'>
+                        <i class="fa fa-video-camera"></i> Video Call
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" id='rejectCall'>
+                        <i class="fa fa-times-circle"></i> Reject Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+        
+        <!--Snackbar -->
+        <div id="snackbar"></div>
+        <!-- Snackbar -->
 
 		<div class="overview-box" id="overview-box">
 			<div class="overview-edit">
@@ -666,7 +717,10 @@ include 'header.php' ;?>
 	</div><!--theme-layout end-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox-plus-jquery.min.js"></script>
 
-<script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>
+<script type="text/javascript" >
+
 	
 		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
 		var SESSIONID = "<?php echo $sessionId;?>";
@@ -689,3 +743,11 @@ include 'header.php' ;?>
 </body>
 
 </html>
+
+<audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
+<audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script>
+<script>
+    normalConnection();
+</script>

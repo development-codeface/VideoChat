@@ -1961,6 +1961,7 @@ float: right;
     background-color: #4caf50;
     border-color: #4caf50;
 }
+
 .pubsec{    padding-top: 50px;    }
 .bk-links li i.la-envelope {
 	background-color: #db325b;
@@ -2920,6 +2921,7 @@ select {
 	display: block;
 }
 .sign_in_sec h3 {
+
 	font-size: 25px;
     color: #3D404A;
     font-weight: 500;
@@ -2998,6 +3000,9 @@ input,button{outline:none;}
 }
 .sign_in_sec form input:focus {
 border: 1px solid #F26E93;box-shadow: 0 20px 40px 0 rgba(23,28,33,.07), 0 4px 9px 0 rgba(23,28,33,.06);
+}
+.sign_in_sec form input:focus {
+border: 2px solid #F26E93;
 }
 .sign_in_sec form input:hover,
 .sign_in_sec form select:hover {

@@ -121,7 +121,9 @@
 			
 									<div class="login-resources">
 										<h4>Login Via Social Account</h4>
-																<div class="login-or">
+
+									<div class="login-or">
+
         <hr class="hr-or">
         <span class="span-or">or</span>
       </div>

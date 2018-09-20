@@ -1,5 +1,7 @@
 <?php  
-include 'header.php' ;?>	
+include 'header.php' ;
+$open_tokenId=base64_decode(urldecode($openToken));
+?>	
 
 	<script src="https://static.opentok.com/v2/js/opentok.js"></script>	
 	<section class="pubsec min8">
@@ -72,72 +74,42 @@ include 'header.php' ;?>
 														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
 													<?php } else{
 														?>
-														<!--li><a href="<!?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" onclick="return confirm('Are you sure?')">Hide Post</a></li-->
-														<li><a href="#" title="" class="exp-bx-open" >Hide Post</a></li>
+														<!--li><a href="<!?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" onclick="return confirm('Are you sure?')" class="exp-bx-open">Hide Post</a></li-->
+															<li><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>"  class="exp-bx-open">Hide Post</a></li>
+														
 													<?php }?>
 													</ul>
 												</div>
 												</div>
-												
-												 <div class="overview-box" id="education-box">
-<div class="overview-edit">
-<h3>Edit Feed</h3>
+										
+																				<div class="overview-box" id="education-box">
+								<div class="overview-edit">
+								<h3>Edit Feed</h3>
 
-<form method="POST" action="<?php echo base_url(); ?>index.php/Profile/updateFeed" name="editform" id="editform">
-<input type="hidden" name="feed-id"  id="feed-id" />
-<textarea id="feed-edit" name="feed-edit"  ></textarea>
-<button type="submit" class="save" id="feedsave" name="feedsave"  >Save</button>
-<a href="<?php echo base_url()."index.php/User/Profile/"?>	<button type="button" class="cancel">Cancel</button></a>
-</form>
-<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
-</div><!--overview-edit end-->
-</div><!--overview-box end-->
-
-
-
-
-	<div class="overview-box" id="experience-box">
-			<div class="overview-edit">
+								<form method="POST" action="<?php echo base_url(); ?>index.php/Profile/updateFeed" name="editform" id="editform">
+								<input type="hidden" name="feed-id"  id="feed-id" />
+								<textarea id="feed-edit" name="feed-edit"  ></textarea>
+								<button type="submit" class="save" id="feedsave" name="feedsave"  >Save</button>
+								<a href="<?php echo base_url()."index.php/User/Profile/"?>	<button type="button" class="cancel">Cancel</button></a>
+								</form>
+								<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+								</div><!--overview-edit end-->
+								</div><!--overview-box end-->
+								<div class="overview-box fade" id="experience-box">
+										<div class="overview-edit">
             <h3 class="ayu">Are you sure delete !</h3>
 
             <form name="editform" id="editform" class="">
                
 				   <button type="submit" class="btn btn-danger btn-success padc bgreen" href=""><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" style="color:white;">Yes </a> </button>
 				   <button type="submit" class="btn btn-danger btn-default  " data-dismiss="modal">   No </button>
-              
+                <!--a href="<!?php echo base_url()." index.php/User/Profile/ "?>">	<button type="button" class="cancel">Cancel</button></a-->
 				</form>
 				<a href="# " title=" " class="close-box "><i class="la la-close "></i></a>
-			</div>
-		</div><!--overview-box end-->
-
-
-
-
-
-
-
-
-											    <!--div class="overview-box fade" id="education-box">
-        <div class="overview-edit">
-            <h3 class="ayu">Are you sure delete !</h3>
-
-            <form name="editform" id="editform" class="">
-               
-				   <button type="submit" class="btn btn-danger btn-success padc bgreen" href=""><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" style="color:white;">Yes </a> </button>
-				   <button type="submit" class="btn btn-danger btn-default  " data-dismiss="modal">   No </button>
-              
-				</form>
-				<a href="# " title=" " class="close-box "><i class="la la-close "></i></a>
-			</div>
-		</div-->
+			</div><!--overview-edit end-->
+		</div><!--overview-box end-->	
 		
-		
-		
-		
-		
-		
-		
-												
+					
 												<div class="job_descp">
 													
 													
@@ -166,13 +138,6 @@ include 'header.php' ;?>
 		</div>
 		
 		
-		
-		
-		
-		
-		
-		
-		
 		<?php } }else{ ?>
 						
 					<!--	<div class="download-box alert">
@@ -193,9 +158,45 @@ include 'header.php' ;?>
 										<?php if(!empty($friendOnline)){
 											$i=1;
 											foreach($friendOnline as $frq){?>
+										
+											
 											<div class="suggestion-usd">
 										       <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
-												<img src="<?php echo base_url(); ?>assets/images/resources/s1.png" alt=""></a>
+											   
+											   
+											    <?php if($frq->profile_pic!=""){?>
+											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
+											<?php }else{?>
+											
+											
+												
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
+											
+										
+											
+											
+											
+											
+											
+											<?php }?>
+											
+											   
+											   
+											   
+											   
+											   
+												</a>
 													<span class="fa fa-circle msg-topaa"></span>
 												<div class="sgt-text">
 												
@@ -216,10 +217,6 @@ include 'header.php' ;?>
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
 										</div>--><?php }?>
-						
-											
-											
-											
 											
 										
 										</div><!--suggestions-list end-->
@@ -229,18 +226,6 @@ include 'header.php' ;?>
 		</div>
 		</section>
 		
-		
-		
-		
-<!-- testing -->
-<script>
-	
-		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
-		var SESSIONID = "<?php echo $sessionId;?>";
-		var TOKEN = "<?php echo $token;?>";
-		
-		//alert(apiKey +' == '+ sessionId);
-	</script>
     
 <?php
 include 'footer.php';?>
@@ -261,13 +246,10 @@ include 'footer.php';?>
 
         <!--Modal to give options to receive call-->
         <div id="rcivModal" class="modal">
-            <div class="modal-content">
+            <div class="modal-content text-center">
                 <div class="modal-header" id="calleeInfo"></div>
 
-                <div class="modal-body text-center">
-                    <button type="button" class="btn btn-success btn-sm answerCall" id='startAudio'>
-                        <i class="fa fa-phone"></i> Audio Call
-                    </button>
+                <div class="modal-body">
                     <button type="button" class="btn btn-success btn-sm answerCall" id='startVideo'>
                         <i class="fa fa-video-camera"></i> Video Call
                     </button>
@@ -284,144 +266,81 @@ include 'footer.php';?>
         <!-- Snackbar -->
            
     </div> 
-	<script type="text/javascript" src="<?php echo base_url(); ?>assets/chatjs/app.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>assets/chatjs/dashboard.js"></script>   
- <script type="text/javascript" src="<?php echo base_url(); ?>assets/chatjs/datingApp.js"></script>
-    <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
-    <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
 </div>
 
-
-
-
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>
 <script type="text/javascript" >
-var APIKEY 		= "";
-var SESSIONID 	= "";
-var TOKEN     	= "";
-$(document).ready(function() {	
- $('.follow_friend').click(function() { 
-     var uid =$(this).data('id'); 
-    $.ajax({
-	      type: "POST",
-            url: "../Auth/fetch_data",
-            data:{uid:uid},
-			dataType:"text", 
-			success: function(result){
-				var resultObj = JSON.parse(result)
-               alert(resultObj.sessionId+""+resultObj.tokenId);
-            }               
-        }); 				
-		
-		
-		
-		
-
-
-
-    }); 
-	 $('.btnChat').click(function() { 
-     var uid =$(this).data('id'); 
-	
-    $.ajax({
-	      type: "POST",
-            url: "../User/fetch_data",
-			
-            data:{uid:uid},
-			dataType:"text", 
-			success: function(result){
-				var resultObj = JSON.parse(result)
-               alert(resultObj.sessionId+""+resultObj.tokenId);
-            }               
-        }); 				
-		
-		
-		
-		
-
-
-
-    }); 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	var APIKEY 		= "<?php echo $apiKey ?>";
+	var SESSIONID 	= "<?php echo $openSessionId ?>";
+	var TOKEN     	= "<?php echo $open_tokenId ?>";
+	$(document).ready(function() {	
+		$('.follow_friend').click(function() { 
+			var uid =$(this).data('id'); 
+				$.ajax({
+					type: "POST",
+						url: "../Auth/fetch_data",
+						data:{uid:uid},
+						dataType:"text", 
+						success: function(result){
+							var resultObj = JSON.parse(result)
+						alert(resultObj.sessionId+""+resultObj.tokenId);
+						}               
+				}); 				
+		}); 
+		$('.btnChat').click(function() { 
+			var uid =$(this).data('id'); 
+			$.ajax({
+				type: "POST",
+					url: "../User/fetch_data",
+					
+					data:{uid:uid},
+					dataType:"text", 
+					success: function(result){
+						var resultObj = JSON.parse(result)
+					//alert(resultObj.sessionId+""+resultObj.tokenId);
+				}               
+			}); 				
+		}); 
 	});
 
-	
-
-        var box = $('.ed-options');
-      //  var box1 = $('.la-sort-down');
-        var link = $('.ed-opts-open');
-
-       
-
-
-        $(document).click(function() {
-            box.hide(); //box1.hide();
-        });
-
-        box.click(function(e) {
-            e.stopPropagation();
-        });
-//		box1.click(function(e) {
-       //     e.stopPropagation();
-     //   });
-
-$(".ed-opts-open").on("click", function(){
-$(this).parent('.form_wrapper').find(box).show();
-//$(this).parent('.form_wrapper').find(box1).show();
+    var box = $('.ed-options');
+    var link = $('.ed-opts-open');
+    $(document).click(function() {
+        box.hide(); //box1.hide();
+    });
+    box.click(function(e) {
+        e.stopPropagation();
+    });
+	$(".ed-opts-open").on("click", function(){
+	$(this).parent('.form_wrapper').find(box).show();
 });
-
-
-
 function getFeeds(intValue) {
- var val=intValue;
-
-         $.ajax({
-	      type: "POST",
-            url: "../Profile/edit_data",
+ 	var val=intValue;
+	$.ajax({
+		type: "POST",
+		url: "../Profile/edit_data",
+		
+		data:{val:val},
+		dataType:"text", 
+		success: function(result){
+		var resultObjt = JSON.parse(result)
 			
-            data:{val:val},
-			dataType:"text", 
-	     	success: function(result){
-			var resultObjt = JSON.parse(result)
-				
-              $("#feed-edit").val(resultObjt.feed); 
-			  $("#feed-id").val(resultObjt.feedid);
-			  
-             }                
-             }); 				
- 
-}
-function getFeeds1(intValue) {
- var val=intValue;
-
-         $.ajax({
-	      type: "POST",
-            url: "../Profile/edit_data",
+			$("#feed-edit").val(resultObjt.feed); 
+			$("#feed-id").val(resultObjt.feedid);
 			
-            data:{val:val},
-			dataType:"text", 
-	     	success: function(result){
-			var resultObjt = JSON.parse(result)
-				
-              $("#feed-edit").val(resultObjt.feed); 
-			  $("#feed-id").val(resultObjt.feedid);
-			  
-             }                
-             }); 				
- 
+			}                
+	}); 				
 }
 
+
+</script>
+<audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
+<audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
+<!--<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script> -->
+<script>
+    normalConnection();
 </script>
 
 	

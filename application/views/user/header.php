@@ -103,7 +103,7 @@
 							<li>
 								<a href="<?php echo base_url(); ?>index.php/Profile/friends"  id="tooltipex"   title="My Friends"><i class="fa fa fa-users" aria-hidden="true"></i></a>
 							</li>
-						<li>
+					<!--	<li>
 								
 								<a href="#"  id=""  class="not-box-open"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a>
 								<div class="notification-box msg">
@@ -120,7 +120,7 @@
 							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a> </h3>
 							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
 							  					<span>2 min ago</span>
-							  				</div><!--notification-info -->
+							  				</div>
 						  				</div>
 						  				<div class="notfication-details">
 							  				<div class="noty-user-img">
@@ -130,7 +130,7 @@
 							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
 							  					<p>Lorem ipsum dolor sit amet.</p>
 							  					<span>2 min ago</span>
-							  				</div><!--notification-info -->
+							  				</div>
 						  				</div>
 						  				<div class="notfication-details">
 							  				<div class="noty-user-img">
@@ -140,14 +140,14 @@
 							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
 							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempo incididunt ut labore et dolore magna aliqua.</p>
 							  					<span>2 min ago</span>
-							  				</div><!--notification-info -->
+							  				</div>
 						  				</div>
 						  				<div class="view-all-nots">
 						  					<a href="<?php echo base_url(); ?>index.php/Profile/messagesUser" title="">View All Messsages</a>
 						  				</div>
-									</div><!--nott-list end-->
-								</div><!--notification-box end-->
-							</li>
+									</div>
+								</div>
+							</li>-->
 							<!--li>
 							<a href="messages_user.html"  id="tooltipex2"  class="not-box-open"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a></li-->
 							<li>

@@ -17,15 +17,14 @@ class User extends  CI_Controller {
 	$this->UserId=$this->session->userdata('user_id');
     }
 	public function profile()
-	{
-		  
+	{  
 		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
-	    $token_id=$this->session->userdata('token');
-		$session_id=$this->session->userdata('openSessionId');
-		$this->load->view("user/profile-status",$this->data);
-		
+		$this->data['openToken']=base64_encode($this->session->userdata('token'));
+		$this->data['openSessionId']=$this->session->userdata('openSessionId');
+		$this->data['apiKey']= $this->config->item('opentok_key');
+		$this->load->view("user/profile-status",$this->data);	
 	}
 	
 	public function profileSearch()

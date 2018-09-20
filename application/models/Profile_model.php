@@ -15,7 +15,6 @@
 	$this->db->join('user_feed uf', 'uf.user_id= us.user_id','INNER');
 	//$this->db->join('hide_post hd', 'hd.feed_id = uf.id','LEFT OUTER');
 	
-	
 	$this->db->where('um.user_id',$userId);
 	$this->db->or_where('us.user_id',$userId);
 	//$this->db->where_not_in('uf.id' ,'hd.feed_id');
@@ -32,7 +31,7 @@
 //get User feeds
 
     public function GetUserfeeds($userId){
-	$this->db->select( 'DISTINCT(us.user_id),up.profile_pic,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id');
+	$this->db->select( 'DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id');
 	$this->db->from('users us');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
 	$this->db->join('user_feed uf', 'uf.user_id= us.user_id','INNER');
@@ -55,12 +54,6 @@
     $result=$this->db->get()->result();
 	return $result;
     }
-
-
-
-
-
-
 
     public function GetProfileViewerList($userId){
 	$this->db->select( 'us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name');
@@ -138,7 +131,7 @@
 	
 //change password
 
-public function update_pass($password,$admin_id)
+	public function update_pass($password,$admin_id)
 	{
 	         $data=array('password'=>$password);
 		     $this->db->where('user_id',$admin_id);
@@ -146,7 +139,7 @@ public function update_pass($password,$admin_id)
 		     return 1;
 	}
 	
-public function check_pass($params,$id){
+	public function check_pass($params,$id){
  	$this->db->select( 'ph.*,');
 	$this->db->from('users ph');
 	$this->db->where('ph.password', $params);

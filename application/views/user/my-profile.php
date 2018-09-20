@@ -20,8 +20,11 @@ include 'header.php' ;?>
 						<div class="row">
 							<div class="col-lg-3">
 								<div class="main-left-sidebar">
+
 									<div class="user_profile">
 										<div class="user-pro-img company-upv">
+
+
 										  <?php if($mydata['profile_pic']!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$mydata['profile_pic'] ;?>" alt="">
 											<?php }
@@ -50,14 +53,13 @@ include 'header.php' ;?>
 												</li>
 												
 											</ul>
+
 											<ul class="hidvideo">
-										<li><a href="http://localhost/VideoChat/index.php/Profile/messages?user=36" title="" data-id="36" class="follow follow_friend msgch"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
+												<li><a href="http://localhost/VideoChat/index.php/Profile/messages?user=36" title="" data-id="36" class="follow follow_friend msgch"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
 										
-										<li><a href="http://localhost/VideoChat/index.php/Profile/messages?user=36" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
-									</ul>
-										</div><!--user-pro-img end-->
-										
-										
+												<li><a href="http://localhost/VideoChat/index.php/Profile/messages?user=36" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
+											</ul>
+										</div><!--user-pro-img end-->	
 									</div><!--user_profile end-->
 									<div class="suggestions full-width">
 										<div class="sd-title">
@@ -69,7 +71,7 @@ include 'header.php' ;?>
 										<?php if(!empty($profileViewer)){
 											$i=1;
 											foreach($profileViewer as $frq){?>
-										
+										<?php if($frq->user_id!=$this->session->userdata('user_id')){?>
 											<div class="suggestion-usd">
 											
 											  <?php if($frq->profile_pic!=""){?>
@@ -106,7 +108,7 @@ include 'header.php' ;?>
 													<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
 												<span> <i class="fa fa-eye enqclqq" aria-hidden="true" ></i></span></a>
 											</div>
-										<?php }}
+											<?php }}}
 										else{ ?>
 						
 						<!--<div class="download-box alert">
@@ -182,7 +184,18 @@ include 'header.php' ;?>
 													<div class="post_topbar">
 													<div class="usy-dt"><?php 
 													 if($fd->profile_pic==""){?>
-							<img src="<?php echo base_url(); ?>assets/images/resources/user.png" alt="">
+												
+											<?php if($fd->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+										
 							<?php } else{?>
 							<img src="<?php echo base_url() .'uploads/profile_pic/'.$fd->profile_pic ;?>" alt="">
 							<?php }?>
@@ -196,12 +209,12 @@ include 'header.php' ;?>
 													</div>
 													<div class="ed-opts">
 													<a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-												<!--	<ul class="ed-options">
+												<ul class="ed-options">
 													<?php if($fd->user_id==$this->session->userdata('user_id')){?>
 															<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post</a></li>
 														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
 													<?php } ?>
-													</ul>-->
+													</ul>
 												</div>
 												</div>
 												
@@ -366,10 +379,11 @@ include 'header.php' ;?>
 		<div class="row">
 												<?php	foreach( $image as $row )
 												{?>
+												
 												 <div class="col-lg-3  thumb containerg">
                                                                 <a class="thumbnail" href="<?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" data-lightbox="imgGLR"><img class="img-responsive" border="0" height="300" src="<?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" ></a>
                                                                 <div class="middleg">
-                                                                    <div class="textg"><a href="" data-toggle="modal" data-target="#myModalhid"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
+                                                                    <div class="textg"><a href="" data-toggle="modal" data-id="<?php echo $row['id'];?>" data-target="#myModalhid" class="modalLink"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                                                                 </div>
                                                             </div>
 													<!--div class="col-lg-4 col-md-4 col-sm-4 col-6">
@@ -466,7 +480,23 @@ include 'header.php' ;?>
 													<?php if($frq->profile_pic!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
 											<?php }else{?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/r-img1.png" alt="">
+											
+											
+														
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
+											
+											
 											<?php }?>
 							  					
 							  					</div>
@@ -677,6 +707,44 @@ include 'header.php' ;?>
 			</div>
 		</footer>
 
+		 <!--Modal to show that we are calling-->
+        <div id="callModal" class="modal">
+            <div class="modal-content text-center">
+                <div class="modal-header" id="callerInfo"></div>
+
+                <div class="modal-body">
+                    <button type="button" class="btn btn-danger btn-sm" id='endCall'>
+                        <i class="fa fa-times-circle"></i> End Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+
+
+        <!--Modal to give options to receive call-->
+        <div id="rcivModal" class="modal">
+            <div class="modal-content text-center">
+                <div class="modal-header" id="calleeInfo"></div>
+
+                <div class="modal-body">
+                    <button type="button" class="btn btn-success btn-sm answerCall" id='startVideo'>
+                        <i class="fa fa-video-camera"></i> Video Call
+                    </button>
+                    <button type="button" class="btn btn-danger btn-sm" id='rejectCall'>
+                        <i class="fa fa-times-circle"></i> Reject Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+        
+        <!--Snackbar -->
+        <div id="snackbar"></div>
+        <!-- Snackbar -->
+ 
+		
+		
 		<div class="overview-box" id="overview-box">
 			<div class="overview-edit">
 				<h3>Overview</h3>
@@ -852,161 +920,8 @@ include 'header.php' ;?>
 	<option value="Guernsey" title="Guernsey">Guernsey</option>
 	<option value="Guinea" title="Guinea">Guinea</option>
 	<option value="Guinea-Bissau" title="Guinea-Bissau">Guinea-Bissau</option>
-	<option value="Guyana" title="Guyana">Guyana</option>
-	<option value="Haiti" title="Haiti">Haiti</option>
-	<option value="Heard Island and McDonald Islands" title="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
-	<option value="Holy See (Vatican City State)" title="Holy See (Vatican City State)">Holy See (Vatican City State)</option>
-	<option value="Honduras" title="Honduras">Honduras</option>
-	<option value="Hong Kong" title="Hong Kong">Hong Kong</option>
-	<option value="Hungary" title="Hungary">Hungary</option>
-	<option value="Iceland" title="Iceland">Iceland</option>
-	<option value="India" title="India">India</option>
-	<option value="Indonesia" title="Indonesia">Indonesia</option>
-	<option value="Iran, Islamic Republic of" title="Iran, Islamic Republic of">Iran, Islamic Republic of</option>
-	<option value="Iraq" title="Iraq">Iraq</option>
-	<option value="Ireland" title="Ireland">Ireland</option>
-	<option value="Isle of Man" title="Isle of Man">Isle of Man</option>
-	<option value="Israel" title="Israel">Israel</option>
-	<option value="Italy" title="Italy">Italy</option>
-	<option value="Jamaica" title="Jamaica">Jamaica</option>
-	<option value="Japan" title="Japan">Japan</option>
-	<option value="Jersey" title="Jersey">Jersey</option>
-	<option value="Jordan" title="Jordan">Jordan</option>
-	<option value="Kazakhstan" title="Kazakhstan">Kazakhstan</option>
-	<option value="Kenya" title="Kenya">Kenya</option>
-	<option value="Kiribati" title="Kiribati">Kiribati</option>
-	<option value="Korea, Democratic People's Republic of" title="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
-	<option value="Korea, Republic of" title="Korea, Republic of">Korea, Republic of</option>
-	<option value="Kuwait" title="Kuwait">Kuwait</option>
-	<option value="Kyrgyzstan" title="Kyrgyzstan">Kyrgyzstan</option>
-	<option value="Lao People's Democratic Republic" title="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
-	<option value="Latvia" title="Latvia">Latvia</option>
-	<option value="Lebanon" title="Lebanon">Lebanon</option>
-	<option value="Lesotho" title="Lesotho">Lesotho</option>
-	<option value="Liberia" title="Liberia">Liberia</option>
-	<option value="Libya" title="Libya">Libya</option>
-	<option value="Liechtenstein" title="Liechtenstein">Liechtenstein</option>
-	<option value="Lithuania" title="Lithuania">Lithuania</option>
-	<option value="Luxembourg" title="Luxembourg">Luxembourg</option>
-	<option value="Macao" title="Macao">Macao</option>
-	<option value="Macedonia, the former Yugoslav Republic of" title="Macedonia, the former Yugoslav Republic of">Macedonia, the former Yugoslav Republic of</option>
-	<option value="Madagascar" title="Madagascar">Madagascar</option>
-	<option value="Malawi" title="Malawi">Malawi</option>
-	<option value="Malaysia" title="Malaysia">Malaysia</option>
-	<option value="Maldives" title="Maldives">Maldives</option>
-	<option value="Mali" title="Mali">Mali</option>
-	<option value="Malta" title="Malta">Malta</option>
-	<option value="Marshall Islands" title="Marshall Islands">Marshall Islands</option>
-	<option value="Martinique" title="Martinique">Martinique</option>
-	<option value="Mauritania" title="Mauritania">Mauritania</option>
-	<option value="Mauritius" title="Mauritius">Mauritius</option>
-	<option value="Mayotte" title="Mayotte">Mayotte</option>
-	<option value="Mexico" title="Mexico">Mexico</option>
-	<option value="Micronesia, Federated States of" title="Micronesia, Federated States of">Micronesia, Federated States of</option>
-	<option value="Moldova, Republic of" title="Moldova, Republic of">Moldova, Republic of</option>
-	<option value="Monaco" title="Monaco">Monaco</option>
-	<option value="Mongolia" title="Mongolia">Mongolia</option>
-	<option value="Montenegro" title="Montenegro">Montenegro</option>
-	<option value="Montserrat" title="Montserrat">Montserrat</option>
-	<option value="Morocco" title="Morocco">Morocco</option>
-	<option value="Mozambique" title="Mozambique">Mozambique</option>
-	<option value="Myanmar" title="Myanmar">Myanmar</option>
-	<option value="Namibia" title="Namibia">Namibia</option>
-	<option value="Nauru" title="Nauru">Nauru</option>
-	<option value="Nepal" title="Nepal">Nepal</option>
-	<option value="Netherlands" title="Netherlands">Netherlands</option>
-	<option value="New Caledonia" title="New Caledonia">New Caledonia</option>
-	<option value="New Zealand" title="New Zealand">New Zealand</option>
-	<option value="Nicaragua" title="Nicaragua">Nicaragua</option>
-	<option value="Niger" title="Niger">Niger</option>
-	<option value="Nigeria" title="Nigeria">Nigeria</option>
-	<option value="Niue" title="Niue">Niue</option>
-	<option value="Norfolk Island" title="Norfolk Island">Norfolk Island</option>
-	<option value="Northern Mariana Islands" title="Northern Mariana Islands">Northern Mariana Islands</option>
-	<option value="Norway" title="Norway">Norway</option>
-	<option value="Oman" title="Oman">Oman</option>
-	<option value="Pakistan" title="Pakistan">Pakistan</option>
-	<option value="Palau" title="Palau">Palau</option>
-	<option value="Palestinian Territory, Occupied" title="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
-	<option value="Panama" title="Panama">Panama</option>
-	<option value="Papua New Guinea" title="Papua New Guinea">Papua New Guinea</option>
-	<option value="Paraguay" title="Paraguay">Paraguay</option>
-	<option value="Peru" title="Peru">Peru</option>
-	<option value="Philippines" title="Philippines">Philippines</option>
-	<option value="Pitcairn" title="Pitcairn">Pitcairn</option>
-	<option value="Poland" title="Poland">Poland</option>
-	<option value="Portugal" title="Portugal">Portugal</option>
-	<option value="Puerto Rico" title="Puerto Rico">Puerto Rico</option>
-	<option value="Qatar" title="Qatar">Qatar</option>
-	<option value="Réunion" title="Réunion">Réunion</option>
-	<option value="Romania" title="Romania">Romania</option>
-	<option value="Russian Federation" title="Russian Federation">Russian Federation</option>
-	<option value="Rwanda" title="Rwanda">Rwanda</option>
-	<option value="Saint Barthélemy" title="Saint Barthélemy">Saint Barthélemy</option>
-	<option value="Saint Helena, Ascension and Tristan da Cunha" title="Saint Helena, Ascension and Tristan da Cunha">Saint Helena, Ascension and Tristan da Cunha</option>
-	<option value="Saint Kitts and Nevis" title="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
-	<option value="Saint Lucia" title="Saint Lucia">Saint Lucia</option>
-	<option value="Saint Martin (French part)" title="Saint Martin (French part)">Saint Martin (French part)</option>
-	<option value="Saint Pierre and Miquelon" title="Saint Pierre and Miquelon">Saint Pierre and Miquelon</option>
-	<option value="Saint Vincent and the Grenadines" title="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
-	<option value="Samoa" title="Samoa">Samoa</option>
-	<option value="San Marino" title="San Marino">San Marino</option>
-	<option value="Sao Tome and Principe" title="Sao Tome and Principe">Sao Tome and Principe</option>
-	<option value="Saudi Arabia" title="Saudi Arabia">Saudi Arabia</option>
-	<option value="Senegal" title="Senegal">Senegal</option>
-	<option value="Serbia" title="Serbia">Serbia</option>
-	<option value="Seychelles" title="Seychelles">Seychelles</option>
-	<option value="Sierra Leone" title="Sierra Leone">Sierra Leone</option>
-	<option value="Singapore" title="Singapore">Singapore</option>
-	<option value="Sint Maarten (Dutch part)" title="Sint Maarten (Dutch part)">Sint Maarten (Dutch part)</option>
-	<option value="Slovakia" title="Slovakia">Slovakia</option>
-	<option value="Slovenia" title="Slovenia">Slovenia</option>
-	<option value="Solomon Islands" title="Solomon Islands">Solomon Islands</option>
-	<option value="Somalia" title="Somalia">Somalia</option>
-	<option value="South Africa" title="South Africa">South Africa</option>
-	<option value="South Georgia and the South Sandwich Islands" title="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option>
-	<option value="South Sudan" title="South Sudan">South Sudan</option>
-	<option value="Spain" title="Spain">Spain</option>
-	<option value="Sri Lanka" title="Sri Lanka">Sri Lanka</option>
-	<option value="Sudan" title="Sudan">Sudan</option>
-	<option value="Suriname" title="Suriname">Suriname</option>
-	<option value="Svalbard and Jan Mayen" title="Svalbard and Jan Mayen">Svalbard and Jan Mayen</option>
-	<option value="Swaziland" title="Swaziland">Swaziland</option>
-	<option value="Sweden" title="Sweden">Sweden</option>
-	<option value="Switzerland" title="Switzerland">Switzerland</option>
-	<option value="Syrian Arab Republic" title="Syrian Arab Republic">Syrian Arab Republic</option>
-	<option value="Taiwan, Province of China" title="Taiwan, Province of China">Taiwan, Province of China</option>
-	<option value="Tajikistan" title="Tajikistan">Tajikistan</option>
-	<option value="Tanzania, United Republic of" title="Tanzania, United Republic of">Tanzania, United Republic of</option>
-	<option value="Thailand" title="Thailand">Thailand</option>
-	<option value="Timor-Leste" title="Timor-Leste">Timor-Leste</option>
-	<option value="Togo" title="Togo">Togo</option>
-	<option value="Tokelau" title="Tokelau">Tokelau</option>
-	<option value="Tonga" title="Tonga">Tonga</option>
-	<option value="Trinidad and Tobago" title="Trinidad and Tobago">Trinidad and Tobago</option>
-	<option value="Tunisia" title="Tunisia">Tunisia</option>
-	<option value="Turkey" title="Turkey">Turkey</option>
-	<option value="Turkmenistan" title="Turkmenistan">Turkmenistan</option>
-	<option value="Turks and Caicos Islands" title="Turks and Caicos Islands">Turks and Caicos Islands</option>
-	<option value="Tuvalu" title="Tuvalu">Tuvalu</option>
-	<option value="Uganda" title="Uganda">Uganda</option>
-	<option value="Ukraine" title="Ukraine">Ukraine</option>
-	<option value="United Arab Emirates" title="United Arab Emirates">United Arab Emirates</option>
-	<option value="United Kingdom" title="United Kingdom">United Kingdom</option>
-	<option value="United States" title="United States">United States</option>
-	<option value="United States Minor Outlying Islands" title="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
-	<option value="Uruguay" title="Uruguay">Uruguay</option>
-	<option value="Uzbekistan" title="Uzbekistan">Uzbekistan</option>
-	<option value="Vanuatu" title="Vanuatu">Vanuatu</option>
-	<option value="Venezuela, Bolivarian Republic of" title="Venezuela, Bolivarian Republic of">Venezuela, Bolivarian Republic of</option>
-	<option value="Viet Nam" title="Viet Nam">Viet Nam</option>
-	<option value="Virgin Islands, British" title="Virgin Islands, British">Virgin Islands, British</option>
-	<option value="Virgin Islands, U.S." title="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
-	<option value="Wallis and Futuna" title="Wallis and Futuna">Wallis and Futuna</option>
-	<option value="Western Sahara" title="Western Sahara">Western Sahara</option>
-	<option value="Yemen" title="Yemen">Yemen</option>
-	<option value="Zambia" title="Zambia">Zambia</option>
-	<option value="Zimbabwe" title="Zimbabwe">Zimbabwe</option>
+
+
 							
 						</select>
 						<i class="fa fa-globe"></i>
@@ -1142,7 +1057,7 @@ include 'header.php' ;?>
 	  <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-footer">
-	  <button type="submit" class="btn btn-success btn-default pull-left" d>
+	  <button type="submit" class="btn btn-success btn-default pull-left"  onclick="deleteimg()" >
         Yes
         </button>
         <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
@@ -1154,6 +1069,8 @@ include 'header.php' ;?>
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox-plus-jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>
 <script>
 	
 		var APIKEY = "<?php echo $apiKey;?>";          //YOUR_API_KEYdash;
@@ -1290,4 +1207,46 @@ $("#editform").validate({
         return false;
     }
 });
+
+
 </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+var selID = "";
+$('.modalLink').click(function(){
+  var ID=$(this).attr('data-id');
+  selID =  ID;
+
+
+});
+
+function deleteimg() {
+   $.ajax({
+	      type: "POST",
+            url: "../Profile/delete_img",
+			
+            data:{selID:selID},
+			dataType:"text", 
+	     	success: function(){
+			
+			   setInterval(function(){
+                  
+                window.location.href="../Profile/myProfile";
+                }, 1500);
+             }                
+             }); 				
+ 
+}
+</script>
+
+</script>
+<audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
+<audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script>
+<script>
+    normalConnection();
+</script>
+
+	
