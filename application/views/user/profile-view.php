@@ -65,6 +65,15 @@ include 'header.php' ;?>
 											<h3>People Viewed Profile</h3>
 											
 										</div><!--sd-title end-->
+										
+										
+										
+										
+										
+										
+										
+										
+										
 										<div class="suggestions-list">
 										
 										<?php if(!empty($profileViewer)){
@@ -106,7 +115,7 @@ include 'header.php' ;?>
 												</div>
 												<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
 									
-												<span><i class="fa fa-video-camera" aria-hidden="true">   </i></span></a>
+												<span><i class="fa fa-eye enqclve" aria-hidden="true"></i></span></a>
 											</div>
 										<?php }}?>
 											

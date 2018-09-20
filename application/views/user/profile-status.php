@@ -73,14 +73,51 @@ include 'header.php' ;?>
 													<?php } else{
 														?>
 														<!--li><a href="<!?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" onclick="return confirm('Are you sure?')">Hide Post</a></li-->
-														<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Hide Post</a></li>
+														<li><a href="#" title="" class="exp-bx-open" >Hide Post</a></li>
 													<?php }?>
 													</ul>
 												</div>
 												</div>
 												
-												
-											    <div class="overview-box fade" id="education-box">
+												 <div class="overview-box" id="education-box">
+<div class="overview-edit">
+<h3>Edit Feed</h3>
+
+<form method="POST" action="<?php echo base_url(); ?>index.php/Profile/updateFeed" name="editform" id="editform">
+<input type="hidden" name="feed-id"  id="feed-id" />
+<textarea id="feed-edit" name="feed-edit"  ></textarea>
+<button type="submit" class="save" id="feedsave" name="feedsave"  >Save</button>
+<a href="<?php echo base_url()."index.php/User/Profile/"?>	<button type="button" class="cancel">Cancel</button></a>
+</form>
+<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+</div><!--overview-edit end-->
+</div><!--overview-box end-->
+
+
+
+
+	<div class="overview-box" id="experience-box">
+			<div class="overview-edit">
+            <h3 class="ayu">Are you sure delete !</h3>
+
+            <form name="editform" id="editform" class="">
+               
+				   <button type="submit" class="btn btn-danger btn-success padc bgreen" href=""><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" style="color:white;">Yes </a> </button>
+				   <button type="submit" class="btn btn-danger btn-default  " data-dismiss="modal">   No </button>
+              
+				</form>
+				<a href="# " title=" " class="close-box "><i class="la la-close "></i></a>
+			</div>
+		</div><!--overview-box end-->
+
+
+
+
+
+
+
+
+											    <!--div class="overview-box fade" id="education-box">
         <div class="overview-edit">
             <h3 class="ayu">Are you sure delete !</h3>
 
@@ -88,11 +125,11 @@ include 'header.php' ;?>
                
 				   <button type="submit" class="btn btn-danger btn-success padc bgreen" href=""><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" style="color:white;">Yes </a> </button>
 				   <button type="submit" class="btn btn-danger btn-default  " data-dismiss="modal">   No </button>
-                <!--a href="<!?php echo base_url()." index.php/User/Profile/ "?>">	<button type="button" class="cancel">Cancel</button></a-->
+              
 				</form>
 				<a href="# " title=" " class="close-box "><i class="la la-close "></i></a>
-			</div><!--overview-edit end-->
-		</div><!--overview-box end-->	
+			</div>
+		</div-->
 		
 		
 		
@@ -347,6 +384,25 @@ $(this).parent('.form_wrapper').find(box).show();
 
 
 function getFeeds(intValue) {
+ var val=intValue;
+
+         $.ajax({
+	      type: "POST",
+            url: "../Profile/edit_data",
+			
+            data:{val:val},
+			dataType:"text", 
+	     	success: function(result){
+			var resultObjt = JSON.parse(result)
+				
+              $("#feed-edit").val(resultObjt.feed); 
+			  $("#feed-id").val(resultObjt.feedid);
+			  
+             }                
+             }); 				
+ 
+}
+function getFeeds1(intValue) {
  var val=intValue;
 
          $.ajax({

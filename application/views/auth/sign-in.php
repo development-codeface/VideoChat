@@ -118,8 +118,13 @@
 											</div>
 										</div>
 									</form>
+			
 									<div class="login-resources">
 										<h4>Login Via Social Account</h4>
+																<div class="login-or">
+        <hr class="hr-or">
+        <span class="span-or">or</span>
+      </div>
 										<ul>
 											<li><a href="#" title="" class="fb"><i class="fa fa-facebook"></i>Login Via Facebook</a></li>
 											<li><a href="#" title="" class="tw"><i class="fa fa-twitter"></i>Login Via Twitter</a></li>
@@ -175,8 +180,8 @@
 															<option value="2">Female</option>
 															<option value="3">Other</option>
 														</select>
-														<i class="la la-user"></i>
-														<span><i class="fa fa-ellipsis-h"></i></span>
+														<i class="fa fa-venus" aria-hidden="true"></i>
+														<span><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
 													</div>
 												</div>					
 												
@@ -227,14 +232,14 @@
 					</div>		
 				</div><!--signin-pop end-->
 			</div><!--signin-popup end-->
-			<div class="footy-sec" style="padding: 10px;">
+			<div class="footy-sec fota">
 				<div class="container">
 					<ul>
 						
 						<li><a href="#" title="">Privacy Policy</a></li>
 				
 						<li><a href="#" title="">Terms & Conditions</a></li>
-						<li><a href="#" title="">Cookies </a></li>
+						
 						<li><a href="#" title="">Contact</a></li>
 					</ul>
 					<p><img src="<?php echo base_url(); ?>assets/images/copy-icon.png" alt="">Copyright 2018 All rights reserved</p>

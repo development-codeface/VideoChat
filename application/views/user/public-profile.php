@@ -312,7 +312,7 @@ include 'header.php';?>
 	    <div class="col-lg-2">
     <div class="form-group">
      
-   <button type="submit" name="search"  class="btn btn-default btn-success mg24">Search</button>
+   <button type="submit" name="search"  class="btn acceptser mg24">Search</button>
     </div>
     </div>
   </form>
