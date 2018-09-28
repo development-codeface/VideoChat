@@ -28,6 +28,8 @@ class Profile extends  CI_Controller {
 		$this->data['mydata'] =    $this->users_model->GetMyData($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 	    $this->data['image'] =    $this->users_model->imageinfo($this->UserId) ;
+		$this->data['countries'] = $this->users_model->getAllcountries();
+		//print_r($this->data['countries']);exit;
 		$this->data['feeds']   =    $this->profile_model->GetUserfeeds($this->UserId) ;
 		$this->data['openToken']=base64_encode($this->session->userdata('token'));
 		$this->data['openSessionId']=$this->session->userdata('openSessionId');
@@ -97,6 +99,35 @@ class Profile extends  CI_Controller {
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		$this->load->view("user/messages",$this->data);
 		
+	}public function messages_stranger()
+	{  
+		$opentok = new OpenTok( $this->config->item('opentok_key'), $this->config->item('opentok_secret'));//'46163292', '436f0b34f67e82089f741ff6509c9608919f8d82'
+	    if (isset($_GET['user'])){
+			$userid=$_GET['user'];
+			$this->data['caller'] = "Y";  
+		} else {
+			$userid=$this->UserId;
+			$this->data['caller'] = "N";
+		} 
+		$result=$this->users_model->fetch_session($userid);
+		$opentok_sessionid = $result['session_id'];
+		$opntok_tokenId = $opentok->generateToken($opentok_sessionid);
+
+		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
+		$this->data['onlinef']    =    $this->users_model->GetOnlineFriends($this->UserId) ;
+		$this->data['openTokapi']  = $this->config->item('opentok_key');
+		$this->date['opentokenid']     = $opntok_tokenId;
+		$this->data['openSessionId']    = $opentok_sessionid;
+		$str=base64_encode($opntok_tokenId);
+		$this->data['openSession']=urlencode($str);
+		$this->date['responsedata'] = json_encode(array(
+            'apiKey' => $this->config->item('opentok_key'),
+            'sessionId' => $opentok_sessionid,
+            'token'=>$opntok_tokenId
+        ));
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		$this->load->view("user/messages",$this->data);
+		
 	}
 	public function messagesUser()
 	{
@@ -113,10 +144,52 @@ class Profile extends  CI_Controller {
 		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['onlinef']    =    $this->users_model->GetOnlineFriends($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		$this->data['notifications'] =    $this->users_model->notication_list($this->UserId) ;
+		
+		//print_r($this->data['notifications']);exit;
+		
+		
 		$this->data['openToken']=base64_encode($this->session->userdata('token'));
 		$this->data['openSessionId']=$this->session->userdata('openSessionId');
 		$this->data['apiKey']= $this->config->item('opentok_key');
 		$this->load->view("user/notification",$this->data);
+		
+	}
+	public function notifications_tab()
+	{
+		
+		  
+		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
+		$this->data['onlinef']    =    $this->users_model->GetOnlineFriends($this->UserId) ;
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		$this->data['notifications'] =    $this->users_model->notication_list($this->UserId) ;
+	//	foreach($this->data['notifications']  as $row){
+	//	
+		
+	//$this->data	='<div>"'.$row->messages.''.$row->profile_pic.''.$row->gender.'</div>';
+	//	echo json_encode($this->data);
+	//	}
+		
+		
+		//$this->load->view("user/header",$this->data);
+		
+	
+	
+		
+		
+		
+		$this->data['openToken']=base64_encode($this->session->userdata('token'));
+		$this->data['openSessionId']=$this->session->userdata('openSessionId');
+		$this->data['apiKey']= $this->config->item('opentok_key');
+	//	foreach($this->data['notifications']  as $row){
+		
+		
+	//$this->data	='<div>"'.$row->messages.''.$row->profile_pic.''.$row->gender.'</div>';
+	//	echo json_encode($this->data);
+	//	}
+		
+		
+		$this->load->view("user/header",$this->data);
 		
 	}
 	
@@ -152,6 +225,17 @@ class Profile extends  CI_Controller {
 		
 
 		$feedId =$this->input->post('feedId');
+		 $uid =$this->input->post('Uid');
+		 $fid =$this->input->post('fid');
+		
+		$name=$this->users_model->username($uid);
+          $myString = $name." Liked your post";
+	
+		 
+		$name=$this->users_model->insertnotification($myString,$fid,$uid);
+		
+		
+		
 		$return=$this->profile_model->setLike($feedId,$this->UserId);
 		if(!empty($return)){echo json_encode(array('status'=>1,'lik'=>$return));}else{echo json_encode(array('status'=>0));}
 	}
@@ -212,6 +296,7 @@ public function postFeed(){
 		if(isset($_POST['register'])){
 			$this->form_validation->set_rules('feeds','feeds','required');
 			if($this->form_validation->run() == TRUE){
+				
 				$insertData=array('user_id'=>$this->UserId,'feeds'=>$this->input->post("feeds"));
 				$result_data = $this->profile_model->InserFeeds($insertData);
 				if($result_data['success'])
@@ -250,6 +335,7 @@ public function postFeed(){
 		
 		
 		public function hideFeed(){ 
+		
 		$id= $this->uri->segment('3');
 		$uid= $this->uri->segment('4');
 		
@@ -373,7 +459,9 @@ public function postFeed(){
 	        	$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
 		        $this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
 		
-		//print_r($this->data);exit;
+				$this->data['openToken']=base64_encode($this->session->userdata('token'));
+				$this->data['openSessionId']=$this->session->userdata('openSessionId');
+				$this->data['apiKey']= $this->config->item('opentok_key');
 		
 		        $this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		        $this->load->view("user/profiles",$this->data);
@@ -386,6 +474,8 @@ public function postFeed(){
 	     	 $data=$this->users_model->update_img_status($img_id);
 			 	$this->load->view("user/my-profile");
 			}
+			
+			
      
 
 	

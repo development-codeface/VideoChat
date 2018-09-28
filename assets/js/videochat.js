@@ -24,6 +24,7 @@ function openOpentokConnection(sessionId) {
     },
     connectionDestroyed: function (event) {
       connectionCount--;
+	 
       openTokErrormessage("Connection connectionDestroyed !!!");
     },
     sessionDisconnected: function sessionDisconnectHandler(event) {
@@ -289,4 +290,3 @@ $("#endCall").click(function(){
 $("#rejectCall").click(function(){
   cutVideoCall();
 });
-

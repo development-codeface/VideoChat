@@ -10,22 +10,68 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 		<div class="acc-setting">
 							  			<h3>Notifications</h3>
 							  			<div class="notifications-list">
-							  				<div class="notfication-details">
+							  			    
+							  			    
+							  			    
+							  			    
+							  			    
+							  			    
+							  			    	<?php if(!empty($notifications)){	foreach($notifications as $frq){?>
+							  			    <div class="notfication-details">
+							  			        
+							  			        
+											
+										
 								  				<div class="noty-user-img">
-								  					<img src="images/resources/ny-img1.png" alt="">
+								  				    
+								  				  
+								  					<?php 
+															if($frq->profile_pic != ""){?>
+															
+															<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
+
+													<?php } else{?>
+													<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+														<?php }?>
+								  					
+								  					
 								  				</div>
+								  				
+								  				
+								  				
 								  				<div class="notification-info">
-								  					<h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+								  				    
+								  					<h3> <?php echo $frq->messages ?></h3>
+								  					
+										
+										
 								  					<span>2 min ago</span>
+								  					
 								  				</div><!--notification-info -->
-							  				</div><!--notfication-details end-->
+								  			
+							  				</div>
+							  			    
+							  		 	<?php } } ?> 	
+							  	 
+							  	 
+							  				</div>
+							  				
+							  				
+							  				
+							  		 
+							  		  
 							  		
 							  		
-							  			
-							  		
-							  			</div><!--notifications-list end-->
-							  		</div>
-								
+							  	 
 		
 		</div>
 		</div>

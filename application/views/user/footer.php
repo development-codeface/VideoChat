@@ -9,7 +9,7 @@
 						
 						<li><a href="#" title="">Copyright Policy</a></li>
 					</ul>
-					<p>Copyright 2018 . All rights reserved</p>
+					<p>Copyright © 2018 IntBuddy. All rights reserved.</p>
 				
 				</div>
 			</div>

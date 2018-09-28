@@ -21,6 +21,7 @@ class User extends  CI_Controller {
 		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		$this->data['UserId'] =$this->session->userdata('user_id');
 		$this->data['openToken']=base64_encode($this->session->userdata('token'));
 		$this->data['openSessionId']=$this->session->userdata('openSessionId');
 		$this->data['apiKey']= $this->config->item('opentok_key');
@@ -33,6 +34,7 @@ class User extends  CI_Controller {
 		$this->data['feeds']    =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['onlinef']    =    $this->users_model->GetOnlineFriends($this->UserId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		$this->data['countries'] = $this->users_model->getAllcountries();
 		$this->data['openToken']=base64_encode($this->session->userdata('token'));
 		$this->data['openSessionId']=$this->session->userdata('openSessionId');
 		$this->data['apiKey']= $this->config->item('opentok_key');
@@ -45,6 +47,7 @@ class User extends  CI_Controller {
            	$params['gender']=$this->input->post("looking");
            	$params['age']=$this->input->post("age");
            	$params['country']=$this->input->post("country");
+	     	$this->data['countries'] = $this->users_model->getAllcountries();
 			$params['user_id'] =$this->UserId;
           $this->data['results']    =    $this->users_model->GetSearchFriends($params) ;
 		  
@@ -60,12 +63,29 @@ class User extends  CI_Controller {
 
 	public function AccetFriends(){
 		$params =$this->input->post('frinedId');
+		$use =$this->input->post('Uid');
+		
+		$name=$this->users_model->username($use);
+	$myString = $name." Accepted your friend request";
+		$name=$this->users_model->insertnotification($myString,$params,$use);
+		
+		
 		$return=$this->users_model->AccetFriends($params,$this->UserId);
 		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
 	}
 	
 	public function friendRequest(){
 		$params =$this->input->post('frinedId');
+	    $use =$this->input->post('Uid');
+		
+		$name=$this->users_model->username($use);
+	$myString = $name." send a friend request to you";
+	
+		 
+		$name=$this->users_model->insertnotification($myString,$params,$use);
+		
+		
+		
 		$return=$this->users_model->friendRequest($params,$this->UserId);
 		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
 	}
@@ -123,7 +143,11 @@ public function fetch_data() {
 	$opntok_tokenId = $opentok->generateToken($opentok_sessionid);
 	echo json_encode(array('sessionId'=>$opentok_sessionid,'tokenId'=>$opntok_tokenId));
 }
-
-
+public function notification() {
+	
+	$fr_id =$this->input->post('Fid');
+    $user_id =$this->input->post('Uid');
+	
+}
 	
 }

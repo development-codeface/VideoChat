@@ -1,9 +1,10 @@
-<?php  
-include 'header.php' ;
+<!DOCTYPE html>
+<?php  include 'header.php' ;?>
+<?php
 $open_tokenId=base64_decode(urldecode($openToken));
-?>	
-
-	<script src="https://static.opentok.com/v2/js/opentok.js"></script>	
+$user=$this->session->userdata('user_id');?>
+<input type='text' name="uid" id="uid" value='<?php echo $user; ?>' hidden >
+	
 	<section class="pubsec min8">
 		<div class="container " >
 		<div class="row">
@@ -13,7 +14,7 @@ $open_tokenId=base64_decode(urldecode($openToken));
 		<div class="post-bar">
 													
 												<form method="post" action="<?php echo base_url(); ?>index.php/Profile/postFeed" name="signupform" id="signupform">
-										
+										<input type='text' name="userid" id="userid" value='<?php echo $user; ?>' hidden >
 												<div class="job_descp">
 													<div class="cp-field">
 												
@@ -61,9 +62,9 @@ $open_tokenId=base64_decode(urldecode($openToken));
 													<img src="<?php echo base_url() .'uploads/profile_pic/'.$fd->profile_pic ;?>" alt="">
 														<?php }?>
 														<div class="usy-name">
-															<h3><?php if($fd->full_name!=""){ echo $fd->full_name ;}else { echo $fd->nick_name;}?></h3>
+														<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$fd->user_id;?>">	<h3><?php if($fd->full_name!=""){ echo $fd->full_name ;}else { echo $fd->nick_name;}?></h3></a>
 															<span>
-                                                             1 hr</span> &nbsp;<span><i class="fa fa-flag" aria-hidden="true"></i> <?php echo $fd->country_id;?></span>
+                                                             <i class="fa fa-clock-o" aria-hidden="true"></i>  <?php echo $fd->created_at;?></span> &nbsp;<span><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $fd->country;?></span>
 														</div>
 													</div>
 													<div class="ed-opts form_wrapper"  >
@@ -75,7 +76,8 @@ $open_tokenId=base64_decode(urldecode($openToken));
 													<?php } else{
 														?>
 														<!--li><a href="<!?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" onclick="return confirm('Are you sure?')" class="exp-bx-open">Hide Post</a></li-->
-															<li><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>"  class="exp-bx-open">Hide Post</a></li>
+														<?php $fd->hide_user=$this->session->userdata('user_id'); ?>
+															<li><a href=""  class="exp-bx-open">Hide Post</a></li>
 														
 													<?php }?>
 													</ul>
@@ -99,9 +101,9 @@ $open_tokenId=base64_decode(urldecode($openToken));
 										<div class="overview-edit">
             <h3 class="ayu">Are you sure delete !</h3>
 
-            <form name="editform" id="editform" class="">
-               
-				   <button type="submit" class="btn btn-danger btn-success padc bgreen" href=""><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->user_id;?>" style="color:white;">Yes </a> </button>
+            <form name="hideform" id="hideform" class="">
+               	<?php $fd->hide_user=$this->session->userdata('user_id'); ?>
+				   <button type="submit" class="btn btn-danger btn-success padc "  style="color:white;"><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->hide_user;?>" style="color:white;">Yes  </a></button>
 				   <button type="submit" class="btn btn-danger btn-default  " data-dismiss="modal">   No </button>
                 <!--a href="<!?php echo base_url()." index.php/User/Profile/ "?>">	<button type="button" class="cancel">Cancel</button></a-->
 				</form>
@@ -118,9 +120,11 @@ $open_tokenId=base64_decode(urldecode($openToken));
 										
 												</div>
 				
-												<div class="job-status-bar">
+												
+														<div class="job-status-bar">
 													<ul class="like-com">
 														<li>
+															<input type='text' name="fid" id="fid" value='<?php echo $fd->user_id; ?>' hidden >
 													
 													
 														<a href="javascript:void(0)" onclick="setLike(<?php echo $fd->id;?>)"><i class="la la-heart heartr"></i> </a>
@@ -144,6 +148,7 @@ $open_tokenId=base64_decode(urldecode($openToken));
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
 										</div>--><?php }?>
+						
 						
 											
 										
@@ -247,13 +252,15 @@ include 'footer.php';?>
         <!--Modal to give options to receive call-->
         <div id="rcivModal" class="modal">
             <div class="modal-content text-center">
-                <div class="modal-header" id="calleeInfo"></div>
+                <div class="" id="calleeInfo">
+				Abhi Calling
+				</div>
 
                 <div class="modal-body">
-                    <button type="button" class="btn btn-success btn-sm answerCall" id='startVideo'>
+                    <button type="button" class="btn  answerCall" id='startVideo'>
                         <i class="fa fa-video-camera"></i> Video Call
                     </button>
-                    <button type="button" class="btn btn-danger btn-sm" id='rejectCall'>
+                    <button type="button" class="btn rejectCall" id='rejectCall'>
                         <i class="fa fa-times-circle"></i> Reject Call
                     </button>
                 </div>
@@ -270,6 +277,7 @@ include 'footer.php';?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>
+
 <script type="text/javascript" >
 	var APIKEY 		= "<?php echo $apiKey ?>";
 	var SESSIONID 	= "<?php echo $openSessionId ?>";
@@ -284,7 +292,7 @@ include 'footer.php';?>
 						dataType:"text", 
 						success: function(result){
 							var resultObj = JSON.parse(result)
-						alert(resultObj.sessionId+""+resultObj.tokenId);
+						
 						}               
 				}); 				
 		}); 
@@ -343,4 +351,10 @@ function getFeeds(intValue) {
     normalConnection();
 </script>
 
-	
+	<script>
+$(document).ready(function(){
+    $(window).unload(function(){
+        alert("Goodbye!");
+    });
+});
+</script>

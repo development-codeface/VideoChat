@@ -52,7 +52,10 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 													<span> <?php if($mydata['nick_name']!=""){ echo $mydata['nick_name'] ;}else { echo $mydata['full_name'];}?></span>
 												
 												</li>
-												
+											<div class="toggleWrapper">
+	<input type="checkbox" id="dn" class="dn">
+	<label for="dn" class="toggle"><span class="toggle__handler"></span></label>
+</div>
 											</ul>
 
 											<ul class="hidvideo">
@@ -205,7 +208,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 														<div class="usy-name">
 															<h3><?php if($fd->full_name!=""){ echo $fd->full_name ;}else { echo $fd->nick_name;}?></h3>
 															<span>
-1 hr</span> &nbsp;<span><i class="fa fa-flag" aria-hidden="true"></i> <?php echo $fd->country_id;?></span>
+1 hr</span> &nbsp;<span><i class="fa fa-flag" aria-hidden="true"></i> <?php echo $fd->country;?></span>
 														</div>
 													</div>
 													<div class="ed-opts">
@@ -230,7 +233,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 										
 												</div>
 				
-												<div class="job-status-bar">
+												<div class="like_bt">
 													<ul class="like-com">
 														<li>
 															<i class="la la-heart"></i> 
@@ -259,19 +262,48 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 									</div><!--product-feed-tab end-->
 									<div class="product-feed-tab" id="info-dd">
 									<div class="user-profile-ov st2">
+										<h3>
+									<i class="fa fa-user-circle-o" aria-hidden="true"></i> Basic Information
+										
+										<a href="#" title="" class="exp-bx-open pull-right"><i class="fa fa-pencil-square-o"></i> <span class="ed_bt"> Edit</span></a>
+										
+										</h3>
 									
-											<h3><a href="#" title="" class="exp-bx-open">Basic Information </a><a href="#" title="" class="exp-bx-open"><i class="fa fa-pencil"></i></a></h3>
-											<h4>Name : <i id="full_names"> <?php  echo $mydata['full_name'];?></i></h4>
-											<h4>Nick Name : <i id="nick_names"> <?php  echo $mydata['nick_name'];?></i></h4>
-											
-											<h4>Gender : <i id="genders"> <?php if($mydata['gender']==1){?>Female<?php }else {?> Male <?php }?></i></h4>
-											<h4>Date of birth : <i id="dobs"> <?php  echo $mydata['dob'];?></i></h4>
-											<h4>private /  public:<i id="visib"><?php if($mydata['visibility']=='true'){?>
+									
+									
+									<table class="tabl-cus">
+
+  <tr>
+    <td class="pers">Name</td>
+    <td><i id="full_names"> <?php  echo $mydata['full_name'];?></i></td>
+   
+  </tr>
+  <tr>
+    <td class="pers">Nick Name</td>
+    <td> <i id="full_names"> <?php  echo $mydata['full_name'];?></i></td>
+  </tr>
+    <tr>
+    <td class="pers">Gender</td>
+    <td><i id="genders"> <?php if($mydata['gender']==1){?>Female<?php }else {?> Male <?php }?></i></td>
+  </tr>
+     <tr>
+    <td class="pers">Date of birth</td>
+    <td><i id="dobs"> <?php  echo $mydata['dob'];?></i></td>
+  </tr>
+    <tr class="no_br">
+    <td>Private /  Public</td>
+    <td><i id="visib"><?php if($mydata['visibility']=='true'){?>
 											   Public
 												
 											   <?php }else{
 												   ?>Private
-											   <?php }?>  </i></h4>
+											   <?php }?>  </i></td>
+  </tr>
+
+</table>
+
+										
+										
 											<!--<label class="switch swtlastm">
 											<input type="checkbox" checked>
 											   <?php if($mydata['dob']=='true'){?>
@@ -284,19 +316,22 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 											</label>-->
 										</div><!--user-profile-ov end-->
 										<div class="user-profile-ov">
-											<h3><a href="#" title="" class="lct-box-open">Location</a> <a href="#" title="" class="lct-box-open"><i class="fa fa-pencil"></i></a></h3>
-											<h4 id="country_ids"><?php  echo $mydata['country_id'];?></h4>
-											<p id="addres"> <?php  echo $mydata['address'];?></p>
+											<h3> <i class="fa fa-map-marker" aria-hidden="true"></i> Location  <a href="#" title="" class="lct-box-open pull-right"><i class="fa fa-pencil-square-o"></i> <span class="ed_bt"> Edit</span></a></h3>
+											
+											
+											
+											<h4 id="country_ids"><?php  echo $mydata['country'];?></h4>
+											
 										</div><!--user-profile-ov end-->
 										<div class="user-profile-ov">
-											<h3><a href="#" title="" class="overview-open">Overview</a> <a href="#" title="" class="overview-open"><i class="fa fa-pencil"></i></a></h3>
+											<h3> <i class="fa fa-pencil" aria-hidden="true"></i> Description  <a href="#" title="" class="overview-open pull-right"><i class="fa fa-pencil-square-o "></i> <span class="ed_bt"> Edit</span></a></h3>
 											<p id="descriptions"><?php  echo $mydata['description'];?></p>
 										</div><!--user-profile-ov end-->
 										
 										
 									
 										<div class="user-profile-ov">
-											<h3><a href="#" title="" class="skills-open">Interest</a> <a href="#" title="" class="skills-open"><i class="fa fa-pencil"></i></a> <a href="#"></a></h3>
+											<h3> <i class="fa fa-heart" aria-hidden="true"></i> Interest  <a href="#" title="" class="skills-open pull-right"><i class="fa fa-pencil-square-o"></i> <span class="ed_bt"> Edit</span></a> </h3>
 											<ul>
 												<li ><a href="#" title="" id="Interest_ar"><?php echo $mydata['interest_area'] ;?></a></li>
 												
@@ -322,61 +357,15 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
  
   </div>
 </div>
+<div class="col-lg-3"><div class="job-status-bar">
+												<button type="submit" name="register" class="btn btn-success">Upload </button>
+												</div></div>
 										
 												</div>
 				
-												<div class="job-status-bar">
-												<button type="submit" name="register" class="btn btn-success">Upload </button>
-												</div>
+												
 												</form>
-		</div>
-		
-		
-		
-			<style>
-.containerg {
-    position: relative;
-    width: 100%;
-}
-
-.imageg {
-  opacity: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-  transition: .5s ease;
-  backface-visibility: hidden;
-}
-
-.middleg {
-   transition: .5s ease;
-                                                        opacity: 0;
-                                                        position: absolute;
-                                                        margin-top: 16%;
-                                                        left: 89%;
-                                                        transform: translate(-50%, -50%);
-                                                        -ms-transform: translate(-50%, -50%);
-                                                        text-align: center;
-}
-
-.containerg:hover .imageg {
-  opacity: 0.3;
-}
-
-.containerg:hover .middleg {
-  opacity: 1;
-}
-
-.textg {
-    background-color: #e06788;
-    color: white;
-    font-size: 16px;
-    padding: 10px;
-}
-.textg a{color: white;}
-</style>
-		
-		<div class="gallery_pf">
+												<div class="gallery_pf">
 		<div class="row">
 												<?php	foreach( $image as $row )
 												{?>
@@ -726,13 +715,15 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
         <!--Modal to give options to receive call-->
         <div id="rcivModal" class="modal">
             <div class="modal-content text-center">
-                <div class="modal-header" id="calleeInfo"></div>
+                <div class=" " id="calleeInfo">
+				<h4>Abhi Calling</h4>
+				</div>
 
                 <div class="modal-body">
-                    <button type="button" class="btn btn-success btn-sm answerCall" id='startVideo'>
+                    <button type="button" class="btn answerCall" id='startVideo'>
                         <i class="fa fa-video-camera"></i> Video Call
                     </button>
-                    <button type="button" class="btn btn-danger btn-sm" id='rejectCall'>
+                    <button type="button" class="btn btn-sm rejectCall" id='rejectCall'>
                         <i class="fa fa-times-circle"></i> Reject Call
                     </button>
                 </div>
@@ -748,12 +739,15 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 		
 		<div class="overview-box" id="overview-box">
 			<div class="overview-edit">
-				<h3>Overview</h3>
+				<h3><i class="fa fa-pencil" aria-hidden="true"></i> Description</h3>
 				<span>5000 character left</span>
 				<form method="POST">
 					<textarea id="description"><?php echo $mydata['description'];?></textarea>
-					<button type="button" class="save" id="descriptionsave">Save</button>
-					<button type="button" class="cancel">Cancel</button>
+					<p class="sav_bt">	<button type="button" class="save" id="descriptionsave">Save</button>
+
+				
+					 
+					</p>
 				</form>
 				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
 			</div>
@@ -778,30 +772,60 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 		</div><!--overview-box end-->
 	<div class="overview-box" id="experience-box">
 			<div class="overview-edit">
-				<h3>Basic Information</h3>
-				<form method="POST" ACTION="">
-					<input type="text" name="full_name" id="full_name" placeholder="Name" value="<?php  echo $mydata['full_name'];?>">
-					<input type="text" name="nick_name" id="nick_name" placeholder="Nick Name" value="<?php  echo $mydata['nick_name'];?>">
-					<input type="date" name="dob"  id="dob" placeholder="Date of birth" value="<?php  echo $mydata['dob'];?>">
-					<div class="form-group">
+				<h3><i class="fa fa-user-circle-o" aria-hidden="true"></i> Basic Information</h3>
+				<form method="POST" action="">
+					<input type="text" name="full_name" class="form-control" id="full_name" placeholder="Name" value="<?php  echo $mydata['full_name'];?>">
+					<input type="text" name="nick_name"  class="form-control" id="nick_name" placeholder="Nick Name" value="<?php  echo $mydata['nick_name'];?>">
+					
+					<input type="text" id="dob" name="dob" class="form-control" data-masked-input="99/99/9999" placeholder="Date of birth" maxlength="10" value="<?php  echo $mydata['dob'];?>">
+					 		<div class="col-lg-12 no-pdd">
+												<div class="checky-sec">
+												<div class="fgt-sec">
+														
+														<small class="checkbox-inline"><b >Gender :</b> &nbsp;</small>
+													</div><!--fgt-sec end-->
+													 <?php   $f="";$m="";if($mydata['gender']==1){ $m="checked";}else{ $f="checked";}?>
+													<div class="fgt-sec">
+														<input type="radio" name="gender" id="c5" <?php echo $f;?>   value="1">
+														<label for="c5">
+															<span></span>
+														</label>
+														<small>Boy &nbsp;</small>
+													</div><!--fgt-sec end-->
+													<div class="fgt-sec">
+														<input type="radio" name="gender" id="c6" <?php echo $m;?>   value="2">
+														<label for="c6">
+															<span></span>
+														</label>
+														<small> Girl &nbsp;</small>
+													</div><!--fgt-sec end-->
+													<div class="fgt-sec">
+														<input type="radio" name="gender" id="c7">
+														<label for="c7">
+															<span></span>
+														</label>
+														<small> Other</small>
+													</div><!--fgt-sec end-->
+												</div>
+											</div>
+					<!--div class="form-group">
 					
 		  <label class="checkbox-inline"><b>Gender </b> :</label>
-		  <?php   $f="";$m="";if($mydata['gender']==1){ $m="checked";}else{ $f="checked";}?>
-		  <label class="checkbox-inline"><input type="radio" name="gender" id="gender" <?php echo $f;?> style=" width: 15px;
-    height: 15px;" value="1" >&nbsp;Female </label>
-<label class="checkbox-inline"><input type="radio" name="gender"  id="gender" <?php echo $m;?> style="width: 15px;
-    height: 15px;"  value="2">&nbsp;Male </label>
-</div>
-<div class="form-group">
-<label for="pwd">private /  public:</label>
-<label class="switch swtlastm">
-  <input type="checkbox" name="visibility"  id="visibility">
-  <span class="slider round"></span>
-</label>
-</div>
-					<button type="button" id="basicinfo" class="save" >Save</button>
+		  <!?php   $f="";$m="";if($mydata['gender']==1){ $m="checked";}else{ $f="checked";}?>
+		  <label class="checkbox-inline"><input type="radio" name="gender" id="gender" class="rad_bt" <!?php echo $f;?>   value="1" >&nbsp;Female </label>
+<label class="checkbox-inline"><input type="radio" name="gender"  id="gender" class="rad_bt" <!?php echo $m;?>   value="2">&nbsp;Male </label>
+</div-->
+
+	<div class="clearfix"></div>		
+
+<div class="col-lg-12">
+			<p class="sav_bt">	<button type="button" id="basicinfo" class="btn acceptser" >Save</button>
 				
-					<button type="button" class="cancel">Cancel</button>
+					 
+					</p>
+					<div class="clearfix"></div>
+					
+					</div>
 				</form>
 				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
 			</div><!--overview-edit end-->
@@ -823,135 +847,75 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 		
 		<div class="overview-box" id="location-box">
 			<div class="overview-edit">
-				<h3>Location</h3>
-				<form>
+				<h3><i class="fa fa-map-marker" aria-hidden="true"></i> Location</h3>
+				<form method="POST" action="">
+				
+				
 					<div class="datefm">
-						<select name="country_id" id="country_id">
-							<option value="Afghanistan" title="Afghanistan">Afghanistan</option>
-	<option value="Åland Islands" title="Åland Islands">Åland Islands</option>
-	<option value="Albania" title="Albania">Albania</option>
-	<option value="Algeria" title="Algeria">Algeria</option>
-	<option value="American Samoa" title="American Samoa">American Samoa</option>
-	<option value="Andorra" title="Andorra">Andorra</option>
-	<option value="Angola" title="Angola">Angola</option>
-	<option value="Anguilla" title="Anguilla">Anguilla</option>
-	<option value="Antarctica" title="Antarctica">Antarctica</option>
-	<option value="Antigua and Barbuda" title="Antigua and Barbuda">Antigua and Barbuda</option>
-	<option value="Argentina" title="Argentina">Argentina</option>
-	<option value="Armenia" title="Armenia">Armenia</option>
-	<option value="Aruba" title="Aruba">Aruba</option>
-	<option value="Australia" title="Australia">Australia</option>
-	<option value="Austria" title="Austria">Austria</option>
-	<option value="Azerbaijan" title="Azerbaijan">Azerbaijan</option>
-	<option value="Bahamas" title="Bahamas">Bahamas</option>
-	<option value="Bahrain" title="Bahrain">Bahrain</option>
-	<option value="Bangladesh" title="Bangladesh">Bangladesh</option>
-	<option value="Barbados" title="Barbados">Barbados</option>
-	<option value="Belarus" title="Belarus">Belarus</option>
-	<option value="Belgium" title="Belgium">Belgium</option>
-	<option value="Belize" title="Belize">Belize</option>
-	<option value="Benin" title="Benin">Benin</option>
-	<option value="Bermuda" title="Bermuda">Bermuda</option>
-	<option value="Bhutan" title="Bhutan">Bhutan</option>
-	<option value="Bolivia, Plurinational State of" title="Bolivia, Plurinational State of">Bolivia, Plurinational State of</option>
-	<option value="Bonaire, Sint Eustatius and Saba" title="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</option>
-	<option value="Bosnia and Herzegovina" title="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
-	<option value="Botswana" title="Botswana">Botswana</option>
-	<option value="Bouvet Island" title="Bouvet Island">Bouvet Island</option>
-	<option value="Brazil" title="Brazil">Brazil</option>
-	<option value="British Indian Ocean Territory" title="British Indian Ocean Territory">British Indian Ocean Territory</option>
-	<option value="Brunei Darussalam" title="Brunei Darussalam">Brunei Darussalam</option>
-	<option value="Bulgaria" title="Bulgaria">Bulgaria</option>
-	<option value="Burkina Faso" title="Burkina Faso">Burkina Faso</option>
-	<option value="Burundi" title="Burundi">Burundi</option>
-	<option value="Cambodia" title="Cambodia">Cambodia</option>
-	<option value="Cameroon" title="Cameroon">Cameroon</option>
-	<option value="Canada" title="Canada">Canada</option>
-	<option value="Cape Verde" title="Cape Verde">Cape Verde</option>
-	<option value="Cayman Islands" title="Cayman Islands">Cayman Islands</option>
-	<option value="Central African Republic" title="Central African Republic">Central African Republic</option>
-	<option value="Chad" title="Chad">Chad</option>
-	<option value="Chile" title="Chile">Chile</option>
-	<option value="China" title="China">China</option>
-	<option value="Christmas Island" title="Christmas Island">Christmas Island</option>
-	<option value="Cocos (Keeling) Islands" title="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
-	<option value="Colombia" title="Colombia">Colombia</option>
-	<option value="Comoros" title="Comoros">Comoros</option>
-	<option value="Congo" title="Congo">Congo</option>
-	<option value="Congo, the Democratic Republic of the" title="Congo, the Democratic Republic of the">Congo, the Democratic Republic of the</option>
-	<option value="Cook Islands" title="Cook Islands">Cook Islands</option>
-	<option value="Costa Rica" title="Costa Rica">Costa Rica</option>
-	<option value="Côte d'Ivoire" title="Côte d'Ivoire">Côte d'Ivoire</option>
-	<option value="Croatia" title="Croatia">Croatia</option>
-	<option value="Cuba" title="Cuba">Cuba</option>
-	<option value="Curaçao" title="Curaçao">Curaçao</option>
-	<option value="Cyprus" title="Cyprus">Cyprus</option>
-	<option value="Czech Republic" title="Czech Republic">Czech Republic</option>
-	<option value="Denmark" title="Denmark">Denmark</option>
-	<option value="Djibouti" title="Djibouti">Djibouti</option>
-	<option value="Dominica" title="Dominica">Dominica</option>
-	<option value="Dominican Republic" title="Dominican Republic">Dominican Republic</option>
-	<option value="Ecuador" title="Ecuador">Ecuador</option>
-	<option value="Egypt" title="Egypt">Egypt</option>
-	<option value="El Salvador" title="El Salvador">El Salvador</option>
-	<option value="Equatorial Guinea" title="Equatorial Guinea">Equatorial Guinea</option>
-	<option value="Eritrea" title="Eritrea">Eritrea</option>
-	<option value="Estonia" title="Estonia">Estonia</option>
-	<option value="Ethiopia" title="Ethiopia">Ethiopia</option>
-	<option value="Falkland Islands (Malvinas)" title="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
-	<option value="Faroe Islands" title="Faroe Islands">Faroe Islands</option>
-	<option value="Fiji" title="Fiji">Fiji</option>
-	<option value="Finland" title="Finland">Finland</option>
-	<option value="France" title="France">France</option>
-	<option value="French Guiana" title="French Guiana">French Guiana</option>
-	<option value="French Polynesia" title="French Polynesia">French Polynesia</option>
-	<option value="French Southern Territories" title="French Southern Territories">French Southern Territories</option>
-	<option value="Gabon" title="Gabon">Gabon</option>
-	<option value="Gambia" title="Gambia">Gambia</option>
-	<option value="Georgia" title="Georgia">Georgia</option>
-	<option value="Germany" title="Germany">Germany</option>
-	<option value="Ghana" title="Ghana">Ghana</option>
-	<option value="Gibraltar" title="Gibraltar">Gibraltar</option>
-	<option value="Greece" title="Greece">Greece</option>
-	<option value="Greenland" title="Greenland">Greenland</option>
-	<option value="Grenada" title="Grenada">Grenada</option>
-	<option value="Guadeloupe" title="Guadeloupe">Guadeloupe</option>
-	<option value="Guam" title="Guam">Guam</option>
-	<option value="Guatemala" title="Guatemala">Guatemala</option>
-	<option value="Guernsey" title="Guernsey">Guernsey</option>
-	<option value="Guinea" title="Guinea">Guinea</option>
-	<option value="Guinea-Bissau" title="Guinea-Bissau">Guinea-Bissau</option>
+					
+					<select name="country_id" id="country_id">
 
+               <?php 
 
+            foreach($countries as $row)
+            { ?>
+			
+             <option value="<?php echo $row->c_id ?>"><?php echo $row->country ?></option>
+           <?php  }
+                  ?>
 							
 						</select>
-						<i class="fa fa-globe"></i>
-					</div>
-					<div class="datefm">
-						<input type="text" name="address"  id="address" placeholder="locations" >	
+
+					
+						
+						
+						
+						
+						
+					
+
+						
+						
+						
+						
+						
+						
+						
 						<i class="fa fa-map-marker"></i>
 					</div>
-					<button type="button" class="save" id="locationSave" >Save</button>
-					<button type="button" class="cancel">Cancel</button>
+					
+					<p class="sav_bt"><button type="button" class="save" id="locationSave" >Save</button></p>
+					 
 				</form>
 				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
 			</div><!--overview-edit end-->
 		</div><!--overview-box end-->
 
 		<div class="overview-box" id="skills-box">
-			<div class="overview-edit">
-				<h3>Interest</h3>
+			<div class="overview-edit sign_in_sec " style="display:block;">
+				<h4><i class="fa fa-heart" aria-hidden="true"></i> Interest</h4>
 	
 				<form>
-					<select class="form-control" style="height: auto;" name="interest" id="interest">
-    <option value="Boy">Boy</option>
+				<div class="datefm">
+						<select name="country_id" id="country_id">
+							 <option value="Boy">Boy</option>
     <option value="Girl">Girl</option>
     <option value="Other">Other</option>
-   
-  </select>
-					<button type="button" class="save" id="InterestSave">Save</button>
+	
+
+
+							
+						</select>
+						<i class="fa fa-sort-desc" aria-hidden="true"></i>
+					</div>
+		
+  <p class="sav_bt">	<button type="button" class="save" id="InterestSave">Save</button>
 				
-					<button type="button" class="cancel">Cancel</button>
+					 
+					</p>
+					
+				
+					 
 				</form>
 				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
 			</div><!--overview-edit end-->
@@ -999,7 +963,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 												</div>
 				
 												<div class="job-status-bar">
-												<button type="submit" name="register" class="btn btn-success">Upload </button>
+												<button type="submit" name="register" class="btn btn-success">Upload</button>
 												</div>
 												</form>
 		</div>
@@ -1026,7 +990,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
         
       </div>
       <div class="modal-body">
-       <div class="post-bar">
+       <div class=" ">
 													
 												  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadCover/'; ?>" id="">
 										

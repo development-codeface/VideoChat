@@ -8,25 +8,26 @@
 	
 
 	public function GetAllfeeds($userId){
-	$this->db->select( 'DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id');
+	$this->db->select( 'DISTINCT(us.user_id),us.gender,up.profile_pic,uf.created_at,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id,cf.country');
 	$this->db->from('users us');
 	$this->db->join('friends um', 'um.friend_id=us.user_id','LEFT');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
 	$this->db->join('user_feed uf', 'uf.user_id= us.user_id','INNER');
-	//$this->db->join('hide_post hd', 'hd.feed_id = uf.id','LEFT OUTER');
+	$this->db->join('countries cf', 'cf.c_id= up.country_id','LEFT');
+	//$this->db->join('hide_post hd', 'hd.feed_id = uf.id','LEFT');
+	$this->db->where("uf.id NOT IN (SELECT feed_id FROM hide_post WHERE user_id =$userId)" 	, NULL, FALSE);
 	
 	$this->db->where('um.user_id',$userId);
 	$this->db->or_where('us.user_id',$userId);
 	//$this->db->where_not_in('uf.id' ,'hd.feed_id');
 	$this->db->where('uf.status',1);
-	$this->db->where("uf.id NOT IN (SELECT feed_id FROM hide_post WHERE user_id =$userId)" 	, NULL, FALSE);
 	
 	//$this->db->group_by('us.user_id'); 
 
 	//$this->db->where('dm.ParentID',$params['DepartmentID']);
 	$this->db->order_by("uf.created_at", "desc");
 	$result=$this->db->get()->result(); 
-	//echo $this->db->last_query();
+//	echo $this->db->last_query();
 	//exit;
 	return $result;
     }
@@ -34,10 +35,11 @@
 //get User feeds
 
     public function GetUserfeeds($userId){
-	$this->db->select( 'DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id');
+	$this->db->select( 'DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id,cf.country');
 	$this->db->from('users us');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
 	$this->db->join('user_feed uf', 'uf.user_id= us.user_id','INNER');
+	$this->db->join('countries cf', 'cf.c_id= up.country_id','INNER');
 	$this->db->where('us.user_id',$userId);
 	$this->db->where('uf.status',1);
 	$this->db->order_by("uf.created_at", "desc");
@@ -201,8 +203,8 @@
 	public function hideFeed($id,$uid)
 	{
 		$query = $this->db->query("INSERT INTO hide_post (user_id ,feed_id)
-			VALUES ($uid,$id) " );
-		//	echo $this->db->last_query();exit;
+			VALUES ($uid,$id)" );
+			echo $this->db->last_query();
 			return 1;
 		
 	}

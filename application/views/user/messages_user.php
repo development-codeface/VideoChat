@@ -240,7 +240,7 @@ include 'footer.php';?>
   <!--Modal to show that we are calling-->
         <div id="callModal" class="modal">
             <div class="modal-content text-center">
-                <div class="modal-header" id="callerInfo"></div>
+                <div class=" " id="callerInfo"></div>
 
                 <div class="modal-body">
                     <button type="button" class="btn btn-danger btn-sm" id='endCall'>

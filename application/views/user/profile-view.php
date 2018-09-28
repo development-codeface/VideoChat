@@ -24,6 +24,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 								<div class="main-left-sidebar company-upv">
 									<div class="user_profile">
 										<div class="user-pro-img ">
+										
 										  <?php if($mydata['profile_pic']!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$mydata['profile_pic'] ;?>" alt="">
 											<?php }else{?>
@@ -57,10 +58,12 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 												</li>
 												
 											</ul>
+											<?php if($mydata['user_id']!=$this->session->userdata('user_id')){?>
 												<ul class="hidvideo">
 										<li><a href="" title="" data-id="" class="follow follow_friend msgch"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
-										
+										<li><a href="" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
 									</ul>
+										<?php } ?>
 										</div><!--user-pro-img end-->
 										
 										
@@ -186,7 +189,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 										
 										if(!empty($feeds)){
 										foreach($feeds as $fd){?>
-											<div class="post-bar">
+											<div class="like_bt">
 													<div class="post_topbar">
 													<div class="usy-dt">
 													 <?php if($mydata['profile_pic']!=""){?>
@@ -254,37 +257,66 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 									<div class="product-feed-tab" id="info-dd">
 									<div class="user-profile-ov st2">
 									
-											<h3>Basic Information</h3>
-											<h4>Name : <i id="full_names"> <?php  echo $mydata['full_name'];?></i></h4>
-											<h4>Nick Name : <i id="nick_names"> <?php  echo $mydata['nick_name'];?></i></h4>
-											
-											<h4>Gender : <i id="genders"> <?php if($mydata['gender']==1){?>Female<?php }else {?> Male <?php }?></i></h4>
-											<h4>Date of birth : <i id="dobs"> <?php  echo $mydata['dob'];?></i></h4>
-											<h4>private /  public:<i id="visib"><?php if($mydata['visibility']=='true'){?>
+											<h3><i class="fa fa-user-circle-o" aria-hidden="true"></i> Basic Information</h3>
+											<table class="tabl-cus">
+
+  <tbody><tr>
+    <td class="pers">Name</td>
+    <td><i id="full_names"> <?php  echo $mydata['full_name'];?></i></td>
+   
+  </tr>
+  <tr>
+    <td class="pers">Nick Name</td>
+    <td> <i id="full_names"> <?php  echo $mydata['nick_name'];?></i></td>
+  </tr>
+    <tr>
+    <td class="pers">Gender</td>
+    <td><i id="genders"> <?php if($mydata['gender']==1){?>Female<?php }else {?> Male <?php }?></i></td>
+  </tr>
+     <tr>
+    <td class="pers">Date of birth</td>
+    <td><i id="dobs"><?php  echo $mydata['dob'];?> </i></td>
+  </tr>
+    <tr class="no_br">
+    <td>Private /  Public</td>
+    <td><i id="visib"><?php if($mydata['visibility']=='true'){?>
 											   Public
 												
 											   <?php }else{
 												   ?>Private
-											   <?php }?>  </i></h4>
+											   <?php }?>  </i></td>
+  </tr>
+
+</tbody></table>
+											
 										</div><!--user-profile-ov end-->
 										<div class="user-profile-ov">
-											<h3>Location</h3>
+											<h3><i class="fa fa-map-marker" aria-hidden="true"></i> Location</h3>
+											<div class="locpad">
 											<h4 id="country_ids"><?php  echo $mydata['country_id'];?></h4>
 											<p id="addres"> <?php  echo $mydata['address'];?></p>
+											</div>
+											
 										</div><!--user-profile-ov end-->
 										<div class="user-profile-ov">
-											<h3>Overview</h3>
+											<h3><i class="fa fa-pencil" aria-hidden="true"></i> Description</h3>
+												<div class="locpad">
 											<p id="descriptions"><?php  echo $mydata['description'];?></p>
-										</div><!--user-profile-ov end-->
+										</div>
+										</div>
+										<!--user-profile-ov end-->
 										
 										
 									
 										<div class="user-profile-ov">
-											<h3>Interest</h3>
+											<h3><i class="fa fa-heart" aria-hidden="true"></i> Interest</h3>
+												<div class="locpad">
 											<ul>
-												<li ><a href="#" title="" id="Interest_ar"><?php echo $mydata['interest_area'] ;?></a></li>
+												<li><a href="#" title="" id="Interest_ar"><?php echo $mydata['interest_area'] ;?></a></li>
 											</ul>
-										</div><!--user-profile-ov end-->
+										</div>
+										</div>
+										<!--user-profile-ov end-->
 									</div><!--product-feed-tab end-->
 									
 									<div class="product-feed-tab" id="portfolio-dd">
@@ -545,13 +577,15 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
         <!--Modal to give options to receive call-->
         <div id="rcivModal" class="modal">
             <div class="modal-content text-center">
-                <div class="modal-header" id="calleeInfo"></div>
+                <div class="" id="calleeInfo">
+				<h4>Abhi</h4>
+				</div>
 
                 <div class="modal-body">
-                    <button type="button" class="btn btn-success btn-sm answerCall" id='startVideo'>
+                    <button type="button" class="btn answerCall" id='startVideo'>
                         <i class="fa fa-video-camera"></i> Video Call
                     </button>
-                    <button type="button" class="btn btn-danger btn-sm" id='rejectCall'>
+                    <button type="button" class="btn  rejectCall" id='rejectCall'>
                         <i class="fa fa-times-circle"></i> Reject Call
                     </button>
                 </div>

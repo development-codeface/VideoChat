@@ -155,6 +155,18 @@
 	return $result->row_array();
 
 	}
+	public function checkmail($params){
+ 	  $query = $this->db->query("SELECT email,user_id from users WHERE  email='$params'" );
+			return $query->result_array();
+
+	}
+	public function insert_token($token,$user){
+ 	$query = $this->db->query("INSERT INTO token (token,user_id)
+              VALUES ('$token',$user) " );
+            // echo $this->db->last_query();
+			return 1;
+
+	}
 	
 	public function checkUserOnline($params){
  	$this->db->select( 'ph.*,');
@@ -194,9 +206,10 @@
 	
 	
 	public function GetMyData($userId){
-	$this->db->select( 'us.*,up.*');
+	$this->db->select( 'us.*,up.*,cf.*');
 	$this->db->from('users us');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
+	$this->db->join('countries cf', 'cf.c_id=up.country_id','LEFT');
 	$this->db->where('up.user_id',$userId);
 	$result = $this->db->get();
 	return $result->row_array();
@@ -245,7 +258,7 @@
 		WHERE us.user_id not in(select fm.friend_id from friends fm where fm.user_id ='.$params['user_id'].')  AND up.country_id="'.$params['country'].'"
 		AND us.user_id !='.$params['user_id'] .' and 
 		up.visibility="true" ORDER BY us.user_id');*/
-		$result = $this->db->query('SELECT DISTINCT(us.user_id),up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+		$result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
 			user_profile up  ON up.user_id=us.user_id
 		WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id ='.$params['user_id'].')
 		AND us.user_id !='.$params['user_id'] .' and 
@@ -258,12 +271,15 @@
 		WHERE us.user_id not in(select fm.friend_id from friends fm where fm.user_id ='.$params['user_id'].') 
 		and up.gender ='.$params['gender'].' AND up.country_id="'.$params['country'].'" AND us.user_id !='.$params['user_id'] .' and 
 		up.visibility="true" ORDER BY us.user_id');*/
-		$result = $this->db->query('SELECT DISTINCT(us.user_id),up.profile_pic,up.nick_name,us.full_name  from users us 
+		$result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us 
 		INNER JOIN  user_profile up  ON up.user_id=us.user_id
+		 JOIN  countries uc  ON uc.C_id=up.country_id
 		WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id ='.$params['user_id'].') 
-		and up.gender ='.$params['gender'].' AND us.user_id !='.$params['user_id'] .' and 
+		and  us.user_id !='.$params['user_id'] .' AND up.country_id ='.$params['country'] .' and 
 		up.visibility="true" ORDER BY us.user_id');
-		return $result->result() ;
+		
+		//us.gender ='.$params['gender'].' AND
+		return $result->result() ; 
 		}
 	   
 	}
@@ -337,7 +353,64 @@
 		{
 	     	$query = $this->db->query("update  user_photos set status='1' where id=$img_id " );
 			return 1;
-	    }	
-		
+	    }		
+		function getAllcountries()
+		{
 	
+
+        $query = $this->db->query('SELECT * FROM countries');
+
+
+        return $query->result();
+
+      
+	    }	
+		function username($uid)
+		{
+	     	$query = $this->db->query("select full_name from users where user_id=$uid");
+			foreach ($query->result() as $row){
+            $name = $row->full_name;
+   
+			}
+
+				return $name;
+				
+		}
+		    function insertnotification($str,$fid,$uid)
+	   	{
+			$query = $this->db->query("INSERT INTO notification (messages ,fri_id,user_id)
+              VALUES ('$str',$fid,$uid) " );
+            // echo $this->db->last_query();
+			return 1;
+	    }
+		   function notication_list($id)
+	   	{
+			$query = $this->db->query("
+			
+			SELECT ns.messages,up.profile_pic,us.gender   from notification ns 
+		    JOIN
+			user_profile up  ON up.user_id = ns.user_id
+			 JOIN
+			users us  ON us.user_id = up.user_id
+			where ns.fri_id=$id ORDER BY cur_time DESC");
+            //echo $this->db->last_query();
+			return $query->result();
+	    }
+		 function user_pass_rest($str,$pass,$user)
+	   	{
+			$query = $this->db->query(" UPDATE users u
+  JOIN token t ON t.user_id = u.user_id
+  SET u.password='$pass',t.status=0
+WHERE u.user_id=$user
+              " );
+           // echo $this->db->last_query();exit;
+			return 1;
+	    }
+		 function delete_token($user)
+	   	{
+			$query = $this->db->query(" DELETE from token where user_id=$user" );
+          //  echo $this->db->last_query();exit;
+			return 1;
+	    }
+		
 }

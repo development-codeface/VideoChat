@@ -8,7 +8,8 @@ class Auth extends   CI_Controller {
 	//error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 	$this->load->library(array('session', 'upload','form_validation'));
 	$this->load->helper(array('url', 'html', 'form'));
-	 $this->load->model('Users_model', 'obj_model', TRUE);   
+	 $this->load->model('Users_model', 'obj_model', TRUE);  
+   $this->load->helper('date');    
     }
 	
 	public function index(){
@@ -76,20 +77,30 @@ class Auth extends   CI_Controller {
        // $this->load->view('video_11', $data);       
     }       
 	
+	
+	//public function validate_age($dob) {
+		
+		
+		// $dob=date('Y-m-d', strtotime($dob))   ;
+    //$dob = new DateTime($dob);
+//$dob=setTimestamp($dob);
+   // $now = new DateTime();
+	
+   // return ($now->diff($dob)->y < 18) ? false : true;
+//}
 	public function register(){
 		$data['tab'] = 'register';
 		
-		if(isset($_POST['register'])){
-			$this->form_validation->set_rules('name','Name','required');
-			$this->form_validation->set_rules('email','Email','required');
-			$this->form_validation->set_rules('phone_no','Phone Number','required');
-			$this->form_validation->set_rules('u_name','User name','required');
-			$this->form_validation->set_rules('u_pass','Password','required');
-			$this->form_validation->set_rules('gender','gender','required');
-			$this->form_validation->set_rules('cc','agreement','required');
+		
 			
-			if($this->form_validation->run() == TRUE){
-				$insertData=array('full_name'=>$this->input->post("name"),'email'=>$this->input->post("email"),'mobile'=>$this->input->post("phone_no"),'gender'=>$this->input->post("gender"),'user_name'=>$this->input->post("u_name"),'password'=>md5($this->input->post("u_pass")));
+					if(isset($_POST['register'])){
+				$first=$this->input->post("fname");
+				$last=$this->input->post("lastname");
+				$full_name = $first. " " . $last;
+              $dob = $this->input->post("dob");
+                $dob=date('Y-m-d', strtotime($dob))   ;
+  
+				$insertData=array('full_name'=>$full_name,'email'=>$this->input->post("email"),'gender'=>$this->input->post("gender"),'dob'=>$dob,'user_name'=>$this->input->post("u_name"),'password'=>md5($this->input->post("u_pass")));
 				$result_data = $this->users_model->InsertUser($insertData);
 				if($result_data['success'])
 				{
@@ -97,7 +108,7 @@ class Auth extends   CI_Controller {
 					redirect('/', "refresh");
 				}
 			}
-		}
+		
 		$this->load->view('auth/sign-in', $data);
 	}
 
@@ -105,6 +116,84 @@ class Auth extends   CI_Controller {
 		$params =$this->input->post('email');
 		$emailTest=$this->users_model->checkEmail($params);
 		if(!empty($emailTest)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
+	}
+	
+	public function resetpass(){
+		$params =$this->input->post('reemail');
+		$unameTest=$this->users_model->checkmail($params);
+		
+		$str	=	 '';
+		if(count($unameTest)==0)
+				{
+					echo "no data";
+				}
+				else
+				{
+					foreach($unameTest as $uname)
+					{
+						$user=$uname['user_id'];
+						
+					}
+					
+					 $token = md5(uniqid(rand(), true ));
+					
+					$token_set=$this->users_model->insert_token($token,$user);
+					
+					
+					/////////////////////
+					
+					
+					$this->load->library('email');
+
+    $config = Array(
+        'protocol' => 'MAIL_DRIVER',
+        'MAIL_HOST' => 'mail.codefacetech.com',
+        'MAIL_PORT' => 26,
+        'MAIL_USERNAME' => 'cfemp08d@gmail.com',
+        'MAIL_PASSWORD' => 'J9#PPxLep1pO',
+        'mailtype'  => 'html', 
+        'charset'   => 'utf-8'
+    );
+
+$this->email->initialize($config);
+$this->email->set_newline("\r\n");
+
+$clean = $this->security->xss_clean($this->input->post(NULL, TRUE));
+
+$qstring = base64_encode($token);                    
+$url = site_url() .'/Auth/newpass/'.$token.'/'.$user;
+$link = '<a href="' . $url . '">Activation Link</a>'; 
+
+$message = '';                     
+
+$message .= '<strong>please click the link for change the password:</strong> '. $link;                        
+
+$toEmail = $this->input->post('reemail');
+$to = $toEmail; # undefine 
+$this->email->clear();
+$this->email->from('info@codefacetech.com');
+$this->email->to($to);
+$this->email->subject('Thanks for registering');
+$this->email->message($message);
+
+if(!$this->email->send())
+{ 
+    echo "fail <br>";
+    echo $this->email->print_debugger();
+    /*$this->session->set_flashdata('flash_message', 'Password reset fail.');
+    redirect(site_url().'/main/register');*/
+}
+else
+{       
+      
+   $this->session->set_flashdata('flash_message', 'Please check the mail.');
+    redirect('user/profile',"refresh");
+}
+		
+					 }
+					
+					
+				
 	}
 
 	public function checkUsername(){
@@ -138,5 +227,18 @@ public function fetch_data() {
 	$opntok_tokenId = $opentok->generateToken($opentok_sessionid);
 	echo json_encode(array('sessionId'=>$opentok_sessionid,'tokenId'=>$opntok_tokenId));
 }
-
+public function newpass()
+			{	
+			 	$this->load->view("user/newpass");
+			}
+			public function setnewpass()
+			{	
+			// $user =$this->input->post('first');
+			 $pass =md5($this->input->post('second'));
+			 $params =$this->input->post('tok');
+			 $user =$this->input->post('user');
+			$unameTest=$this->users_model->user_pass_rest($params,$pass,$user);
+			$unameTest=$this->users_model->delete_token($user);
+			redirect('user/profile',"refresh");
+			}
 }

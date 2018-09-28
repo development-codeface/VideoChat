@@ -26,19 +26,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://www.jqueryscript.net/demo/Simple-Lightweight-jQuery-Input-Mask-Plugin-Masked-input/dist/jquery.masked-input.js"></script>
   
-<script>
-       var place =0;
-       function changeColor() {
-           // your color list
-           var colorList = ["#cbacea","white"];
-           // set the color
-            
-           document.getElementById("heading").style.backgroundColor = colorList[place];
-           place++;
-           // if place is greater than the list size, reset
-           if (place ===colorList.length) place=0;
-       }
-   </script>
+ 
  
 </head>
 
@@ -56,9 +44,9 @@
         </div>
 		
         <div class="modal-body modb">
-	<?php	$user_id=$this->session->userdata('user_id'); ?>
+		
          <a href="<?php echo base_url(); ?>index.php/Profile/friends" class="fr_btn"><i class="fa fa fa-users" aria-hidden="true"></i> Friends  </a> 
-        <a href="<?php echo base_url(); ?>index.php/Profile/messages_stranger?user=<?php echo $user_id ?>" title="" data-id="<?php echo $user_id;?>" class="follow follow_friend"></i> Stranger   </a>
+        <a href="<?php echo base_url(); ?>index.php/user/profileSearch" class="str_btn"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Stranger   </a>
 
 
         </div>
@@ -71,7 +59,7 @@
 
 	<div class="wrapper">
 
-		<header id="heading">
+		<header>
 			<div class="container">
 				<div class="col-lg-12">
 				
@@ -105,11 +93,6 @@
 						<a href="#" title=""><i class="fa fa-bars"></i></a>
 					</div><!--menu-btn end-->
 					<div class="user-account">
-		<label class="switch">
- <input type="checkbox" checked>
- <span class="slider round" onclick="changeColor()" ></span>
- <span class="absolute-no" onclick="changeColor()" >Private</span>
-</label>
 					<div class="search-barmsg nav-cl">
 					
 						<ul>
@@ -118,56 +101,67 @@
 							 
 								<a href="<?php echo base_url(); ?>index.php/Profile/friends"  data-tooltip="My Friends" class="tooltip-bottom"><i class="fa fa fa-users" aria-hidden="true"></i></a>
 							</li>
-						<li>
-						
-						
-						
-						<?php
-						 $user_id=$this->session->userdata('user_id');
-					
-						 ?>
-							
+					<!--	<li>
 								
-								<a   id="mes" class="not-box-open follow_friend" data-id="<?php echo $user_id;?>"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a>
-								<div class="notification-box msg" >
+								<a href="#"  id=""  class="not-box-open"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a>
+								<div class="notification-box msg">
 									<div class="nt-title">
 									
-										
-											
 										<a href="#" title="">Clear all</a>
 									</div>
 									<div class="nott-list">
-									
 										<div class="notfication-details">
 							  				<div class="noty-user-img">
 							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img1.png" alt="">
-												
-												
-										
-												
-												
 							  				</div>
-							  				<div class="notification-info" id="notification_chat" >
-							  				<input type="text" name="noty" id="noty" >
-								
+							  				<div class="notification-info">
+							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a> </h3>
+							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
+							  					<span>2 min ago</span>
 							  				</div>
 						  				</div>
-						  				
-						  			
+						  				<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img2.png" alt="">
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
+							  					<p>Lorem ipsum dolor sit amet.</p>
+							  					<span>2 min ago</span>
+							  				</div>
+						  				</div>
+						  				<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img3.png" alt="">
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
+							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempo incididunt ut labore et dolore magna aliqua.</p>
+							  					<span>2 min ago</span>
+							  				</div>
+						  				</div>
 						  				<div class="view-all-nots">
 						  					<a href="<?php echo base_url(); ?>index.php/Profile/messagesUser" title="">View All Messsages</a>
 						  				</div>
 									</div>
 								</div>
-							</li>
+							</li>-->
 							<!--li>
 							<a href="messages_user.html"  id="tooltipex2"  class="not-box-open"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a></li-->
 							<li>
 							<a href="<?php echo base_url(); ?>index.php/Profile/notifications"   data-tooltip="Notifications" class="tooltip-bottom"  title="Notification"><i class="fa fa-bell" aria-hidden="true"></i></a>
 							</li>
+								<label class="switch">
+  <input type="checkbox" checked>
+  <span class="slider round"></span>
+  <span class="absolute-no">Public</span>
+</label>
 						</ul>
+								
+						
 					</div>
 						<div class="user-info userb">
+			
 						 <?php
 						
 						 $rss=$this->users_model->GetMyData($this->session->userdata('user_id'));
@@ -264,44 +258,4 @@
     
     </div>
   </div>
-  
- 
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://static.opentok.com/v2/js/opentok.js"></script>
-<script type="text/javascript" >
-	
-	$(document).ready(function() {
-	
-		$('.follow_friend').click(function() { 
-		var uid =$(this).data('id');
-
-
-	$.ajax({
-				type: "POST",
-					url: "../Profile/notifications_tab",
-					
-					data:{uid:uid},
-					dataType:"text", 
-					success: function(result){
-					var resultObjt = JSON.parse(result)
-
-
-			if(result.notifications){
-			$.each(json.notifications, function(i, value){
-			if(i < 5){
-			$('#noty').html("<div>"+value.messages+"<br/>"+value.profile_pic+"<br/>"+value.gender+"<br/></div>");
-			//$('#not').html(result.notifications);
-			}
-				   
-			   });
-			}
-							}
-
-										
-					});}); 
-				}); 
-	
-
-  </script>

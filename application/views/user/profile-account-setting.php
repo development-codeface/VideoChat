@@ -26,35 +26,39 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 						
 							  	<div class="tab-pane fade show active" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
 							  		<div class="acc-setting">
-										<h3>Change Password</h3>
+										 
 										<form action="<?php echo base_url(); ?>index.php/Profile/change"  method="POST" class="padr20">
 											<div class="cp-field">
-												<h5>Old Password</h5>
+												<h5>Current Password</h5>
 												<div class="cpp-fiel">
-													<input type="password" name="oldpassword" required placeholder="Old Password">
+													<input type="password" name="oldpassword" required placeholder="***********" class="form-control">
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>New Password</h5>
 												<div class="cpp-fiel">
-													<input type="password" name="password" required placeholder="New Password">
+													<input type="password" name="password" required placeholder="***********" class="form-control">
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>Repeat Password</h5>
 												<div class="cpp-fiel">
-													<input type="password" name="repassword" required placeholder="Repeat Password">
+													<input type="password" name="repassword" required placeholder="***********" class="form-control">
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
 											
 											<div class="save-stngs pd2">
-												<ul>
-													<li><button type="submit">Save Setting</button></li>
-													<li><button type="submit">Restore Setting</button></li>
-												</ul>
+												<div class="col-lg-12">
+			<p class="sav_bt">	<button type="button" id="basicinfo" class="btn acceptser">Submit</button>
+				
+					 
+					</p>
+					<div class="clearfix"></div>
+					
+					</div>
 											</div><!--save-stngs end-->
 										</form>
 									</div><!--acc-setting end-->
@@ -111,42 +115,44 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 							  	</div>
 							  	<div class="tab-pane fade" id="nav-deactivate" role="tabpanel" aria-labelledby="nav-deactivate-tab">
 							  		<div class="acc-setting">
-										<h3>Deactivate Account</h3>
+										 
 										<form class="padr20">
 											<div class="cp-field">
 												<h5>Email</h5>
 												<div class="cpp-fiel">
-													<input type="text" name="email" placeholder="Email">
+													<input type="text" name="email" placeholder="Email" class="form-control">
 													<i class="fa fa-envelope"></i>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>Password</h5>
 												<div class="cpp-fiel">
-													<input type="password" name="password" placeholder="Password">
+													<input type="password" name="password" placeholder="Password" class="form-control">
 													<i class="fa fa-lock"></i>
 												</div>
 											</div>
 											<div class="cp-field">
 												<h5>Please Explain Further</h5>
-												<textarea></textarea>
+												<textarea class="form-control"></textarea>
 											</div>
 											<div class="cp-field">
 												<div class="fgt-sec">
-													<input type="checkbox" name="cc" id="c4">
+													<input type="checkbox" name="cc" id="c4" class="form-control">
 													<label for="c4">
 														<span></span>
 													</label>
-													<small>Email option out</small>
+													<small>I accept</small>
 												</div>
 												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id,</p>
-											</div>
-											<div class="save-stngs pd3">
-												<ul>
-													<li><button type="submit">Save Setting</button></li>
-													<li><button type="submit">Restore Setting</button></li>
-												</ul>
-											</div><!--save-stngs end-->
+											</div><div class="clearfix"></div>
+											<div class="col-lg-12">
+			<p class="sav_bt">	<button type="button" id="basicinfo" class="btn acceptser">Deactivate</button>
+				
+					 
+					</p>
+					<div class="clearfix"></div>
+					
+					</div><div class="clearfix"></div>
 										</form>
 									</div><!--acc-setting end-->
 							  	</div>

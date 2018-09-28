@@ -1,6 +1,8 @@
 <?php
 include 'header.php';
-$open_tokenId=base64_decode(urldecode($openToken));?>
+$open_tokenId=base64_decode(urldecode($openToken));
+$user=$this->session->userdata('user_id');?>
+<input type='text' name="uid" id="uid" value='<?php echo $user; ?>' hidden >
 		<section class="companies-info min8">
 			<div class="container min800">
 				
@@ -37,7 +39,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 												</li>
 											</ul>
 										</div><!-- tab-feed end-->
-													<div class="company-title">
+													<div class="comp_rgt">
 					<div class="search-bar">
 						<form method="post" action="<?php echo base_url(); ?>index.php/Profile/searchFreiend" name="serachfriend" id="serachfriend">
 							<input type="text" name="search" id="search" placeholder="Search...">
@@ -147,8 +149,10 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 								
 								if(!empty($friendOnline)){
 											$i=1;
-											foreach($friendOnline as $frq){?>
-									 
+											foreach($friendOnline as $frq){
+												
+												?>
+									
 							<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="company_profile_info">
 								<div class="company-up-info">
@@ -161,7 +165,17 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 									<?php if($frq->profile_pic!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
 											<?php }else{?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/pf-icon8.png" alt="">
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
 											<?php }?>
 									
 									
@@ -198,7 +212,18 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 												 <?php if($frq->profile_pic!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
 											<?php }else{?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/r-img1.png" alt="">
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
 											<?php }?>
 							  						
 							  					</div>

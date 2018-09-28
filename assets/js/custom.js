@@ -174,6 +174,7 @@ $( "#locationSave" ).on('click', function (e) {
 				$(".wrapper").removeClass("overlay");
 				$("#country_ids" ).html(country_id);
 				$("#addres" ).html(address);
+				window.location.reload();
               }else{
 				$('#Eeror').hide();
       }
@@ -293,11 +294,12 @@ function reload(){
     }, 5000);
 }
 function friendAccept(userId){
-	 
+	  var Uid = $("#uid").val();
+	  var frinedId = userId;
 	$.ajax({
 		type: "POST",
 		url:site_url+"User/AccetFriends",
-		data:'frinedId='+userId,
+		data:{Uid:Uid,frinedId:frinedId},
 		dataType: 'json',
         success: function(data) {
             if(data.status==1){
@@ -312,11 +314,15 @@ function friendAccept(userId){
 }
 
 function friendRequest(userId){
+	 var Uid = $("#uid").val();
+	  var frinedId = userId;
 	 
+	
 	$.ajax({
 		type: "POST",
 		url:site_url+"User/friendRequest",
-		data:'frinedId='+userId,
+		
+		data:{Uid:Uid,frinedId:frinedId},
 		dataType: 'json',
         success: function(data) {
             if(data.status==1){
@@ -423,10 +429,13 @@ $.ajax({
 function setLike(feedId){
 	 
   
+   var Uid = $("#uid").val();
+   var fid = $("#fid").val();
+	  var feedId = feedId;	
     $.ajax({
 		type: "POST",
 		url:site_url+"Profile/UpdateLike",
-		data:'feedId='+feedId,
+			data:{feedId:feedId,Uid:Uid,fid:fid},
 		dataType: 'json',
 
         success: function(data) {
