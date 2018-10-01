@@ -26,6 +26,7 @@ class Profile extends  CI_Controller {
 		$this->data['profileViewer']  = $this->profile_model->GetProfileViewerList($this->UserId) ;
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
 		$this->data['mydata'] =    $this->users_model->GetMyData($this->UserId) ;
+		// print_r($this->data['mydata']);exit;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 	    $this->data['image'] =    $this->users_model->imageinfo($this->UserId) ;
 		$this->data['countries'] = $this->users_model->getAllcountries();
@@ -173,17 +174,11 @@ class Profile extends  CI_Controller {
 		
 		//$this->load->view("user/header",$this->data);
 		
-	
-	
-		
-		
-		
 		$this->data['openToken']=base64_encode($this->session->userdata('token'));
 		$this->data['openSessionId']=$this->session->userdata('openSessionId');
 		$this->data['apiKey']= $this->config->item('opentok_key');
 	//	foreach($this->data['notifications']  as $row){
-		
-		
+
 	//$this->data	='<div>"'.$row->messages.''.$row->profile_pic.''.$row->gender.'</div>';
 	//	echo json_encode($this->data);
 	//	}
@@ -242,21 +237,35 @@ class Profile extends  CI_Controller {
 	
 	public function change(){
    
+   
+ 
 	$id= $this->UserId;
 	$old=$this->input->post('oldpassword');
 	$password=$this->input->post('password');
 	$password1=$this->input->post('repassword');
+	
+		$this->data['openToken']=base64_encode($this->session->userdata('token'));
+		$this->data['openSessionId']=$this->session->userdata('openSessionId');
+		$this->data['apiKey']= $this->config->item('opentok_key');
+	
+	
+	
 	/*if(strlen($password)<6){
 		$this->data['error']="Password Contain at least 6 characters ";
 		$this->load->view('change_password',$this->data);
 	}
-*/
+     */
 	$res=$this->profile_model->check_pass(md5($old),$id);
+	
 	if(!empty($res)){
+		
 	if($password==$password1){
 		$password=md5($password);
 		$id=$this->profile_model->update_pass($password,$id);
-		redirect('user/profile');
+		$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Password Changed</div>');
+		//redirect('user/profile');
+		$this->load->view("user/profile-account-setting",$this->data);
+		
 	}else{
 		
 		$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Password Mismatch</div>');
@@ -264,6 +273,7 @@ class Profile extends  CI_Controller {
 		$this->load->view("user/profile-account-setting",$this->data);
 		}
 	}else{
+		
 		$this->session->set_flashdata('msg','<div class="alert alert-success text-center">Old Password Mismatch</div>');
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
 		$this->load->view("user/profile-account-setting",$this->data);
@@ -271,12 +281,10 @@ class Profile extends  CI_Controller {
 }
 
 
-public function deleteFeed($product_id = NULL){
- 
- $del= $this->uri->segment('3');
- 
- $result_data = $this->profile_model->deleteFeed($del);
- 	if($result_data['success'])
+	public function deleteFeed($product_id = NULL){
+     	$del= $this->uri->segment('3');
+        $result_data = $this->profile_model->deleteFeed($del);
+     	if($result_data['success'])
 				{
 					
 					redirect('/user/profile', "refresh");
@@ -290,9 +298,7 @@ public function deleteFeed($product_id = NULL){
 
 
 
-public function postFeed(){
-		
-		
+	public function postFeed(){
 		if(isset($_POST['register'])){
 			$this->form_validation->set_rules('feeds','feeds','required');
 			if($this->form_validation->run() == TRUE){
@@ -324,7 +330,7 @@ public function postFeed(){
 	
 	}
 	
-		public function updateFeed(){ 
+	public function updateFeed(){ 
 		
 		$feed=$_POST['feed-edit'];
 		$feedid=$_POST['feed-id'];
@@ -341,29 +347,26 @@ public function postFeed(){
 		
 		$result = $this->profile_model->hideFeed($id,$uid);
 		redirect('/user/profile', "refresh");
-		}
+	}
 			
 	
 		
 
-        public function getprofile(){
+    public function getprofile(){
 		$user_id =$this->input->post('user_id');
 		$return=$this->users_model->GetMyData($user_id);
 		if(!empty($return)){echo json_encode(array('status'=>1,'pr'=>$return));}else{echo json_encode(array('status'=>0));}
-	    }
+    }
 		
 		///////////////////////
 		
-			public function UploadProfile(){ 
-			
-		
-	
-               $user_id=$_POST['abc'];
+	public function UploadProfile(){ 
+		   $user_id=$_POST['abc'];
 		          
-                     $flag=0;
-               $file=$_FILES['photopro'];
-               $file_name = $file['name'];
-               $file_tmp = $file['tmp_name'];   
+            $flag=0;
+            $file=$_FILES['photopro'];
+            $file_name = $file['name'];
+            $file_tmp = $file['tmp_name'];   
                $file_ext = explode('.',$file_name); 
                $file_ext = strtolower(end($file_ext));
                $allowed = array("gif","png","jpg","jpeg");
@@ -387,28 +390,24 @@ public function postFeed(){
 			}	
 			
      
-			public function UploadCover(){ 
-			
-		
-	
-               $user_id=$_POST['abc'];
+		public function UploadCover(){ 
+		   $user_id=$_POST['abc'];
 		          
-                     $flag=0;
-               $file=$_FILES['photocover'];
-               $file_name = $file['name'];
-               $file_tmp = $file['tmp_name'];   
-               $file_ext = explode('.',$file_name); 
-               $file_ext = strtolower(end($file_ext));
-               $allowed = array("gif","png","jpg","jpeg");
+            $flag=0;
+            $file=$_FILES['photocover'];
+            $file_name = $file['name'];
+            $file_tmp = $file['tmp_name'];   
+            $file_ext = explode('.',$file_name); 
+            $file_ext = strtolower(end($file_ext));
+            $allowed = array("gif","png","jpg","jpeg");
            if(in_array($file_ext,$allowed)){
-               $file_name_new = uniqid('',true).'.'.$file_ext;
-
-               $file_destination = './uploads/cover_photo/' .$file_name;
-                if(move_uploaded_file($file_tmp,$file_destination)){
+            $file_name_new = uniqid('',true).'.'.$file_ext;
+            $file_destination = './uploads/cover_photo/' .$file_name;
+            if(move_uploaded_file($file_tmp,$file_destination)){
 
                $flag= 1 ;
                         }                  }     
-          if($flag==1){  
+           if($flag==1){  
 
            $data=$this->users_model->updatecover($user_id,$file_name);
            

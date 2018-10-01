@@ -27,23 +27,23 @@ class Login extends  CI_Controller
 	
         
        
-public function validate()
-{
-	$page_content['title'] = 'Login';
-	
-	if($this->input->post())
+	public function validate()
 	{
-	
-	$this->form_validation->set_rules('username', 'Username', 'required');
-	$this->form_validation->set_rules('password', 'Password', 'required');
-	
-	if ($this->form_validation->run() === FALSE)
-	{
-		$page_content['error']='Invalid fields';
+		$page_content['title'] = 'Login';
 		
-		$this->load->view('login',$page_content);
+		if($this->input->post())
+		{
 		
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
 		
+		if ($this->form_validation->run() === FALSE)
+		{
+			$page_content['error']='Invalid fields';
+			
+			$this->load->view('login',$page_content);
+			
+			
 	}
 	else
 	{
@@ -80,12 +80,12 @@ public function validate()
  * Page to logout the user.
  */
  
-public function logout() {
-	$array_items = array('username_loggedin' => '', 'uid' => '');
-	$this->session->unset_userdata($array_items);
-	$this->session->sess_destroy();
-	$page_content['error'] = "Logged out successfully";
-	$page_content['title'] = 'Login';
-	redirect(base_url()."index.php/employee/login");
-}
+	public function logout() {
+		$array_items = array('username_loggedin' => '', 'uid' => '');
+		$this->session->unset_userdata($array_items);
+		$this->session->sess_destroy();
+		$page_content['error'] = "Logged out successfully";
+		$page_content['title'] = 'Login';
+		redirect(base_url()."index.php/employee/login");
+	}
 }

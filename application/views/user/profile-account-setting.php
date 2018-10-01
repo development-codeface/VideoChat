@@ -22,7 +22,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 						</div>
 						<div class="col-lg-9">
 							<div class="tab-content" id="nav-tabContent">
-						
+					<?php echo $this->session->flashdata("msg");?> 
 						
 							  	<div class="tab-pane fade show active" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
 							  		<div class="acc-setting">
@@ -52,8 +52,8 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 											
 											<div class="save-stngs pd2">
 												<div class="col-lg-12">
-			<p class="sav_bt">	<button type="button" id="basicinfo" class="btn acceptser">Submit</button>
-				
+			<p class="sav_bt">	<!--button type="submit" id="basicinfo" >Submit</button-->
+				<button type="submit" >Save Setting</button>
 					 
 					</p>
 					<div class="clearfix"></div>

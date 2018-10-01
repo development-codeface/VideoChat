@@ -174,7 +174,7 @@
 						    if($rss['profile_pic']==""){?>
 							
 							
-							<?php if($user['gender']==1)
+							<?php if($rss['gender']==1)
 											{
 												?>
 											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">

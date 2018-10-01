@@ -49,20 +49,13 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 											<a href="#" title="" data-toggle="modal" data-target="#myModal11"><i class="fa fa-camera"></i></a>
 											<ul class="flw-status">
 												<li>
-													<span> <?php if($mydata['nick_name']!=""){ echo $mydata['nick_name'] ;}else { echo $mydata['full_name'];}?></span>
+													<span> <?php  echo $mydata['full_name'] ;?></span>
 												
 												</li>
-											<div class="toggleWrapper">
-	<input type="checkbox" id="dn" class="dn">
-	<label for="dn" class="toggle"><span class="toggle__handler"></span></label>
-</div>
+	
 											</ul>
 
-											<ul class="hidvideo">
-												<li><a href="http://localhost/VideoChat/index.php/Profile/messages?user=36" title="" data-id="36" class="follow follow_friend msgch"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
 										
-												<li><a href="http://localhost/VideoChat/index.php/Profile/messages?user=36" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
-											</ul>
 										</div><!--user-pro-img end-->	
 									</div><!--user_profile end-->
 									<div class="suggestions full-width">
@@ -77,7 +70,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 											foreach($profileViewer as $frq){?>
 										<?php if($frq->user_id!=$this->session->userdata('user_id')){?>
 											<div class="suggestion-usd">
-											
+											<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
 											  <?php if($frq->profile_pic!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
 											<?php }else{?>
@@ -108,7 +101,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 											<div class="sgt-text">
 													<h4><?php if($frq->full_name!=""){ echo $frq->full_name ;}else { echo $frq->nick_name;}?>
 													
-												</div>
+												</div></a>
 													<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
 												<span> <i class="fa fa-eye enqclqq" aria-hidden="true" ></i></span></a>
 											</div>
@@ -280,15 +273,15 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
   </tr>
   <tr>
     <td class="pers">Nick Name</td>
-    <td> <i id="full_names"> <?php  echo $mydata['full_name'];?></i></td>
+    <td> <i id="nick_names"> <?php  echo $mydata['nick_name'];?></i></td>
   </tr>
     <tr>
     <td class="pers">Gender</td>
-    <td><i id="genders"> <?php if($mydata['gender']==1){?>Female<?php }else {?> Male <?php }?></i></td>
+    <td><i id="genders"> <?php if($mydata['gen']==1){?>Male<?php }else {?> Female <?php }?></i></td>
   </tr>
      <tr>
     <td class="pers">Date of birth</td>
-    <td><i id="dobs"> <?php  echo $mydata['dob'];?></i></td>
+    <td><i id="dobs"> <?php  echo $mydata['birth'];?></i></td>
   </tr>
     <tr class="no_br">
     <td>Private /  Public</td>
@@ -306,7 +299,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 										
 											<!--<label class="switch swtlastm">
 											<input type="checkbox" checked>
-											   <?php if($mydata['dob']=='true'){?>
+											   <?php if($mydata['birth']=='true'){?>
 											   Public
 												<input type="checkbox" checked>
 											   <?php }else{
@@ -358,7 +351,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
   </div>
 </div>
 <div class="col-lg-3"><div class="job-status-bar">
-												<button type="submit" name="register" class="btn btn-success">Upload </button>
+												<button type="submit" name="photoup" class="btn btn-success">Upload </button>
 												</div></div>
 										
 												</div>
@@ -777,7 +770,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 					<input type="text" name="full_name" class="form-control" id="full_name" placeholder="Name" value="<?php  echo $mydata['full_name'];?>">
 					<input type="text" name="nick_name"  class="form-control" id="nick_name" placeholder="Nick Name" value="<?php  echo $mydata['nick_name'];?>">
 					
-					<input type="text" id="dob" name="dob" class="form-control" data-masked-input="99/99/9999" placeholder="Date of birth" maxlength="10" value="<?php  echo $mydata['dob'];?>">
+					<input type="text" id="dob" name="dob" class="form-control" data-masked-input="99/99/9999" placeholder="Date of birth" maxlength="10" value="<?php  echo $mydata['birth'];?>">
 					 		<div class="col-lg-12 no-pdd">
 												<div class="checky-sec">
 												<div class="fgt-sec">
@@ -819,7 +812,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 	<div class="clearfix"></div>		
 
 <div class="col-lg-12">
-			<p class="sav_bt">	<button type="button" id="basicinfo" class="btn acceptser" >Save</button>
+			<p class="sav_bt">	<button type="button" id="basicinfo" class="save" >Save</button>
 				
 					 
 					</p>
@@ -897,10 +890,10 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 	
 				<form>
 				<div class="datefm">
-						<select name="country_id" id="country_id">
-							 <option value="Boy">Boy</option>
-    <option value="Girl">Girl</option>
-    <option value="Other">Other</option>
+						<select name="Interest_id" id="Interest_id">
+							 <option value="1">Boy</option>
+    <option value="2">Girl</option>
+    <option value="3">Other</option>
 	
 
 

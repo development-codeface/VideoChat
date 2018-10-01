@@ -92,17 +92,24 @@ class User extends  CI_Controller {
 	public function UpdateBasic(){
 		$param['full_name'] =$this->input->post('full_name');
 		$params['nick_name'] =$this->input->post('nick_name');
-		$params['dob']=$this->input->post('dob');
-		$params['gender'] =$this->input->post('gender');
+		$dob=$this->input->post('dob');
+		$dob=date('Y-m-d', strtotime($dob))   ;
+		$gen =$this->input->post('gender');
 		$params['visibility'] =$this->input->post('visibility');
-		$return=$this->users_model->UpdateBasic($param,$params,$this->UserId);
+		$return=$this->users_model->UpdateBasic($param,$params,$this->UserId,$dob,$gen);
 		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
 	}
-public function UpdateLocation(){
+    public function UpdateLocation(){
 		$params['country_id'] =$this->input->post('country_id');
 		$params['address'] =$this->input->post('address');
 		
 		$return=$this->users_model->UpdateLocation($params,$this->UserId);
+		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
+	}
+	public function update_Interest(){
+		$intr =$this->input->post('interest');
+		
+		$return=$this->users_model->Updateintrest($intr,$this->UserId);
 		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
 	}
 
@@ -111,7 +118,7 @@ public function UpdateLocation(){
 		$return=$this->users_model->UpdateOverview($params,$this->UserId);
 		if(!empty($return)){echo json_encode(array('status'=>1,'des'=>$params['description']));}else{echo json_encode(array('status'=>0));}
 	}
-public function videochat(){
+    public function videochat(){
 	
 		$opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
 		$session = $opentok->createSession();        
@@ -128,10 +135,7 @@ public function videochat(){
 		//$this->load->view('videochat', $data);
 	}
 
-public function fetch_data() {
-	
-	
-	
+    public function fetch_data() {
 	$opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
 	$session = $opentok->createSession(array(
 		'mediaMode' => MediaMode::ROUTED
@@ -142,12 +146,11 @@ public function fetch_data() {
 	$opentok_sessionid = $result['session_id'];
 	$opntok_tokenId = $opentok->generateToken($opentok_sessionid);
 	echo json_encode(array('sessionId'=>$opentok_sessionid,'tokenId'=>$opntok_tokenId));
-}
-public function notification() {
-	
+    }
+    public function notification() {
 	$fr_id =$this->input->post('Fid');
     $user_id =$this->input->post('Uid');
 	
-}
+    }
 	
 }

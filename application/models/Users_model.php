@@ -206,7 +206,7 @@
 	
 	
 	public function GetMyData($userId){
-	$this->db->select( 'us.*,up.*,cf.*');
+	$this->db->select( 'us.*,up.*,cf.*,us.gender as gen,us.dob as birth');
 	$this->db->from('users us');
 	$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
 	$this->db->join('countries cf', 'cf.c_id=up.country_id','LEFT');
@@ -215,12 +215,18 @@
 	return $result->row_array();
     }
 
-    public function UpdateBasic($param,$params,$user_id){
+    public function UpdateBasic($param,$params,$user_id,$dob,$gen){
 	         
 		    $this->db->where('user_id',$user_id);
 		     $this->db->update('users',$param);
 		      $this->db->where('user_id',$user_id);
 		     $this->db->update('user_profile',$params);
+			 
+			 $query = $this->db->query("UPDATE  users SET dob='$dob',gender=$gen where user_id=$user_id" );
+		     return 1;
+	}
+	public function Updateintrest($params,$user_id){
+	       $query = $this->db->query("UPDATE  user_profile SET interest_area=$params where user_id=$user_id" );
 		     return 1;
 	}
 	public function UpdateLocation($params,$user_id){

@@ -82,12 +82,12 @@ class Auth extends   CI_Controller {
 		
 		
 		// $dob=date('Y-m-d', strtotime($dob))   ;
-    //$dob = new DateTime($dob);
-//$dob=setTimestamp($dob);
-   // $now = new DateTime();
+       //$dob = new DateTime($dob);
+       //$dob=setTimestamp($dob);
+        // $now = new DateTime();
 	
-   // return ($now->diff($dob)->y < 18) ? false : true;
-//}
+       // return ($now->diff($dob)->y < 18) ? false : true;
+    //}
 	public function register(){
 		$data['tab'] = 'register';
 		
@@ -145,56 +145,52 @@ class Auth extends   CI_Controller {
 					
 					$this->load->library('email');
 
-    $config = Array(
-        'protocol' => 'MAIL_DRIVER',
-        'MAIL_HOST' => 'mail.codefacetech.com',
-        'MAIL_PORT' => 26,
-        'MAIL_USERNAME' => 'cfemp08d@gmail.com',
-        'MAIL_PASSWORD' => 'J9#PPxLep1pO',
-        'mailtype'  => 'html', 
-        'charset'   => 'utf-8'
-    );
+					$config = Array(
+					'protocol' => 'MAIL_DRIVER',
+					'MAIL_HOST' => 'mail.codefacetech.com',
+					'MAIL_PORT' => 26,
+					'MAIL_USERNAME' => 'cfemp08d@gmail.com',
+					'MAIL_PASSWORD' => 'J9#PPxLep1pO',
+					'mailtype'  => 'html', 
+					'charset'   => 'utf-8'
+				);
 
-$this->email->initialize($config);
-$this->email->set_newline("\r\n");
+			$this->email->initialize($config);
+			$this->email->set_newline("\r\n");
 
-$clean = $this->security->xss_clean($this->input->post(NULL, TRUE));
+			$clean = $this->security->xss_clean($this->input->post(NULL, TRUE));
 
-$qstring = base64_encode($token);                    
-$url = site_url() .'/Auth/newpass/'.$token.'/'.$user;
-$link = '<a href="' . $url . '">Activation Link</a>'; 
+			$qstring = base64_encode($token);                    
+			$url = site_url() .'/Auth/newpass/'.$token.'/'.$user;
+			$link = '<a href="' . $url . '">Activation Link</a>'; 
 
-$message = '';                     
+			$message = '';                     
 
-$message .= '<strong>please click the link for change the password:</strong> '. $link;                        
+			$message .= '<strong>please click the link for change the password:</strong> '. $link;                        
 
-$toEmail = $this->input->post('reemail');
-$to = $toEmail; # undefine 
-$this->email->clear();
-$this->email->from('info@codefacetech.com');
-$this->email->to($to);
-$this->email->subject('Thanks for registering');
-$this->email->message($message);
+			$toEmail = $this->input->post('reemail');
+			$to = $toEmail; # undefine 
+			$this->email->clear();
+			$this->email->from('info@codefacetech.com');
+			$this->email->to($to);
+			$this->email->subject('Thanks for registering');
+			$this->email->message($message);
 
-if(!$this->email->send())
-{ 
-    echo "fail <br>";
-    echo $this->email->print_debugger();
-    /*$this->session->set_flashdata('flash_message', 'Password reset fail.');
-    redirect(site_url().'/main/register');*/
-}
-else
-{       
-      
-   $this->session->set_flashdata('flash_message', 'Please check the mail.');
-    redirect('user/profile',"refresh");
-}
-		
-					 }
-					
-					
-				
-	}
+			if(!$this->email->send())
+			{ 
+				echo "fail <br>";
+				echo $this->email->print_debugger();
+				/*$this->session->set_flashdata('flash_message', 'Password reset fail.');
+				redirect(site_url().'/main/register');*/
+			}
+			else
+			{       
+				  
+			   $this->session->set_flashdata('flash_message', 'Please check the mail.');
+				redirect('user/profile',"refresh");
+			}
+		    }				
+			}
 
 	public function checkUsername(){
 		$params =$this->input->post('uname');
@@ -203,7 +199,7 @@ else
 	}
 
 
-public function logout() {
+    public function logout() {
 	$user_id=$this->session->userdata('user_id');
 	
 	$unameTest=$this->users_model->UpdateOnline($user_id,0);
@@ -213,9 +209,9 @@ public function logout() {
 	$page_content['error'] = "Logged out successfully";
 	$page_content['title'] = 'Login';
 	redirect(base_url());
-}
+    }
 
-public function fetch_data() {
+    public function fetch_data() {
 	$opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
 	$session = $opentok->createSession(array(
 		'mediaMode' => MediaMode::ROUTED
@@ -226,8 +222,8 @@ public function fetch_data() {
 	$opentok_sessionid = $result['session_id'];
 	$opntok_tokenId = $opentok->generateToken($opentok_sessionid);
 	echo json_encode(array('sessionId'=>$opentok_sessionid,'tokenId'=>$opntok_tokenId));
-}
-public function newpass()
+    }
+    public function newpass()
 			{	
 			 	$this->load->view("user/newpass");
 			}

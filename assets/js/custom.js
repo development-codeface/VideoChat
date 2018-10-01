@@ -137,9 +137,9 @@ $( "#basicinfo" ).on('click', function (e) {
 					$("#visib" ).html('Private');
 				}
 				if(gender==1){
-				$("#genders" ).html("Female");
+				$("#genders" ).html("Male");
 				}else{
-				$("#genders" ).html("Male");	
+				$("#genders" ).html("Female");	
 				}
 				
 
@@ -172,9 +172,9 @@ $( "#locationSave" ).on('click', function (e) {
 			  // $("#country_id" ).innerHTML=
 				 $("#location-box").removeClass("open");
 				$(".wrapper").removeClass("overlay");
-				$("#country_ids" ).html(country_id);
-				$("#addres" ).html(address);
-				window.location.reload();
+				$("#country_ids" ).html(country);
+				 $("#country_ids" ).val(country);
+				
               }else{
 				$('#Eeror').hide();
       }
@@ -223,12 +223,12 @@ $( "#locationSave" ).on('click', function (e) {
 // interest save
  $( "#InterestSave" ).on('click', function (e) {
 
-  var interest=$("#interest" ).val();
+  var interest=$("#Interest_id").val();
  
-  if(country_id!=""){
+  if(interest!=""){
     $.ajax({
 		type: "POST",
-		url:site_url+"Profile/UpdateInterest",
+		url:site_url+"User/update_Interest",
 		data:'interest='+interest,
 		dataType: 'json',
 
@@ -236,9 +236,16 @@ $( "#locationSave" ).on('click', function (e) {
            if(data.status==1){
 			    $("#skills-box").removeClass("open");
 				$(".wrapper").removeClass("overlay");
-			 
-			 $("#Interest_ar" ).html(interest);
-              }else{
+			 if(interest==1){
+				$("#Interest_ar" ).html("Boy");
+				}else if(interest==2){
+				$("#Interest_ar" ).html("Girl");	
+				}else{
+				$("#Interest_ar" ).html("Others");	
+				}
+		   }
+				
+			else{
 				$('#Eeror').hide();
       }
 
@@ -294,7 +301,8 @@ function reload(){
     }, 5000);
 }
 function friendAccept(userId){
-	  var Uid = $("#uid").val();
+	  var Uid = $("#abc").val();
+	  alert(Uid);
 	  var frinedId = userId;
 	$.ajax({
 		type: "POST",
