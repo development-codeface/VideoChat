@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2018 at 03:34 PM
+-- Generation Time: Oct 02, 2018 at 03:43 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -219,7 +219,9 @@ INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`) VALUES
 (94, 39, 17, 0),
 (95, 34, 17, 0),
 (96, 40, 17, 1),
-(97, 17, 40, 1);
+(97, 17, 40, 1),
+(98, 25, 22, 0),
+(99, 42, 22, 0);
 
 -- --------------------------------------------------------
 
@@ -355,7 +357,9 @@ INSERT INTO `notification` (`n_id`, `messages`, `fri_id`, `user_id`, `cur_time`,
 (100, 'undefined send a friend request to you', 39, 17, '2018-10-01 18:14:20.134765', 0),
 (101, 'undefined send a friend request to you', 34, 17, '2018-10-01 18:14:31.209960', 0),
 (102, 'undefined send a friend request to you', 40, 17, '2018-10-01 18:14:37.304687', 0),
-(103, 'son Accepted your friend request', 17, 40, '2018-10-01 18:31:51.461914', 0);
+(103, 'son Accepted your friend request', 17, 40, '2018-10-01 18:31:51.461914', 0),
+(104, 'undefined send a friend request to you', 25, 22, '2018-10-02 10:53:10.252929', 0),
+(105, 'undefined send a friend request to you', 42, 22, '2018-10-02 10:53:17.919921', 0);
 
 -- --------------------------------------------------------
 
@@ -385,17 +389,17 @@ INSERT INTO `online_user` (`id`, `user_id`, `logged_time`, `status`, `logout_tim
 (38, 12, '2018-08-09 16:10:22', 1, NULL),
 (39, 8, '2018-08-13 14:31:29', 1, NULL),
 (40, 16, '2018-08-28 16:21:36', 1, NULL),
-(41, 17, '2018-09-04 15:16:48', 0, '2018-10-01 18:14:42'),
+(41, 17, '2018-09-04 15:16:48', 1, NULL),
 (42, 18, '2018-09-04 16:49:40', 0, '2018-10-01 11:57:38'),
 (43, 19, '2018-09-05 11:15:22', 0, '2018-09-05 11:17:31'),
 (44, 20, '2018-09-05 12:00:44', 0, '2018-09-05 12:25:22'),
 (45, 21, '2018-09-05 12:01:18', 0, '2018-09-05 12:26:09'),
-(46, 22, '2018-09-07 10:16:30', 0, '2018-10-01 11:17:01'),
+(46, 22, '2018-09-07 10:16:30', 0, '2018-10-02 10:53:21'),
 (47, 23, NULL, 0, '2018-09-11 09:42:46'),
-(48, 24, NULL, 0, '2018-09-24 17:09:29'),
+(48, 24, NULL, 0, '2018-10-02 19:06:09'),
 (49, 25, NULL, 0, '2018-09-13 14:56:52'),
 (50, 27, NULL, 0, '2018-10-01 17:35:16'),
-(51, 28, NULL, 1, NULL),
+(51, 28, NULL, 0, '2018-10-02 17:56:33'),
 (52, 31, NULL, 0, '2018-09-17 11:56:09'),
 (53, 32, NULL, 0, '2018-09-21 13:29:26'),
 (54, 33, NULL, 0, '2018-09-18 12:48:17'),
@@ -513,18 +517,18 @@ INSERT INTO `users` (`user_id`, `full_name`, `email`, `user_name`, `password`, `
 (14, 'samabhi', 'abhisam@gmail.com', 'samabhi', '202cb962ac59075b964b07152d234b70', 0, '0000-00-00', '9656566356', NULL, NULL, 1, '2018-08-09 14:47:01', NULL),
 (15, 'codeface', 'codeface@gmail.com', 'code', 'c13367945d5d4c91047b3b50234aa7ab', 0, '0000-00-00', '12', NULL, NULL, 1, '2018-08-09 15:19:38', NULL),
 (16, 'name', 'email@e.com', 'name', 'e10adc3949ba59abbe56e057f20f883e', 0, '0000-00-00', '2222', NULL, NULL, 1, '2018-08-28 16:21:28', NULL),
-(17, 'undefined', 'derin@gmail.com', 'der', 'd8578edf8458ce06fbc5bb76a58c5ca4', 2, '0000-00-00', '8089245010', NULL, NULL, 1, '2018-09-04 15:13:24', '2_MX40NjE2MzI5Mn5-MTUzNjIzNzM5NzYyOX4wdk1IVE1oVGZxV2tHMVNVam5vUW1oVmx-fg'),
+(17, 'undefined', 'derin@gmail.com', 'der', 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, '1970-01-01', '8089245010', NULL, NULL, 1, '2018-09-04 15:13:24', '2_MX40NjE2MzI5Mn5-MTUzNjIzNzM5NzYyOX4wdk1IVE1oVGZxV2tHMVNVam5vUW1oVmx-fg'),
 (18, 'manu', 'manu@gmail.com', 'manu', 'd8578edf8458ce06fbc5bb76a58c5ca4', 0, '0000-00-00', '78878778878787', NULL, NULL, 1, '2018-09-04 16:49:27', '2_MX40NjE2MzI5Mn5-MTUzNjIzNzQ5NTA4Mn54MUxxN1BJbUhzMGhqV04wQkZId29MbWx-fg'),
 (19, 'abc', 'abc@gmail.com', 'qqq', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', '12345678', NULL, NULL, 1, '2018-09-05 11:15:12', '2_MX40NjE2MzI5Mn5-MTUzNjEyNjM3ODMyOX41RHA5L1ZVT3NLV0xOWHhuVWhSSTR5L0J-fg'),
 (20, 'raja', 'raja@gmail.com', 'raja', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', '8089245010', NULL, NULL, 1, '2018-09-05 12:00:32', '2_MX40NjE2MzI5Mn5-MTUzNjEyOTAzODMyOH5mYTRoNVY2cjJORm02TGlVM2N5MW1DZ2h-fg'),
 (21, 'rani', 'rani@gmail.com', 'rani', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', '8089245010', NULL, NULL, 1, '2018-09-05 12:01:07', '2_MX40NjE2MzI5Mn5-MTUzNjEyOTA3MjE3NX5JWERmbVNlRUxldXdDTDliQnIyZnliYTl-fg'),
 (22, 'undefined', 'all@gmail.com', 'alp', 'd8578edf8458ce06fbc5bb76a58c5ca4', 2, '0000-00-00', '87878878787', NULL, NULL, 1, '2018-09-07 10:14:38', '2_MX40NjE2MzI5Mn5-MTUzNjI5NTU3OTI5Nn5tK0k0Mmc1aG95OXRuY3h1Y1NuY3M5RER-fg'),
 (23, 'dell', 'dell@gmail.com', 'dell', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', '8089245010', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjYzNzMyODQ1NH42eUc0U3J0a3hnVUpmTmU4TUZxY05Wcm1-fg'),
-(24, 'rem', 'rem@gmail.com', 'rem', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', '787887887878', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjgxNTU2NjAzMH4xMTFRYzE1c0ptYWVOTFZTV24zM0d5OGJ-fg'),
+(24, 'rem', 'rem@gmail.com', 'rem', '25d55ad283aa400af464c76d713c07ad', 1, '1990-11-11', '787887887878', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjgxNTU2NjAzMH4xMTFRYzE1c0ptYWVOTFZTV24zM0d5OGJ-fg'),
 (25, 'bijo', 'bijo@mail.com', 'bijo', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '57637567756', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjgyMTg0OTkxOH56Y1RsUFV2aTFvZzFoZFVLcTNJMW02NGF-fg'),
 (26, 'vbvb', 'dfh@mail.comyh', '55', '949be6221e0a43f9a1f3725c7ae52bec', 2, '0000-00-00', '45767575', NULL, NULL, 1, NULL, NULL),
 (27, 'alphnse', 'apll@djhjd.com', 'alphnse', '25d55ad283aa400af464c76d713c07ad', 2, '2011-11-11', '5456456456', NULL, NULL, 1, NULL, '2_MX40NjE2MzI5Mn5-MTUzNjgyOTI0MTI5Mn5QSUxDQlZ3SWh4Q0F5ZVVGSFoxdXdpNG9-fg'),
-(28, 'derin', 'der@xdgd.com', 'derin', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '789797899', NULL, NULL, 1, '2018-09-14 18:16:18', '1_MX40NjE2MzI5Mn5-MTUzNjkyOTE5NTc5NX5VUkNuU2hNMUpoZmR0Zkc3WlBLUmZJZG9-fg'),
+(28, 'son', 'der@xdgd.com', 'derin', '25d55ad283aa400af464c76d713c07ad', 1, '1990-01-01', '789797899', NULL, NULL, 1, '2018-09-14 18:16:18', '1_MX40NjE2MzI5Mn5-MTUzNjkyOTE5NTc5NX5VUkNuU2hNMUpoZmR0Zkc3WlBLUmZJZG9-fg'),
 (29, 'rt', 'rttt@cghcfj', 'rt', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '78987978789', NULL, NULL, 1, '2018-09-14 18:37:18', NULL),
 (30, 'sa', 'cfemp08wd@gmail.com', 'kuttu', '363ab055963fb24eff2cfc02437ec228', 1, '0000-00-00', '76898090980', NULL, NULL, 1, '2018-09-14 18:59:52', NULL),
 (31, 'abc', 'hderin@gmail.com', 'ooo', '25d55ad283aa400af464c76d713c07ad', 2, '0000-00-00', '5447477564', NULL, NULL, 1, '2018-09-14 19:46:08', '2_MX40NjE2MzI5Mn5-MTUzNjkzNDU4MTI1N35QSVRYSzltWWRqbE00SHRJSjhKTUdHRjJ-fg'),
@@ -588,7 +592,8 @@ INSERT INTO `user_feed` (`id`, `user_id`, `feeds`, `no_likes`, `status`, `create
 (14, 24, 'remm', 2, 1, '2018-09-24 17:09:00'),
 (15, 24, 'alp watch me\r\n', 1, 1, '2018-09-24 17:09:10'),
 (16, 22, 'cvcvnncnncn', 1, 1, '2018-09-27 16:29:52'),
-(17, 17, 'likeeeeee', 1, 1, '2018-09-27 18:51:18');
+(17, 17, 'likeeeeee', 1, 1, '2018-09-27 18:51:18'),
+(18, 28, 'bhjj', 0, 1, '2018-10-02 16:36:34');
 
 -- --------------------------------------------------------
 
@@ -622,7 +627,15 @@ INSERT INTO `user_photos` (`id`, `user_id`, `file_name`, `create_at`, `status`) 
 (11, 17, 'download.jpg', '2018-09-19 15:00:45', 1),
 (12, 17, 'download (2).jpg', '2018-09-19 15:00:59', 1),
 (13, 17, 'download (1).jpg', '2018-09-19 15:01:10', 1),
-(14, 17, 'Desert.jpg', '2018-09-24 17:42:45', 1);
+(14, 17, 'Desert.jpg', '2018-09-24 17:42:45', 1),
+(15, 17, 'download (4).jpg', '2018-10-02 10:05:35', 0),
+(16, 17, 'download (5).jpg', '2018-10-02 10:05:51', 0),
+(17, 17, 'images (1).jpg', '2018-10-02 10:06:04', 0),
+(18, 17, 'images.jpg', '2018-10-02 10:06:13', 0),
+(19, 17, 'Hydrangeas.jpg', '2018-10-02 10:10:17', 0),
+(20, 28, 'download.jpg', '2018-10-02 11:01:43', 0),
+(21, 28, 'download.jpg', '2018-10-02 11:26:54', 1),
+(22, 28, 'download (9).jpg', '2018-10-02 11:27:36', 0);
 
 -- --------------------------------------------------------
 
@@ -643,65 +656,66 @@ CREATE TABLE `user_profile` (
   `address` text,
   `country_id` varchar(255) DEFAULT NULL,
   `interest_area` text,
-  `created_at` datetime DEFAULT CURRENT_TIMESTAMP
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `age_hide` int(2) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_profile`
 --
 
-INSERT INTO `user_profile` (`id`, `user_id`, `gender`, `dob`, `visibility`, `nick_name`, `profile_pic`, `cover_photo`, `description`, `address`, `country_id`, `interest_area`, `created_at`) VALUES
-(1, 2, 2, '', 'true', 'tesr', NULL, NULL, 'testing', NULL, NULL, NULL, '2018-07-24 13:56:25'),
-(3, 1, 2, '2018-07-11', 'true', 'ramu', NULL, 'company-cover.jpg', 'Testing Make sense means perfects', 'Perumkadavila', 'India', 'Boy', '2018-07-24 14:40:39'),
-(4, 3, 2, '', 'false', 'Tester', NULL, NULL, 'testing purpose', NULL, 'India', NULL, '2018-07-24 14:40:51'),
-(5, 5, 1, NULL, 'true', NULL, NULL, NULL, NULL, NULL, 'India', NULL, '2018-07-24 14:40:51'),
-(6, 8, 1, '10/04/1987', 'false', 'hhhh', NULL, NULL, NULL, 'asas', 'Country', NULL, '2018-07-30 20:54:56'),
-(7, 9, 1, '2018-08-05', 'true', 'sam123', '75b6533d-1537-4b6f-bc16-b1944d467715.jpg', '01_(1).jpg', 'jbsafhgafgjabfbjgafm', 'kerala', 'Kazakhstan', 'Boy', '2018-07-30 22:13:48'),
-(8, 10, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-31 23:36:32'),
-(9, 11, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-01 00:05:32'),
-(10, 12, NULL, NULL, 'true', NULL, 'about-absolute.png', NULL, NULL, NULL, NULL, NULL, '2018-08-01 15:19:38'),
-(11, 13, 1, '', 'false', 'abcd1', NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-01 16:16:22'),
-(12, 14, 2, '2018-08-17', 'true', 'samual', NULL, NULL, 'hfhghbnhgvbnvhgjhjhjmbmjhk', 'keral', 'India', NULL, '2018-08-09 14:47:01'),
-(13, 15, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-09 15:19:38'),
-(14, 16, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-28 16:21:28'),
-(15, 17, 0, 'undefined', 'false', 'undefined', 'm-img4.png', 'download (7).jpg', 'dgdgdfghrfg', 'undefined', '5', NULL, '2018-09-04 15:13:24'),
-(16, 18, NULL, NULL, 'true', NULL, 'Koala.jpg', NULL, NULL, NULL, NULL, NULL, '2018-09-04 16:49:28'),
-(17, 19, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 11:15:12'),
-(18, 20, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:00:33'),
-(19, 21, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:01:07'),
-(20, 22, 0, 'undefined', 'false', 'undefined', NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-07 10:14:38'),
-(21, 23, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(22, 24, NULL, NULL, 'true', NULL, 'download (4).jpg', NULL, NULL, NULL, NULL, NULL, NULL),
-(23, 25, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(24, 26, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(25, 27, 1, '', 'false', 'all', 'fbcp.jpg', 'fbcp3.jpg', 'fghfhfgffgasdfff', 'undefined', '10', '2', NULL),
-(26, 28, NULL, NULL, 'true', NULL, NULL, NULL, NULL, 'undefined', '6', NULL, '2018-09-14 18:16:18'),
-(27, 29, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 18:37:18'),
-(28, 30, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 18:59:52'),
-(29, 31, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 19:46:08'),
-(30, 32, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-17 09:41:17'),
-(31, 33, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-18 12:38:48'),
-(32, 34, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-19 16:33:58'),
-(33, 35, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-19 18:03:25'),
-(34, 36, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-20 10:58:44'),
-(35, 37, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-20 12:41:10'),
-(36, 38, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 14:10:21'),
-(37, 39, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 14:11:01'),
-(38, 40, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, '2', '2018-09-21 14:42:00'),
-(39, 41, 2, '2000-11-11', 'false', 'nna', NULL, NULL, 'grfgfddddddddddddddddddddddddddddddddddddddddddddddddddddd', 'sss', 'Country', NULL, '2018-09-21 16:27:25'),
-(40, 42, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 16:28:00'),
-(41, 43, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 11:50:34'),
-(42, 44, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 11:57:09'),
-(43, 46, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 12:03:34'),
-(44, 47, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 12:26:34'),
-(45, 48, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:02:11'),
-(46, 49, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:05:30'),
-(47, 50, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:22:16'),
-(48, 51, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:23:36'),
-(49, 52, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 16:13:54'),
-(50, 53, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 19:05:39'),
-(51, 54, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:02:44'),
-(52, 55, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:12:30');
+INSERT INTO `user_profile` (`id`, `user_id`, `gender`, `dob`, `visibility`, `nick_name`, `profile_pic`, `cover_photo`, `description`, `address`, `country_id`, `interest_area`, `created_at`, `age_hide`) VALUES
+(1, 2, 2, '', 'true', 'tesr', NULL, NULL, 'testing', NULL, NULL, NULL, '2018-07-24 13:56:25', 1),
+(3, 1, 2, '2018-07-11', 'true', 'ramu', NULL, 'company-cover.jpg', 'Testing Make sense means perfects', 'Perumkadavila', 'India', 'Boy', '2018-07-24 14:40:39', 1),
+(4, 3, 2, '', 'false', 'Tester', NULL, NULL, 'testing purpose', NULL, 'India', NULL, '2018-07-24 14:40:51', 1),
+(5, 5, 1, NULL, 'true', NULL, NULL, NULL, NULL, NULL, 'India', NULL, '2018-07-24 14:40:51', 1),
+(6, 8, 1, '10/04/1987', 'false', 'hhhh', NULL, NULL, NULL, 'asas', 'Country', NULL, '2018-07-30 20:54:56', 1),
+(7, 9, 1, '2018-08-05', 'true', 'sam123', '75b6533d-1537-4b6f-bc16-b1944d467715.jpg', '01_(1).jpg', 'jbsafhgafgjabfbjgafm', 'kerala', 'Kazakhstan', 'Boy', '2018-07-30 22:13:48', 1),
+(8, 10, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-31 23:36:32', 1),
+(9, 11, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-01 00:05:32', 1),
+(10, 12, NULL, NULL, 'true', NULL, 'about-absolute.png', NULL, NULL, NULL, NULL, NULL, '2018-08-01 15:19:38', 1),
+(11, 13, 1, '', 'false', 'abcd1', NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-01 16:16:22', 1),
+(12, 14, 2, '2018-08-17', 'true', 'samual', NULL, NULL, 'hfhghbnhgvbnvhgjhjhjmbmjhk', 'keral', 'India', NULL, '2018-08-09 14:47:01', 1),
+(13, 15, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-09 15:19:38', 1),
+(14, 16, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-28 16:21:28', 1),
+(15, 17, 0, 'undefined', 'false', 'undefined', 'm-img4.png', 'download (7).jpg', 'dgdgdfghrfg', 'undefined', '3', '1', '2018-09-04 15:13:24', 1),
+(16, 18, NULL, NULL, 'true', NULL, 'Koala.jpg', NULL, NULL, NULL, NULL, NULL, '2018-09-04 16:49:28', 1),
+(17, 19, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 11:15:12', 1),
+(18, 20, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:00:33', 1),
+(19, 21, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:01:07', 1),
+(20, 22, 0, 'undefined', 'false', 'undefined', NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-07 10:14:38', 1),
+(21, 23, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(22, 24, NULL, NULL, 'false', '', 'download (4).jpg', NULL, NULL, NULL, NULL, NULL, NULL, 2),
+(23, 25, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(24, 26, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(25, 27, 1, '', 'false', 'all', 'fbcp.jpg', 'fbcp3.jpg', 'fghfhfgffgasdfff', 'undefined', '10', '2', NULL, 1),
+(26, 28, NULL, NULL, 'false', '', NULL, NULL, NULL, 'undefined', '6', NULL, '2018-09-14 18:16:18', 1),
+(27, 29, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 18:37:18', 1),
+(28, 30, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 18:59:52', 1),
+(29, 31, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 19:46:08', 1),
+(30, 32, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-17 09:41:17', 1),
+(31, 33, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-18 12:38:48', 1),
+(32, 34, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-19 16:33:58', 1),
+(33, 35, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-19 18:03:25', 1),
+(34, 36, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-20 10:58:44', 1),
+(35, 37, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-20 12:41:10', 1),
+(36, 38, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 14:10:21', 1),
+(37, 39, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 14:11:01', 1),
+(38, 40, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, '2', '2018-09-21 14:42:00', 1),
+(39, 41, 2, '2000-11-11', 'false', 'nna', NULL, NULL, 'grfgfddddddddddddddddddddddddddddddddddddddddddddddddddddd', 'sss', 'Country', NULL, '2018-09-21 16:27:25', 1),
+(40, 42, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 16:28:00', 1),
+(41, 43, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 11:50:34', 1),
+(42, 44, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 11:57:09', 1),
+(43, 46, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 12:03:34', 1),
+(44, 47, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 12:26:34', 1),
+(45, 48, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:02:11', 1),
+(46, 49, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:05:30', 1),
+(47, 50, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:22:16', 1),
+(48, 51, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:23:36', 1),
+(49, 52, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 16:13:54', 1),
+(50, 53, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 19:05:39', 1),
+(51, 54, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:02:44', 1),
+(52, 55, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:12:30', 1);
 
 --
 -- Indexes for dumped tables
@@ -801,7 +815,7 @@ ALTER TABLE `feed_like`
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `hide_post`
@@ -813,7 +827,7 @@ ALTER TABLE `hide_post`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `n_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `n_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `online_user`
@@ -843,13 +857,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_feed`
 --
 ALTER TABLE `user_feed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user_photos`
 --
 ALTER TABLE `user_photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `user_profile`

@@ -112,6 +112,12 @@ class User extends  CI_Controller {
 		$return=$this->users_model->Updateintrest($intr,$this->UserId);
 		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
 	}
+	public function update_age(){
+		$age =$this->input->post('age');
+		
+		$return=$this->users_model->ageintrest($age,$this->UserId);
+		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
+	}
 
 	public function UpdateOverview(){
 		$params['description'] =$this->input->post('description');

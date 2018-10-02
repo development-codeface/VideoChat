@@ -229,6 +229,14 @@
 	       $query = $this->db->query("UPDATE  user_profile SET interest_area=$params where user_id=$user_id" );
 		     return 1;
 	}
+	public function ageintrest($params,$user_id){
+	       $query = $this->db->query("UPDATE  user_profile SET age_hide=$params where user_id=$user_id" );
+		     return 1;
+	}
+	public function fetch_dob($user_id){
+	       $query = $this->db->query("select dob from users  where user_id=$user_id" );
+		   return $query->result_array();
+	}
 	public function UpdateLocation($params,$user_id){
 	         $this->db->where('user_id',$user_id);
 		     $this->db->update('user_profile',$params);

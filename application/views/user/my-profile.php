@@ -99,7 +99,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 											<?php }?>
 											
 											<div class="sgt-text">
-													<h4><?php if($frq->full_name!=""){ echo $frq->full_name ;}else { echo $frq->nick_name;}?>
+													<h4><?php echo $frq->full_name ;?>
 													
 												</div></a>
 													<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
@@ -161,6 +161,12 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 														<i class="fa fa-address-card col-sdd" aria-hidden="true"></i>
 														<span>My Friend list</span>
 													</a>
+												</li>	
+												<li data-tab="my-str-list">
+													<a href="#" title="">
+														<i class="fa fa-address-card col-sdd" aria-hidden="true"></i>
+														<span>Stranger Friend list</span>
+													</a>
 												</li>
 												<!--li data-tab="payment-dd">
 													<a href="#" title="">
@@ -199,7 +205,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 													
 														
 														<div class="usy-name">
-															<h3><?php if($fd->full_name!=""){ echo $fd->full_name ;}else { echo $fd->nick_name;}?></h3>
+															<h3><?php  echo $fd->full_name ;?></h3>
 															<span>
 1 hr</span> &nbsp;<span><i class="fa fa-flag" aria-hidden="true"></i> <?php echo $fd->country;?></span>
 														</div>
@@ -315,7 +321,53 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 											
 											<h4 id="country_ids"><?php  echo $mydata['country'];?></h4>
 											
-										</div><!--user-profile-ov end-->
+										</div><!--user-age-ov end-->
+										
+										
+										
+										
+										
+											<div class="user-profile-ov st2">
+									<h3> <i class="fa fa-heart" aria-hidden="true"></i> Age  <a href="#" title="" class="ed-box-open pull-right"><i class="fa fa-pencil-square-o"></i> <span class="ed_bt"> Edit</span></a> </h3>
+									
+									
+																				
+																				<table class="tabl-cus">
+
+											  <tr>
+												<td class="pers">Age</td>
+												<td><i id="age"> <?php  echo $age;?></i></td>
+											  
+											  
+																							
+											  </tr>
+											 
+											  
+											</table>
+											<ul>
+											<?php if($mydata['age_hide']==1)
+											{
+												?>
+											
+												<li ><a href="#" title="" id="age_ar"><?php echo "Public" ;?></a></li>
+												<?php
+											}
+												else
+												{
+													?>
+													<li ><a href="#" title="" id="age_ar"><?php echo "Private" ;?></a></li>
+												<?php
+												} ?>
+												
+											</ul>
+
+										
+										
+										</div>
+										
+										
+										
+										
 										<div class="user-profile-ov">
 											<h3> <i class="fa fa-pencil" aria-hidden="true"></i> Description  <a href="#" title="" class="overview-open pull-right"><i class="fa fa-pencil-square-o "></i> <span class="ed_bt"> Edit</span></a></h3>
 											<p id="descriptions"><?php  echo $mydata['description'];?></p>
@@ -326,8 +378,19 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 										<div class="user-profile-ov">
 											<h3> <i class="fa fa-heart" aria-hidden="true"></i> Interest  <a href="#" title="" class="skills-open pull-right"><i class="fa fa-pencil-square-o"></i> <span class="ed_bt"> Edit</span></a> </h3>
 											<ul>
-												<li ><a href="#" title="" id="Interest_ar"><?php echo $mydata['interest_area'] ;?></a></li>
-												
+											<?php if($mydata['interest_area']==1)
+											{
+												?>
+											
+												<li ><a href="#" title="" id="Interest_ar"><?php echo "Boy" ;?></a></li>
+												<?php
+											}
+												else
+												{
+													?>
+													<li ><a href="#" title="" id="Interest_ar"><?php echo "Girl" ;?></a></li>
+												<?php
+												} ?>
 												
 											</ul>
 										</div><!--user-profile-ov end-->
@@ -339,7 +402,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
  <div class="row">
 <div class="">
 													
-			  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadPhotos/'; ?>" id="">
+			  <form method="post" enctype="multipart/form-data" class="form-horizontal" action="" id="myimg" name="myimg">
 
 										
 												<div class="job_descp">
@@ -351,7 +414,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
   </div>
 </div>
 <div class="col-lg-3"><div class="job-status-bar">
-												<button type="submit" name="photoup" class="btn btn-success">Upload </button>
+												<button type="submit" name="photoup" id="photoup" class="btn btn-success">Upload </button>
 												</div></div>
 										
 												</div>
@@ -360,8 +423,12 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 												</form>
 												<div class="gallery_pf">
 		<div class="row">
-												<?php	foreach( $image as $row )
-												{?>
+												<?php $i=1;	foreach( $image as $row )
+												{
+													if($i<=3)
+													{
+														$i++;
+													?>
 												
 												 <div class="col-lg-3  thumb containerg">
                                                                 <a class="thumbnail" href="<?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" data-lightbox="imgGLR"><img class="img-responsive" border="0" height="300" src="<?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" ></a>
@@ -380,7 +447,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 													</div-->
 												
 													<?php
-												}
+												}}
 												?>
 													</div>
 													</div>
@@ -434,6 +501,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 		
 		
 		<?php if(!empty($photos)){
+			
 			foreach($photos as $ph){?>
      
 			<div class="col-lg-3  thumb"><a class="thumbnail" href="<?php echo base_url().'uploads/photos/'.$ph->file_name;?>" data-lightbox="imgGLR" >
@@ -484,7 +552,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 							  					
 							  					</div>
 							  					<div class="request-info">
-							  						<h3><?php if($frq->full_name!=""){ echo $frq->full_name ;}else { echo $frq->nick_name;}?></h3>
+							  						<h3><?php  echo $frq->full_name ;?></h3>
 							  						
 							  					</div>
 							  					<div class="accept-feat">
@@ -565,6 +633,23 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
 										</div>  --><?php }?>
+						
+								</div>
+									</div>
+									<div class="product-feed-tab" id="my-str-list">
+										<div class="row">
+										
+									
+								
+								</div>
+			
+							</div><!--company_profile_info end-->
+						</div>
+									
+						<!-- <div class="download-box alert">
+<div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
+
+										</div>  -->
 						
 								</div>
 									</div>
@@ -824,20 +909,6 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 			</div><!--overview-edit end-->
 		</div><!--overview-box end-->
 
-		<div class="overview-box" id="education-box">
-			<div class="overview-edit">
-				<h3>Edit Feed</h3>
-				
-				<form name="editform" id="editform">
-				<input type="hidden" name="feed-id"  id="feed-id" />
-					<textarea id="feed-edit" name="feed-edit"  ></textarea>
-					<button type="submit" class="save">Save</button>
-				<a href="<?php echo base_url()."index.php/User/Profile/"?>	<button type="button" class="cancel">Cancel</button></a>
-				</form>
-				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
-			</div><!--overview-edit end-->
-		</div><!--overview-box end-->
-		
 		<div class="overview-box" id="location-box">
 			<div class="overview-edit">
 				<h3><i class="fa fa-map-marker" aria-hidden="true"></i> Location</h3>
@@ -884,6 +955,40 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 			</div><!--overview-edit end-->
 		</div><!--overview-box end-->
 
+		
+		
+		
+		<div class="overview-box" id="education-box">
+			<div class="overview-edit">
+				<h3>Age privacy</h3>
+				
+				<form>
+				<div class="datefm">
+						<select name="age_id" id="age_id">
+							 <option value="1">Public</option>
+    <option value="2">Private</option>
+   
+	
+
+
+							
+						</select>
+						<i class="fa fa-sort-desc" aria-hidden="true"></i>
+					</div>
+		
+  <p class="sav_bt">	<button type="button" class="save" id="agesave">Save</button>
+				
+					 
+					</p>
+					
+				
+					 
+				</form>
+				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+			</div><!--overview-edit end-->
+		</div><!--overview-box end-->
+		
+		
 		<div class="overview-box" id="skills-box">
 			<div class="overview-edit sign_in_sec " style="display:block;">
 				<h4><i class="fa fa-heart" aria-hidden="true"></i> Interest</h4>
@@ -913,6 +1018,56 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
 			</div><!--overview-edit end-->
 		</div><!--overview-box end-->
+		
+		
+		
+		
+		
+		
+		
+		<div class="overview-box" id="age-box">
+			<div class="overview-edit sign_in_sec " style="display:block;">
+				<h4><i class="fa fa-heart" aria-hidden="true"></i> Interest</h4>
+	
+				<form>
+				<div class="datefm">
+						<select name="Interest_id" id="Interest_id">
+							 <option value="1">Boy</option>
+    <option value="2">Girl</option>
+    <option value="3">Other</option>
+	
+
+
+							
+						</select>
+						<i class="fa fa-sort-desc" aria-hidden="true"></i>
+					</div>
+		
+  <p class="sav_bt">	<button type="button" class="save" id="InterestSave">Save</button>
+				
+					 
+					</p>
+					
+				
+					 
+				</form>
+				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+			</div><!--overview-edit end-->
+		</div><!--overview-box end-->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 		<div class="overview-box" id="create-portfolio">
 			<div class="overview-edit">
@@ -1207,4 +1362,116 @@ function deleteimg() {
     normalConnection();
 </script>
 
-	
+
+<!--------------------------------------Form Validation script---------------------------->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.22.0/js/jquery.fileupload.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.22.0/js/vendor/jquery.ui.widget.js"></script>
+
+<!--script type="text/javascript" src="<!?php echo base_url(); ?>js/jquery_validation/jquery.validate.js"></script-->
+<script type="text/javascript"> 
+   $("#myimg").validate({
+
+            rules: {
+            photopublic:"required"
+		
+             },
+            messages: {
+              
+		 photopublic:"Please choose the file"
+		   }
+    
+	   });	
+</script>
+
+
+<script>
+
+$('#Image').fileupload({
+
+               url:site_url+"Profile/postFileUpload",
+               dataType: 'json',
+               //formData : {_token:token},
+               add: function (e, data) {
+                   var fileType = data.files[0].name.split('.').pop(), allowdtypes = 'jpg,jpeg,png,gif';
+
+
+                   if (allowdtypes.indexOf(fileType) < 0) {
+                       alert('Sorry,JPG PNG GIF are allowed.');
+                       return false;
+                   }
+
+                   if( data.files[0]['size'] > 1000000) { //10MB
+                       alert('Filesize is too big');
+                       return false;
+                   }
+                   data.submit();
+               },progressall: function (e, data) {
+                   $("#progress").show();
+
+                   var progress = parseInt(data.loaded / data.total * 100, 10);
+
+                   $('#progress .progress-bar').css('width',progress + '%');
+               },
+               done: function (e, data) {
+                   $.each(data.result.files, function (index, file) {
+                       var url = "";
+
+                       if(file.type == "image/jpeg" || file.type == "image/jpg" || file.type == "image/png" || file.type == "image/gif" ){
+                           var urlRoute = "{{ asset('data/temp/') }}/";
+
+                           url = "<img src='"+urlRoute+file.name+"' style='max-width: 50px;'/>";
+                       }
+                       var html = '<tr ><td><a href="#" class="fancybox-button" data-rel="fancybox-button">'+url+'<input type="hidden" name="fileURLs[]" value="'+file.name+'"  /></td><td><a href="javascript:;" class="btn default btn-sm removeImage"  id=""><i class="fa fa-times"></i> Remove </a> </td> </tr>';
+                       $('#ImagePrevs').html(html);
+                   });
+
+                   $("#progress").hide();
+                   var $ImagePrevs = $('#ImagePrevs');
+
+               },
+
+
+           })
+
+
+
+
+ $( "form#myimg" ).submit(function(e) {
+
+   e.preventDefault();    
+    var formData = new FormData(this);
+
+    $.ajax({
+		type: "POST",
+		url:site_url+"Profile/UploadPhotos",
+		data: formData,
+		dataType: 'json',
+
+        success: function(data) {
+           if(data.status==1){
+			    $("#education-box").removeClass("open");
+				$(".wrapper").removeClass("overlay");
+				location.reload();
+			 
+              }else{
+				$('#Eeror').hide();
+      }
+
+    },
+
+
+  });
+  return false;
+
+});
+
+
+
+
+
+
+
+
+
+</script>

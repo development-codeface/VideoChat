@@ -298,6 +298,47 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 											</div>
 											
 										</div><!--user-profile-ov end-->
+										
+										
+										
+										
+										
+													<?php if($mydata['age_hide']==)
+											{
+												
+		$from = new DateTime($mydata['dob']);
+		$to   = new DateTime('today');
+		$age= $from->diff($to)->y;
+												?>
+											<div class="user-profile-ov st2">
+									<h3> <i class="fa fa-heart" aria-hidden="true"></i> Age  <a href="#" title="" class="ed-box-open pull-right"><i class="fa fa-pencil-square-o"></i> <span class="ed_bt"> Edit</span></a> </h3>
+									
+									
+									
+																					<table class="tabl-cus">
+
+												  <tr>
+													<td class="pers">Age</td>
+													<td><i id="full_names"> <?php  echo $age;?></i></td>
+												  
+												  
+																								
+												  </tr>
+												 
+												  
+												</table>
+												<ul>
+										
+											</ul>
+
+										
+										
+										</div>
+										
+												<?php
+												} ?>
+												
+										
 										<div class="user-profile-ov">
 											<h3><i class="fa fa-pencil" aria-hidden="true"></i> Description</h3>
 												<div class="locpad">

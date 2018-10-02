@@ -258,6 +258,42 @@ $( "#locationSave" ).on('click', function (e) {
 });
 
 
+// age save
+ $( "#agesave" ).on('click', function (e) {
+
+  var age=$("#age_id").val();
+ 
+  if(age!=""){
+    $.ajax({
+		type: "POST",
+		url:site_url+"User/update_age",
+		data:'age='+age,
+		dataType: 'json',
+
+        success: function(data) {
+			
+			if(data.status==1){
+			 $("#education-box").removeClass("open");
+				$(".wrapper").removeClass("overlay");
+				 if(age==1){
+				$("#age_ar" ).html("public");
+				}else{
+				$("#age_ar" ).html("private");	
+				}
+		   }
+				  
+				
+			else{
+				$('#Eeror').hide();
+      }
+		},
+         
+  });
+  return false;
+}
+});
+
+
 
 //overview save
 

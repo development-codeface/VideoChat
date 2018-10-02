@@ -25,8 +25,17 @@ class Profile extends  CI_Controller {
 		$this->data['friendList']  = $this->users_model->GetFriendList($this->UserId) ;
 		$this->data['profileViewer']  = $this->profile_model->GetProfileViewerList($this->UserId) ;
 		$this->data['friendsRequest'] =    $this->users_model->GetFriendsRequest($this->UserId) ;
+		$this->data['date']=    $this->users_model->fetch_dob($this->UserId) ;
+		foreach($this->data['date'] as $dos)
+		{
+			$dob=$dos['dob'];
+		}
+		$from = new DateTime($dob);
+		$to   = new DateTime('today');
+		$age= $from->diff($to)->y;
+		$this->data['age'] = $age;
 		$this->data['mydata'] =    $this->users_model->GetMyData($this->UserId) ;
-		// print_r($this->data['mydata']);exit;
+		//print_r($this->data['age']);exit;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 	    $this->data['image'] =    $this->users_model->imageinfo($this->UserId) ;
 		$this->data['countries'] = $this->users_model->getAllcountries();
@@ -47,6 +56,7 @@ class Profile extends  CI_Controller {
 		$this->data['photos']  = $this->profile_model->GetUserPhotos($friendId) ;
 		$this->data['profileViewer']  = $this->profile_model->GetProfileViewerList($friendId) ;
 		$this->data['mydata'] =    $this->users_model->GetMyData($friendId) ;
+		
 		//print_r($this->data['photos']);exit;
 		$this->data['feeds']   =    $this->profile_model->GetUserfeeds($friendId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
@@ -420,9 +430,11 @@ class Profile extends  CI_Controller {
 			public function UploadPhotos()
 			{ 
 			
-		       $user_id=$_POST['abc'];
+			 $user_id =$this->input->post('id');
+			
+		      
 		     
-                     $flag=0;
+                $flag=0;
                $file=$_FILES['photopublic'];
                $file_name = $file['name'];
                $file_tmp = $file['tmp_name'];   
@@ -475,7 +487,15 @@ class Profile extends  CI_Controller {
 			}
 			
 			
-     
+     public function postFileUpload(){
+echo "ggsdfgsd";exit;
+       $option = array(
+
+           'upload_dir' => 'data/temp/',
+       );
+
+       //$upload_handler = new UploadFileHandler($option);
+   }
 
 	
 }
