@@ -16,7 +16,22 @@
 		</footer>
 
 	</div><!--theme-layout end-->
+<script type="text/javascript" >
 
+
+    var box = $('.ed-options');
+    var link = $('.ed-opts-open');
+    $(document).click(function() {
+        box.hide(); //box1.hide();
+    });
+    box.click(function(e) {
+        e.stopPropagation();
+    });
+	$(".ed-opts-open").on("click", function(){
+	$(this).parent('.form_wrapper').find(box).show();
+});
+
+</script>
 <script>
   var site_url='<?php  echo base_url();?>index.php/';
   </script>

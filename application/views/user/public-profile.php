@@ -15,6 +15,14 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
                               <div class="card card-body text-white sepro">
                        <div class="row pb-3">
                            <div class="col-md-12">
+						   <div class="comp_rgt">
+					<div class="search-bar">
+						<form method="post" action="http://localhost/videoCHAT-master/index.php/Profile/searchFreiend_name" name="serachfriend" id="serachfriend">
+							<input type="text" name="search" id="search" placeholder="Search...">
+							<button type="submit"><i class="la la-search"></i></button>
+						</form>
+					</div>
+				</div>
                                <h4><i class="fa fa-search" aria-hidden="true"></i> Search Public Profile  </h4>
                            </div>
                        </div>
@@ -27,9 +35,11 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 			  <label for="focusedInput">I'm looking for:</label>
 			  <div class="custom-select">
 				<select name="looking">
-				<option value="3">Friends</option>
-				<option value="2">A guy</option>
-				<option value="1">A girl</option>
+				
+				<option value="3" >Others</option>
+				<option value="1">A guy</option>
+				<option value="2">A girl</option>
+				
 			</select>
 </div>
 </div>
@@ -40,9 +50,10 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
       <label for="focusedInput">Age:</label>
 	  		  <div class="custom-select">
   <select name="age">
-               <option>18-20 years old</option>
-    <option>20-22 years old</option>
-    <option>22-25 years old</option>
+  
+                <option value="1">18-20 years old</option>
+    <option value="2">20-22 yeaffrs old</option>
+    <option value="3">22-25 years old</option>
   </select>
 </div>
      

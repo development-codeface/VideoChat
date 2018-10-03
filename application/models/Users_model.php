@@ -266,12 +266,8 @@
 	}
 	///search friends
 	public function GetSearchFriends($params){
-		if($params['gender']==3){
-			/*$result = $this->db->query('SELECT DISTINCT(us.user_id),up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
-			user_profile up  ON up.user_id=us.user_id
-		WHERE us.user_id not in(select fm.friend_id from friends fm where fm.user_id ='.$params['user_id'].')  AND up.country_id="'.$params['country'].'"
-		AND us.user_id !='.$params['user_id'] .' and 
-		up.visibility="true" ORDER BY us.user_id');*/
+		if($params['country']==0){
+		
 		$result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
 			user_profile up  ON up.user_id=us.user_id
 		WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id ='.$params['user_id'].')
@@ -289,12 +285,35 @@
 		INNER JOIN  user_profile up  ON up.user_id=us.user_id
 		 JOIN  countries uc  ON uc.C_id=up.country_id
 		WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id ='.$params['user_id'].') 
-		and  us.user_id !='.$params['user_id'] .' AND up.country_id ='.$params['country'] .' and 
+		and  us.gender ='.$params['gender'] .' AND  us.age BETWEEN '.$params['age_from'] .' AND '.$params['age_to'] .' AND us.user_id !='.$params['user_id'] .' AND up.country_id ='.$params['country'] .' and 
 		up.visibility="true" ORDER BY us.user_id');
-		
+		//echo $this->db->last_query();
 		//us.gender ='.$params['gender'].' AND
 		return $result->result() ; 
 		}
+	   
+	}	
+	///derin
+	
+	public function GetSearchFriends_name($params,$check){
+		
+			/*$result = $this->db->query('SELECT DISTINCT(us.user_id),up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+			user_profile up  ON up.user_id=us.user_id
+		WHERE us.user_id not in(select fm.friend_id from friends fm where fm.user_id ='.$params['user_id'].')  AND up.country_id="'.$params['country'].'"
+		AND us.user_id !='.$params['user_id'] .' and 
+		up.visibility="true" ORDER BY us.user_id');*/
+		$this->db->select( 'us.user_id,up.profile_pic,up.nick_name,us.full_name,us.gender');
+			$this->db->from('users us');
+			
+			$this->db->join('user_profile up', 'up.user_id=us.user_id','INNER');
+			
+			
+		    $this->db->like('us.full_name',$check);  
+			$this->db->group_by('us.user_id'); 
+		
+			$result=$this->db->get()->result();
+			return $result;
+		
 	   
 	}
 	public function insert_session($uid,$sess){
@@ -367,7 +386,8 @@
 		{
 	     	$query = $this->db->query("update  user_photos set status='1' where id=$img_id " );
 			return 1;
-	    }		
+	    }	
+		
 		function getAllcountries()
 		{
 	
@@ -376,6 +396,22 @@
 
 
         return $query->result();
+
+      
+	    }	
+		function friendage($uid)
+		{
+	
+
+        $query = $this->db->query("SELECT age  FROM users where user_id = $uid");
+
+        foreach ($query->result() as $row){
+            $age = $row->age;
+   
+			}
+
+				return $age;
+				
 
       
 	    }	
@@ -411,12 +447,12 @@
 			return $query->result();
 	    }
 		 function user_pass_rest($str,$pass,$user)
-	   	{
-			$query = $this->db->query(" UPDATE users u
-  JOIN token t ON t.user_id = u.user_id
-  SET u.password='$pass',t.status=0
-WHERE u.user_id=$user
-              " );
+		{
+		$query = $this->db->query(" UPDATE users u
+	    JOIN token t ON t.user_id = u.user_id
+		SET u.password='$pass',t.status=0
+		WHERE u.user_id=$user
+					  " );
            // echo $this->db->last_query();exit;
 			return 1;
 	    }

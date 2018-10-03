@@ -1097,7 +1097,7 @@ opacity: 1;
 }
 .nott-list .notification-info span {
 	position: absolute;
-	bottom: 5px;
+	top: 5px;
 	right: 0;
 }
 .view-all-nots {
@@ -1337,7 +1337,7 @@ nav > ul > li > a > i:hover {
 .user-info {    cursor: pointer;
 	    float: right;
     
-    padding: 18px 10px 18px 25px;
+    /* padding: 18px 10px 18px 25px; */
     position: relative;
  
 }
@@ -1367,8 +1367,118 @@ nav > ul > li > a > i:hover {
     
 }
 
+.dropbtn {
+padding: 16px;
+    color: #323137;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    font-weight: 700;
+    padding-top: 16px;
+    text-transform: capitalize;
+    line-height: 34px;
+}
+.dropbtn:hover{color:#db325b;}
+.not1{    width: 300px!important;
+    top: 164%!important;
+    right: 5px;
+    background-color: #fff;
+ 
+    border: 0px solid #e6e5e5!important;
+    width: 125px;
 
+    padding: 0!important;
+    opacity: 0;
+  
+}
+.notmsg a {
+color: #fff!important;
+    font-size: 16px!important;
+    font-weight: 500;
+    margin-top: 0px;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 11px;
+    margin-right: 6px;
+    position: relative;
+    border-radius: 50px;
+    margin-top: -5px;
+    border: 0px;
+    background: #f26e93;
+    webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+    cursor: pointer;
+}
+.notification-info h3 a {
+    color: #4f5963!important;
+    font-size: 16px;
+    display: inline-block;
+    padding: 0px;
+    background: transparent;
+    box-shadow: none;
+}
+.notmsg {
+    float: left!important;
 
+}
+.notification-info h3 a:hover {
+    color: #4f5963!important;
+    font-size: 16px;
+    display: inline-block;
+    padding: 0px;
+    background: transparent;
+    box-shadow: none;
+}
+.viewpad{    border-radius: 0px!important;
+    padding: 18px 0!important;
+    border: none!important;
+    box-shadow: none!important;}
+.notmsg a:hover {
+    background-color: #F26E93;
+    background-image: linear-gradient(to right, #ff0844 -30%, #F26E93 80%);
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+       box-shadow: 0 0.2rem 2rem rgba(0,0,0,.12);    margin-top: 12px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #525252;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    background-color: #fff;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+    font-size: 14px;
+    font-weight: 600;
+}
+.dropdown-content a:hover {
+    color: #db325b;
+}
+
+.show {display: block;}
+.user-info1 {
+    margin-right: 10px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    -ms-border-radius: 100px;
+    -o-border-radius: 100px;
+    border-radius: 100px;
+    width: 36px;
+    height: 36px;
+}
 
  
 /*
@@ -2038,6 +2148,18 @@ font-size: 13px;
 	float: right;
 	position: relative;
 	left: 13px;
+}
+#backgroundOverlay{
+    background-color:transparent;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    display:block;
+}
+#popup{
+   display:none;
 }
 .ed-options {
 	    position: absolute;
@@ -3172,7 +3294,17 @@ select {
 
 
 
-
+/* #heading, .icfa ul li a{ */
+    /* color: #ffffffe0; */
+    /* border: 1px solid #ffffffde; */
+/* } */
+/* #heading .icfa ul li a:hover{ */
+	    /* -webkit-box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15); */
+    /* box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15); */
+    /* background-color: #F26E93; */
+    /* background-image: linear-gradient(to right, #01a6fd 0%, #17d0cf 51%, #01a6fd 100%); */
+	
+/* } */
 
 
 .ques {
@@ -3198,7 +3330,7 @@ select {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #9e3fff;
+  background-color: #f26e93;
   -webkit-transition: .4s;
   transition: .4s;
 }
@@ -3213,7 +3345,7 @@ select {
 }
 .slider:before {
     position: absolute;
-    z-index: 9999;
+    z-index: 9;
     content: "";
     height: 36px;
     width: 36px;
@@ -5987,6 +6119,7 @@ width: 36px;
 	width: auto;
 	padding-left: 10px;
 }
+
 .notification-info h3 {
 	color: #686868;
 	font-size: 14px;

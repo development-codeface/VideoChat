@@ -26,19 +26,61 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://www.jqueryscript.net/demo/Simple-Lightweight-jQuery-Input-Mask-Plugin-Masked-input/dist/jquery.masked-input.js"></script>
   
+  <script>
+        var place =0;
+        function changeColor() {
+            // your color list
+            var colorList = ["rgba(232, 155, 155, 0.79)","white"];
+            // set the color
+			
+            document.getElementById("heading").style.backgroundColor = colorList[place]; 
+            place++;
+            // if place is greater than the list size, reset
+            if (place ===colorList.length) place=0; 
+        }
+
+    </script>
+ <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+</script>
 <script>
-       var place =0;
-       function changeColor() {
-           // your color list
-           var colorList = ["#cbacea","white"];
-           // set the color
-            
-           document.getElementById("heading").style.backgroundColor = colorList[place];
-           place++;
-           // if place is greater than the list size, reset
-           if (place ===colorList.length) place=0;
-       }
-   </script>
+window.onload = function(){
+	var popup = document.getElementById('popup');
+    var overlay = document.getElementById('backgroundOverlay');
+    var openButton = document.getElementById('openOverlay');
+    document.onclick = function(e){
+        if(e.target.id == 'backgroundOverlay'){
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+        if(e.target === openButton){
+         	popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+    };
+};
+</script>
+
  
 </head>
 
@@ -112,7 +154,7 @@
 </label>
 					<div class="search-barmsg nav-cl">
 					
-						<ul>
+						<!--ul>
 						
 							<li>
 							 
@@ -160,29 +202,165 @@
 									</div>
 								</div>
 							</li>
-							<!--li>
-							<a href="messages_user.html"  id="tooltipex2"  class="not-box-open"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a></li-->
+							
 							<li>
 							<a href="<?php echo base_url(); ?>index.php/Profile/notifications"   data-tooltip="Notifications" class="tooltip-bottom"  title="Notification"><i class="fa fa-bell" aria-hidden="true"></i></a>
 							</li>
+						</ul-->
+						
+						<ul>
+	
+							<!--li>
+							 
+								<a href="<?php echo base_url(); ?>index.php/Profile/friends"  data-tooltip="My Friends" class="tooltip-bottom"><i class="fa fa fa-users" aria-hidden="true"></i></a>
+							</li-->
+							
+						<!--li>
+								
+								<a href="#"  id=""  class="not-box-open"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a>
+								<div class="notification-box msg">
+									<div class="nt-title">
+									
+										<a href="#" title="">Clear all</a>
+									</div>
+									<div class="nott-list">
+										<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img1.png" alt="">
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a> </h3>
+							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
+							  					<span>2 min ago</span>
+							  				</div>
+						  				</div>
+						  				<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img2.png" alt="">
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
+							  					<p>Lorem ipsum dolor sit amet.</p>
+							  					<span>2 min ago</span>
+							  				</div>
+						  				</div>
+						  				<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img3.png" alt="">
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
+							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempo incididunt ut labore et dolore magna aliqua.</p>
+							  					<span>2 min ago</span>
+							  				</div>
+						  				</div>
+						  				<div class="view-all-nots">
+						  					<a href="<?php echo base_url(); ?>index.php/Profile/messagesUser" title="">View All Messsages</a>
+						  				</div>
+									</div>
+								</div>
+							</li-->
+							<!--li>
+							<a href="messages_user.html"  id="tooltipex2"  class="not-box-open"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a></li-->
+							<!--li>
+							<a href="<?php echo base_url(); ?>index.php/Profile/notifications"   data-tooltip="Notifications" class="tooltip-bottom"  title="Notification">
+							
+							<i class="fa fa-comment" aria-hidden="true"></i>
+							
+							</a>
+							</li-->
+								<div class="ed-opts  form_wrapper notmsg">
+								<a href="<?php echo base_url(); ?>index.php/Profile/friends"  data-tooltip="My Friends" class="tooltip-bottom"><i class="fa fa fa-users" aria-hidden="true"></i></a>
+												
+												</div>
+								<!--div class="ed-opts  form_wrapper notmsg">
+													<a href="#" title="" class="ed-opts-open">
+													<i class="fa fa-comment" aria-hidden="true"></i>
+													</a>
+										
+													<ul class="ed-options not1" id="myModal">
+													
+																<div class="nott-list ">
+										<div class="notfication-details ">
+							  				<div class="noty-user-img">
+							  				<img src="<?php echo base_url(); ?>assets/images/resources/ny-img2.png" alt="">
+							  				</div>
+							  				<div class="notification-info">
+							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
+							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
+							  					<span>2 min ago</span>
+							  				</div>
+						  				</div>
+										<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  				<img src="<?php echo base_url(); ?>assets/images/resources/ny-img2.png" alt="">
+							  				</div>
+							  				<div class="notification-info">
+							  				<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
+							  					<p>Lorem ipsum dolor sit amet.</p>
+							  					<span>2 min ago</span>
+							  				</div>
+						  				</div>
+						  				<div class="view-all-nots">
+						  					<a href="<?php echo base_url(); ?>index.php/Profile/messagesUser" title="" class="viewpad">View All Messsages</a>
+						  				</div>
+									</div>
+																										</ul>
+												</div-->
+										
+												
+			<div class="ed-opts  form_wrapper notmsg">
+			<a   id="mes" class="not-box-open follow_friend ed-opts-open" data-id="<?php echo $user_id;?>"  title="Messages"><i class="fa fa-bell" aria-hidden="true"></i></a>
+												
+										
+													<ul class="ed-options not1" id="myModal">
+													<div class="nott-list">
+									
+										<div class="notfication-details">
+							  				<div class="noty-user-img">
+							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img1.png" alt="">
+												
+												
+										
+												
+												
+							  				</div>
+							  				<div class="notification-info" id="notification_chat" >
+							  				<input type="text" name="noty" id="noty" >
+								
+							  				</div>
+						  				</div>
+						  				
+						  			<div class="view-all-nots">
+						  					<a href="<?php echo base_url(); ?>index.php/Profile/messagesUser" title="" class="viewpad">View All Notifications</a>
+						  				</div>
+						  				
+															
+																										</ul>
+												</div>
 						</ul>
 					</div>
-						<div class="user-info userb">
+						
+								<div class="dropdown">
+<button onclick="myFunction()" class="dropbtn">
+
+
+			
 						 <?php
 						
 						 $rss=$this->users_model->GetMyData($this->session->userdata('user_id'));
 						    if($rss['profile_pic']==""){?>
 							
 							
-							<?php if($rss['gender']==1)
+							<?php if($user['gender']==1)
 											{
 												?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="" class="user-info1">
 											<?php
 											}
 											else
 											{ ?>
-												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="" class="user-info1">
 										<?php	} ?>
 							
 							
@@ -191,18 +369,23 @@
 							
 						
 							<?php } else{?>
-							<img src="<?php echo base_url() .'uploads/profile_pic/'.$rss['profile_pic'] ;?>" alt="">
+							<img src="<?php echo base_url() .'uploads/profile_pic/'.$rss['profile_pic'] ;?>" alt="" class="user-info1">
 							<?php }?>
 							<span class="fa fa-circle msg-top"></span> <?php //echo $rss['full_name'];?>
-						<a href="#" title=""><?php if($rss['nick_name']!=""){ echo $rss['nick_name'] ;}else { echo $rss['full_name'];}?> </a>
+						<?php if($rss['nick_name']!=""){ echo $rss['nick_name'] ;}else { echo $rss['full_name'];}?> 
 							<i class="la la-sort-down"></i>
-						</div>
-						<div class="user-account-settingss">
 						
-							<h3 class="tc"><a href="<?php echo base_url(); ?>index.php/Profile/settings" title=""><i class="fa fa-cog" aria-hidden="true"></i> &nbsp;Account Setting</a></h3>
-						<h3 class="tc"><a href="<?php echo base_url(); ?>index.php/Profile/myProfile" title=""><i class="fa fa-user" aria-hidden="true"></i> &nbsp;My Profile</a></h3>
-							<h3 class="tc"><a href="<?php echo base_url(); ?>index.php/Auth/logout" title=""><i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;Logout</a></h3>
-						</div><!--user-account-settingss end-->
+					
+</button>
+  <div id="myDropdown" class="dropdown-content">
+
+						
+							<a href="<?php echo base_url(); ?>index.php/Profile/settings" title=""><i class="fa fa-cog" aria-hidden="true"></i> &nbsp;Account Setting</a>
+						<a href="<?php echo base_url(); ?>index.php/Profile/myProfile" title=""><i class="fa fa-user" aria-hidden="true"></i> &nbsp;My Profile</a>
+							<a href="<?php echo base_url(); ?>index.php/Auth/logout" title=""><i class="fa fa-sign-out" aria-hidden="true"></i> &nbsp;Logout</a>
+					
+  </div>
+</div>
 					</div>
 					<!--div class="user-accountast">
 						

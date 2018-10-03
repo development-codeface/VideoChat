@@ -303,15 +303,12 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 										
 										
 										
-													<?php if($mydata['age_hide']==)
+													<?php if($mydata['age_hide']==1)
 											{
 												
-		$from = new DateTime($mydata['dob']);
-		$to   = new DateTime('today');
-		$age= $from->diff($to)->y;
-												?>
+				?>
 											<div class="user-profile-ov st2">
-									<h3> <i class="fa fa-heart" aria-hidden="true"></i> Age  <a href="#" title="" class="ed-box-open pull-right"><i class="fa fa-pencil-square-o"></i> <span class="ed_bt"> Edit</span></a> </h3>
+									<h3> <i class="fa fa-heart" aria-hidden="true"></i> Age  <a href="#" title="" class="ed-box-open pull-right"></a> </h3>
 									
 									
 									
@@ -319,7 +316,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 
 												  <tr>
 													<td class="pers">Age</td>
-													<td><i id="full_names"> <?php  echo $age;?></i></td>
+													<td><i id="full_names"> <?php echo $age; ?></i></td>
 												  
 												  
 																								

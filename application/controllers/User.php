@@ -47,6 +47,17 @@ class User extends  CI_Controller {
            	$params['gender']=$this->input->post("looking");
            	$params['age']=$this->input->post("age");
            	$params['country']=$this->input->post("country");
+			
+					if($params['age']==1)
+					{
+						$params['age_from']	=18;$params['age_to']	=20;
+					}if($params['age']==2)
+					{
+						$params['age_from']	=20;$params['age_to']	=22;
+					}if($params['age']==3)
+					{
+						$params['age_from']	=22;$params['age_to']	=24;
+					}
 	     	$this->data['countries'] = $this->users_model->getAllcountries();
 			$params['user_id'] =$this->UserId;
           $this->data['results']    =    $this->users_model->GetSearchFriends($params) ;
@@ -60,6 +71,9 @@ class User extends  CI_Controller {
 		$this->load->view("user/public-profile-search",$this->data);
 		
 	}
+	
+	
+	
 
 	public function AccetFriends(){
 		$params =$this->input->post('frinedId');

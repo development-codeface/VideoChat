@@ -97,11 +97,15 @@ class Auth extends   CI_Controller {
 				$first=$this->input->post("fname");
 				$last=$this->input->post("lastname");
 				$full_name = $first. " " . $last;
-              $dob = $this->input->post("dob");
+                $dob = $this->input->post("dob");
                 $dob=date('Y-m-d', strtotime($dob))   ;
-  
-				$insertData=array('full_name'=>$full_name,'email'=>$this->input->post("email"),'gender'=>$this->input->post("gender"),'dob'=>$dob,'user_name'=>$this->input->post("u_name"),'password'=>md5($this->input->post("u_pass")));
-				$result_data = $this->users_model->InsertUser($insertData);
+				$from = new DateTime($dob);
+				$to   = new DateTime('today');
+				$age= $from->diff($to)->y;
+				
+				$insertData=array('full_name'=>$full_name,'email'=>$this->input->post("email"),'gender'=>$this->input->post("gender"),'dob'=>$dob,'age'=>$age,'user_name'=>$this->input->post("u_name"),'password'=>md5($this->input->post("u_pass")));
+					$result_data = $this->users_model->InsertUser($insertData);
+				
 				if($result_data['success'])
 				{
 					$this->session->set_flashdata("success",'Successfully registered..Please login to continue !!');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2018 at 03:43 PM
+-- Generation Time: Oct 03, 2018 at 03:30 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -221,7 +221,8 @@ INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`) VALUES
 (96, 40, 17, 1),
 (97, 17, 40, 1),
 (98, 25, 22, 0),
-(99, 42, 22, 0);
+(99, 42, 22, 0),
+(100, 58, 17, 0);
 
 -- --------------------------------------------------------
 
@@ -359,7 +360,8 @@ INSERT INTO `notification` (`n_id`, `messages`, `fri_id`, `user_id`, `cur_time`,
 (102, 'undefined send a friend request to you', 40, 17, '2018-10-01 18:14:37.304687', 0),
 (103, 'son Accepted your friend request', 17, 40, '2018-10-01 18:31:51.461914', 0),
 (104, 'undefined send a friend request to you', 25, 22, '2018-10-02 10:53:10.252929', 0),
-(105, 'undefined send a friend request to you', 42, 22, '2018-10-02 10:53:17.919921', 0);
+(105, 'undefined send a friend request to you', 42, 22, '2018-10-02 10:53:17.919921', 0),
+(106, 'undefined send a friend request to you', 58, 17, '2018-10-03 18:52:50.754882', 0);
 
 -- --------------------------------------------------------
 
@@ -389,16 +391,16 @@ INSERT INTO `online_user` (`id`, `user_id`, `logged_time`, `status`, `logout_tim
 (38, 12, '2018-08-09 16:10:22', 1, NULL),
 (39, 8, '2018-08-13 14:31:29', 1, NULL),
 (40, 16, '2018-08-28 16:21:36', 1, NULL),
-(41, 17, '2018-09-04 15:16:48', 1, NULL),
+(41, 17, '2018-09-04 15:16:48', 0, '2018-10-03 18:52:54'),
 (42, 18, '2018-09-04 16:49:40', 0, '2018-10-01 11:57:38'),
 (43, 19, '2018-09-05 11:15:22', 0, '2018-09-05 11:17:31'),
 (44, 20, '2018-09-05 12:00:44', 0, '2018-09-05 12:25:22'),
 (45, 21, '2018-09-05 12:01:18', 0, '2018-09-05 12:26:09'),
-(46, 22, '2018-09-07 10:16:30', 0, '2018-10-02 10:53:21'),
+(46, 22, '2018-09-07 10:16:30', 0, '2018-10-03 18:03:07'),
 (47, 23, NULL, 0, '2018-09-11 09:42:46'),
 (48, 24, NULL, 0, '2018-10-02 19:06:09'),
 (49, 25, NULL, 0, '2018-09-13 14:56:52'),
-(50, 27, NULL, 0, '2018-10-01 17:35:16'),
+(50, 27, NULL, 1, NULL),
 (51, 28, NULL, 0, '2018-10-02 17:56:33'),
 (52, 31, NULL, 0, '2018-09-17 11:56:09'),
 (53, 32, NULL, 0, '2018-09-21 13:29:26'),
@@ -410,7 +412,9 @@ INSERT INTO `online_user` (`id`, `user_id`, `logged_time`, `status`, `logout_tim
 (59, 40, NULL, 1, NULL),
 (60, 41, NULL, 0, '2018-10-01 14:32:11'),
 (61, 42, NULL, 0, '2018-10-01 18:13:37'),
-(62, 43, NULL, 0, '2018-09-26 11:51:27');
+(62, 43, NULL, 0, '2018-09-26 11:51:27'),
+(63, 57, NULL, 0, '2018-10-03 16:12:46'),
+(64, 58, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -488,6 +492,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `gender` int(2) NOT NULL,
   `dob` date NOT NULL,
+  `age` int(2) NOT NULL,
   `mobile` varchar(255) NOT NULL,
   `fb_id` varchar(255) DEFAULT NULL,
   `twitter_id` varchar(255) DEFAULT NULL,
@@ -500,61 +505,64 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `full_name`, `email`, `user_name`, `password`, `gender`, `dob`, `mobile`, `fb_id`, `twitter_id`, `status`, `created_at`, `session_id`) VALUES
-(1, 'Ramachandran k', 'ram@gmail.com', 'ram', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', '1234', '', '', 1, '2018-07-23 20:51:59', NULL),
-(2, 'tester', 'sk@s.com', 'test', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
-(3, 'tester1', 'sk1@s.com', 'test1', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
-(4, 'tester2', 'sk2@s.com', 'test2', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
-(5, 'tester3', 'sk3@s.com', 'test3', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
-(6, 'tester4', 'sk4@s.com', 'test4', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
-(7, 'tester5', 'sk5@s.com', 'test5', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
-(8, 'jaison', 'jaisongeorgephilip@gmail.com', 'ja', 'c332903a80e5f83500c760326603fc8a', 0, '0000-00-00', '918501933395', NULL, NULL, 1, '2018-07-30 20:54:56', NULL),
-(9, 'abhi', 'abhi@gmail.com', 'abhi', '167784d36ab99e49738fe6a6a98798b7', 0, '0000-00-00', '1234567893', NULL, NULL, 1, '2018-07-30 22:13:48', NULL),
-(10, 'irshad', 'irshadillias@gmail.com', 'irshadillias', '583d8c3bc38a14fa7e6c8ab317dd6c1a', 0, '0000-00-00', '8714488419', NULL, NULL, 1, '2018-07-31 23:36:32', NULL),
-(11, 'FebinJoy', 'febin@febinjoy.com', 'FebinJoy', 'fc75b1b545dc48232c30685f6eaba5ed', 0, '0000-00-00', '9567224808', NULL, NULL, 1, '2018-08-01 00:05:32', NULL),
-(12, 'sajith', 'sajithsmgodwin@gmail.com', 'sajith', '8848718ee97fa510d2f4985892193c20', 0, '0000-00-00', '9597097129', NULL, NULL, 1, '2018-08-01 15:19:38', NULL),
-(13, 'abcd', 'abcd@gmail.com', 'abcd', 'e2fc714c4727ee9395f324cd2e7f331f', 0, '0000-00-00', '1212', NULL, NULL, 1, '2018-08-01 16:16:22', NULL),
-(14, 'samabhi', 'abhisam@gmail.com', 'samabhi', '202cb962ac59075b964b07152d234b70', 0, '0000-00-00', '9656566356', NULL, NULL, 1, '2018-08-09 14:47:01', NULL),
-(15, 'codeface', 'codeface@gmail.com', 'code', 'c13367945d5d4c91047b3b50234aa7ab', 0, '0000-00-00', '12', NULL, NULL, 1, '2018-08-09 15:19:38', NULL),
-(16, 'name', 'email@e.com', 'name', 'e10adc3949ba59abbe56e057f20f883e', 0, '0000-00-00', '2222', NULL, NULL, 1, '2018-08-28 16:21:28', NULL),
-(17, 'undefined', 'derin@gmail.com', 'der', 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, '1970-01-01', '8089245010', NULL, NULL, 1, '2018-09-04 15:13:24', '2_MX40NjE2MzI5Mn5-MTUzNjIzNzM5NzYyOX4wdk1IVE1oVGZxV2tHMVNVam5vUW1oVmx-fg'),
-(18, 'manu', 'manu@gmail.com', 'manu', 'd8578edf8458ce06fbc5bb76a58c5ca4', 0, '0000-00-00', '78878778878787', NULL, NULL, 1, '2018-09-04 16:49:27', '2_MX40NjE2MzI5Mn5-MTUzNjIzNzQ5NTA4Mn54MUxxN1BJbUhzMGhqV04wQkZId29MbWx-fg'),
-(19, 'abc', 'abc@gmail.com', 'qqq', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', '12345678', NULL, NULL, 1, '2018-09-05 11:15:12', '2_MX40NjE2MzI5Mn5-MTUzNjEyNjM3ODMyOX41RHA5L1ZVT3NLV0xOWHhuVWhSSTR5L0J-fg'),
-(20, 'raja', 'raja@gmail.com', 'raja', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', '8089245010', NULL, NULL, 1, '2018-09-05 12:00:32', '2_MX40NjE2MzI5Mn5-MTUzNjEyOTAzODMyOH5mYTRoNVY2cjJORm02TGlVM2N5MW1DZ2h-fg'),
-(21, 'rani', 'rani@gmail.com', 'rani', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', '8089245010', NULL, NULL, 1, '2018-09-05 12:01:07', '2_MX40NjE2MzI5Mn5-MTUzNjEyOTA3MjE3NX5JWERmbVNlRUxldXdDTDliQnIyZnliYTl-fg'),
-(22, 'undefined', 'all@gmail.com', 'alp', 'd8578edf8458ce06fbc5bb76a58c5ca4', 2, '0000-00-00', '87878878787', NULL, NULL, 1, '2018-09-07 10:14:38', '2_MX40NjE2MzI5Mn5-MTUzNjI5NTU3OTI5Nn5tK0k0Mmc1aG95OXRuY3h1Y1NuY3M5RER-fg'),
-(23, 'dell', 'dell@gmail.com', 'dell', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', '8089245010', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjYzNzMyODQ1NH42eUc0U3J0a3hnVUpmTmU4TUZxY05Wcm1-fg'),
-(24, 'rem', 'rem@gmail.com', 'rem', '25d55ad283aa400af464c76d713c07ad', 1, '1990-11-11', '787887887878', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjgxNTU2NjAzMH4xMTFRYzE1c0ptYWVOTFZTV24zM0d5OGJ-fg'),
-(25, 'bijo', 'bijo@mail.com', 'bijo', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '57637567756', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjgyMTg0OTkxOH56Y1RsUFV2aTFvZzFoZFVLcTNJMW02NGF-fg'),
-(26, 'vbvb', 'dfh@mail.comyh', '55', '949be6221e0a43f9a1f3725c7ae52bec', 2, '0000-00-00', '45767575', NULL, NULL, 1, NULL, NULL),
-(27, 'alphnse', 'apll@djhjd.com', 'alphnse', '25d55ad283aa400af464c76d713c07ad', 2, '2011-11-11', '5456456456', NULL, NULL, 1, NULL, '2_MX40NjE2MzI5Mn5-MTUzNjgyOTI0MTI5Mn5QSUxDQlZ3SWh4Q0F5ZVVGSFoxdXdpNG9-fg'),
-(28, 'son', 'der@xdgd.com', 'derin', '25d55ad283aa400af464c76d713c07ad', 1, '1990-01-01', '789797899', NULL, NULL, 1, '2018-09-14 18:16:18', '1_MX40NjE2MzI5Mn5-MTUzNjkyOTE5NTc5NX5VUkNuU2hNMUpoZmR0Zkc3WlBLUmZJZG9-fg'),
-(29, 'rt', 'rttt@cghcfj', 'rt', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '78987978789', NULL, NULL, 1, '2018-09-14 18:37:18', NULL),
-(30, 'sa', 'cfemp08wd@gmail.com', 'kuttu', '363ab055963fb24eff2cfc02437ec228', 1, '0000-00-00', '76898090980', NULL, NULL, 1, '2018-09-14 18:59:52', NULL),
-(31, 'abc', 'hderin@gmail.com', 'ooo', '25d55ad283aa400af464c76d713c07ad', 2, '0000-00-00', '5447477564', NULL, NULL, 1, '2018-09-14 19:46:08', '2_MX40NjE2MzI5Mn5-MTUzNjkzNDU4MTI1N35QSVRYSzltWWRqbE00SHRJSjhKTUdHRjJ-fg'),
-(32, 'anja', 'anja@mail.com', 'anjaly', '25d55ad283aa400af464c76d713c07ad', 2, '0000-00-00', '8089245010', NULL, NULL, 1, '2018-09-17 09:41:17', '1_MX40NjE2MzI5Mn5-MTUzNzE1NzQ4NTA3M35OVktMQzlDUXNRb05NZXZOWVFsTno1dyt-fg'),
-(33, 'fgfg', 'fgdf@gmail.com', 'lal', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '34366634', NULL, NULL, 1, '2018-09-18 12:38:48', '1_MX40NjE2MzI5Mn5-MTUzNzI1NDU0MjUzMX45Qms5MGZ6TXB2WVJLSUJGdzAyWUVPcHl-fg'),
-(34, 'don', 'deon@gmail.com', 'don', 'e10adc3949ba59abbe56e057f20f883e', 1, '0000-00-00', '987456123', NULL, NULL, 1, '2018-09-19 16:33:58', '1_MX40NjE2MzI5Mn5-MTUzNzM1NTAyNzM4NH4zMUMyOEw0aGQrOWI0VWJZbnlBOWFLUWh-fg'),
-(35, 'dd', 'cfeddmp08d@gmail.com', '12', '3a08fe7b8c4da6ed09f21c3ef97efce2', 1, '0000-00-00', '12354534', NULL, NULL, 1, '2018-09-19 18:03:25', NULL),
-(36, 'jibin', 'jin@gmail.com', 'jibin', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '4545454544', NULL, NULL, 1, '2018-09-20 10:58:43', '1_MX40NjE2MzI5Mn5-MTUzNzQyMTM1MDkwNH5mcU55dkp2VGhqNndxZE1PMjBId0dpQkV-fg'),
-(37, 'ammu', 'ammu@hmdkd.com', 'ammuz', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '8777666665', NULL, NULL, 1, '2018-09-20 12:41:10', NULL),
-(38, 'god', 'god@gmail.com', 'god', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '8089245010', NULL, NULL, 1, '2018-09-21 14:10:21', '1_MX40NjE2MzI5Mn5-MTUzNzUxOTI2OTI4MH5BamZrYjRSV1BHRi9mQXhGZk1FZnZ2UFF-fg'),
-(39, 'angel', 'angel@gmail.com', 'angel', '25d55ad283aa400af464c76d713c07ad', 2, '0000-00-00', '98989898', NULL, NULL, 1, '2018-09-21 14:11:01', '1_MX40NjE2MzI5Mn5-MTUzNzUxOTI5NzA4MX5Za1l3aHVEY0RkZmlkVDNlRTdCN2N1THF-fg'),
-(40, 'son', 'son@mai.com', 'son', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '9874561278', NULL, NULL, 1, '2018-09-21 14:41:59', '1_MX40NjE2MzI5Mn5-MTUzNzUyMTEyMTMyOX44S0pzSC8xaUxqSENPcUNUdFJJZVRBM0d-fg'),
-(41, 'ddoo', 'daon@nhajka.com', 'dona', 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, '0000-00-00', '98989898', NULL, NULL, 1, '2018-09-21 16:27:25', '1_MX40NjE2MzI5Mn5-MTUzNzUyNzQ2NjUyMH5WU3F5Um14L2c0K3N5RXprcnB5TjBTb1N-fg'),
-(42, 'subin', 'subin@mail.com', 'subin', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '987654656', NULL, NULL, 1, '2018-09-21 16:28:00', '2_MX40NjE2MzI5Mn5-MTUzNzUyNzYwNjQ3OH40U1BrWHdGYXdSVjUwMEd2QlliMUhmYUZ-fg'),
-(43, 'ajo joseph', 'ajo@mail.com', 'ajo', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '78979779', NULL, NULL, 1, '2018-09-26 11:50:34', '1_MX40NjE2MzI5Mn5-MTUzNzk0Mjg3NTgwMn5teWU5dXNwOHBhb1ZaU045bXRubGc4WmN-fg'),
-(44, 'dfg df', 'cfemp08d@gmail.com', 'dfgdg', 'af1cdd976628f311b3ff1a3510eb4c6c', 2, '0000-00-00', '', NULL, NULL, 1, '2018-09-26 11:57:09', NULL),
-(46, 'wq qw', 'sdffsd@gmail', 'wq', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', '', NULL, NULL, 1, '2018-09-26 12:03:34', NULL),
-(47, 'g d', 'dfgfdgg@rtgd', 'jhkkkjjkk', '4767fcced49357286f525acfc715ea13', 1, '0000-00-00', '', NULL, NULL, 1, '2018-09-26 12:26:34', NULL),
-(48, 'ghghfhfh fgdgdfgdg', 'dfall@gmail.com', 'fgdgdgdgfd', 'fdce95690bca1428184fbc0feb476782', 2, '0000-00-00', '', NULL, NULL, 1, '2018-09-26 14:02:11', NULL),
-(49, 'df sdf', 'dsf@hdfhh', 'dfsgsg', 'b73b601e6d8792108b49b230ad3e0def', 1, '1970-01-01', '', NULL, NULL, 1, '2018-09-26 14:05:30', NULL),
-(50, 'sf sdf', 'sdfsfd@gsnfgngh', 'dhhdhd', '75f8800f49110f43145a35b0d8043ae0', 1, '1970-01-01', '', NULL, NULL, 1, '2018-09-26 14:22:16', NULL),
-(51, 'dgalex gh', 'degrin@gmail.com', 'gh', 'b4ddd6b79be053b61c7aa86caa351c5a', 2, '2011-11-11', '', NULL, NULL, 1, '2018-09-26 14:23:36', NULL),
-(52, 'der sdf', 'bhcf@dfd', 'fuuf', '72c4ca7185f759cf0965566f8e7ac3f8', 1, '1970-01-01', '', NULL, NULL, 1, '2018-09-26 16:13:54', NULL),
-(53, 'dgd', 'dfdfdf@sttst', 'fghdh', '71d5e6204fb08b452563bfdcb95e71bf', 0, '0000-00-00', '4543334', NULL, NULL, 1, '2018-09-26 19:05:39', NULL),
-(54, ' sdf', 'derin@gmail.comtttt', 'wwwe', 'ddc452e6f101fdac7ff6f1ee83d8ce8b', 1, '2000-05-09', '', NULL, NULL, 1, '2018-09-27 12:02:44', NULL),
-(55, ' df', 'cfemp07@gmail.com', 'sajitj123', '88312213c3492c4cd89d297f16cb0fc4', 1, '2000-12-09', '', NULL, NULL, 1, '2018-09-27 12:12:30', NULL);
+INSERT INTO `users` (`user_id`, `full_name`, `email`, `user_name`, `password`, `gender`, `dob`, `age`, `mobile`, `fb_id`, `twitter_id`, `status`, `created_at`, `session_id`) VALUES
+(1, 'Ramachandran k', 'ram@gmail.com', 'ram', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', 0, '1234', '', '', 1, '2018-07-23 20:51:59', NULL),
+(2, 'tester', 'sk@s.com', 'test', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', 0, '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
+(3, 'tester1', 'sk1@s.com', 'test1', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', 0, '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
+(4, 'tester2', 'sk2@s.com', 'test2', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', 0, '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
+(5, 'tester3', 'sk3@s.com', 'test3', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', 0, '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
+(6, 'tester4', 'sk4@s.com', 'test4', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', 0, '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
+(7, 'tester5', 'sk5@s.com', 'test5', 'c20ad4d76fe97759aa27a0c99bff6710', 0, '0000-00-00', 0, '5467', NULL, NULL, 1, '2018-07-24 13:19:51', NULL),
+(8, 'jaison', 'jaisongeorgephilip@gmail.com', 'ja', 'c332903a80e5f83500c760326603fc8a', 0, '0000-00-00', 0, '918501933395', NULL, NULL, 1, '2018-07-30 20:54:56', NULL),
+(9, 'abhi', 'abhi@gmail.com', 'abhi', '167784d36ab99e49738fe6a6a98798b7', 0, '0000-00-00', 0, '1234567893', NULL, NULL, 1, '2018-07-30 22:13:48', NULL),
+(10, 'irshad', 'irshadillias@gmail.com', 'irshadillias', '583d8c3bc38a14fa7e6c8ab317dd6c1a', 0, '0000-00-00', 0, '8714488419', NULL, NULL, 1, '2018-07-31 23:36:32', NULL),
+(11, 'FebinJoy', 'febin@febinjoy.com', 'FebinJoy', 'fc75b1b545dc48232c30685f6eaba5ed', 0, '0000-00-00', 0, '9567224808', NULL, NULL, 1, '2018-08-01 00:05:32', NULL),
+(12, 'sajith', 'sajithsmgodwin@gmail.com', 'sajith', '8848718ee97fa510d2f4985892193c20', 0, '0000-00-00', 0, '9597097129', NULL, NULL, 1, '2018-08-01 15:19:38', NULL),
+(13, 'abcd', 'abcd@gmail.com', 'abcd', 'e2fc714c4727ee9395f324cd2e7f331f', 0, '0000-00-00', 0, '1212', NULL, NULL, 1, '2018-08-01 16:16:22', NULL),
+(14, 'samabhi', 'abhisam@gmail.com', 'samabhi', '202cb962ac59075b964b07152d234b70', 0, '0000-00-00', 0, '9656566356', NULL, NULL, 1, '2018-08-09 14:47:01', NULL),
+(15, 'codeface', 'codeface@gmail.com', 'code', 'c13367945d5d4c91047b3b50234aa7ab', 0, '0000-00-00', 0, '12', NULL, NULL, 1, '2018-08-09 15:19:38', NULL),
+(16, 'name', 'email@e.com', 'name', 'e10adc3949ba59abbe56e057f20f883e', 0, '0000-00-00', 0, '2222', NULL, NULL, 1, '2018-08-28 16:21:28', NULL),
+(17, 'undefined', 'derin@gmail.com', 'der', 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, '1970-01-01', 0, '8089245010', NULL, NULL, 1, '2018-09-04 15:13:24', '2_MX40NjE2MzI5Mn5-MTUzNjIzNzM5NzYyOX4wdk1IVE1oVGZxV2tHMVNVam5vUW1oVmx-fg'),
+(18, 'manu', 'manu@gmail.com', 'manu', 'd8578edf8458ce06fbc5bb76a58c5ca4', 0, '0000-00-00', 0, '78878778878787', NULL, NULL, 1, '2018-09-04 16:49:27', '2_MX40NjE2MzI5Mn5-MTUzNjIzNzQ5NTA4Mn54MUxxN1BJbUhzMGhqV04wQkZId29MbWx-fg'),
+(19, 'abc', 'abc@gmail.com', 'qqq', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', 0, '12345678', NULL, NULL, 1, '2018-09-05 11:15:12', '2_MX40NjE2MzI5Mn5-MTUzNjEyNjM3ODMyOX41RHA5L1ZVT3NLV0xOWHhuVWhSSTR5L0J-fg'),
+(20, 'raja', 'raja@gmail.com', 'raja', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', 0, '8089245010', NULL, NULL, 1, '2018-09-05 12:00:32', '2_MX40NjE2MzI5Mn5-MTUzNjEyOTAzODMyOH5mYTRoNVY2cjJORm02TGlVM2N5MW1DZ2h-fg'),
+(21, 'rani', 'rani@gmail.com', 'rani', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', 0, '8089245010', NULL, NULL, 1, '2018-09-05 12:01:07', '2_MX40NjE2MzI5Mn5-MTUzNjEyOTA3MjE3NX5JWERmbVNlRUxldXdDTDliQnIyZnliYTl-fg'),
+(22, 'undefined', 'all@gmail.com', 'alp', 'd8578edf8458ce06fbc5bb76a58c5ca4', 2, '0000-00-00', 0, '87878878787', NULL, NULL, 1, '2018-09-07 10:14:38', '2_MX40NjE2MzI5Mn5-MTUzNjI5NTU3OTI5Nn5tK0k0Mmc1aG95OXRuY3h1Y1NuY3M5RER-fg'),
+(23, 'dell', 'dell@gmail.com', 'dell', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', 0, '8089245010', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjYzNzMyODQ1NH42eUc0U3J0a3hnVUpmTmU4TUZxY05Wcm1-fg'),
+(24, 'rem', 'rem@gmail.com', 'rem', '25d55ad283aa400af464c76d713c07ad', 1, '1990-11-11', 18, '787887887878', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjgxNTU2NjAzMH4xMTFRYzE1c0ptYWVOTFZTV24zM0d5OGJ-fg'),
+(25, 'bijo', 'bijo@mail.com', 'bijo', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '57637567756', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjgyMTg0OTkxOH56Y1RsUFV2aTFvZzFoZFVLcTNJMW02NGF-fg'),
+(26, 'vbvb', 'dfh@mail.comyh', '55', '949be6221e0a43f9a1f3725c7ae52bec', 2, '0000-00-00', 0, '45767575', NULL, NULL, 1, NULL, NULL),
+(27, 'alphnse', 'apll@djhjd.com', 'alphnse', '25d55ad283aa400af464c76d713c07ad', 2, '2011-11-11', 0, '5456456456', NULL, NULL, 1, NULL, '2_MX40NjE2MzI5Mn5-MTUzNjgyOTI0MTI5Mn5QSUxDQlZ3SWh4Q0F5ZVVGSFoxdXdpNG9-fg'),
+(28, 'son', 'der@xdgd.com', 'derin', '25d55ad283aa400af464c76d713c07ad', 1, '1990-01-01', 0, '789797899', NULL, NULL, 1, '2018-09-14 18:16:18', '1_MX40NjE2MzI5Mn5-MTUzNjkyOTE5NTc5NX5VUkNuU2hNMUpoZmR0Zkc3WlBLUmZJZG9-fg'),
+(29, 'rt', 'rttt@cghcfj', 'rt', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '78987978789', NULL, NULL, 1, '2018-09-14 18:37:18', NULL),
+(30, 'sa', 'cfemp08wd@gmail.com', 'kuttu', '363ab055963fb24eff2cfc02437ec228', 1, '0000-00-00', 0, '76898090980', NULL, NULL, 1, '2018-09-14 18:59:52', NULL),
+(31, 'abc', 'hderin@gmail.com', 'ooo', '25d55ad283aa400af464c76d713c07ad', 2, '0000-00-00', 0, '5447477564', NULL, NULL, 1, '2018-09-14 19:46:08', '2_MX40NjE2MzI5Mn5-MTUzNjkzNDU4MTI1N35QSVRYSzltWWRqbE00SHRJSjhKTUdHRjJ-fg'),
+(32, 'anja', 'anja@mail.com', 'anjaly', '25d55ad283aa400af464c76d713c07ad', 2, '0000-00-00', 0, '8089245010', NULL, NULL, 1, '2018-09-17 09:41:17', '1_MX40NjE2MzI5Mn5-MTUzNzE1NzQ4NTA3M35OVktMQzlDUXNRb05NZXZOWVFsTno1dyt-fg'),
+(33, 'fgfg', 'fgdf@gmail.com', 'lal', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '34366634', NULL, NULL, 1, '2018-09-18 12:38:48', '1_MX40NjE2MzI5Mn5-MTUzNzI1NDU0MjUzMX45Qms5MGZ6TXB2WVJLSUJGdzAyWUVPcHl-fg'),
+(34, 'don', 'deon@gmail.com', 'don', 'e10adc3949ba59abbe56e057f20f883e', 1, '0000-00-00', 0, '987456123', NULL, NULL, 1, '2018-09-19 16:33:58', '1_MX40NjE2MzI5Mn5-MTUzNzM1NTAyNzM4NH4zMUMyOEw0aGQrOWI0VWJZbnlBOWFLUWh-fg'),
+(35, 'dd', 'cfeddmp08d@gmail.com', '12', '3a08fe7b8c4da6ed09f21c3ef97efce2', 1, '0000-00-00', 0, '12354534', NULL, NULL, 1, '2018-09-19 18:03:25', NULL),
+(36, 'jibin', 'jin@gmail.com', 'jibin', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '4545454544', NULL, NULL, 1, '2018-09-20 10:58:43', '1_MX40NjE2MzI5Mn5-MTUzNzQyMTM1MDkwNH5mcU55dkp2VGhqNndxZE1PMjBId0dpQkV-fg'),
+(37, 'ammu', 'ammu@hmdkd.com', 'ammuz', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '8777666665', NULL, NULL, 1, '2018-09-20 12:41:10', NULL),
+(38, 'god', 'god@gmail.com', 'god', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '8089245010', NULL, NULL, 1, '2018-09-21 14:10:21', '1_MX40NjE2MzI5Mn5-MTUzNzUxOTI2OTI4MH5BamZrYjRSV1BHRi9mQXhGZk1FZnZ2UFF-fg'),
+(39, 'angel', 'angel@gmail.com', 'angel', '25d55ad283aa400af464c76d713c07ad', 2, '0000-00-00', 0, '98989898', NULL, NULL, 1, '2018-09-21 14:11:01', '1_MX40NjE2MzI5Mn5-MTUzNzUxOTI5NzA4MX5Za1l3aHVEY0RkZmlkVDNlRTdCN2N1THF-fg'),
+(40, 'son', 'son@mai.com', 'son', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '9874561278', NULL, NULL, 1, '2018-09-21 14:41:59', '1_MX40NjE2MzI5Mn5-MTUzNzUyMTEyMTMyOX44S0pzSC8xaUxqSENPcUNUdFJJZVRBM0d-fg'),
+(41, 'ddoo', 'daon@nhajka.com', 'dona', 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, '0000-00-00', 0, '98989898', NULL, NULL, 1, '2018-09-21 16:27:25', '1_MX40NjE2MzI5Mn5-MTUzNzUyNzQ2NjUyMH5WU3F5Um14L2c0K3N5RXprcnB5TjBTb1N-fg'),
+(42, 'subin', 'subin@mail.com', 'subin', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '987654656', NULL, NULL, 1, '2018-09-21 16:28:00', '2_MX40NjE2MzI5Mn5-MTUzNzUyNzYwNjQ3OH40U1BrWHdGYXdSVjUwMEd2QlliMUhmYUZ-fg'),
+(43, 'ajo joseph', 'ajo@mail.com', 'ajo', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '78979779', NULL, NULL, 1, '2018-09-26 11:50:34', '1_MX40NjE2MzI5Mn5-MTUzNzk0Mjg3NTgwMn5teWU5dXNwOHBhb1ZaU045bXRubGc4WmN-fg'),
+(44, 'dfg df', 'cfemp08d@gmail.com', 'dfgdg', 'af1cdd976628f311b3ff1a3510eb4c6c', 2, '0000-00-00', 0, '', NULL, NULL, 1, '2018-09-26 11:57:09', NULL),
+(46, 'wq qw', 'sdffsd@gmail', 'wq', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '', NULL, NULL, 1, '2018-09-26 12:03:34', NULL),
+(47, 'g d', 'dfgfdgg@rtgd', 'jhkkkjjkk', '4767fcced49357286f525acfc715ea13', 1, '0000-00-00', 0, '', NULL, NULL, 1, '2018-09-26 12:26:34', NULL),
+(48, 'ghghfhfh fgdgdfgdg', 'dfall@gmail.com', 'fgdgdgdgfd', 'fdce95690bca1428184fbc0feb476782', 2, '0000-00-00', 0, '', NULL, NULL, 1, '2018-09-26 14:02:11', NULL),
+(49, 'df sdf', 'dsf@hdfhh', 'dfsgsg', 'b73b601e6d8792108b49b230ad3e0def', 1, '1970-01-01', 0, '', NULL, NULL, 1, '2018-09-26 14:05:30', NULL),
+(50, 'sf sdf', 'sdfsfd@gsnfgngh', 'dhhdhd', '75f8800f49110f43145a35b0d8043ae0', 1, '1970-01-01', 0, '', NULL, NULL, 1, '2018-09-26 14:22:16', NULL),
+(51, 'dgalex gh', 'degrin@gmail.com', 'gh', 'b4ddd6b79be053b61c7aa86caa351c5a', 2, '2011-11-11', 0, '', NULL, NULL, 1, '2018-09-26 14:23:36', NULL),
+(52, 'der sdf', 'bhcf@dfd', 'fuuf', '72c4ca7185f759cf0965566f8e7ac3f8', 1, '1970-01-01', 0, '', NULL, NULL, 1, '2018-09-26 16:13:54', NULL),
+(53, 'dgd', 'dfdfdf@sttst', 'fghdh', '71d5e6204fb08b452563bfdcb95e71bf', 0, '0000-00-00', 0, '4543334', NULL, NULL, 1, '2018-09-26 19:05:39', NULL),
+(54, ' sdf', 'derin@gmail.comtttt', 'wwwe', 'ddc452e6f101fdac7ff6f1ee83d8ce8b', 1, '2000-05-09', 0, '', NULL, NULL, 1, '2018-09-27 12:02:44', NULL),
+(55, ' df', 'cfemp07@gmail.com', 'sajitj123', '88312213c3492c4cd89d297f16cb0fc4', 1, '2000-12-09', 0, '', NULL, NULL, 1, '2018-09-27 12:12:30', NULL),
+(56, 'ju ju', 'juj@yjhj', 'juju', '25d55ad283aa400af464c76d713c07ad', 1, '2000-01-01', 18, '', NULL, NULL, 1, '2018-10-03 14:30:52', NULL),
+(57, 'ambrozia kaa', 'amnsdjk@fjk', 'ambro', '25d55ad283aa400af464c76d713c07ad', 1, '1995-01-01', 23, '', NULL, NULL, 1, '2018-10-03 14:37:08', '2_MX40NjE2MzI5Mn5-MTUzODU1NzY0MjQxNH5WMGZRYWNacERmSmlSSmt1VHArTW1qNzd-fg'),
+(58, 'sh yni', 'shyni@gmail.com', 'shyni', '25d55ad283aa400af464c76d713c07ad', 2, '2000-01-10', 18, '', NULL, NULL, 1, '2018-10-03 16:43:48', '2_MX40NjE2MzI5Mn5-MTUzODU2NTM0ODYzN34wVzBYWGJUY3NtWi9BQXhzeHpZWTQvQXN-fg');
 
 -- --------------------------------------------------------
 
@@ -715,7 +723,10 @@ INSERT INTO `user_profile` (`id`, `user_id`, `gender`, `dob`, `visibility`, `nic
 (49, 52, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 16:13:54', 1),
 (50, 53, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 19:05:39', 1),
 (51, 54, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:02:44', 1),
-(52, 55, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:12:30', 1);
+(52, 55, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:12:30', 1),
+(53, 56, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-03 14:30:52', 1),
+(54, 57, NULL, NULL, 'true', NULL, NULL, NULL, NULL, 'undefined', '9', NULL, '2018-10-03 14:37:08', 1),
+(55, 58, NULL, NULL, 'true', NULL, NULL, NULL, NULL, 'undefined', '10', NULL, '2018-10-03 16:43:48', 1);
 
 --
 -- Indexes for dumped tables
@@ -815,7 +826,7 @@ ALTER TABLE `feed_like`
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `hide_post`
@@ -827,13 +838,13 @@ ALTER TABLE `hide_post`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `n_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `n_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `online_user`
 --
 ALTER TABLE `online_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `profile_visit`
@@ -851,7 +862,7 @@ ALTER TABLE `token`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `user_feed`
@@ -869,7 +880,7 @@ ALTER TABLE `user_photos`
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1181,6 +1181,22 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
     </div>
   </div>
 </div>
+<script type="text/javascript" >
+
+
+    var box = $('.ed-options');
+    var link = $('.ed-opts-open');
+    $(document).click(function() {
+        box.hide(); //box1.hide();
+    });
+    box.click(function(e) {
+        e.stopPropagation();
+    });
+	$(".ed-opts-open").on("click", function(){
+	$(this).parent('.form_wrapper').find(box).show();
+});
+
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox-plus-jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>

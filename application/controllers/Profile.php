@@ -60,6 +60,8 @@ class Profile extends  CI_Controller {
 		//print_r($this->data['photos']);exit;
 		$this->data['feeds']   =    $this->profile_model->GetUserfeeds($friendId) ;
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		$this->data['age'] =    $this->users_model->friendage($friendId) ;
+		//print_r($this->data['age']);exit;
 		$result= $this->profile_model->checkVisit(array('visitor_id'=>$this->UserId,'user_id'=>$friendId)) ;
 		if(empty($result)){
 		$s= $this->profile_model->InsertVisit(array('user_id'=>$friendId,'visitor_id'=>$this->UserId)) ;
@@ -478,7 +480,27 @@ class Profile extends  CI_Controller {
 		        $this->load->view("user/profiles",$this->data);
 		
 			}
+					///////derin/////////////
+		public function searchFreiend_name()
+			{
+				
+				$check=$_POST['search'];
+				$params['user_id'] =$this->UserId;
+				
+
+			  $this->data['results']    =    $this->users_model->GetSearchFriends_name($params,$check) ;
+				
+			//	print_r(  $this->data['results']
+			
+			$this->data['openToken']=base64_encode($this->session->userdata('token'));
+				$this->data['openSessionId']=$this->session->userdata('openSessionId');
+				$this->data['apiKey']= $this->config->item('opentok_key');
+		
+		  $this->load->view("user/public-profile-search",$this->data);
+		
+			}
 						
+		
 			public function delete_img()
 			{	
 					$img_id =$this->input->post('selID');
@@ -486,16 +508,16 @@ class Profile extends  CI_Controller {
 			 	$this->load->view("user/my-profile");
 			}
 			
-			
-     public function postFileUpload(){
-echo "ggsdfgsd";exit;
-       $option = array(
+					
+			 public function postFileUpload(){
+	//	echo "ggsdfgsd";exit;
+			   $option = array(
 
-           'upload_dir' => 'data/temp/',
-       );
+				   'upload_dir' => 'data/temp/',
+			   );
 
-       //$upload_handler = new UploadFileHandler($option);
-   }
+			   //$upload_handler = new UploadFileHandler($option);
+		   }
 
 	
 }
