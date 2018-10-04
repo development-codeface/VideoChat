@@ -199,6 +199,24 @@
 		 
 		 
 		
+	}public function updateprivacy($uid)
+	{
+		
+		 
+		$query = $this->db->query("UPDATE users SET status=2 WHERE user_id =$uid");
+			return true;
+		 
+		 
+		
+	}public function updateprivacy_private($uid)
+	{
+		
+		 
+		$query = $this->db->query("UPDATE users SET status=1 WHERE user_id =$uid");
+			return true;
+		 
+		 
+		
 	}
 	public function hideFeed($id,$uid)
 	{

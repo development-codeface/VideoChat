@@ -20,7 +20,8 @@ class User extends  CI_Controller {
 	{  
 		$this->data['feeds']   =    $this->profile_model->GetAllfeeds($this->UserId) ;
 		$this->data['friendOnline'] = $this->users_model->GetOnlineFriends($this->UserId) ;
-		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
+		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;	
+		$this->data['privacy'] =    $this->users_model->privacy($this->UserId) ;
 		$this->data['UserId'] =$this->session->userdata('user_id');
 		$this->data['openToken']=base64_encode($this->session->userdata('token'));
 		$this->data['openSessionId']=$this->session->userdata('openSessionId');
@@ -103,14 +104,22 @@ class User extends  CI_Controller {
 		$return=$this->users_model->friendRequest($params,$this->UserId);
 		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
 	}
+	public function update_age(){
+		$age =$this->input->post('age');
+		
+		$return=$this->users_model->ageintrest($age,$this->UserId);
+		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
+	}
+
 	public function UpdateBasic(){
 		$param['full_name'] =$this->input->post('full_name');
 		$params['nick_name'] =$this->input->post('nick_name');
 		$dob=$this->input->post('dob');
+		$age=$this->input->post('age');
 		$dob=date('Y-m-d', strtotime($dob))   ;
 		$gen =$this->input->post('gender');
 		$params['visibility'] =$this->input->post('visibility');
-		$return=$this->users_model->UpdateBasic($param,$params,$this->UserId,$dob,$gen);
+		$return=$this->users_model->UpdateBasic($param,$params,$this->UserId,$dob,$gen,$age);
 		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
 	}
     public function UpdateLocation(){
@@ -126,13 +135,7 @@ class User extends  CI_Controller {
 		$return=$this->users_model->Updateintrest($intr,$this->UserId);
 		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
 	}
-	public function update_age(){
-		$age =$this->input->post('age');
-		
-		$return=$this->users_model->ageintrest($age,$this->UserId);
-		if(!empty($return)){echo json_encode(array('status'=>1));}else{echo json_encode(array('status'=>0));}
-	}
-
+	
 	public function UpdateOverview(){
 		$params['description'] =$this->input->post('description');
 		$return=$this->users_model->UpdateOverview($params,$this->UserId);

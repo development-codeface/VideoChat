@@ -10,6 +10,7 @@ class Profile extends  CI_Controller {
 		$this->load->library(array( 'upload','form_validation'));	
 		$this->load->library(array( 'upload','form_validation'));
 		$this->load->library('upload');
+		$this->load->helper('array');
 		$this->load->helper(array('form', 'url'));
 		$this->load->database();
 		if ($this->session->userdata('user_name') == ''){
@@ -114,9 +115,10 @@ class Profile extends  CI_Controller {
 		
 	}public function messages_stranger()
 	{  
+    	$user=$this->input->post('val');
 		$opentok = new OpenTok( $this->config->item('opentok_key'), $this->config->item('opentok_secret'));//'46163292', '436f0b34f67e82089f741ff6509c9608919f8d82'
-	    if (isset($_GET['user'])){
-			$userid=$_GET['user'];
+	    if (isset($user)){
+			$userid=$user;
 			$this->data['caller'] = "Y";  
 		} else {
 			$userid=$this->UserId;
@@ -138,6 +140,15 @@ class Profile extends  CI_Controller {
             'sessionId' => $opentok_sessionid,
             'token'=>$opntok_tokenId
         ));
+		$this->data['stranger_check'] =    $this->users_model->stranger_check() ;
+		if($this->data['stranger_check']==null)
+		{
+		$this->data['stranger'] =    $this->users_model->stranger_update($this->UserId) ;
+		}
+		else
+		{
+			$this->data['stranger'] =    $this->users_model->stranger_delete($this->UserId) ;
+		}
 		$this->data['user'] =    $this->users_model->userinfo($this->UserId) ;
 		$this->load->view("user/messages",$this->data);
 		
@@ -518,6 +529,23 @@ class Profile extends  CI_Controller {
 
 			   //$upload_handler = new UploadFileHandler($option);
 		   }
-
+			public function update_privacy(){ 
+					
+			$user_id =$this->input->post('uid');
+			
+			$result = $this->profile_model->updateprivacy($user_id);
+			//	redirect('/user/profile', "refresh");
+			echo json_encode();
+			}
+			public function update_privacy_private(){ 
+					
+			$user_id =$this->input->post('uid');
+		
+	    	$result = $this->profile_model->updateprivacy_private($user_id);
+			//redirect('/user/profile', "refresh");
+			echo json_encode();
+			}
+				
+		
 	
 }

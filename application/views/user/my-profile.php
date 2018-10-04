@@ -289,6 +289,25 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
     <td class="pers">Date of birth</td>
     <td><i id="dobs"> <?php  echo $mydata['birth'];?></i></td>
   </tr>
+  
+   <tr>
+    <td class="pers">Age</td>
+    <td><i id="age"> <?php  echo $age;?></i> <small class="ag_tx"><?php if($mydata['age_hide']==1)
+											{
+												?>
+											
+												 <small id="age_ar"><?php echo "Public View Only" ;?></small> 
+												<?php
+											}
+												else
+												{
+													?>
+												 <small id="age_ar"><?php echo "Private View Only" ;?> 
+												<?php
+												} ?></small></td>
+  </tr>
+  
+  
     <tr class="no_br">
     <td>Private /  Public</td>
     <td><i id="visib"><?php if($mydata['visibility']=='true'){?>
@@ -298,6 +317,8 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 												   ?>Private
 											   <?php }?>  </i></td>
   </tr>
+ 
+  
 
 </table>
 
@@ -325,45 +346,6 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 										
 										
 										
-										
-										
-											<div class="user-profile-ov st2">
-									<h3> <i class="fa fa-heart" aria-hidden="true"></i> Age  <a href="#" title="" class="ed-box-open pull-right"><i class="fa fa-pencil-square-o"></i> <span class="ed_bt"> Edit</span></a> </h3>
-									
-									
-																				
-																				<table class="tabl-cus">
-
-											  <tr>
-												<td class="pers">Age</td>
-												<td><i id="age"> <?php  echo $age;?></i></td>
-											  
-											  
-																							
-											  </tr>
-											 
-											  
-											</table>
-											<ul>
-											<?php if($mydata['age_hide']==1)
-											{
-												?>
-											
-												<li ><a href="#" title="" id="age_ar"><?php echo "Public" ;?></a></li>
-												<?php
-											}
-												else
-												{
-													?>
-													<li ><a href="#" title="" id="age_ar"><?php echo "Private" ;?></a></li>
-												<?php
-												} ?>
-												
-											</ul>
-
-										
-										
-										</div>
 										
 										
 										
@@ -856,6 +838,25 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 					<input type="text" name="nick_name"  class="form-control" id="nick_name" placeholder="Nick Name" value="<?php  echo $mydata['nick_name'];?>">
 					
 					<input type="text" id="dob" name="dob" class="form-control" data-masked-input="99/99/9999" placeholder="Date of birth" maxlength="10" value="<?php  echo $mydata['birth'];?>">
+					
+					  
+    <label>Age Privacy</label>
+     <div class="datefm">
+  <select name="age_id" id="age_id">
+							 <option value="1">Public</option>
+    <option value="2">Private</option>
+   
+	
+
+
+							
+						</select>
+						<i class="fa fa-sort-desc" aria-hidden="true"></i></td>
+ 
+  
+ </div>
+  
+					
 					 		<div class="col-lg-12 no-pdd">
 												<div class="checky-sec">
 												<div class="fgt-sec">

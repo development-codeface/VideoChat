@@ -101,8 +101,12 @@ $( "#email" ).blur(function() {
   }
 });
 
+
+
+
 //basicinfo
 $( "#basicinfo" ).on('click', function (e) {
+var age=$("#age_id").val();
 
   var full_name=$("#full_name" ).val();
   var nick_name=$("#nick_name" ).val();
@@ -115,7 +119,7 @@ $( "#basicinfo" ).on('click', function (e) {
     $.ajax({
 		type: "POST",
 		url:site_url+"User/UpdateBasic",
-		data:'full_name='+full_name +"&nick_name="+nick_name+"&dob="+dob+"&gender="+gender+"&visibility="+visibility,
+		data:'full_name='+full_name +"&nick_name="+nick_name+"&dob="+dob+"&gender="+gender+"&visibility="+visibility+"&age="+age,
 		dataType: 'json',
 
         success: function(data) {
@@ -135,6 +139,11 @@ $( "#basicinfo" ).on('click', function (e) {
 				}else{
 				
 					$("#visib" ).html('Private');
+				}
+				 if(age==1){
+				$("#age_ar" ).html("public");
+				}else{
+				$("#age_ar" ).html("private");	
 				}
 				if(gender==1){
 				$("#genders" ).html("Male");
@@ -256,44 +265,6 @@ $( "#locationSave" ).on('click', function (e) {
   return false;
 }
 });
-
-
-// age save
- $( "#agesave" ).on('click', function (e) {
-
-  var age=$("#age_id").val();
- 
-  if(age!=""){
-    $.ajax({
-		type: "POST",
-		url:site_url+"User/update_age",
-		data:'age='+age,
-		dataType: 'json',
-
-        success: function(data) {
-			
-			if(data.status==1){
-			 $("#education-box").removeClass("open");
-				$(".wrapper").removeClass("overlay");
-				 if(age==1){
-				$("#age_ar" ).html("public");
-				}else{
-				$("#age_ar" ).html("private");	
-				}
-		   }
-				  
-				
-			else{
-				$('#Eeror').hide();
-      }
-		},
-         
-  });
-  return false;
-}
-});
-
-
 
 //overview save
 

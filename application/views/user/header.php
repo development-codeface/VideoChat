@@ -80,6 +80,37 @@ window.onload = function(){
     };
 };
 </script>
+<script>
+
+	$(document).ready(function() {	
+$('.pub_jav').click(function() { 
+		var uid =$(this).data('id'); 	
+				$.ajax({
+					type: "POST",
+						url: "../Profile/update_privacy",
+						data:{uid:uid},
+						dataType:"text", 
+						success: function(result){
+						
+						
+						}               
+				}); 			
+	});
+	$('.priv_jav').click(function() { 
+		var uid =$(this).data('id'); 	
+			$.ajax({
+					type: "POST",
+						url: "../Profile/update_privacy_private",
+						data:{uid:uid},
+						dataType:"text", 
+						success: function(result){
+							
+						
+						}               
+				}); 			
+	});
+	}); 
+</script>
 
  
 </head>
@@ -100,7 +131,8 @@ window.onload = function(){
         <div class="modal-body modb">
 	<?php	$user_id=$this->session->userdata('user_id'); ?>
          <a href="<?php echo base_url(); ?>index.php/Profile/friends" class="fr_btn"><i class="fa fa fa-users" aria-hidden="true"></i> Friends  </a> 
-        <a href="<?php echo base_url(); ?>index.php/Profile/messages_stranger?user=<?php echo $user_id ?>" title="" data-id="<?php echo $user_id;?>" class="follow follow_friend"></i> Stranger   </a>
+        <a href="" title="" data-id="<?php echo $user_id;?>" class="follow follow_friend str_btn str_frd"> <i class="fa fa-user-circle-o" aria-hidden="true"></i> Stranger   </a>
+		
 
 
         </div>
@@ -132,10 +164,7 @@ window.onload = function(){
 								<li>
 							<!--a href="<!?php echo base_url(); ?>index.php/user/videochat"><span><i class="fa fa-video-camera" aria-hidden="true"></i></span>	Video Chat</a-->
 								<a href=""  data-toggle="modal" data-target="#myModalchat"> <i class="fa fa-video-camera" aria-hidden="true"></i> 	Video Chat</a>
-								<!--<a href=""  data-toggle="modal" data-target="#myModalchat">
-									<span><i class="fa fa-video-camera" aria-hidden="true"></i></span>
-									Video Chat
-								</a>-->
+								
 								
 							</li>
 						
@@ -149,166 +178,20 @@ window.onload = function(){
 					<div class="user-account">
 		<label class="switch">
  <input type="checkbox" checked>
- <span class="slider round" onclick="changeColor()" ></span>
- <span class="absolute-no" onclick="changeColor()" >Private</span>
+ 
+	
+ <span class="slider round pub_jav"  data-id="<?php echo $user_id;?>"  onclick="changeColor()" ></span>
+
+ <span class="absolute-no priv_jav"   data-id="<?php echo $user_id;?>"  onclick="changeColor()" >Private</span>
+ 
 </label>
 					<div class="search-barmsg nav-cl">
 					
-						<!--ul>
-						
-							<li>
-							 
-								<a href="<?php echo base_url(); ?>index.php/Profile/friends"  data-tooltip="My Friends" class="tooltip-bottom"><i class="fa fa fa-users" aria-hidden="true"></i></a>
-							</li>
-						<li>
-						
-						
-						
-						<?php
-						 $user_id=$this->session->userdata('user_id');
-					
-						 ?>
-							
-								
-								<a   id="mes" class="not-box-open follow_friend" data-id="<?php echo $user_id;?>"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a>
-								<div class="notification-box msg" >
-									<div class="nt-title">
-									
-										
-											
-										<a href="#" title="">Clear all</a>
-									</div>
-									<div class="nott-list">
-									
-										<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img1.png" alt="">
-												
-												
-										
-												
-												
-							  				</div>
-							  				<div class="notification-info" id="notification_chat" >
-							  				<input type="text" name="noty" id="noty" >
-								
-							  				</div>
-						  				</div>
-						  				
-						  			
-						  				<div class="view-all-nots">
-						  					<a href="<?php echo base_url(); ?>index.php/Profile/messagesUser" title="">View All Messsages</a>
-						  				</div>
-									</div>
-								</div>
-							</li>
-							
-							<li>
-							<a href="<?php echo base_url(); ?>index.php/Profile/notifications"   data-tooltip="Notifications" class="tooltip-bottom"  title="Notification"><i class="fa fa-bell" aria-hidden="true"></i></a>
-							</li>
-						</ul-->
-						
-						<ul>
-	
-							<!--li>
-							 
-								<a href="<?php echo base_url(); ?>index.php/Profile/friends"  data-tooltip="My Friends" class="tooltip-bottom"><i class="fa fa fa-users" aria-hidden="true"></i></a>
-							</li-->
-							
-						<!--li>
-								
-								<a href="#"  id=""  class="not-box-open"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a>
-								<div class="notification-box msg">
-									<div class="nt-title">
-									
-										<a href="#" title="">Clear all</a>
-									</div>
-									<div class="nott-list">
-										<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img1.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a> </h3>
-							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
-							  					<span>2 min ago</span>
-							  				</div>
-						  				</div>
-						  				<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img2.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
-							  					<p>Lorem ipsum dolor sit amet.</p>
-							  					<span>2 min ago</span>
-							  				</div>
-						  				</div>
-						  				<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  					<img src="<?php echo base_url(); ?>assets/images/resources/ny-img3.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
-							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempo incididunt ut labore et dolore magna aliqua.</p>
-							  					<span>2 min ago</span>
-							  				</div>
-						  				</div>
-						  				<div class="view-all-nots">
-						  					<a href="<?php echo base_url(); ?>index.php/Profile/messagesUser" title="">View All Messsages</a>
-						  				</div>
-									</div>
-								</div>
-							</li-->
-							<!--li>
-							<a href="messages_user.html"  id="tooltipex2"  class="not-box-open"  title="Messages"><i class="fa fa-comment" aria-hidden="true"></i></a></li-->
-							<!--li>
-							<a href="<?php echo base_url(); ?>index.php/Profile/notifications"   data-tooltip="Notifications" class="tooltip-bottom"  title="Notification">
-							
-							<i class="fa fa-comment" aria-hidden="true"></i>
-							
-							</a>
-							</li-->
 								<div class="ed-opts  form_wrapper notmsg">
 								<a href="<?php echo base_url(); ?>index.php/Profile/friends"  data-tooltip="My Friends" class="tooltip-bottom"><i class="fa fa fa-users" aria-hidden="true"></i></a>
 												
 												</div>
-								<!--div class="ed-opts  form_wrapper notmsg">
-													<a href="#" title="" class="ed-opts-open">
-													<i class="fa fa-comment" aria-hidden="true"></i>
-													</a>
-										
-													<ul class="ed-options not1" id="myModal">
-													
-																<div class="nott-list ">
-										<div class="notfication-details ">
-							  				<div class="noty-user-img">
-							  				<img src="<?php echo base_url(); ?>assets/images/resources/ny-img2.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  					<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
-							  					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
-							  					<span>2 min ago</span>
-							  				</div>
-						  				</div>
-										<div class="notfication-details">
-							  				<div class="noty-user-img">
-							  				<img src="<?php echo base_url(); ?>assets/images/resources/ny-img2.png" alt="">
-							  				</div>
-							  				<div class="notification-info">
-							  				<h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
-							  					<p>Lorem ipsum dolor sit amet.</p>
-							  					<span>2 min ago</span>
-							  				</div>
-						  				</div>
-						  				<div class="view-all-nots">
-						  					<a href="<?php echo base_url(); ?>index.php/Profile/messagesUser" title="" class="viewpad">View All Messsages</a>
-						  				</div>
-									</div>
-																										</ul>
-												</div-->
-										
-												
+									
 			<div class="ed-opts  form_wrapper notmsg">
 			<a   id="mes" class="not-box-open follow_friend ed-opts-open" data-id="<?php echo $user_id;?>"  title="Messages"><i class="fa fa-bell" aria-hidden="true"></i></a>
 												
@@ -485,6 +368,20 @@ window.onload = function(){
 										
 					});}); 
 				}); 
-	
+
+		$('.str_frd').click(function() { 
+			var uid =$(this).data('id'); 
+		
+				$.ajax({
+					type: "POST",
+						url: "../Profile/messages_stranger",
+						data:{uid:uid},
+						dataType:"text", 
+						success: function(result){
+							var resultObj = JSON.parse(result)
+						
+						}               
+				}); 				
+		}); 
 
   </script>

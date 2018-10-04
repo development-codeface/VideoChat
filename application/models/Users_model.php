@@ -6,7 +6,7 @@
 	{
 	}
 	public function getUserLogin($username=nullm,$password=null){
-         $query=$this->db->get_where('users', array('user_name'=>$username,'password'=>$password, 'status'=>1));
+         $query=$this->db->get_where('users', array('user_name'=>$username,'password'=>$password, 'status'=>1, 'status'=>2));
 		return $query->row_array();
 	}
 	 
@@ -215,13 +215,13 @@
 	return $result->row_array();
     }
 
-    public function UpdateBasic($param,$params,$user_id,$dob,$gen){
+    public function UpdateBasic($param,$params,$user_id,$dob,$gen,$age){
 	         
 		    $this->db->where('user_id',$user_id);
 		     $this->db->update('users',$param);
 		      $this->db->where('user_id',$user_id);
 		     $this->db->update('user_profile',$params);
-			 
+			    $query = $this->db->query("UPDATE  user_profile SET age_hide=$age where user_id=$user_id" );
 			 $query = $this->db->query("UPDATE  users SET dob='$dob',gender=$gen where user_id=$user_id" );
 		     return 1;
 	}
@@ -342,6 +342,10 @@
 	        $query = $this->db->query("SELECT gender from users WHERE  user_id=$userId" );
 			return $query->row_array();
         } 
+		public function privacy($userId){
+	        $query = $this->db->query("SELECT status from users WHERE  user_id=$userId" );
+			return $query->row_array();
+        } 
 		public function imageinfo($userId){
 	        $query = $this->db->query("SELECT * from user_photos WHERE  user_id=$userId and status='0'" );
 			return $query->result_array();
@@ -409,11 +413,8 @@
             $age = $row->age;
    
 			}
-
-				return $age;
-				
-
-      
+		return $age;
+		
 	    }	
 		function username($uid)
 		{
@@ -426,11 +427,30 @@
 				return $name;
 				
 		}
+		function stranger_check()
+		{
+	     	$query = $this->db->query("select * from stranger_det");
+			return $query->result();
+		
+		}
 		    function insertnotification($str,$fid,$uid)
 	   	{
 			$query = $this->db->query("INSERT INTO notification (messages ,fri_id,user_id)
               VALUES ('$str',$fid,$uid) " );
             // echo $this->db->last_query();
+			return 1;
+	    } 
+		function stranger_update($uid)
+	   	{
+			$query = $this->db->query("INSERT INTO stranger_det (user_id)
+              VALUES ($uid) " );
+            // echo $this->db->last_query();
+			return 1;
+	    }
+		function stranger_delete($user)
+	   	{
+			$query = $this->db->query(" DELETE from stranger_det " );
+          //  echo $this->db->last_query();exit;
 			return 1;
 	    }
 		   function notication_list($id)

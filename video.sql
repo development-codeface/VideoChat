@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2018 at 03:30 PM
+-- Generation Time: Oct 04, 2018 at 04:15 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -391,7 +391,7 @@ INSERT INTO `online_user` (`id`, `user_id`, `logged_time`, `status`, `logout_tim
 (38, 12, '2018-08-09 16:10:22', 1, NULL),
 (39, 8, '2018-08-13 14:31:29', 1, NULL),
 (40, 16, '2018-08-28 16:21:36', 1, NULL),
-(41, 17, '2018-09-04 15:16:48', 0, '2018-10-03 18:52:54'),
+(41, 17, '2018-09-04 15:16:48', 1, NULL),
 (42, 18, '2018-09-04 16:49:40', 0, '2018-10-01 11:57:38'),
 (43, 19, '2018-09-05 11:15:22', 0, '2018-09-05 11:17:31'),
 (44, 20, '2018-09-05 12:00:44', 0, '2018-09-05 12:25:22'),
@@ -409,7 +409,7 @@ INSERT INTO `online_user` (`id`, `user_id`, `logged_time`, `status`, `logout_tim
 (56, 36, NULL, 0, '2018-10-01 18:12:48'),
 (57, 38, NULL, 0, '2018-09-21 16:08:00'),
 (58, 39, NULL, 0, '2018-09-21 14:40:07'),
-(59, 40, NULL, 1, NULL),
+(59, 40, NULL, 0, '2018-10-04 17:30:52'),
 (60, 41, NULL, 0, '2018-10-01 14:32:11'),
 (61, 42, NULL, 0, '2018-10-01 18:13:37'),
 (62, 43, NULL, 0, '2018-09-26 11:51:27'),
@@ -454,6 +454,18 @@ INSERT INTO `profile_visit` (`id`, `user_id`, `visitor_id`, `visited_at`) VALUES
 (144, 17, 24, '2018-09-19 18:37:02'),
 (145, 24, 22, '2018-09-19 18:38:41'),
 (146, 42, 17, '2018-09-25 18:39:41');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stranger_det`
+--
+
+CREATE TABLE `stranger_det` (
+  `id` int(2) NOT NULL,
+  `user_id` int(2) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -545,7 +557,7 @@ INSERT INTO `users` (`user_id`, `full_name`, `email`, `user_name`, `password`, `
 (37, 'ammu', 'ammu@hmdkd.com', 'ammuz', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '8777666665', NULL, NULL, 1, '2018-09-20 12:41:10', NULL),
 (38, 'god', 'god@gmail.com', 'god', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '8089245010', NULL, NULL, 1, '2018-09-21 14:10:21', '1_MX40NjE2MzI5Mn5-MTUzNzUxOTI2OTI4MH5BamZrYjRSV1BHRi9mQXhGZk1FZnZ2UFF-fg'),
 (39, 'angel', 'angel@gmail.com', 'angel', '25d55ad283aa400af464c76d713c07ad', 2, '0000-00-00', 0, '98989898', NULL, NULL, 1, '2018-09-21 14:11:01', '1_MX40NjE2MzI5Mn5-MTUzNzUxOTI5NzA4MX5Za1l3aHVEY0RkZmlkVDNlRTdCN2N1THF-fg'),
-(40, 'son', 'son@mai.com', 'son', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '9874561278', NULL, NULL, 1, '2018-09-21 14:41:59', '1_MX40NjE2MzI5Mn5-MTUzNzUyMTEyMTMyOX44S0pzSC8xaUxqSENPcUNUdFJJZVRBM0d-fg'),
+(40, 'son', 'son@mai.com', 'son', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '9874561278', NULL, NULL, 2, '2018-09-21 14:41:59', '1_MX40NjE2MzI5Mn5-MTUzNzUyMTEyMTMyOX44S0pzSC8xaUxqSENPcUNUdFJJZVRBM0d-fg'),
 (41, 'ddoo', 'daon@nhajka.com', 'dona', 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, '0000-00-00', 0, '98989898', NULL, NULL, 1, '2018-09-21 16:27:25', '1_MX40NjE2MzI5Mn5-MTUzNzUyNzQ2NjUyMH5WU3F5Um14L2c0K3N5RXprcnB5TjBTb1N-fg'),
 (42, 'subin', 'subin@mail.com', 'subin', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '987654656', NULL, NULL, 1, '2018-09-21 16:28:00', '2_MX40NjE2MzI5Mn5-MTUzNzUyNzYwNjQ3OH40U1BrWHdGYXdSVjUwMEd2QlliMUhmYUZ-fg'),
 (43, 'ajo joseph', 'ajo@mail.com', 'ajo', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '78979779', NULL, NULL, 1, '2018-09-26 11:50:34', '1_MX40NjE2MzI5Mn5-MTUzNzk0Mjg3NTgwMn5teWU5dXNwOHBhb1ZaU045bXRubGc4WmN-fg'),
@@ -686,7 +698,7 @@ INSERT INTO `user_profile` (`id`, `user_id`, `gender`, `dob`, `visibility`, `nic
 (12, 14, 2, '2018-08-17', 'true', 'samual', NULL, NULL, 'hfhghbnhgvbnvhgjhjhjmbmjhk', 'keral', 'India', NULL, '2018-08-09 14:47:01', 1),
 (13, 15, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-09 15:19:38', 1),
 (14, 16, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-28 16:21:28', 1),
-(15, 17, 0, 'undefined', 'false', 'undefined', 'm-img4.png', 'download (7).jpg', 'dgdgdfghrfg', 'undefined', '3', '1', '2018-09-04 15:13:24', 1),
+(15, 17, 0, 'undefined', 'false', 'undefined', 'm-img4.png', 'download (7).jpg', 'dgdgdfghrfg', 'undefined', '3', '1', '2018-09-04 15:13:24', 2),
 (16, 18, NULL, NULL, 'true', NULL, 'Koala.jpg', NULL, NULL, NULL, NULL, NULL, '2018-09-04 16:49:28', 1),
 (17, 19, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 11:15:12', 1),
 (18, 20, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:00:33', 1),
@@ -775,6 +787,12 @@ ALTER TABLE `profile_visit`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `stranger_det`
+--
+ALTER TABLE `stranger_det`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `token`
 --
 ALTER TABLE `token`
@@ -851,6 +869,12 @@ ALTER TABLE `online_user`
 --
 ALTER TABLE `profile_visit`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
+
+--
+-- AUTO_INCREMENT for table `stranger_det`
+--
+ALTER TABLE `stranger_det`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `token`
