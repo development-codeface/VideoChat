@@ -129,7 +129,7 @@ toggle between hiding and showing the dropdown content */
               <i class="fa fa fa-users" aria-hidden="true">
               </i> Friends  
             </a> 
-            <a href="" title="" data-id="<?php echo $user_id;?>" class="follow follow_friend str_btn str_frd"> 
+            <a href="<?php echo base_url(); ?>index.php/Profile/messages_stranger" title="" data-id="<?php echo $user_id;?>" class="follow follow_friend str_btn str_frd"> 
               <i class="fa fa-user-circle-o" aria-hidden="true">
               </i> Stranger   
             </a>
