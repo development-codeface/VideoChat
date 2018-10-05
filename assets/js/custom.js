@@ -179,10 +179,11 @@ $( "#locationSave" ).on('click', function (e) {
         success: function(data) {
            if(data.status==1){
 			  // $("#country_id" ).innerHTML=
+			
+				  
 				 $("#location-box").removeClass("open");
 				$(".wrapper").removeClass("overlay");
-				$("#country_ids" ).html(country);
-				 $("#country_ids" ).val(country);
+				$("#country_ids" ).html(data.country);
 				
               }else{
 				$('#Eeror').hide();
@@ -309,7 +310,6 @@ function reload(){
 }
 function friendAccept(userId){
 	  var Uid = $("#abc").val();
-	  alert(Uid);
 	  var frinedId = userId;
 	$.ajax({
 		type: "POST",

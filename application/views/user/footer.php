@@ -2,12 +2,11 @@
 			<div class="footy-sec mn no-margin">
 				<div class="container">
 					<ul>
-						<li><a href="#" title="">Help Center</a></li>
-						<li><a href="#" title="">Privacy Policy</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/Profile/privacy_policy" title="">Privacy Policy</a></li>
 				
-						<li><a href="#" title="">Cookies Policy</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/Profile/terms_conditions" title="">Terms Conditions</a></li>
 						
-						<li><a href="#" title="">Copyright Policy</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/Profile/contact" title="">Contact </a></li>
 					</ul>
 					<p>Copyright © 2018 IntBuddy. All rights reserved.</p>
 				
