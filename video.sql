@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2018 at 04:15 PM
+-- Generation Time: Oct 05, 2018 at 03:15 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -116,7 +116,14 @@ INSERT INTO `feed_like` (`id`, `user_id`, `feed_id`) VALUES
 (38, 22, 5),
 (39, 22, 4),
 (40, 22, 2),
-(41, 22, 17);
+(41, 22, 17),
+(42, 17, 21),
+(43, 17, 20),
+(44, 17, 19),
+(45, 17, 22),
+(46, 17, 23),
+(47, 17, 24),
+(48, 22, 25);
 
 -- --------------------------------------------------------
 
@@ -178,7 +185,7 @@ INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`) VALUES
 (53, 17, 24, 1),
 (54, 27, 28, 1),
 (55, 28, 27, 1),
-(56, 22, 34, 0),
+(56, 22, 34, 1),
 (57, 9, 17, 0),
 (58, 1, 28, 0),
 (59, 9, 28, 0),
@@ -204,7 +211,7 @@ INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`) VALUES
 (79, 39, 38, 0),
 (80, 38, 40, 1),
 (81, 40, 38, 1),
-(82, 38, 17, 0),
+(82, 38, 17, 1),
 (83, 38, 24, 0),
 (84, 42, 41, 0),
 (85, 42, 17, 1),
@@ -222,7 +229,10 @@ INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`) VALUES
 (97, 17, 40, 1),
 (98, 25, 22, 0),
 (99, 42, 22, 0),
-(100, 58, 17, 0);
+(100, 58, 17, 0),
+(101, 34, 22, 1),
+(102, 38, 22, 0),
+(103, 17, 38, 1);
 
 -- --------------------------------------------------------
 
@@ -361,7 +371,18 @@ INSERT INTO `notification` (`n_id`, `messages`, `fri_id`, `user_id`, `cur_time`,
 (103, 'son Accepted your friend request', 17, 40, '2018-10-01 18:31:51.461914', 0),
 (104, 'undefined send a friend request to you', 25, 22, '2018-10-02 10:53:10.252929', 0),
 (105, 'undefined send a friend request to you', 42, 22, '2018-10-02 10:53:17.919921', 0),
-(106, 'undefined send a friend request to you', 58, 17, '2018-10-03 18:52:50.754882', 0);
+(106, 'undefined send a friend request to you', 58, 17, '2018-10-03 18:52:50.754882', 0),
+(107, 'undefined Liked your post', 17, 22, '2018-10-05 11:00:54.236328', 0),
+(108, 'ddd Accepted your friend request', 34, 22, '2018-10-05 11:09:00.298828', 0),
+(109, 'ddd send a friend request to you', 38, 22, '2018-10-05 11:11:44.367187', 0),
+(110, 'god Accepted your friend request', 17, 38, '2018-10-05 11:13:43.521484', 0),
+(111, 'undefined Liked your post', 17, 17, '2018-10-05 12:13:25.423828', 0),
+(112, 'undefined Liked your post', 17, 17, '2018-10-05 12:13:27.279296', 0),
+(113, 'undefined Liked your post', 17, 17, '2018-10-05 12:13:30.081054', 0),
+(114, 'undefined Liked your post', 17, 17, '2018-10-05 12:35:02.820312', 0),
+(115, 'undefined Liked your post', 17, 17, '2018-10-05 12:35:15.609375', 0),
+(116, 'undefined Liked your post', 17, 17, '2018-10-05 13:08:12.445312', 0),
+(117, 'ddd Liked your post', 22, 22, '2018-10-05 17:25:45.503906', 0);
 
 -- --------------------------------------------------------
 
@@ -391,12 +412,12 @@ INSERT INTO `online_user` (`id`, `user_id`, `logged_time`, `status`, `logout_tim
 (38, 12, '2018-08-09 16:10:22', 1, NULL),
 (39, 8, '2018-08-13 14:31:29', 1, NULL),
 (40, 16, '2018-08-28 16:21:36', 1, NULL),
-(41, 17, '2018-09-04 15:16:48', 1, NULL),
+(41, 17, '2018-09-04 15:16:48', 0, '2018-10-05 14:10:00'),
 (42, 18, '2018-09-04 16:49:40', 0, '2018-10-01 11:57:38'),
 (43, 19, '2018-09-05 11:15:22', 0, '2018-09-05 11:17:31'),
 (44, 20, '2018-09-05 12:00:44', 0, '2018-09-05 12:25:22'),
 (45, 21, '2018-09-05 12:01:18', 0, '2018-09-05 12:26:09'),
-(46, 22, '2018-09-07 10:16:30', 0, '2018-10-03 18:03:07'),
+(46, 22, '2018-09-07 10:16:30', 1, NULL),
 (47, 23, NULL, 0, '2018-09-11 09:42:46'),
 (48, 24, NULL, 0, '2018-10-02 19:06:09'),
 (49, 25, NULL, 0, '2018-09-13 14:56:52'),
@@ -407,9 +428,9 @@ INSERT INTO `online_user` (`id`, `user_id`, `logged_time`, `status`, `logout_tim
 (54, 33, NULL, 0, '2018-09-18 12:48:17'),
 (55, 34, NULL, 0, '2018-09-19 17:37:54'),
 (56, 36, NULL, 0, '2018-10-01 18:12:48'),
-(57, 38, NULL, 0, '2018-09-21 16:08:00'),
+(57, 38, NULL, 0, '2018-10-05 14:11:20'),
 (58, 39, NULL, 0, '2018-09-21 14:40:07'),
-(59, 40, NULL, 0, '2018-10-04 17:30:52'),
+(59, 40, NULL, 1, NULL),
 (60, 41, NULL, 0, '2018-10-01 14:32:11'),
 (61, 42, NULL, 0, '2018-10-01 18:13:37'),
 (62, 43, NULL, 0, '2018-09-26 11:51:27'),
@@ -466,6 +487,13 @@ CREATE TABLE `stranger_det` (
   `user_id` int(2) NOT NULL,
   `status` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stranger_det`
+--
+
+INSERT INTO `stranger_det` (`id`, `user_id`, `status`) VALUES
+(2, 22, 0);
 
 -- --------------------------------------------------------
 
@@ -534,12 +562,12 @@ INSERT INTO `users` (`user_id`, `full_name`, `email`, `user_name`, `password`, `
 (14, 'samabhi', 'abhisam@gmail.com', 'samabhi', '202cb962ac59075b964b07152d234b70', 0, '0000-00-00', 0, '9656566356', NULL, NULL, 1, '2018-08-09 14:47:01', NULL),
 (15, 'codeface', 'codeface@gmail.com', 'code', 'c13367945d5d4c91047b3b50234aa7ab', 0, '0000-00-00', 0, '12', NULL, NULL, 1, '2018-08-09 15:19:38', NULL),
 (16, 'name', 'email@e.com', 'name', 'e10adc3949ba59abbe56e057f20f883e', 0, '0000-00-00', 0, '2222', NULL, NULL, 1, '2018-08-28 16:21:28', NULL),
-(17, 'undefined', 'derin@gmail.com', 'der', 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, '1970-01-01', 0, '8089245010', NULL, NULL, 1, '2018-09-04 15:13:24', '2_MX40NjE2MzI5Mn5-MTUzNjIzNzM5NzYyOX4wdk1IVE1oVGZxV2tHMVNVam5vUW1oVmx-fg'),
+(17, 'undefined', 'derin@gmail.com', 'der', 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, '1970-01-01', 0, '8089245010', NULL, NULL, 2, '2018-09-04 15:13:24', '2_MX40NjE2MzI5Mn5-MTUzNjIzNzM5NzYyOX4wdk1IVE1oVGZxV2tHMVNVam5vUW1oVmx-fg'),
 (18, 'manu', 'manu@gmail.com', 'manu', 'd8578edf8458ce06fbc5bb76a58c5ca4', 0, '0000-00-00', 0, '78878778878787', NULL, NULL, 1, '2018-09-04 16:49:27', '2_MX40NjE2MzI5Mn5-MTUzNjIzNzQ5NTA4Mn54MUxxN1BJbUhzMGhqV04wQkZId29MbWx-fg'),
 (19, 'abc', 'abc@gmail.com', 'qqq', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', 0, '12345678', NULL, NULL, 1, '2018-09-05 11:15:12', '2_MX40NjE2MzI5Mn5-MTUzNjEyNjM3ODMyOX41RHA5L1ZVT3NLV0xOWHhuVWhSSTR5L0J-fg'),
 (20, 'raja', 'raja@gmail.com', 'raja', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', 0, '8089245010', NULL, NULL, 1, '2018-09-05 12:00:32', '2_MX40NjE2MzI5Mn5-MTUzNjEyOTAzODMyOH5mYTRoNVY2cjJORm02TGlVM2N5MW1DZ2h-fg'),
 (21, 'rani', 'rani@gmail.com', 'rani', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', 0, '8089245010', NULL, NULL, 1, '2018-09-05 12:01:07', '2_MX40NjE2MzI5Mn5-MTUzNjEyOTA3MjE3NX5JWERmbVNlRUxldXdDTDliQnIyZnliYTl-fg'),
-(22, 'undefined', 'all@gmail.com', 'alp', 'd8578edf8458ce06fbc5bb76a58c5ca4', 2, '0000-00-00', 0, '87878878787', NULL, NULL, 1, '2018-09-07 10:14:38', '2_MX40NjE2MzI5Mn5-MTUzNjI5NTU3OTI5Nn5tK0k0Mmc1aG95OXRuY3h1Y1NuY3M5RER-fg'),
+(22, 'ddd', 'all@gmail.com', 'alp', 'd8578edf8458ce06fbc5bb76a58c5ca4', 1, '2018-10-20', 0, '87878878787', NULL, NULL, 1, '2018-09-07 10:14:38', '2_MX40NjE2MzI5Mn5-MTUzNjI5NTU3OTI5Nn5tK0k0Mmc1aG95OXRuY3h1Y1NuY3M5RER-fg'),
 (23, 'dell', 'dell@gmail.com', 'dell', '25d55ad283aa400af464c76d713c07ad', 0, '0000-00-00', 0, '8089245010', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjYzNzMyODQ1NH42eUc0U3J0a3hnVUpmTmU4TUZxY05Wcm1-fg'),
 (24, 'rem', 'rem@gmail.com', 'rem', '25d55ad283aa400af464c76d713c07ad', 1, '1990-11-11', 18, '787887887878', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjgxNTU2NjAzMH4xMTFRYzE1c0ptYWVOTFZTV24zM0d5OGJ-fg'),
 (25, 'bijo', 'bijo@mail.com', 'bijo', '25d55ad283aa400af464c76d713c07ad', 1, '0000-00-00', 0, '57637567756', NULL, NULL, 1, NULL, '1_MX40NjE2MzI5Mn5-MTUzNjgyMTg0OTkxOH56Y1RsUFV2aTFvZzFoZFVLcTNJMW02NGF-fg'),
@@ -613,7 +641,14 @@ INSERT INTO `user_feed` (`id`, `user_id`, `feeds`, `no_likes`, `status`, `create
 (15, 24, 'alp watch me\r\n', 1, 1, '2018-09-24 17:09:10'),
 (16, 22, 'cvcvnncnncn', 1, 1, '2018-09-27 16:29:52'),
 (17, 17, 'likeeeeee', 1, 1, '2018-09-27 18:51:18'),
-(18, 28, 'bhjj', 0, 1, '2018-10-02 16:36:34');
+(18, 28, 'bhjj', 0, 1, '2018-10-02 16:36:34'),
+(19, 38, 'fgyhfgy', 1, 1, '2018-10-05 12:10:03'),
+(20, 38, 'der', 1, 1, '2018-10-05 12:11:25'),
+(21, 17, 'sajiththth', 1, 1, '2018-10-05 12:12:43'),
+(22, 17, 'sdddsdsddddsddsds', 1, 1, '2018-10-05 12:16:18'),
+(23, 17, 'uuu', 1, 1, '2018-10-05 12:35:13'),
+(24, 17, 'hi', 1, 1, '2018-10-05 13:08:03'),
+(25, 22, 'dd', 1, 1, '2018-10-05 17:25:35');
 
 -- --------------------------------------------------------
 
@@ -655,7 +690,12 @@ INSERT INTO `user_photos` (`id`, `user_id`, `file_name`, `create_at`, `status`) 
 (19, 17, 'Hydrangeas.jpg', '2018-10-02 10:10:17', 0),
 (20, 28, 'download.jpg', '2018-10-02 11:01:43', 0),
 (21, 28, 'download.jpg', '2018-10-02 11:26:54', 1),
-(22, 28, 'download (9).jpg', '2018-10-02 11:27:36', 0);
+(22, 28, 'download (9).jpg', '2018-10-02 11:27:36', 0),
+(23, 22, 'download (4).jpg', '2018-10-05 17:47:28', 0),
+(24, 22, 'download (1).jpg', '2018-10-05 17:47:39', 0),
+(25, 22, 'download (6).jpg', '2018-10-05 17:47:45', 0),
+(26, 22, 'download (2).jpg', '2018-10-05 17:47:53', 0),
+(27, 22, 'download (1).jpg', '2018-10-05 17:48:08', 0);
 
 -- --------------------------------------------------------
 
@@ -698,12 +738,12 @@ INSERT INTO `user_profile` (`id`, `user_id`, `gender`, `dob`, `visibility`, `nic
 (12, 14, 2, '2018-08-17', 'true', 'samual', NULL, NULL, 'hfhghbnhgvbnvhgjhjhjmbmjhk', 'keral', 'India', NULL, '2018-08-09 14:47:01', 1),
 (13, 15, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-09 15:19:38', 1),
 (14, 16, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-28 16:21:28', 1),
-(15, 17, 0, 'undefined', 'false', 'undefined', 'm-img4.png', 'download (7).jpg', 'dgdgdfghrfg', 'undefined', '3', '1', '2018-09-04 15:13:24', 2),
+(15, 17, 0, 'undefined', 'false', 'undefined', 'm-img4.png', 'download (7).jpg', 'dgdgdfghrfg', 'undefined', '3', '3', '2018-09-04 15:13:24', 2),
 (16, 18, NULL, NULL, 'true', NULL, 'Koala.jpg', NULL, NULL, NULL, NULL, NULL, '2018-09-04 16:49:28', 1),
 (17, 19, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 11:15:12', 1),
 (18, 20, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:00:33', 1),
 (19, 21, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:01:07', 1),
-(20, 22, 0, 'undefined', 'false', 'undefined', NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-07 10:14:38', 1),
+(20, 22, 0, 'undefined', 'false', 'fsad', NULL, NULL, 'bjhkhlh', 'undefined', '11', '2', '2018-09-07 10:14:38', 1),
 (21, 23, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
 (22, 24, NULL, NULL, 'false', '', 'download (4).jpg', NULL, NULL, NULL, NULL, NULL, NULL, 2),
 (23, 25, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
@@ -719,7 +759,7 @@ INSERT INTO `user_profile` (`id`, `user_id`, `gender`, `dob`, `visibility`, `nic
 (33, 35, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-19 18:03:25', 1),
 (34, 36, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-20 10:58:44', 1),
 (35, 37, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-20 12:41:10', 1),
-(36, 38, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 14:10:21', 1),
+(36, 38, NULL, NULL, 'true', NULL, NULL, NULL, NULL, 'undefined', '12', NULL, '2018-09-21 14:10:21', 1),
 (37, 39, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 14:11:01', 1),
 (38, 40, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, '2', '2018-09-21 14:42:00', 1),
 (39, 41, 2, '2000-11-11', 'false', 'nna', NULL, NULL, 'grfgfddddddddddddddddddddddddddddddddddddddddddddddddddddd', 'sss', 'Country', NULL, '2018-09-21 16:27:25', 1),
@@ -838,13 +878,13 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `feed_like`
 --
 ALTER TABLE `feed_like`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `hide_post`
@@ -856,7 +896,7 @@ ALTER TABLE `hide_post`
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `n_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `n_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `online_user`
@@ -874,7 +914,7 @@ ALTER TABLE `profile_visit`
 -- AUTO_INCREMENT for table `stranger_det`
 --
 ALTER TABLE `stranger_det`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `token`
@@ -892,13 +932,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `user_feed`
 --
 ALTER TABLE `user_feed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `user_photos`
 --
 ALTER TABLE `user_photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `user_profile`
