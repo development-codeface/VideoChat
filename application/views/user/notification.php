@@ -19,8 +19,10 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 							  			    	<?php if(!empty($notifications)){	foreach($notifications as $frq){?>
 							  			    <div class="notfication-details">
 							  			        
-							  			        
-											
+							  			     
+											<?php if($frq->fri_id != $frq->user_id)
+											{
+												?>
 										
 								  				<div class="noty-user-img">
 								  				    
@@ -60,7 +62,11 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 								  			
 							  				</div>
 							  			    
-							  		 	<?php } } ?> 	
+												<?php } }}
+else{
+											?>		<div class="alert alert-danger"  >No Result Found !!!</div>
+										<?php	}
+												?> 	
 							  	 
 							  	 
 							  				</div>

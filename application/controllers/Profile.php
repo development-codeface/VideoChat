@@ -44,17 +44,15 @@ class Profile extends CI_Controller
         foreach ($this->data['date'] as $dos) {
             $dob = $dos['dob'];
         }
-        $from                        = new DateTime($dob);
-        $to                          = new DateTime('today');
-        $age                         = $from->diff($to)->y;
-        $this->data['age']           = $age;
+      
         $this->data['mydata']        = $this->users_model->GetMyData($this->UserId);
-        //print_r($this->data['age']);exit;
+        //print_r($this->data['mydata']);exit;
         $this->data['user']          = $this->users_model->userinfo($this->UserId);
         $this->data['image']         = $this->users_model->imageinfo($this->UserId);
         $this->data['countries']     = $this->users_model->getAllcountries();
-        //print_r($this->data['countries']);exit;
+        //print_r($this->UserId);exit;
         $this->data['feeds']         = $this->profile_model->GetUserfeeds($this->UserId);
+		//print_r($this->data['feeds']);exit;
         $this->data['openToken']     = base64_encode($this->session->userdata('token'));
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
@@ -94,7 +92,7 @@ class Profile extends CI_Controller
     }
     public function settings()
     {
-        
+        $this->data['sendRequest']    = $this->users_model->GetsendRequest($this->UserId);
         $this->data['friendsRequest'] = $this->users_model->GetFriendsRequest($this->UserId);
         $this->data['user']           = $this->users_model->userinfo($this->UserId);
         $this->data['openToken']      = base64_encode($this->session->userdata('token'));
@@ -167,7 +165,7 @@ class Profile extends CI_Controller
             // $this->users_model->stranger_delete($this->UserId) ;
         }
         $this->data['user'] = $this->users_model->userinfo($this->UserId);
-        $this->load->view("user/messages", $this->data);
+        $this->load->view("user/messages_stranger", $this->data);
         
     }
     public function messagesUser()
@@ -198,12 +196,13 @@ class Profile extends CI_Controller
     }
     public function notifications_tab()
     {
-        
+      
         
         $this->data['feeds']         = $this->profile_model->GetAllfeeds($this->UserId);
         $this->data['onlinef']       = $this->users_model->GetOnlineFriends($this->UserId);
         $this->data['user']          = $this->users_model->userinfo($this->UserId);
         $this->data['notifications'] = $this->users_model->notication_list($this->UserId);
+		//print_r(  $this->data['notifications']);exit;
         //    foreach($this->data['notifications']  as $row){
         //    
         
@@ -217,11 +216,11 @@ class Profile extends CI_Controller
         $this->data['openToken']     = base64_encode($this->session->userdata('token'));
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
-        //    foreach($this->data['notifications']  as $row){
+           foreach($this->data['notifications']  as $row){
         
-        //$this->data    ='<div>"'.$row->messages.''.$row->profile_pic.''.$row->gender.'</div>';
-        //    echo json_encode($this->data);
-        //    }
+        $this->data    ='<div>"'.$row->messages.''.$row->profile_pic.''.$row->gender.'</div>';
+            echo json_encode($this->data);
+            }
         
         
         $this->load->view("user/header", $this->data);
@@ -244,7 +243,8 @@ class Profile extends CI_Controller
     {
         $this->data['friendList']     = $this->users_model->GetFriendList($this->UserId);
         $this->data['friendOnline']   = $this->users_model->GetOnlineFriends($this->UserId);
-        $this->data['friendsRequest'] = $this->users_model->GetFriendsRequest($this->UserId);
+        $this->data['friendsRequest'] = $this->users_model->GetFriendsRequest($this->UserId); 
+		
         $this->data['user']           = $this->users_model->userinfo($this->UserId);
         $this->data['openToken']      = base64_encode($this->session->userdata('token'));
         $this->data['openSessionId']  = $this->session->userdata('openSessionId');
@@ -286,7 +286,7 @@ class Profile extends CI_Controller
         $old       = $this->input->post('oldpassword');
         $password  = $this->input->post('password');
         $password1 = $this->input->post('repassword');
-        
+         $this->data['user']          = $this->users_model->userinfo($this->UserId);
         $this->data['openToken']     = base64_encode($this->session->userdata('token'));
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
@@ -554,7 +554,7 @@ class Profile extends CI_Controller
         
         $this->data['friendOnline']   = $this->users_model->GetOnlineFriends($this->UserId);
         $this->data['friendsRequest'] = $this->users_model->GetFriendsRequest($this->UserId);
-        
+        //userinfo($userId);
         $this->data['openToken']     = base64_encode($this->session->userdata('token'));
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
@@ -574,7 +574,7 @@ class Profile extends CI_Controller
         $this->data['results'] = $this->users_model->GetSearchFriends_name($params, $check);
         
         //    print_r(  $this->data['results']
-        
+         $this->data['user'] = $this->users_model->userinfo($this->UserId);
         $this->data['openToken']     = base64_encode($this->session->userdata('token'));
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
@@ -604,8 +604,8 @@ class Profile extends CI_Controller
     }
     public function update_privacy()
     {
-        
-        $user_id = $this->input->post('uid');
+      
+        $user_id = $this->session->userdata('user_id');
         
         $result = $this->profile_model->updateprivacy($user_id);
         //    redirect('/user/profile', "refresh");
@@ -614,7 +614,7 @@ class Profile extends CI_Controller
     public function update_privacy_private()
     {
         
-        $user_id = $this->input->post('uid');
+        $user_id = $this->session->userdata('user_id');
         
         $result = $this->profile_model->updateprivacy_private($user_id);
         //redirect('/user/profile', "refresh");
@@ -655,7 +655,75 @@ class Profile extends CI_Controller
       
        
     }
+     public function unfriend()
+    {
+        
+        $friend = $this->input->post('uid');
+		$user_id       = $this->session->userdata('user_id');
+      $result = $this->users_model->updateunfriend($friend,$user_id);
+        //redirect('/user/profile', "refresh");
+      echo json_encode();
+    } 
+	public function deactive()
+    {
+			$user_id       = $this->session->userdata('user_id');
+			
+         $mail = $this->input->post('emailid');
+		 $pass = $this->input->post('pas');
+		 $pass=md5($pass);
+		 $msg = $this->input->post('bb');
+		 $data['deact'] = $this->profile_model->getdeactiveinfo($this->UserId);
+		
+		foreach($data['deact'] as $row)
+					{
+						$email=$row['email'];
+						$password=$row['password'];
+						
+					}
+					
+					if(($email==$mail)&&($pass==$password))
+					{
+						
+						 $result = $this->profile_model->deactivateifo($user_id,$msg);
+						 
+						 $unameTest=$this->users_model->UpdateOnline($user_id,0);
+						  $res = $this->profile_model->deactivateuser($user_id);
+						
+						$array_items = array('user_name' => '', 'user_id' => '');
+						$this->session->unset_userdata($array_items);
+						
+						$this->session->sess_destroy();
+						$page_content['error'] = "Logged out successfully";
+						$page_content['title'] = 'Login';
+						redirect(base_url());
+											 
+						 
+					}
+					else
+					{
+						$this->session->set_flashdata("success",'Check Email id and Password');
+						
+						
+						
+						 $this->data['user']           = $this->users_model->userinfo($this->UserId);
+        $this->data['openToken']      = base64_encode($this->session->userdata('token'));
+        $this->data['openSessionId']  = $this->session->userdata('openSessionId');
+        $this->data['apiKey']         = $this->config->item('opentok_key');
+        //print_r($this->data);exit;
+        
+        $this->data['user'] = $this->users_model->userinfo($this->UserId);
+        $this->load->view("user/profile-account-setting", $this->data);
     
+						
+						
+						
+						
+					
+					
+					}
+		
+ 
+    }
     
     
 }

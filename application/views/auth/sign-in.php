@@ -19,7 +19,7 @@
 </head>
 
 
-<body class="sign-in">
+<body >
 	
 
 	<div class="wrapper">
@@ -62,13 +62,13 @@
   
   
 						<div class="col-lg-7 nopad">
-						<div class="bg_log"></div>
+						<div class="bg_log"> <img src="<?php echo base_url(); ?>assets/images/vid2.jpg" alt="" class="img-responsive" ></div>
 							 
 						</div>
 						<div class="col-lg-5">
 						
 							<div class="login-sec">
-							<a href="<?php echo base_url();?>"><img src="<?php echo base_url(); ?>assets/images/logo.png" alt="" class="signlogo"></a>
+							<!-- <a href="<?php echo base_url();?>"><img src="<?php echo base_url(); ?>assets/images/logo.png" alt="" class="signlogo"></a> -->
 								<ul class="sign-control">
 									<li data-tab="tab-1" class="<?php if($tab =="index")
 { echo $cls = "animated fadeIn current"; } else { echo $cls = "animated fadeIn"; } ?>"><a href="<?php echo base_url();?>Auth/login" title="">Sign in</a></li>				
@@ -85,7 +85,7 @@
 										<div class="alert alert-danger"><?php echo $this->session->flashdata("err_msg");?> </div> 
 									<?php } ?>
                                     <?php echo validation_errors('<div class = "alert alert-danger">', '</div>'); ?>
-									<h3>Sign in</h3>
+									<h3>Sign In</h3>
 									<form method="post" name="logform" id="logform" action="<?php echo base_url(); ?>index.php/Auth/" name="logform">
 										<div class="row">
 											<div class="col-lg-12 no-pdd">
@@ -146,7 +146,7 @@
 								</div><!--sign_in_sec end-->
 								<div class="<?php if($tab =="register")
 { echo $cls = "sign_in_sec animated fadeIn current"; } else { echo $cls = "sign_in_sec animated fadeIn"; } ?>" id="tab-2">
-									<h3>  Sign Up for FREE</h3>	
+									<h3>  Sign Up </h3>	
                                     <?php echo validation_errors('<div class = "alert alert-danger">', '</div>'); ?>
 									<div class="dff-tab current" id="tab-3">
 										<form method="post" action="<?php echo base_url(); ?>index.php/Auth/register" name="signupform" id="signupform" data-toggle="validator" role="form">
@@ -209,6 +209,13 @@
 														</div>
 													
 												</div>
+												<div class="col-lg-12 no-pdd">
+													<div class="sn-field">
+														<input type="text" name="nick_name" placeholder="Nickname *" id="nick_name">
+														<i class="la la-user"></i>
+														</div>
+													
+												</div>
 												<div class="alert alert-danger"  id="alerts" style="display:none">User Name Already Exist !!!</div> 
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
@@ -217,7 +224,7 @@
 													</div>
 												</div>
 												<div class="col-lg-12 no-pdd">
-												<label class="containerc"> <a href="#" title="" class="exp-bx-open aqw"><small>Terms & Conditions.* 
+												<label class="containerc"> <a href="#" title="" class="exp-bx-open aqw"><small>I agree the Terms & Conditions.* 
 												</small></a>
   <input type="checkbox"  name="agree" id="agree" value="agree" required>
   <span class="checkmarkc"></span>
@@ -237,13 +244,11 @@
 									</div><!--dff-tab end-->
 								
 								</div>		
-							</div><!--login-sec end-->
-						</div>
-					</div>		
-				</div><!--signin-pop end-->
-			</div><!--signin-popup end-->
-			<div class="footy-sec fota">
-				<div class="container">
+							</div><!--login-sec end-->	
+							
+							<div class="clearfix"></div>
+							<div class="footy-sec1">
+			 
 					<ul>
 						
 						<li><a href="#" title="">Privacy Policy</a></li>
@@ -252,9 +257,22 @@
 						
 						<li><a href="#" title="">Contact</a></li>
 					</ul>
-					<p><img src="<?php echo base_url(); ?>assets/images/copy-icon.png" alt="">Copyright 2018 All rights reserved</p>
-				</div>
-			</div><!--footy-sec end-->
+					 
+				 
+			</div>
+			
+			<!--footy-sec end-->
+
+
+
+						</div>
+						
+					</div>	
+						
+				</div><!--signin-pop end-->
+				
+			</div><!--signin-popup end-->
+	
 		</div><!--sign-in-page end-->
 
 
@@ -329,7 +347,8 @@ $('#signupform').validator().on('submit', function (e) {
 			gender :"required",
 			dob :"required",
 			u_name :"required",
-			u_pass :"required",
+			u_pass :"required",		
+			nick_name :"required",
 				agree: "required"
              },
             messages: {
@@ -340,6 +359,7 @@ $('#signupform').validator().on('submit', function (e) {
 		 dob:"Please select the field" ,
 		 u_name:"Please enter the username"  ,
 		 u_pass:"Please enter the password"  ,
+		 nick_name:"Please enter the nick name"  ,
 agree: "Please accept our policy"       }
     
 	   }); 

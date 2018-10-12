@@ -162,7 +162,7 @@ else{ ?>
                         <a href="#" title="">
                           <i class="fa fa-address-card col-sdd" aria-hidden="true">
                           </i>
-                          <span>Stranger Friend list
+                          <span> My Stranger list
                           </span>
                         </a>
                       </li>
@@ -200,38 +200,111 @@ else
                           <?php } else{?>
                           <img src="<?php echo base_url() .'uploads/profile_pic/'.$fd->profile_pic ;?>" alt="">
                           <?php }?>
-                          <div class="usy-name">
-                            <h3>
-                              <?php  echo $fd->full_name ;?>
-                            </h3>
-                            <span>
-                              1 hr
-                            </span> &nbsp;
-                            <span>
-                              <i class="fa fa-flag" aria-hidden="true">
-                              </i> 
-                              <?php echo $fd->country;?>
-                            </span>
-                          </div>
-                        </div>
-                        <div class="ed-opts">
-                          <a href="#" title="" class="ed-opts-open">
-                            <i class="la la-ellipsis-v">
-                            </i>
-                          </a>
-                          <ul class="ed-options">
-                            <?php if($fd->user_id==$this->session->userdata('user_id')){?>
-                            <li>
-                              <a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post
-                              </a>
-                            </li>
-                            <li>
-                              <a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post
-                              </a>
-                            </li>
-                            <?php } ?>
-                          </ul>
-                        </div>
+                         			<div class="usy-name">
+														<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$fd->user_id;?>">	<h3><?php  
+														echo $fd->full_name ; ?></h3></a>
+															<span>								
+															
+														
+<?php
+ 
+
+$timestamp=$fd->created_at;
+list($date,$time)=explode(' ',$timestamp);
+//echo $time;
+
+    $time_ago = strtotime($fd->created_at);
+    $cur_time   = time();
+    $time_elapsed   = $cur_time - $time_ago;
+    $seconds    = $time_elapsed ;
+    $minutes    = round($time_elapsed / 60 );
+    $hours      = round($time_elapsed / 3600);
+    $days       = round($time_elapsed / 86400 );
+    $weeks      = round($time_elapsed / 604800);
+    $months     = round($time_elapsed / 2600640 );
+    $years      = round($time_elapsed / 31207680 );
+    // Seconds
+    if($seconds <= 60){
+        $ti= "just now";
+    }
+    //Minutes
+    else if($minutes <=60){
+        if($minutes==1){
+           $ti= "one minute ago";
+        }
+        else{
+            $ti= "$minutes minutes ago";
+        }
+    }
+    //Hours
+    else if($hours <=24){
+        if($hours==1){
+          $ti= "an hour ago";
+        }else{
+           $ti= "$hours hrs ago";
+        }
+    }
+    //Days
+    else if($days <= 7){
+        if($days==1){
+            $ti= "yesterday";
+        }else{
+           $ti= "$days days ago";
+        }
+    }
+    //Weeks
+    else if($weeks <= 4.3){
+        if($weeks==1){
+            $ti= "a week ago";
+        }else{
+            $ti= "$weeks weeks ago";
+        }
+    }
+    //Months
+    else if($months <=12){
+        if($months==1){
+            $ti= "a month ago";
+        }else{
+            $ti= "$months months ago";
+        }
+    }
+    //Years
+    else{
+        if($years==1){
+           $ti= "one year ago";
+        }else{
+            $ti= "$years years ago";
+        }
+    }
+
+?>						
+															
+									     <i class="fa fa-clock-o" aria-hidden="true"></i>  <?php  echo  $ti;?></span> &nbsp;<span>
+														</div>
+													</div>
+                    	<div class="ed-opts form_wrapper"  >
+													<a href="#" title=""  class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+													<ul class="ed-options" id="myModal">
+														
+																<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post</a></li>
+														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
+													
+													</ul>
+														<!--li><a href="" data-toggle="modal" data-target="#myModalhid">Hide Post text</a></li-->
+												</div>
+																<div class="overview-box" id="education-box">
+								<div class="overview-edit">
+								<h3>Edit Feed</h3>
+
+								<form method="POST" action="<?php echo base_url(); ?>index.php/Profile/updateFeed" name="editform" id="editform">
+								<input type="hidden" name="feed-id"  id="feed-id" />
+								<textarea id="feed-edit" name="feed-edit"  ></textarea>
+								<button type="submit"  id="feedsave" name="feedsave">Save</button>
+								<a href="<?php echo base_url()."index.php/User/Profile/"?>">	<button type="button" class="cancel">Cancel</button></a>
+								</form>
+								<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
+								</div><!--overview-edit end-->
+								</div><!--overview-box end-->
                       </div>
                       <div class="job_descp">
                         <p>
@@ -326,38 +399,36 @@ else
                         </td>
                         <td>
                           <i id="age"> 
-                            <?php  echo $age;?>
+                            <?php  echo $mydata['ag'];?>
                           </i> 
-                          <small class="ag_tx">
+                         
+                            </td>
+                      </tr>
+                      <tr class="no_br">
+                        <td>Age Privacy
+                        </td>
+                        <td>
+                         
+						 
                             <?php if($mydata['age_hide']==1)
 {
 ?>
-                            <small id="age_ar">
-                              <?php echo "Public View Only" ;?>
-                            </small> 
+                            <i id="age_ar">
+                              <?php echo "Public" ;?>
+                            </i> 
                             <?php
 }
 else
 {
 ?>
-                            <small id="age_ar">
-                              <?php echo "Private View Only" ;?> 
+                            <i id="age_ar">
+                              <?php echo "Private" ;?> 
                               <?php
 } ?>
-                            </small>
-                            </td>
-                      </tr>
-                      <tr class="no_br">
-                        <td>Private /  Public
-                        </td>
-                        <td>
-                          <i id="visib">
-                            <?php if($mydata['visibility']=='true'){?>
-                            Public
-                            <?php }else{
-?>Private
-                            <?php }?>  
-                          </i>
+                            </i>
+						 
+						 
+						 
                         </td>
                       </tr>
                     </table>
@@ -448,7 +519,15 @@ else
                     </h3>
                     <div class="row">
                       <div class="">
-                        <form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadPhotos/'; ?>" id="">
+                        
+						
+						<form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadPhotos/'; ?>" id="">
+										  <?php	
+$user_id =$this->session->userdata('user_id');
+	$data = $this->users_model->countimage($user_id);
+if($data <3)
+{
+	?>
                           <div class="job_descp">
                             <input type ="hidden" name="abc" id="abc" value=
                                    <?php echo $mydata['user_id'] ?> >
@@ -456,12 +535,22 @@ else
                           </div>
                           </div>
                         <div class="col-lg-3">
+								  
+	
                           <div class="job-status-bar">
                             <button type="submit" name="register" class="btn btn-success">Upload 
                             </button>
                           </div>
+						  </div>
+						    <?php  } else{?>
+		<div class="alert alert-danger">
+<div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your Photo uploading limit is maximum please delete to continue !!! </div>
+
+										</div>
+										
+<?php }?>
                         </div>
-                      </div>
+                   
                       </form>
                     <div class="gallery_pf">
                       <div class="row">
@@ -496,7 +585,7 @@ $i++;
 }}
 ?>
                       </div>
-                    </div>
+                    </div>   </div>
                     <!--div class="gallery_pf">
 <div class="row">
 <!?php	foreach( $image as $row )
@@ -537,11 +626,12 @@ foreach($photos as $ph){?>
                   <div class="acc-setting">
                     <h3>My Friend Requests
                     </h3>
+                    <div class="col-lg-8">
                     <div class="requests-list widt100">
                       <?php if(!empty($friendsRequest)){
 $i=1;
 foreach($friendsRequest as $frq){?>
-                      <div class="request-details" id="<?php echo $frq->user_id;?>">
+                      <div class="request-details request-detailsch" id="<?php echo $frq->user_id;?>">
                         <div class="noty-user-img">
                           <?php if($frq->profile_pic!=""){?>
                           <img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
@@ -587,6 +677,8 @@ else{ ?>
 </div> -->
                       <?php }?>
                     </div>
+                    </div>
+					
                     <!--requests-list end-->
                     <div class="clearfix">
                     </div>
@@ -602,7 +694,9 @@ else{ ?>
                   </div>
                 </div>
                 <div class="product-feed-tab" id="my-frd-list">
+				<h3 class="h3cl">My Friend list </h3>
                   <div class="row">
+				  
                     <?php if(!empty($friendList)){
 $i=1;
 foreach($friendList as $frq){?>
@@ -620,6 +714,13 @@ foreach($friendList as $frq){?>
                             </span>
                           </i>
                           <?php }?>
+						<div class="ed-opts form_wrapper unfr">
+                                                    <a href="" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                    <ul class="ed-options unfrhide" data-id="<?php echo $frq->user_id;?>"    style="display: none;">
+                                                                                                                            <li><a href="" title=""><i class="fa fa-user-times " aria-hidden="true"></i> &nbsp; Unfriend</a></li>
+                                                        
+                                                                                                        </ul>
+                                                </div>
                           <div class="clearfix">
                           </div>
                           <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
@@ -834,7 +935,7 @@ include 'footer.php';?>
     </div>		
     <div class="col-lg-12">
       <p class="sav_bt">	
-        <button type="button" id="basicinfo" class="save" >Save
+        <button type="button" id="basicinfo" class="buttonlo save" >Save
         </button>
       </p>
       <div class="clearfix">
@@ -920,6 +1021,18 @@ foreach($countries as $row)
       </i> Interest
     </h4>
     <form>
+<!--div id="select7" class="select7_container">
+       <div class="select7_arrow">&#9662;</div>
+       <div class="select7_placeholder">Select Interest</div>
+       <select class="select7_select" onchange="add_selected_item(this, event);">
+           <option class="select7_hide" value="filler"></option>
+           <option value="option1">Boy</option>
+           <option value="option2">Girl</option>
+           <option value="option3">Other</option>
+
+       </select>
+       <div class="select7_items"></div>
+   </div-->
       <div class="datefm">
         <select name="Interest_id" id="Interest_id">
           <option value="1">Boy
@@ -1080,149 +1193,55 @@ foreach($countries as $row)
         <button type="submit" class="btn btn-success btn-default pull-left"  onclick="deleteimg()" >
           Yes
         </button>
-        <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">
+        <button type="submit" class="btn btn-success btn-default pull-left" data-dismiss="modal">
           No
         </button>
       </div>
     </div>
   </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox-plus-jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>
+
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.12.4.js">
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-ui.js">
 </script>
 <script>
   $('#dob').datepicker({
-  }
-                      );
-</script>
-<script type="text/javascript" >
-  var box = $('.ed-options');
-  var link = $('.ed-opts-open');
-  $(document).click(function() {
-    box.hide();
-    //box1.hide();
-  }
-                   );
-  box.click(function(e) {
-    e.stopPropagation();
-  }
-           );
-  $(".ed-opts-open").on("click", function(){
-    $(this).parent('.form_wrapper').find(box).show();
-  }
-                       );
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox-plus-jquery.min.js">
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
-</script>
-<script src="https://static.opentok.com/v2/js/opentok.js">
+	   minDate: new Date(1900,1-1,1), maxDate: '-18Y',
+      dateFormat: 'dd/mm/yy',
+      defaultDate: new Date(),
+      changeMonth: true,
+      changeYear: true,
+      yearRange: '-110:-18'
+  });
 </script>
 <script>
-  var APIKEY = "<?php echo $apiKey;?>";
-  //YOUR_API_KEYdash;
-  var SESSIONID = "<?php echo $openSessionId;?>";
-  var TOKEN = "<?php echo $open_tokenId;?>";
-  //alert(apiKey +' == '+ sessionId);
+$(document).ready(function() {	
+	
+		$('.unfrhide').click(function() { 
+			var uid =$(this).data('id'); 
+			
+				$.ajax({
+			type: "POST",
+				url: "../Profile/unfriend",
+				data:{uid:uid},
+				dataType:"text", 
+				success: function(result){
+					var resultObj = JSON.parse(result)
+			
+				}               
+		}); 		
+		}); 
+	
+
+
+});
+
+
 </script>
-<!--------------------------------------Form Validation script---------------------------->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js">
-</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.22.0/js/jquery.fileupload.min.js">
-</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-file-upload/9.22.0/js/vendor/jquery.ui.widget.js">
-</script>
-<!--script type="text/javascript" src="<!?php echo base_url(); ?>js/jquery_validation/jquery.validate.js"></script-->
-<script type="text/javascript"> 
-  $("#myimg").validate({
-    rules: {
-      photopublic:"required"
-    }
-    ,
-    messages: {
-      photopublic:"Please choose the file"
-    }
-  }
-                      );
-</script>
-<script>
-  $(function() {
-    var countFiles = 1,
-        $body = $('body'),
-        typeFileArea = ['txt', 'doc', 'docx', 'ods'],
-        coutnTypeFiles = typeFileArea.length;
-    //create new element
-    $body.on('click', '.files-wr label', function() {
-      var wrapFiles = $('.files-wr'),
-          newFileInput;
-      countFiles = wrapFiles.data('count-files') + 1;
-      wrapFiles.data('count-files', countFiles);
-      newFileInput = '<div class="one-file"><label for="file-' + countFiles + '">Upload  Photo</label>' +
-        '<input type="file" name="file-' + countFiles + '" id="file-' + countFiles + '"><div class="file-item hide-btn">' +
-        '<span class="file-name"></span><span class="btn btn-del-file">x</span></div></div>';
-      wrapFiles.prepend(newFileInput);
-    }
-            );
-    //show text file and check type file
-    $body.on('change', 'input[type="file"]', function() {
-      var $this = $(this),
-          valText = $this.val(),
-          fileName = valText.split(/(\\|\/)/g).pop(),
-          fileItem = $this.siblings('.file-item'),
-          beginSlice = fileName.lastIndexOf('.') + 1,
-          typeFile = fileName.slice(beginSlice);
-      fileItem.find('.file-name').text(fileName);
-      if (valText != '') {
-        fileItem.removeClass('hide-btn');
-        for (var i = 0; i < coutnTypeFiles; i++) {
-          if (typeFile == typeFileArea[i]) {
-            $this.parent().addClass('has-mach');
-          }
-        }
-      }
-      else {
-        fileItem.addClass('hide-btn');
-      }
-      if (!$this.parent().hasClass('has-mach')) {
-        $this.parent().addClass('error');
-      }
-    }
-            );
-    //remove file
-    $body.on('click', '.btn-del-file', function() {
-      var elem = $(this).closest('.one-file');
-      elem.fadeOut(400);
-      setTimeout(function() {
-        elem.remove();
-      }
-                 , 400);
-    }
-            );
-  }
-   );
-</script>
-<script>
-  var site_url='<?php  echo base_url();?>index.php/';
-</script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.min.js">
-</script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js">
-</script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/popper.js">
-</script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.min.js">
-</script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/flatpickr.min.js">
-</script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/lib/slick/slick.min.js">
-</script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/script.js">
-</script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/custom.js">
-</script>
-</body>
-</html>
 <script>
   function getFeeds(intValue) {
     var val=intValue;
@@ -1294,6 +1313,15 @@ foreach($countries as $row)
           );
   }
 </script>
+<script>
+$(".buttonlo").click(function() {
+   $('#myOverlay').show();
+   $('#loadingGIF').show();
+   setTimeout(function(){
+       $('#myOverlay').hide();
+       $('#loadingGIF').hide();
+   },2800);
+});
 </script>
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto">
 </audio>
@@ -1306,3 +1334,4 @@ foreach($countries as $row)
 <script>
   normalConnection();
 </script>
+

@@ -24,6 +24,7 @@ class Profile_model extends CI_Model
         $this->db->or_where('us.user_id', $userId);
         //$this->db->where_not_in('uf.id' ,'hd.feed_id');
         $this->db->where('uf.status', 1);
+       // $this->db->where('um.status', 1);
         
         //$this->db->group_by('us.user_id'); 
         
@@ -39,11 +40,11 @@ class Profile_model extends CI_Model
     
     public function GetUserfeeds($userId)
     {
-        $this->db->select('DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id,cf.country');
+        $this->db->select('DISTINCT(us.user_id),us.gender,up.profile_pic,uf.created_at,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id,cf.country');
         $this->db->from('users us');
         $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
         $this->db->join('user_feed uf', 'uf.user_id= us.user_id', 'INNER');
-        $this->db->join('countries cf', 'cf.c_id= up.country_id', 'INNER');
+        $this->db->join('countries cf', 'cf.c_id= up.country_id', 'left');
         $this->db->where('us.user_id', $userId);
         $this->db->where('uf.status', 1);
         $this->db->order_by("uf.created_at", "desc");
@@ -216,7 +217,7 @@ class Profile_model extends CI_Model
     {
         
         
-        $query = $this->db->query("UPDATE users SET status=2 WHERE user_id =$uid");
+        $query = $this->db->query("UPDATE user_profile SET visibility='false' WHERE user_id =$uid");
         return true;
         
         
@@ -226,7 +227,17 @@ class Profile_model extends CI_Model
     {
         
         
-        $query = $this->db->query("UPDATE users SET status=1 WHERE user_id =$uid");
+        $query = $this->db->query("UPDATE  user_profile SET visibility='true' WHERE user_id =$uid");
+        return true;
+        
+        
+        
+    }
+	public function deactivateuser($user_id)
+    {
+        
+        
+        $query = $this->db->query("UPDATE users SET status=0 WHERE user_id =$user_id");
         return true;
         
         
@@ -236,8 +247,21 @@ class Profile_model extends CI_Model
     {
         $query = $this->db->query("INSERT INTO hide_post (user_id ,feed_id)
             VALUES ($uid,$id)");
-        echo $this->db->last_query();
+       // echo $this->db->last_query();
         return 1;
+        
+    }  public function deactivateifo($user_id,$msg)
+    {
+        $query = $this->db->query("INSERT INTO deactive (user_id ,message)
+            VALUES ($user_id,'$msg')");
+       // echo $this->db->last_query();
+        return 1;
+        
+    }
+     public function getdeactiveinfo($uid)
+    {
+        $query = $this->db->query("select email,password from users where user_id=$uid");
+           return $query->result_array();
         
     }
     

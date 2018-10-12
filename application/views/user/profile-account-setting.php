@@ -1,6 +1,7 @@
 <?php
 include 'header.php';
-$open_tokenId=base64_decode(urldecode($openToken));?>
+$open_tokenId=base64_decode(urldecode($openToken));$user=$this->session->userdata('user_id');?>
+<input type='text' name="uid" id="uid" value='<?php echo $user; ?>' hidden >
 <script src="https://static.opentok.com/v2/js/opentok.js">
 </script>	
 <section class="profile-account-setting min8">
@@ -11,12 +12,14 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
           <div class="acc-leftbar">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
               <!--a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true"><i class="la la-cogs"></i>Account Setting</a-->
+			  <a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false"><i class="fa fa-reply" aria-hidden="true"></i> Friend Requests Sent</a>
+			  
               <a class="nav-item nav-link active" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">
                 <i class="fa fa-lock">
                 </i>Change Password
               </a>
-              <!-- <a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab" href="#nav-notification" role="tab" aria-controls="nav-notification" aria-selected="false"><i class="fa fa-flash"></i>Notifications</a> -->
-              <!--a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false"><i class="fa fa-group"></i>Requests</a-->
+               <!--a class="nav-item nav-link" id="nav-notification-tab" data-toggle="tab" href="#nav-notification" role="tab" aria-controls="nav-notification" aria-selected="false"><i class="fa fa-flash"></i>Notifications</a--> 
+             
               <a class="nav-item nav-link" id="nav-deactivate-tab" data-toggle="tab" href="#nav-deactivate" role="tab" aria-controls="nav-deactivate" aria-selected="false">
                 <i class="fa fa-random">
                 </i>Deactivate Account
@@ -64,7 +67,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
                     <div class="col-lg-12">
                       <p class="sav_bt">	
                         <!--button type="submit" id="basicinfo" >Submit</button-->
-                        <button type="submit" class="acceptser">Save Setting
+                        <button type="submit" class="acceptser">Save Settings
                         </button>
                       </p>
                       <div class="clearfix">
@@ -78,17 +81,39 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
             </div>
             <div class="tab-pane fade" id="nav-requests" role="tabpanel" aria-labelledby="nav-requests-tab">
               <div class="acc-setting">
-                <h3>Requests
+                <h3>Friend Requests Sent
                 </h3>
                 <div class="requests-list widt100">
-                  <?php if(!empty($friendsRequest)){
+                  <?php if(!empty($sendRequest)){
 $i=1;
-foreach($friendsRequest as $frq){?>
-                  <div class="request-details" id="<?php echo $frq->user_id;?>">
+foreach($sendRequest as $frq){
+	
+	?>
+                  <div class="request-details request-detailsch" id="<?php echo $frq->user_id;?>">
                     <div class="noty-user-img">
-                      <img src="images/resources/r-img1.png" alt="">
+                    	<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
+									
+									<?php if($frq->profile_pic!=""){?>
+											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
+											<?php }else{?>
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											<?php }?>
+									
+									
+									</a>
                     </div>
                     <div class="request-info">
+					
                       <h3>
                         <?php echo $frq->full_name ;?>
                       </h3>
@@ -97,7 +122,7 @@ foreach($friendsRequest as $frq){?>
                     <div class="accept-feat">
                       <ul>
                         <li>
-                          <button type="button" class="accept-req" onclick="friendAccept(<?php echo $frq->user_id;?>)">Accept
+                          <button type="button" class="accept-req" onclick="">Requested
                           </button>
                         </li>
                         <li>
@@ -116,41 +141,26 @@ foreach($friendsRequest as $frq){?>
                 <!--requests-list end-->
                 <div class="clearfix">
                 </div>
-                <div class="success-box alert">
-                  <div class="msg">
-                    <i class="fa fa-check" aria-hidden="true">
-                    </i> Success – Your message will goes here
-                  </div>
-                </div>
-                <div class="error-box alert">
-                  <div class="msg">
-                    <i class="fa fa-times" aria-hidden="true">
-                    </i> Error – Message will goes here
-                  </div>
-                </div>
-                <div class="info-box alert">
-                  <div class="msg">
-                    <i class="fa fa-database" aria-hidden="true">
-                    </i> Info &#8211; Information message will goes here
-                  </div>
-                </div>
-                <div class="download-box alert">
-                  <div class="msg">
-                    <i class="fa fa-exclamation-triangle" aria-hidden="true">
-                    </i>  No data &#8211; 
-                  </div>
-                </div>
-              </div>
+             
               <!--acc-setting end-->
             </div>
+            </div>
+			
+										
+									
             <div class="tab-pane fade" id="nav-deactivate" role="tabpanel" aria-labelledby="nav-deactivate-tab">
-              <div class="acc-setting">
-                <form class="padr20">
+			
+<?php if(isset($_SESSION["success"])) { ?>
+<div class="clearfix"></div>
+										<div class="alert alert-success"><?php echo $this->session->flashdata("success");?> </div> 
+									<?php } ?>
+									<div class="acc-setting">
+             	<form method="POST" class="padr20" action="<?php echo base_url(); ?>index.php/Profile/deactive" name="deform" id="deform">
                   <div class="cp-field">
                     <h5>Email
                     </h5>
                     <div class="cpp-fiel">
-                      <input type="text" name="email" placeholder="Email" class="form-control">
+                      <input type="text" name="emailid" id="emailid" placeholder="Email" class="form-control">
                       <i class="fa fa-envelope">
                       </i>
                     </div>
@@ -159,7 +169,7 @@ foreach($friendsRequest as $frq){?>
                     <h5>Password
                     </h5>
                     <div class="cpp-fiel">
-                      <input type="password" name="password" placeholder="Password" class="form-control">
+                      <input type="password" name="pas" id="pas" placeholder="Password" class="form-control">
                       <i class="fa fa-lock">
                       </i>
                     </div>
@@ -167,19 +177,18 @@ foreach($friendsRequest as $frq){?>
                   <div class="cp-field">
                     <h5>Please Explain Further
                     </h5>
-                    <textarea class="form-control">
+						<textarea placeholder="Write something here..." name="bb" id="bb"  ></textarea>
+                  
                     </textarea>
                   </div>
                   <div class="cp-field">
-                    <div class="fgt-sec">
-                      <input type="checkbox" name="cc" id="c4" class="form-control">
-                      <label for="c4">
-                        <span>
-                        </span>
-                      </label>
-                      <small>I accept
-                      </small>
-                    </div>
+				  
+												<label class="containerc"> <a href="#" title="" class="exp-bx-open aqw"><small>I accept
+												</small></a>
+  <input type="checkbox"  name="agree" id="agree" value="agree" required>
+  <span class="checkmarkc"></span>
+</label>
+                   
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id,
                     </p>
                   </div>
@@ -187,7 +196,7 @@ foreach($friendsRequest as $frq){?>
                   </div>
                   <div class="col-lg-12">
                     <p class="sav_bt">	
-                      <button type="button" id="basicinfo" class="btn acceptser">Deactivate
+                      <button type="submit" class="acceptser" id="deactive" name="deactive">Deactivate
                       </button>
                     </p>
                     <div class="clearfix">
@@ -278,3 +287,26 @@ include 'footer.php';?>
 <script>
   normalConnection();
 </script>
+
+<!--------------------------------------Form Validation script---------------------------->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+<!--script type="text/javascript" src="<!?php echo base_url(); ?>js/jquery_validation/jquery.validate.js"></script-->
+<script type="text/javascript"> 
+	 $("#deform").validate({
+
+            rules: {
+            emailid:"required",
+			pas:"required",
+			bb:"required",
+			agree :"required"
+			
+             },
+            messages: {
+              emailid:"Please enter th email "    ,
+	     pass:"Please enter the password" ,
+		 bb:"Please enter the reason" ,
+		 agree:"Please select the field"
+		        }
+    
+	   }); 
+	   </script>

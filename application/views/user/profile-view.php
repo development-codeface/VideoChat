@@ -61,50 +61,7 @@ else
                 <!--user-pro-img end-->
               </div>
               <!--user_profile end-->
-              <div class="suggestions full-width">
-                <div class="sd-title">
-                  <h3>People Viewed Profile
-                  </h3>
-                </div>
-                <!--sd-title end-->
-                <div class="suggestions-list">
-                  <?php if(!empty($profileViewer)){
-$i=1;
-foreach($profileViewer as $frq){?>
-                  <?php if($frq->user_id!=$mydata['user_id'] ){?>
-                  <div class="suggestion-usd">
-                    <?php if($frq->profile_pic!=""){?>
-                    <img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
-                    <?php }else{?>
-                    <?php if($frq->gender==1)
-{
-?>
-                    <img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
-                    <?php
-}
-else
-{ ?>
-                    <img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
-                    <?php	} ?>
-                    <?php }?>
-                    <div class="sgt-text">
-                      <h4>
-                        <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
-                          <?php echo $frq->full_name;?>
-                        </a>
-                      </h4>
-                    </div>
-                    <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
-                      <span>
-                        <i class="fa fa-eye enqclve" aria-hidden="true">
-                        </i>
-                      </span>
-                    </a>
-                  </div>
-                  <?php }}}?>
-                </div>
-                <!--suggestions-list end-->
-              </div>
+              
               <!--suggestions end-->
             </div>
             <!--main-left-sidebar end-->

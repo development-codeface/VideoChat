@@ -62,9 +62,91 @@ $user=$this->session->userdata('user_id');?>
 													<img src="<?php echo base_url() .'uploads/profile_pic/'.$fd->profile_pic ;?>" alt="">
 														<?php }?>
 														<div class="usy-name">
-														<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$fd->user_id;?>">	<h3><?php if($fd->full_name!=""){ echo $fd->full_name ;}else { echo $fd->nick_name;}?></h3></a>
+														<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$fd->user_id;?>">	<h3><?php  
+														echo $fd->full_name ; ?></h3></a>
 															<span>
-                                                             <i class="fa fa-clock-o" aria-hidden="true"></i>  <?php echo $fd->created_at;?></span> &nbsp;<span><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $fd->country;?></span>
+															
+															
+															
+														
+<?php
+ 
+
+$timestamp=$fd->created_at;
+list($date,$time)=explode(' ',$timestamp);
+//echo $time;
+
+    $time_ago = strtotime($fd->created_at);
+    $cur_time   = time();
+    $time_elapsed   = $cur_time - $time_ago;
+    $seconds    = $time_elapsed ;
+    $minutes    = round($time_elapsed / 60 );
+    $hours      = round($time_elapsed / 3600);
+    $days       = round($time_elapsed / 86400 );
+    $weeks      = round($time_elapsed / 604800);
+    $months     = round($time_elapsed / 2600640 );
+    $years      = round($time_elapsed / 31207680 );
+    // Seconds
+    if($seconds <= 60){
+        $ti= "just now";
+    }
+    //Minutes
+    else if($minutes <=60){
+        if($minutes==1){
+           $ti= "one minute ago";
+        }
+        else{
+            $ti= "$minutes minutes ago";
+        }
+    }
+    //Hours
+    else if($hours <=24){
+        if($hours==1){
+          $ti= "an hour ago";
+        }else{
+           $ti= "$hours hrs ago";
+        }
+    }
+    //Days
+    else if($days <= 7){
+        if($days==1){
+            $ti= "yesterday";
+        }else{
+           $ti= "$days days ago";
+        }
+    }
+    //Weeks
+    else if($weeks <= 4.3){
+        if($weeks==1){
+            $ti= "a week ago";
+        }else{
+            $ti= "$weeks weeks ago";
+        }
+    }
+    //Months
+    else if($months <=12){
+        if($months==1){
+            $ti= "a month ago";
+        }else{
+            $ti= "$months months ago";
+        }
+    }
+    //Years
+    else{
+        if($years==1){
+           $ti= "one year ago";
+        }else{
+            $ti= "$years years ago";
+        }
+    }
+
+?>						
+															
+															
+															
+															
+															
+                                                             <i class="fa fa-clock-o" aria-hidden="true"></i>  <?php  echo  $ti;?></span> &nbsp;<span>
 														</div>
 													</div>
 													<div class="ed-opts form_wrapper"  >
@@ -92,7 +174,7 @@ $user=$this->session->userdata('user_id');?>
 								<input type="hidden" name="feed-id"  id="feed-id" />
 								<textarea id="feed-edit" name="feed-edit"  ></textarea>
 								<button type="submit" class="save" id="feedsave" name="feedsave"  >Save</button>
-								<a href="<?php echo base_url()."index.php/User/Profile/"?>	<button type="button" class="cancel">Cancel</button></a>
+								<a href="<?php echo base_url()."index.php/User/Profile/"?>">	<button type="button" class="cancel">Cancel</button></a>
 								</form>
 								<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
 								</div><!--overview-edit end-->
@@ -218,10 +300,13 @@ $user=$this->session->userdata('user_id');?>
 											</div>
 										<?php }}else{ ?>
 						
-					<!--	<div class="download-box alert">
-<div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
+						<div class="col-lg-12">
+						<div class="alert alert-danger">
+<div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No Online Friends; </div>
 
-										</div>--><?php }?>
+										</div>
+										</div>
+										<?php }?>
 											
 										
 										</div><!--suggestions-list end-->

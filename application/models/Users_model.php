@@ -13,6 +13,7 @@ class Users_model extends CI_Model
             'user_name' => $username,
             'password' => $password,
             'status' => 1
+			
         ));
         return $query->row_array();
     }
@@ -26,8 +27,9 @@ class Users_model extends CI_Model
     
     // Users insert
     
-    public function InsertUser($saves)
+    public function InsertUser($saves,$nick)
     {
+		
         
         $this->db->insert('users', $saves);
         $user_id = $this->db->insert_id();
@@ -43,10 +45,15 @@ class Users_model extends CI_Model
                 'visibility' => 'true'
             );
             $this->db->insert('user_profile', $array);
+			 $query = $this->db->query("UPDATE  user_profile SET nick_name='$nick' where user_id=$user_id");
+			 $query = $this->db->query("UPDATE  user_profile SET nick_name='$nick' where user_id=$user_id");
             return array(
                 'success' => true,
                 'message' => $user_id
             );
+			
+			
+			 
         }
         return array(
             'success' => true,
@@ -98,6 +105,18 @@ class Users_model extends CI_Model
         $this->db->where('um.status', 0);
         $this->db->order_by("um.friend_id", "ASC");
         $result = $this->db->get()->result(); //echo $this->db->last_query();exit;
+        return $result;
+    }
+	public function GetsendRequest($userId)
+    {
+        $this->db->select('us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name');
+        $this->db->from('users us');
+        $this->db->join('friends um', 'um.user_id=us.user_id', 'INNER');
+        $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
+        $this->db->where('um.friend_id', $userId);
+        $this->db->where('um.status', 0);
+        $this->db->order_by("um.friend_id", "ASC");
+        $result = $this->db->get()->result();// echo $this->db->last_query();exit;
         return $result;
     }
     
@@ -254,7 +273,7 @@ class Users_model extends CI_Model
     
     public function GetMyData($userId)
     {
-        $this->db->select('us.*,up.*,cf.*,us.gender as gen,us.dob as birth');
+        $this->db->select('us.*,up.*,cf.*,us.gender as gen,us.dob as birth,us.age as ag');
         $this->db->from('users us');
         $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
         $this->db->join('countries cf', 'cf.c_id=up.country_id', 'LEFT');
@@ -263,7 +282,7 @@ class Users_model extends CI_Model
         return $result->row_array();
     }
     
-    public function UpdateBasic($param, $params, $user_id, $dob, $gen, $age)
+    public function UpdateBasic($param, $params, $user_id, $dob, $gen, $age,$ageuser)
     {
         
         $this->db->where('user_id', $user_id);
@@ -271,7 +290,8 @@ class Users_model extends CI_Model
         $this->db->where('user_id', $user_id);
         $this->db->update('user_profile', $params);
         $query = $this->db->query("UPDATE  user_profile SET age_hide=$age where user_id=$user_id");
-        $query = $this->db->query("UPDATE  users SET dob='$dob',gender=$gen where user_id=$user_id");
+        $query = $this->db->query("UPDATE  users SET dob='$dob',gender=$gen where user_id=$user_id"); 
+		$query = $this->db->query("UPDATE  users SET age='$ageuser' where user_id=$user_id");
         return 1;
     }
     public function Updateintrest($params, $user_id)
@@ -333,26 +353,74 @@ class Users_model extends CI_Model
     ///search friends
     public function GetSearchFriends($params)
     {
-        if ($params['country'] == 0) {
+        if (($params['country'] == 0)&&($params['age'] == 0)&&($params['gender'] == 0)) {
             
             $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
             user_profile up  ON up.user_id=us.user_id
         WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
         AND us.user_id !=' . $params['user_id'] . ' and 
-        up.visibility="true" ORDER BY us.user_id');
+        up.visibility="true" AND us.status =1 ORDER BY us.user_id');
             return $result->result();
-        } else {
-            
-            /*$result = $this->db->query('SELECT DISTINCT(us.user_id),up.profile_pic,up.nick_name,us.full_name  from users us 
-            INNER JOIN  user_profile up  ON up.user_id=us.user_id
-            WHERE us.user_id not in(select fm.friend_id from friends fm where fm.user_id ='.$params['user_id'].') 
-            and up.gender ='.$params['gender'].' AND up.country_id="'.$params['country'].'" AND us.user_id !='.$params['user_id'] .' and 
-            up.visibility="true" ORDER BY us.user_id');*/
+        } else  if (($params['country'] != 0)&&($params['age'] == 0)&&($params['gender'] == 0)){
+           
+ $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            user_profile up  ON up.user_id=us.user_id
+        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+        AND us.user_id !=' . $params['user_id'] . '  AND up.country_id =' . $params['country'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            return $result->result();
+		   
+		}else  if (($params['country'] == 0)&&($params['age'] != 0)&&($params['gender'] == 0)){
+           
+ $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            user_profile up  ON up.user_id=us.user_id
+        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+        AND us.user_id !=' . $params['user_id'] . '  AND  us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            return $result->result();
+		   
+		}else  if (($params['country'] == 0)&&($params['age'] == 0)&&($params['gender'] != 0)){
+           
+ $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            user_profile up  ON up.user_id=us.user_id
+        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+        AND us.user_id !=' . $params['user_id'] . '  AND  us.gender =' . $params['gender'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            return $result->result();echo $this->db->last_query();
+		   
+		}else  if (($params['country'] != 0)&&($params['age'] != 0)&&($params['gender'] == 0)){
+           
+ $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            user_profile up  ON up.user_id=us.user_id
+        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+        AND us.user_id !=' . $params['user_id'] . '  AND   us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND up.country_id =' . $params['country'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            return $result->result();
+		   
+		}
+		else  if (($params['country'] == 0)&&($params['age'] != 0)&&($params['gender'] != 0)){
+           
+        $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            user_profile up  ON up.user_id=us.user_id
+        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+        AND us.user_id !=' . $params['user_id'] . '  AND   us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND us.gender =' . $params['gender'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            return $result->result();
+		   
+		}
+		else  if (($params['country'] != 0)&&($params['age'] == 0)&&($params['gender'] != 0)){
+           
+        $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            user_profile up  ON up.user_id=us.user_id
+        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+        AND us.user_id !=' . $params['user_id'] . '  AND us.gender =' . $params['gender'] . ' AND up.country_id =' . $params['country'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            return $result->result();
+		   
+		}
+			
+			
+			else{
+				
             $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us 
         INNER JOIN  user_profile up  ON up.user_id=us.user_id
          JOIN  countries uc  ON uc.C_id=up.country_id
         WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ') 
-        and  us.gender =' . $params['gender'] . ' AND  us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND us.user_id !=' . $params['user_id'] . ' AND up.country_id =' . $params['country'] . ' and 
+        and  us.gender =' . $params['gender'] . ' AND  us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND us.user_id !=' . $params['user_id'] . ' AND up.country_id =' . $params['country'] . ' AND us.status =1 and 
         up.visibility="true" ORDER BY us.user_id');
             //echo $this->db->last_query();
             //us.gender ='.$params['gender'].' AND
@@ -365,22 +433,31 @@ class Users_model extends CI_Model
     public function GetSearchFriends_name($params, $check)
     {
         
+       
         /*$result = $this->db->query('SELECT DISTINCT(us.user_id),up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
         user_profile up  ON up.user_id=us.user_id
         WHERE us.user_id not in(select fm.friend_id from friends fm where fm.user_id ='.$params['user_id'].')  AND up.country_id="'.$params['country'].'"
         AND us.user_id !='.$params['user_id'] .' and 
         up.visibility="true" ORDER BY us.user_id');*/
-        $this->db->select('us.user_id,up.profile_pic,up.nick_name,us.full_name,us.gender');
+        $this->db->select('us.user_id,up.profile_pic,up.nick_name,us.full_name,us.gender,um.user_Id ');
         $this->db->from('users us');
-        
-        $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
-        
-        
-        $this->db->like('us.full_name', $check);
+		 $this->db->join('user_profile up', 'up.user_id=us.user_id', 'left');
+       
+         $this->db->join('friends um', 'um.friend_id=us.user_id', 'INNER');
+		
+        $this->db->join('online_user od', 'od.user_id= us.user_id', 'INNER');
+       
+       
+        $this->db->or_like('us.full_name', $check);
+		$this->db->or_like('up.nick_name', $check);
+		 
         $this->db->group_by('us.user_id');
         
         $result = $this->db->get()->result();
         return $result;
+		
+		
+		
         
         
     }
@@ -421,7 +498,7 @@ class Users_model extends CI_Model
     }
     public function imageinfo($userId)
     {
-        $query = $this->db->query("SELECT * from user_photos WHERE  user_id=$userId and status='0'");
+        $query = $this->db->query("SELECT * from user_photos WHERE  user_id=$userId and status='0' ORDER BY id DESC");
         return $query->result_array();
     }
     
@@ -430,6 +507,11 @@ class Users_model extends CI_Model
     function updatephoto($user_id, $file_name)
     {
         $query = $this->db->query("update user_profile set profile_pic='$file_name' where user_id=$user_id ");
+        return 1;
+    } 
+	function updateunfriend($friend,$user_id)
+    {
+        $query = $this->db->query("delete from friends where user_id=$user_id and friend_id=$friend ");
         return 1;
     }
     function updatecover($user_id, $file_name)
@@ -447,7 +529,7 @@ class Users_model extends CI_Model
     
     public function GetFriendListsearch($userId, $check)
     {
-        $this->db->select('us.user_id,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status');
+        $this->db->select('us.user_id,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status,us.gender');
         $this->db->from('users us');
         $this->db->join('friends um', 'um.friend_id=us.user_id', 'INNER');
         $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
@@ -463,7 +545,7 @@ class Users_model extends CI_Model
     }
     function update_img_status($img_id)
     {
-        $query = $this->db->query("update  user_photos set status='1' where id=$img_id ");
+        $query = $this->db->query("delete from  user_photos  where id=$img_id ");
         return 1;
     }
     
@@ -507,6 +589,17 @@ class Users_model extends CI_Model
         $query = $this->db->query("select * from stranger_det");
         return $query->result();
         
+    }   
+	function countimage($uid)
+    {
+        $query = $this->db->query("select count(user_id) as cs from user_photos where user_id=$uid");
+        foreach ($query->result() as $row) {
+            $name = $row->cs;
+            
+        }
+        return $name;
+ 
+        
     }
     function insertnotification($str, $fid, $uid)
     {
@@ -532,7 +625,7 @@ class Users_model extends CI_Model
     {
         $query = $this->db->query("
             
-            SELECT ns.messages,up.profile_pic,us.gender   from notification ns 
+            SELECT ns.messages,ns.fri_id,ns.user_id,up.profile_pic,us.gender   from notification ns 
             JOIN
             user_profile up  ON up.user_id = ns.user_id
              JOIN

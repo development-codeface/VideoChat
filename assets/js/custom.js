@@ -150,7 +150,7 @@ var age=$("#age_id").val();
 				}else{
 				$("#genders" ).html("Female");	
 				}
-				
+				 window.setTimeout(function(){location.reload()},1000);
 
               }else{
 				$('#Eeror').hide();
@@ -164,6 +164,7 @@ var age=$("#age_id").val();
 }
 });
 //location save
+
 
 $( "#locationSave" ).on('click', function (e) {
 
@@ -200,7 +201,7 @@ $( "#locationSave" ).on('click', function (e) {
 //feed edit
 
 
- $( "#feedsave" ).on('click', function (e) {
+/* $( "#feedsave" ).on('click', function (e) {
 
   var feed=$("#feed-edit" ).val();
   var id=$("#feed-id" ).val();
@@ -228,7 +229,7 @@ $( "#locationSave" ).on('click', function (e) {
   return false;
 }
 });
-
+*/
 
 // interest save
  $( "#InterestSave" ).on('click', function (e) {
@@ -309,7 +310,7 @@ function reload(){
     }, 5000);
 }
 function friendAccept(userId){
-	  var Uid = $("#abc").val();
+	  var Uid = $("#uid").val();
 	  var frinedId = userId;
 	$.ajax({
 		type: "POST",
@@ -342,7 +343,10 @@ function friendRequest(userId){
         success: function(data) {
             if(data.status==1){
 				$("#"+userId).remove();
-				location.reload();
+				
+				
+				$("#Interest_ar" ).html("<div class='alert alert-success'> Your Request has been send </div>");
+				 window.setTimeout(function(){location.reload()},1000);
 				}
 
         },

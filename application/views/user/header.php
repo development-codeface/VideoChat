@@ -19,23 +19,16 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/lib/slick/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+	
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/select7.css">
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/select7.js"></script>
+   
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/lightbox.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
     </script>
     <script src="https://www.jqueryscript.net/demo/Simple-Lightweight-jQuery-Input-Mask-Plugin-Masked-input/dist/jquery.masked-input.js">
     </script>
-    <script>
-      var place =0;
-      function changeColor() {
-        // your color list
-        var colorList = ["rgba(232, 155, 155, 0.79)","white"];
-        // set the color
-        document.getElementById("heading").style.backgroundColor = colorList[place];
-        place++;
-        // if place is greater than the list size, reset
-        if (place ===colorList.length) place=0;
-      }
-    </script>
+  
     <script>
       /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
@@ -125,7 +118,7 @@ toggle between hiding and showing the dropdown content */
           </div>
           <div class="modal-body modb">
             <?php	$user_id=$this->session->userdata('user_id'); ?>
-            <a href="<?php echo base_url(); ?>index.php/Profile/friends" class="fr_btn">
+            <a href="<?php echo base_url(); ?>index.php/Profile/friends" class="str_btn">
               <i class="fa fa fa-users" aria-hidden="true">
               </i> Friends  
             </a> 
@@ -171,15 +164,36 @@ toggle between hiding and showing the dropdown content */
                 </i>
               </a>
             </div>
+		
             <!--menu-btn end-->
+				<?php
+			$uid=$this->UserId = $this->session->userdata('user_id');
+			
+			    $query=$this->db->query("select visibility from user_profile where user_id=$uid");
+
+              $result=$query->result_array();
+                    
+                    foreach($result as $value){ 
+					$status=$value['visibility'];
+					
+					}
+					?>
             <div class="user-account">
-              <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider round pub_jav"  data-id="<?php echo $user_id;?>"  onclick="changeColor()" >
-                </span>
-                <span class="absolute-no priv_jav"   data-id="<?php echo $user_id;?>"  onclick="changeColor()" >Private
-                </span>
-              </label>
+<?php if($status=='true')
+		{
+			?>         
+		 <div class="togl_div">
+            <input type="checkbox" name="checkbox1" id="checkbox1" value="1 "class="ios-toggle" checked="">
+  <label for="checkbox1" class="checkbox-label" data-off="Public" data-on="Private" ></label>
+</div>         
+		<?php }
+else
+{	?>
+   <div class="togl_div">
+            <input type="checkbox" onclick="changeColor()" name="checkbox2" id="checkbox2" value="2 "class="ios-toggle">
+  <label for="checkbox2" class="checkbox-label" data-off="Public" data-on="Private"  checked=" "></label>
+</div>
+<?php } ?>
               <div class="search-barmsg nav-cl">
                 <div class="ed-opts  form_wrapper notmsg">
                   <a href="<?php echo base_url(); ?>index.php/Profile/friends"  data-tooltip="My Friends" class="tooltip-bottom">
@@ -188,11 +202,26 @@ toggle between hiding and showing the dropdown content */
                   </a>
                 </div>
                 <div class="ed-opts  form_wrapper notmsg">
-                  <a   href ="<?php echo base_url(); ?>index.php/Profile/Notifications" id="mes" class=" follow_friend" data-id="<?php echo $user_id;?>"  title="Messages">
-                    <i class="fa fa-bell" aria-hidden="true">
+                  <a   href ="#" id="mes" class=" not-box-open ed-opts-open "   title="Messages">
+                    <i class="fa fa-bell follow_friend" data-id="<?php echo $user_id;?>" aria-hidden="true">
                     </i>
                   </a>
-                  <!--ul class="ed-options not1" id="myModal">
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+                  <ul class="ed-options not1" id="myModal">
 <div class="nott-list">
 <div class="notfication-details">
 <div class="noty-user-img">
@@ -202,10 +231,37 @@ toggle between hiding and showing the dropdown content */
 <input type="text" name="noty" id="noty" >
 </div>
 </div>
+<div class="notfication-details ">
+                                              <div class="noty-user-img">
+                                              <img src="<?php echo base_url(); ?>assets/images/resources/ny-img2.png" alt="">
+                                              </div>
+                                              <div class="notification-info">
+                                                  <h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
+                                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
+                                                  <span>2 min ago</span>
+                                              </div>
+                                          </div>
 <div class="view-all-nots">
 <a href="<?php echo base_url(); ?>index.php/Profile/Notifications" title="" class="viewpad">View All Notifications</a>
 </div>
-</ul-->
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
                 </ul>
             </div>
@@ -230,17 +286,18 @@ else
                 <span class="fa fa-circle msg-top">
                 </span> 
                 <?php //echo $rss['full_name'];?>
-                <?php if($rss['nick_name']!=""){ echo $rss['nick_name'] ;}else { echo $rss['full_name'];}?> 
+                <?php  echo $rss['full_name'];?> 
               </button>
               <div id="myDropdown" class="dropdown-content">
-                <a href="<?php echo base_url(); ?>index.php/Profile/settings" title="">
-                  <i class="fa fa-cog" aria-hidden="true">
-                  </i> &nbsp;Account Setting
-                </a>
                 <a href="<?php echo base_url(); ?>index.php/Profile/myProfile" title="">
                   <i class="fa fa-user" aria-hidden="true">
                   </i> &nbsp;My Profile
                 </a>
+			   <a href="<?php echo base_url(); ?>index.php/Profile/settings" title="">
+                  <i class="fa fa-cog" aria-hidden="true">
+                  </i> &nbsp;Account Setting
+                </a>
+               
                 <a href="<?php echo base_url(); ?>index.php/Auth/logout" title="">
                   <i class="fa fa-sign-out" aria-hidden="true">
                   </i> &nbsp;Logout
@@ -261,6 +318,8 @@ else
         <!--header-data end-->
         </div>
       </header>
+	  <div class="fakeloader"></div>
+
     <!--header end-->
     <!-- Modal -->
     <div class="modal fade" id="myModalchat" role="dialog">
@@ -318,34 +377,7 @@ else
     <script src="https://static.opentok.com/v2/js/opentok.js">
     </script>
     <script type="text/javascript" >
-      $(document).ready(function() {
-        $('.follow_friend').click(function() {
-          var uid =$(this).data('id');
-          $.ajax({
-            type: "POST",
-            url: "../Profile/notifications_tab",
-            data:{
-              uid:uid}
-            ,
-            dataType:"text", 
-            success: function(result){
-              var resultObjt = JSON.parse(result)
-              if(result.notifications){
-                $.each(json.notifications, function(i, value){
-                  if(i < 5){
-                    $('#noty').html("<div>"+value.messages+"<br/>"+value.profile_pic+"<br/>"+value.gender+"<br/></div>");
-                    //$('#not').html(result.notifications);
-                  }
-                }
-                      );
-              }
-            }
-          }
-                );
-        }
-                                 );
-      }
-                       );
+      
       $('.str_frd').click(function() {
         var uid =$(this).data('id');
         $.ajax({
@@ -362,4 +394,41 @@ else
               );
       }
                          );
+						 
+						 $('#checkbox2').change(function () {
+							
+    var uid = $(this).val();
+	
+	  var uid =$(this).data('id');
+          $.ajax({
+            type: "POST",
+            url: "../Profile/update_privacy_private",
+            data:{
+              uid:uid}
+            ,
+            dataType:"text", 
+            success: function(result){
+				location.reload();
+            }
+ });}); 
+ $('#checkbox1').change(function () {
+							
+    var uid = $(this).val();
+	  var uid =$(this).data('id');
+          $.ajax({
+            type: "POST",
+            url: "../Profile/update_privacy",
+            data:{
+              uid:uid}
+            ,
+            dataType:"text", 
+            success: function(result){
+				location.reload();
+            }
+	
+ }); });
+ 
     </script>
+
+	<div id="myOverlay"></div>
+<div id="loadingGIF"><img src="../../assets/images/sp.gif" /></div>

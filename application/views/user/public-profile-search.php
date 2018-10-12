@@ -21,23 +21,19 @@ $user=$this->session->userdata('user_id');?>
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="card card-body text-white seproc">
-                  <div class="row pb-3">
+                  <div class="row pb-3cc">
                     <div class="col-md-12">
-                      <div class="comp_rgt">
-                        <div class="search-bar">
-                          <form method="post" action="http://localhost/videoCHAT-master/index.php/Profile/searchFreiend_name" name="serachfriend" id="serachfriend">
-                            <input type="text" name="search" id="search" placeholder="Search...">
+                         <div class="search-bar serb">
+                          <form method="post" action="<?php echo base_url(); ?>index.php/Profile/searchFreiend_name" name="serachfriend" id="serachfriend">
+                            <input type="text" name="search" id="search" placeholder="Search public profile...">
                             <button type="submit">
                               <i class="la la-search">
                               </i>
                             </button>
                           </form>
                         </div>
-                      </div>
-                      <h4>
-                        <i class="fa fa-search" aria-hidden="true">
-                        </i>  Search Public Profile  
-                      </h4>
+                 
+                     
                       <!--h4><i class="fa fa-search" aria-hidden="true"></i> Search Public Profile  </h4-->
                     </div>
                   </div>
@@ -49,6 +45,8 @@ $user=$this->session->userdata('user_id');?>
                           </label>
                           <div class="custom-select">
                             <select name="looking">
+							 <option value="0">All
+                              </option>
                               <option value="3">Others
                               </option>
                               <option value="1">A guy
@@ -65,6 +63,8 @@ $user=$this->session->userdata('user_id');?>
                           </label>
                           <div class="custom-select">
                             <select name="age">
+							 <option value="0">All
+                              </option>
                               <option value="1">18-20 years old
                               </option>
                               <option value="2">20-22 years old
@@ -96,7 +96,7 @@ $user=$this->session->userdata('user_id');?>
                       </div>
                       <div class="col-lg-2">
                         <div class="form-group">
-                          <button type="submit" name="search" class="btn acceptser mt_48">Search
+                          <button type="submit" name="search" class="btn acceptser mgt">Search
                           </button>
                         </div>
                       </div>
@@ -106,16 +106,26 @@ $user=$this->session->userdata('user_id');?>
               </div>
             </div>
           </div>
+		    <div class="col-md-12">
+		 <center>  <label color="red" id="Interest_ar">
+                         
+                        </center>
+						</div>
           <div class="col-md-12">
             <div class="acc-setting">
-              <h3>
-                <i class="fa fa fa-users" aria-hidden="true">
-                </i> Friends List 
+              <h3 class="mg64">
+                 Search Results 
               </h3>
+			  <div class="clearfix"></div>
+              <div class="col-lg-12">
               <div class="requests-list">
                 <?php if(!empty($results)){
 $i=1;
-foreach($results as $frq){?>
+foreach($results as $frq){
+	
+if(($frq->user_id)!=($this->session->userdata('user_id'))) {
+	?>
+
                 <div class="request-details" id="<?php echo $frq->user_id;?>">
                   <div class="noty-user-img">
                     <?php if($frq->profile_pic!=""){?>
@@ -152,16 +162,18 @@ else
                   </div>
                   <!--accept-feat end-->
                 </div>
+				
                 <!--request-detailse end-->
                 <?php 
 $i++;
 if($i==6){
 ?>
-                <?php 	} 
-}
+	<?php }	 
+}}
 } else{
-echo "No results";
+echo "<div class='alert alert-danger' >No results </div> ";
 }?>
+              </div>
               </div>
               <!--requests-list end-->	
             </div>

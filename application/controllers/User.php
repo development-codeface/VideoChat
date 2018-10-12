@@ -58,8 +58,10 @@ class User extends CI_Controller
         $this->data['results'] = null;
         if (isset($_POST['search'])) {
             $params['gender']  = $this->input->post("looking");
+			
             $params['age']     = $this->input->post("age");
             $params['country'] = $this->input->post("country");
+			
             
             if ($params['age'] == 1) {
                 $params['age_from'] = 18;
@@ -73,6 +75,7 @@ class User extends CI_Controller
                 $params['age_from'] = 22;
                 $params['age_to']   = 24;
             }
+		
             $this->data['countries'] = $this->users_model->getAllcountries();
             $params['user_id']       = $this->UserId;
             $this->data['results']   = $this->users_model->GetSearchFriends($params);
@@ -118,7 +121,7 @@ class User extends CI_Controller
         $use    = $this->input->post('Uid');
         
         $name     = $this->users_model->username($use);
-        $myString = $name . " send a friend request to you";
+        $myString = $name . " sent a friend request to you";
         
         
         $name = $this->users_model->insertnotification($myString, $params, $use);
@@ -161,7 +164,12 @@ class User extends CI_Controller
         $dob                  = date('Y-m-d', strtotime($dob));
         $gen                  = $this->input->post('gender');
         $params['visibility'] = $this->input->post('visibility');
-        $return               = $this->users_model->UpdateBasic($param, $params, $this->UserId, $dob, $gen, $age);
+		
+				$from = new DateTime($dob);
+				$to   = new DateTime('today');
+				$ageuser= $from->diff($to)->y;
+				
+        $return               = $this->users_model->UpdateBasic($param, $params, $this->UserId, $dob, $gen, $age,$ageuser);
         if (!empty($return)) {
             echo json_encode(array(
                 'status' => 1

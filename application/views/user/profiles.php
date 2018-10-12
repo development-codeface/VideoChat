@@ -17,7 +17,7 @@ $user=$this->session->userdata('user_id');?>
 															<div class="company-title">
 					<h3> Friend List</h3>
 				</div>
-										<div class="tab-feed">
+										<div class="tab-feed prof">
 											<ul>
 												<li data-tab="feed-dd" class="active">
 													<a href="#" title="">
@@ -36,7 +36,8 @@ $user=$this->session->userdata('user_id');?>
 														<i class="fa fa-users" aria-hidden="true"></i>
 														<span>My Friend Request</span>
 													</a>
-												</li>
+												</li>	
+											
 											</ul>
 										</div><!-- tab-feed end-->
 													<div class="comp_rgt">
@@ -78,6 +79,7 @@ $user=$this->session->userdata('user_id');?>
   </div>
 </div>
 									<div class="product-feed-tab current" id="feed-dd">
+									<h3 class="h3cl">All Friends  </h3>
 										<div class="row">
 										<?php if(!empty($friendList)){
 											$i=1;
@@ -91,8 +93,14 @@ $user=$this->session->userdata('user_id');?>
 								<?php if( $frq->status==1){?>
 								<i class="fa fa-circle msg-online" aria-hidden="true"> <span>Online</span></i><?php }else{?>
 								<i class="fa fa-circle msg-off" aria-hidden="true"> <span>Offline</span></i><?php }?>
-								
-								<i class="fa fa-eye enqcl" aria-hidden="true" data-toggle="modal" data-target="#myModalen" onclick="setprofile(<?php echo $frq->user_id;?> )"></i>
+								<div class="ed-opts form_wrapper unfr">
+                                                    <a href="" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                    <ul class="ed-options unfrhide" data-id="<?php echo $frq->user_id;?>"    style="display: none;">
+                                                                                                                            <li><a href="" title=""><i class="fa fa-user-times " aria-hidden="true"></i> &nbsp; Unfriend</a></li>
+                                                        
+                                                                                                        </ul>
+                                                </div>
+								<!--i class="fa fa-eye enqcl" aria-hidden="true" data-toggle="modal" data-target="#myModalen" onclick="setprofile(<?php echo $frq->user_id;?> )"></i-->
 								<div class="clearfix"></div>
 									<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
 									<?php if($frq->profile_pic!=""){?>
@@ -138,12 +146,19 @@ $user=$this->session->userdata('user_id');?>
 								<!-- <a href="profile-view.html" title="" class="view-more-pro">View Profile</a> -->
 							</div><!--company_profile_info end-->
 						</div>
-										<?php }}?>
-					
+										<?php }}
+										
+											else{
+											?>	<div class="alert alert-danger"  >No Result Found !!!</div>
+										<?php	}
+												
+					?>
 						
 						</div>
 									</div><!--product-feed-tab end-->
 									<div class="product-feed-tab" id="info-dd">
+									<h3 class="h3cl">Online Friends  </h3>
+									
 								<div class="row">
 								<?php 
 								
@@ -158,7 +173,14 @@ $user=$this->session->userdata('user_id');?>
 								<div class="company-up-info">
 								<?php if( $frq->logged_time!=""){?>
 								<i class="fa fa-circle msg-online" aria-hidden="true"> <span>Online</span></i><?php }?>
-								<i class="fa fa-eye enqcl" aria-hidden="true" data-toggle="modal" data-target="#myModalen" onclick="setprofile(<?php echo $frq->user_id;?> )"></i>
+								<div class="ed-opts form_wrapper unfr">
+                                                    <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                     <ul class="ed-options unfrhide" data-id="<?php echo $frq->user_id;?>"    style="display: none;">
+                                                                                                                            <li><a href="" title=""><i class="fa fa-user-times " aria-hidden="true"></i> &nbsp; Unfriend</a></li>
+                                                        
+                                                                                                        </ul>
+                                                </div>
+								<!--i class="fa fa-eye enqcl" aria-hidden="true" data-toggle="modal" data-target="#myModalen" onclick="setprofile(<?php echo $frq->user_id;?> )"></i-->
 								<div class="clearfix"></div>
 									<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
 									
@@ -191,7 +213,10 @@ $user=$this->session->userdata('user_id');?>
 			
 							</div><!--company_profile_info end-->
 						</div>
-								<?php }} ?>
+								<?php }} 
+								else{
+											?>		<label class="alert alert-danger">No Result found </label>
+										<?php	}?>
 						
 						
 						
@@ -201,6 +226,7 @@ $user=$this->session->userdata('user_id');?>
 									<div class="product-feed-tab" id="portfolio-dd">
 								<div class="acc-setting">
 							  			<h3>My Friend Requests</h3>
+										<div class="clearfix"></div>
 										<div class="requests-list">
 										<?php if(!empty($friendsRequest)){
 											$i=1;
@@ -247,11 +273,86 @@ $user=$this->session->userdata('user_id');?>
 										<?php 	} 
 											}
 											 
-										 } ?>
-							  				
+										 } 
+										 else{
+											?>	
+											<div class="col-lg-12">
+											<label class="alert alert-danger">No Result found </label>
+										<?php	}?>
+							  				 </div>
 							  			</div><!--requests-list end-->
 							  		</div>
 									</div><!--product-feed-tab end-->
+									
+									
+									
+									
+									<div class="product-feed-tab" id="portfolio-dn">
+								<div class="acc-setting">
+								<h3 class="h3cl">My Send Requests </h3>
+							  			
+										<div class="clearfix"></div>
+										<div class="requests-list">
+										<?php if(!empty($sendRequest)){
+											$i=1;
+											foreach($sendRequest as $frq){?>
+										
+										
+							  				<div class="request-details" id="<?php echo $frq->user_id;?>">
+							  					<div class="noty-user-img">
+												 <?php if($frq->profile_pic!=""){?>
+											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
+											<?php }else{?>
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											
+											<?php }?>
+							  						
+							  					</div>
+							  					<div class="request-info">
+							  						<h3><?php echo $frq->full_name ;?></h3>
+							  						
+							  					</div>
+							  					<div class="accept-feat">
+							  						<ul>
+							  							<li><button type="button" class="accept-req" onclick="friendAccept(<?php echo $frq->user_id;?>)">Accept</button></li>
+							  							<li><button type="button" class="close-req"><i class="la la-close"></i></button></li>
+							  						</ul>
+							  					</div><!--accept-feat end-->
+							  				</div><!--request-detailse end-->
+										<?php 
+										 $i++;
+										 if($i==6){
+											 ?>
+										 </div>
+										 <div class="requests-list">
+										<?php 	} 
+											}
+											 
+										 } 
+										 else{
+											?>	
+											<div class="col-lg-12">
+											<label class="alert alert-danger">No Result found </label>
+										<?php	}?>
+							  				 </div>
+							  			</div><!--requests-list end-->
+							  		</div>
+									</div><!--product-feed-tab end-->
+									
+									
+									
+									
+									
 								</div><!--main-ws-sec end-->
 							</div>
 						
@@ -325,6 +426,22 @@ $(document).ready(function() {
 				}               
 		}); 						
 	}); 
+	
+		$('.unfrhide').click(function() { 
+			var uid =$(this).data('id'); 
+				$.ajax({
+			type: "POST",
+				url: "../Profile/unfriend",
+				data:{uid:uid},
+				dataType:"text", 
+				success: function(result){
+					var resultObj = JSON.parse(result)
+			
+				}               
+		}); 		
+		}); 
+	
+	
 });
 </script>
 

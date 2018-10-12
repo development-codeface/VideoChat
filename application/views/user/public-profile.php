@@ -3,7 +3,7 @@ include 'header.php' ;
 $open_tokenId=base64_decode(urldecode($openToken));?>	
 <script src="https://static.opentok.com/v2/js/opentok.js">
 </script>	
-<section class="banner-img1 text-white py-55 min8">
+<section class="banner-img1 text-white  min8">
   <div class="container ">
     <div class="row">
       <div class="col-md-12">
@@ -12,23 +12,21 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane tabbanc fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="card card-body text-white sepro">
-                  <div class="row pb-3">
+                  <div class="row pb-3c">
                     <div class="col-md-12">
-                      <div class="comp_rgt">
-                        <div class="search-bar">
-                          <form method="post" action="http://localhost/videoCHAT-master/index.php/Profile/searchFreiend_name" name="serachfriend" id="serachfriend">
-                            <input type="text" name="search" id="search" placeholder="Search...">
+                     
+					   <div class="search-bar serb">
+                          <form method="post" action="<?php echo base_url(); ?>index.php/Profile/searchFreiend_name" name="serachfriend" id="serachfriend" autocomplete="off">
+                            <input type="text" name="search" id="search" placeholder="Search public profile...">
                             <button type="submit">
                               <i class="la la-search">
                               </i>
                             </button>
                           </form>
                         </div>
-                      </div>
-                      <h4>
-                        <i class="fa fa-search" aria-hidden="true">
-                        </i> Search Public Profile  
-                      </h4>
+                     
+                      
+                      
                     </div>
                   </div>
                   <div class="row">
@@ -39,6 +37,8 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
                           </label>
                           <div class="custom-select">
                             <select name="looking">
+							    <option value="0">All
+                              </option>
                               <option value="3" >Others
                               </option>
                               <option value="1">A guy
@@ -55,7 +55,9 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
                           </label>
                           <div class="custom-select">
                             <select name="age">
-                              <option value="1">18-20 years old
+                              <option value="0">All
+                              </option> 
+							  <option value="1">18-20 years old
                               </option>
                               <option value="2">20-22 yeaffrs old
                               </option>
