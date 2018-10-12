@@ -184,14 +184,14 @@ toggle between hiding and showing the dropdown content */
 			?>         
 		 <div class="togl_div">
             <input type="checkbox" name="checkbox1" id="checkbox1" value="1 "class="ios-toggle" checked="">
-  <label for="checkbox1" class="checkbox-label" data-off="Public" data-on="Private" ></label>
+  <label for="checkbox1" class="checkbox-label" data-off="Private" data-on="Public" ></label>
 </div>         
 		<?php }
 else
 {	?>
    <div class="togl_div">
             <input type="checkbox" onclick="changeColor()" name="checkbox2" id="checkbox2" value="2 "class="ios-toggle">
-  <label for="checkbox2" class="checkbox-label" data-off="Public" data-on="Private"  checked=" "></label>
+  <label for="checkbox2" class="checkbox-label" data-off="Private" data-on="Public"  checked=" "></label>
 </div>
 <?php } ?>
               <div class="search-barmsg nav-cl">
