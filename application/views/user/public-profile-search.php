@@ -21,16 +21,15 @@ $user=$this->session->userdata('user_id');?>
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="card card-body text-white seproc">
+                <form method="post" action="<?php echo base_url(); ?>index.php/Profile/getProfileSearchResult" name="serachfriend" id="serachfriend">
                   <div class="row pb-3cc">
                     <div class="col-md-12">
                          <div class="search-bar serb">
-                          <form method="post" action="<?php echo base_url(); ?>index.php/Profile/searchFreiend_name" name="serachfriend" id="serachfriend">
+                          <div>
                             <input type="text" name="search" id="search" placeholder="Search public profile...">
-                            <button type="submit">
-                              <i class="la la-search">
-                              </i>
-                            </button>
-                          </form>
+                            <button><i class="la la-search"></i></button>
+                          </div> 
+                          <!--</form>-->
                         </div>
                  
                      
@@ -38,14 +37,14 @@ $user=$this->session->userdata('user_id');?>
                     </div>
                   </div>
                   <div class="row selab">
-                    <form method="post" action="<?php echo base_url(); ?>index.php/User/searchFriends" name="logform" class="form-inline inlbg"style="width: 100%;">
+                    <!--<form method="post" action="<?php echo base_url(); ?>index.php/User/searchFriends" name="logform" class="form-inline inlbg"style="width: 100%;">-->
                       <div class="col-lg-2">
                         <div class="form-group frmlook">
                           <label for="focusedInput">I'm looking for:
                           </label>
                           <div class="custom-select">
                             <select name="looking">
-							 <option value="0">All
+							           <option value="0">All
                               </option>
                               <option value="3">Others
                               </option>
@@ -96,12 +95,13 @@ $user=$this->session->userdata('user_id');?>
                       </div>
                       <div class="col-lg-2">
                         <div class="form-group">
-                          <button type="submit" name="search" class="btn acceptser mgt">Search
+                          <button name="search" class="btn acceptser mgt" id="btnSearch">Search
                           </button>
                         </div>
                       </div>
-                    </form>
+                    <!--</form>-->
                   </div>
+                </form>
                 </div>
               </div>
             </div>
@@ -112,7 +112,7 @@ $user=$this->session->userdata('user_id');?>
                         </center>
 						</div>
           <div class="col-md-12">
-            <div class="acc-setting">
+            <div class="acc-setting" id="searchResult">
               <h3 class="mg64">
                  Search Results 
               </h3>
@@ -337,6 +337,26 @@ echo "<div class='alert alert-danger' >No results </div> ";
   /*if the user clicks anywhere outside the select box,
 then close all select boxes:*/
   document.addEventListener("click", closeAllSelect);
+
+  $("#btnSearch").click(function() {
+    console.log("enter here");
+  });
+
+  $("#serachfriend").submit(function(e) {
+    var form = $(this);
+    var url = form.attr('action');
+    $.ajax({
+          type: "POST",
+          url: url,
+          data: form.serialize(), // serializes the form's elements.
+          success: function(data)
+          {
+              $("#searchResult").html(data); // show response from the php script.
+          }
+        });
+
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+  });
 </script>
 <script>
   var site_url='<?php  echo base_url();?>index.php/';
@@ -361,6 +381,7 @@ then close all select boxes:*/
 </audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto">
 </audio>
+<audio id="dialTone" src="<?php echo base_url(); ?>assets/media/dialtone.mp3" preload="auto"></audio>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js">
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js">

@@ -213,19 +213,13 @@ class Profile_model extends CI_Model
         
         
     }
-    public function updateprivacy($uid)
-    {
-        
-        
-        $query = $this->db->query("UPDATE user_profile SET visibility='false' WHERE user_id =$uid");
-        return true;
-        
-        
-        
+    public function updateprivacy($uid,$visibility)
+    {   
+        $query = $this->db->query("UPDATE user_profile SET visibility='$visibility' WHERE user_id =$uid");
+        return true;  
     }
     public function updateprivacy_private($uid)
     {
-        
         
         $query = $this->db->query("UPDATE  user_profile SET visibility='true' WHERE user_id =$uid");
         return true;

@@ -28,8 +28,9 @@
     </script>
     <script src="https://www.jqueryscript.net/demo/Simple-Lightweight-jQuery-Input-Mask-Plugin-Masked-input/dist/jquery.masked-input.js">
     </script>
-  
+    <?php $rss=$this->users_model->GetMyData($this->session->userdata('user_id')); ?>
     <script>
+      var USERNAME  = '<?php echo $rss['full_name'];?>';
       /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
       function myFunction() {
@@ -178,22 +179,14 @@ toggle between hiding and showing the dropdown content */
 					
 					}
 					?>
-            <div class="user-account">
-<?php if($status=='true')
-		{
-			?>         
-		 <div class="togl_div">
-            <input type="checkbox" name="checkbox1" id="checkbox1" value="1 "class="ios-toggle" checked="">
-  <label for="checkbox1" class="checkbox-label" data-off="Private" data-on="Public" ></label>
-</div>         
-		<?php }
-else
-{	?>
-   <div class="togl_div">
-            <input type="checkbox" onclick="changeColor()" name="checkbox2" id="checkbox2" value="2 "class="ios-toggle">
-  <label for="checkbox2" class="checkbox-label" data-off="Private" data-on="Public"  checked=" "></label>
-</div>
-<?php } ?>
+            <div class="user-account">        
+          <div class="togl_div">
+            <?php $currentStatus = ($status=='true')? "1" : "2";?> 
+            <?php $checked = ($currentStatus== 1) ? "checked=''" :  ""; ?>
+            <input type="checkbox" name="checkbox1" id="checkbox1" value="<?php echo $currentStatus?>" class="ios-toggle" <?php echo $checked?> >
+            <label for="checkbox1" class="checkbox-label" data-off="Private" data-on="Public" ></label>
+          </div>         
+	
               <div class="search-barmsg nav-cl">
                 <div class="ed-opts  form_wrapper notmsg">
                   <a href="<?php echo base_url(); ?>index.php/Profile/friends"  data-tooltip="My Friends" class="tooltip-bottom">
@@ -268,7 +261,6 @@ else
             <div class="dropdown">
               <button onclick="myFunction()" class="dropbtn">
                 <?php
-$rss=$this->users_model->GetMyData($this->session->userdata('user_id'));
 if($rss['profile_pic']==""){?>
                 <?php if($user['gender']==1)
 {
@@ -390,43 +382,47 @@ else
           success: function(result){
             var resultObj = JSON.parse(result)
             }
-        }
-              );
-      }
-                         );
-						 
-						 $('#checkbox2').change(function () {
-							
-    var uid = $(this).val();
-	
-	  var uid =$(this).data('id');
-          $.ajax({
-            type: "POST",
-            url: "../Profile/update_privacy_private",
-            data:{
-              uid:uid}
-            ,
-            dataType:"text", 
-            success: function(result){
-				location.reload();
-            }
- });}); 
- $('#checkbox1').change(function () {
-							
-    var uid = $(this).val();
-	  var uid =$(this).data('id');
-          $.ajax({
+        });
+      });
+			// Not required for now			 
+	    $('#checkbox2').change(function () {					
+        var status = $(this).val();
+        //var uid =$(this).data('id');
+        $.ajax({
             type: "POST",
             url: "../Profile/update_privacy",
-            data:{
-              uid:uid}
-            ,
+            data:{profilestatus:status},
             dataType:"text", 
             success: function(result){
-				location.reload();
+              //location.reload();
+              
             }
+        });
+      }); 
+ $('#checkbox1').change(function () {				
+    var status = $(this).val();
+	  //var uid =$(this).data('id');
+    $.ajax({
+      type: "POST",
+      url: "../Profile/update_privacy",
+      data:{profilestatus:status},
+      dataType:"text", 
+      success: function(result){
+        privacyChangeCallback(result);
+        //location.reload();
+      }
 	
  }); });
+
+ function privacyChangeCallback(result){
+
+    var status = JSON.parse(result);
+    var publicStatus = "2";
+    if(status.visibility == "true"){
+      publicStatus   = "1"
+    }
+    $('#checkbox1').val(publicStatus);
+ }
  
     </script>
 

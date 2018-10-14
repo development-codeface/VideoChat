@@ -12,25 +12,24 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane tabbanc fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="card card-body text-white sepro">
-                  <div class="row pb-3c">
+                <form method="post" action="<?php echo base_url(); ?>index.php/Profile/searchFreiend_name" name="serachfriend" id="serachfriend" autocomplete="off">
+                  <div class="row pb-3c">  
                     <div class="col-md-12">
-                     
-					   <div class="search-bar serb">
-                          <form method="post" action="<?php echo base_url(); ?>index.php/Profile/searchFreiend_name" name="serachfriend" id="serachfriend" autocomplete="off">
+					            <div class="search-bar serb">  
+                          <div> 
                             <input type="text" name="search" id="search" placeholder="Search public profile...">
                             <button type="submit">
                               <i class="la la-search">
                               </i>
                             </button>
-                          </form>
-                        </div>
-                     
-                      
-                      
+                          </div>  
+                          <!--</form> -->
+                      </div> 
                     </div>
                   </div>
+
                   <div class="row">
-                    <form method="post" action="<?php echo base_url(); ?>index.php/User/searchFriends" name="logform" class="form-inline inlbg"style="width: 100%;">
+                    <!--<form method="post" action="<?php echo base_url(); ?>index.php/User/searchFriends" name="logform" class="form-inline inlbg"style="width: 100%;">-->
                       <div class="col-lg-3">
                         <div class="form-group frmlook">
                           <label for="focusedInput">I'm looking for:
@@ -92,8 +91,9 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
                           </button>
                         </p>
                       </div>
-                    </form>
+                    <!--</form>-->
                   </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -235,6 +235,7 @@ include 'footer.php';?>
 </audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto">
 </audio>
+<audio id="dialTone" src="<?php echo base_url(); ?>assets/media/dialtone.mp3" preload="auto"></audio>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js">
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js">

@@ -353,75 +353,62 @@ class Users_model extends CI_Model
     ///search friends
     public function GetSearchFriends($params)
     {
-        if (($params['country'] == 0)&&($params['age'] == 0)&&($params['gender'] == 0)) {
-            
+        $search   = (strlen($params['searchkey']) > 0)? " AND us.full_name LIKE '%".$params['searchkey']."%'" : "";
+        $privateprofile = (strlen($params['searchkey']) > 0)? " OR us.user_id in (select pu.user_id from user_profile pu where pu.visibility ='false' and pu.nick_name = '".$params['searchkey']."')" : "";
+        if (($params['country'] == 0)&&($params['age'] == 0)&&($params['gender'] == 0)) { 
             $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
             user_profile up  ON up.user_id=us.user_id
-        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
-        AND us.user_id !=' . $params['user_id'] . ' and 
-        up.visibility="true" AND us.status =1 ORDER BY us.user_id');
+            WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+            AND us.user_id !=' . $params['user_id'] . ' and 
+            up.visibility="true" AND us.status =1 '.$search.$privateprofile.' ORDER BY us.user_id');
             return $result->result();
-        } else  if (($params['country'] != 0)&&($params['age'] == 0)&&($params['gender'] == 0)){
-           
- $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+        } else  if (($params['country'] != 0)&&($params['age'] == 0)&&($params['gender'] == 0)){  
+            $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
             user_profile up  ON up.user_id=us.user_id
-        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
-        AND us.user_id !=' . $params['user_id'] . '  AND up.country_id =' . $params['country'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
-            return $result->result();
-		   
+            WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+            AND us.user_id !=' . $params['user_id'] . '  AND up.country_id =' . $params['country'] . ' AND us.status =1 AND up.visibility="true"  '.$search.$privateprofile.'  ORDER BY us.user_id');
+            return $result->result();  
 		}else  if (($params['country'] == 0)&&($params['age'] != 0)&&($params['gender'] == 0)){
-           
- $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
             user_profile up  ON up.user_id=us.user_id
-        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
-        AND us.user_id !=' . $params['user_id'] . '  AND  us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+            AND us.user_id !=' . $params['user_id'] . '  AND  us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND us.status =1 AND up.visibility="true"  '.$search.$privateprofile.' ORDER BY us.user_id');
             return $result->result();
 		   
 		}else  if (($params['country'] == 0)&&($params['age'] == 0)&&($params['gender'] != 0)){
-           
- $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
             user_profile up  ON up.user_id=us.user_id
-        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
-        AND us.user_id !=' . $params['user_id'] . '  AND  us.gender =' . $params['gender'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+            AND us.user_id !=' . $params['user_id'] . '  AND  us.gender =' . $params['gender'] . ' AND us.status =1 AND up.visibility="true"  '.$search.$privateprofile.' ORDER BY us.user_id');
             return $result->result();echo $this->db->last_query();
-		   
 		}else  if (($params['country'] != 0)&&($params['age'] != 0)&&($params['gender'] == 0)){
-           
- $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
             user_profile up  ON up.user_id=us.user_id
-        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
-        AND us.user_id !=' . $params['user_id'] . '  AND   us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND up.country_id =' . $params['country'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+            AND us.user_id !=' . $params['user_id'] . '  AND   us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND up.country_id =' . $params['country'] . ' AND us.status =1 AND up.visibility="true"  '.$search.$privateprofile.'  ORDER BY us.user_id');
             return $result->result();
-		   
 		}
 		else  if (($params['country'] == 0)&&($params['age'] != 0)&&($params['gender'] != 0)){
-           
-        $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
             user_profile up  ON up.user_id=us.user_id
-        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
-        AND us.user_id !=' . $params['user_id'] . '  AND   us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND us.gender =' . $params['gender'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+            AND us.user_id !=' . $params['user_id'] . '  AND   us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND us.gender =' . $params['gender'] . ' AND us.status =1 AND up.visibility="true"  '.$search.$privateprofile.'  ORDER BY us.user_id');
             return $result->result();
-		   
 		}
 		else  if (($params['country'] != 0)&&($params['age'] == 0)&&($params['gender'] != 0)){
-           
-        $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
+            $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us INNER JOIN
             user_profile up  ON up.user_id=us.user_id
-        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
-        AND us.user_id !=' . $params['user_id'] . '  AND us.gender =' . $params['gender'] . ' AND up.country_id =' . $params['country'] . ' AND us.status =1 AND up.visibility="true" ORDER BY us.user_id');
+            WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ')
+            AND us.user_id !=' . $params['user_id'] . '  AND us.gender =' . $params['gender'] . ' AND up.country_id =' . $params['country'] . ' AND us.status =1 AND up.visibility="true"  '.$search.$privateprofile.'  ORDER BY us.user_id');
             return $result->result();
-		   
-		}
-			
-			
-			else{
+		}else{
 				
             $result = $this->db->query('SELECT DISTINCT(us.user_id),us.gender,up.profile_pic,up.nick_name,us.full_name  from users us 
-        INNER JOIN  user_profile up  ON up.user_id=us.user_id
-         JOIN  countries uc  ON uc.C_id=up.country_id
-        WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ') 
-        and  us.gender =' . $params['gender'] . ' AND  us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND us.user_id !=' . $params['user_id'] . ' AND up.country_id =' . $params['country'] . ' AND us.status =1 and 
-        up.visibility="true" ORDER BY us.user_id');
+            INNER JOIN  user_profile up  ON up.user_id=us.user_id
+            JOIN  countries uc  ON uc.C_id=up.country_id
+            WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $params['user_id'] . ') 
+            and  us.gender =' . $params['gender'] . ' AND  us.age BETWEEN ' . $params['age_from'] . ' AND ' . $params['age_to'] . ' AND us.user_id !=' . $params['user_id'] . ' AND up.country_id =' . $params['country'] . ' AND us.status =1 and 
+            up.visibility="true"  '.$search.$privateprofile.' ORDER BY us.user_id');
             //echo $this->db->last_query();
             //us.gender ='.$params['gender'].' AND
             return $result->result();

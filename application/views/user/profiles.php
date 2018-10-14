@@ -448,6 +448,7 @@ $(document).ready(function() {
 
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
+<audio id="dialTone" src="<?php echo base_url(); ?>assets/media/dialtone.mp3" preload="auto"></audio>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script>
 <script>

@@ -39,7 +39,7 @@ include 'header.php';?>
 				       <div class="col-md-12 vidapp">
 				  <ul class="videoul">
 				  <li><button name="cutcall" name="cutcall" class="bg-view " onclick="openFullscreen();"> <i class="fa fa-expand " aria-hidden="true"></i></button></li>
-				  <li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
+				  <li><button name="cutcall" id="cutCall" name="cutcall" class="bg-can "> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
 				  </ul>
   </div>
 				  </div>
@@ -121,6 +121,7 @@ function openFullscreen() {
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
+<audio id="dialTone" src="<?php echo base_url(); ?>assets/media/dialtone.mp3" preload="auto"></audio>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script>
 <script>

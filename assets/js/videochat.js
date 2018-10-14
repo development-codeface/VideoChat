@@ -25,7 +25,7 @@ function openOpentokConnection(sessionId) {
     connectionDestroyed: function (event) {
       connectionCount--;
 	 
-      openTokErrormessage("Connection connectionDestroyed !!!");
+      openTokErrormessage("Connection session connectionDestroyed !!!");
     },
     sessionDisconnected: function sessionDisconnectHandler(event) {
       // The event is defined by the SessionDisconnectEvent class
@@ -122,6 +122,7 @@ function sessageCallback(event){
       case 'signal:ACCEPTCALL'   : console.log("ACCEPTCALL"); callAccepted(event);break;
       case 'signal:CALLSTOPPED'  : console.log("CALLSTOPPED"); callStopped(event);break;
       case 'signal:CUTCALL'      : console.log("CUTCALL"); callAccepted(event);break;
+      case 'signal:CUTCALLTERMINATED' : console.log("CUTCALL"); callterminated(event);break;
    }
 }
 function recicveChat(event){
@@ -134,11 +135,23 @@ function recicveChat(event){
 }
 
 $( "#btnSendchat").click(function() {
-  var message = $( "#txtMsg").val();
-  sendMessage("SENDMESSAGE",message,function (){$( "#txtMsg").val("")});
+  sendChatMessage();
 });
 
+$("#cutCall").click(function(){
+  sendMessage("CUTCALLTERMINATED","",function (){});
+  history.back();
+})
 
+$("#txtMsg").keyup(function(event) {
+  if (event.keyCode === 13)  
+      sendChatMessage();
+});
+
+function sendChatMessage(){
+  var message = $( "#txtMsg").val();
+  sendMessage("SENDMESSAGE",message,function (){$( "#txtMsg").val("")});
+}
 
 /****  Normal   Connectin No Video **/
 function normalConnection(){
@@ -156,7 +169,7 @@ function normalConnection(){
     },
     connectionDestroyed: function (event) {
       connectionCount--;
-      openTokErrormessage("Connection connectionDestroyed !!!");
+      openTokErrormessage("Connection normal connectionDestroyed !!!");
     },
     sessionDisconnected: function sessionDisconnectHandler(event) {
       // The event is defined by the SessionDisconnectEvent class
@@ -196,7 +209,8 @@ function openTokErrormessage(msg){
 function startVideoCall(){
   if(IsCaller == 'Y'){
     document.getElementById("callModal").style.display = 'block';
-    sendMessage("INITIATECALL","try it",function (){});
+    document.getElementById('dialTone').play();
+    sendMessage("INITIATECALL",{userName : USERNAME},function (){});
     awaitingResponse = setTimeout(function(){
       stopCall();
     }, 30000);
@@ -206,6 +220,7 @@ function startVideoCall(){
 function stopCall(){
   document.getElementById('callerTone').pause();
   document.getElementById("callModal").style.display = 'none';
+  document.getElementById('dialTone').pause();
   if(typeof(awaitingResponse) != "undefined")
          clearTimeout(awaitingResponse);
   sendMessage("CALLSTOPPED","try it",function (){}); 
@@ -214,6 +229,7 @@ function stopCall(){
 function callAccepted(event){
   if(!isSameSesssion(event)){
     document.getElementById('callerTone').pause();
+    document.getElementById('dialTone').pause();
     document.getElementById("callModal").style.display = 'none';
     if(typeof(awaitingResponse) != "undefined")
          clearTimeout(awaitingResponse);
@@ -223,6 +239,7 @@ function callAccepted(event){
 function callRejected(event){
   if(!isSameSesssion(event)){
     document.getElementById('callerTone').pause();
+    document.getElementById('dialTone').pause();
     document.getElementById("callModal").style.display = 'none';
     if(typeof(awaitingResponse) != "undefined")
          clearTimeout(awaitingResponse);
@@ -235,7 +252,11 @@ function reciveVideoCall(event){
   if(!isSameSesssion(event)){
     document.getElementById('callerTone').play();
     document.getElementById("rcivModal").style.display = 'block';
-    clearTimeout(awaitingResponse);
+
+    var callerName = (event.data.userName != undefined) ? event.data.userName+ " Calling ..." : "";
+    $('#calleeInfo').html(callerName);
+    if(typeof(awaitingResponse) != 'undefined')
+      clearTimeout(awaitingResponse);
   } 
 }
 
@@ -243,7 +264,9 @@ function reciveVideoCallInChat(event){
   if(!isSameSesssion(event)){
     document.getElementById('callerTone').play();
     document.getElementById("callModal").style.display = 'none';
-    clearTimeout(awaitingResponse);
+    $('#callerInfo').html(event.userName + " Calling ...");
+    if(typeof(awaitingResponse) != 'undefined')
+      clearTimeout(awaitingResponse);
   } 
 }
 
@@ -261,6 +284,14 @@ function cutVideoCall(){
   document.getElementById('callerTone').pause();
   document.getElementById("rcivModal").style.display = 'none';
   sendMessage("CUTCALL","try it",function (){});
+}
+
+function callterminated(event){
+  if(!isSameSesssion(event)){
+    session.destroy();
+    history.back();
+  }
+  
 }
 
 

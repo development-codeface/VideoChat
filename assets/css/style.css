@@ -947,7 +947,26 @@ header {
 	width: 100%;
 	position: relative;
 }
+
 .search-bar form input {
+width: 100%;
+    background-color: #fff;
+    height: 38px;
+    color: #b2b2b2;
+    font-size: 12px;
+    border: 0;
+    padding: 0 10px;
+    border-radius: 49px;
+    border: 1px solid #d3cfcf;
+}
+
+.search-bar div {
+	float: left;
+	width: 100%;
+	position: relative;
+}
+
+.search-bar div input {
 width: 100%;
     background-color: #fff;
     height: 38px;
@@ -976,6 +995,22 @@ width: 100%;
     cursor: pointer;
 }
 .search-bar form button i {
+	color: #e06688;
+	font-size: 20px;
+	font-weight: bold;
+}
+.search-bar div button {
+	position: absolute;
+	top: 4px;
+	right: 3px;
+	background-color: #ffffff;
+	width: 38px;
+	height: 86%;
+	border: 0;
+	border-radius: 49px;
+	cursor: pointer;
+}
+.search-bar div button i {
 	color: #e06688;
 	font-size: 20px;
 	font-weight: bold;
@@ -8507,6 +8542,28 @@ background:red;
     border: 1px solid #d3cfcf;
 }
 .serb form button {
+    position: absolute;
+    top: 6px;
+    right: 15px;
+    background-color: #ffffff;
+    width: 38px;
+    height: 86%;
+    border: 0;
+    border-radius: 49px;
+    cursor: pointer;
+}
+
+.serb div input {
+    width: 100%;
+    background-color: #fff;
+    height: 60px;
+    color: #423e3e;
+    font-size: 20px;
+    padding-left: 19px;
+    border-radius: 35px;
+    border: 1px solid #d3cfcf;
+}
+.serb div button {
     position: absolute;
     top: 6px;
     right: 15px;

@@ -567,7 +567,7 @@ class Profile extends CI_Controller
     public function searchFreiend_name()
     {
         
-        $check             = $_POST['search'];
+        /*$check             = $_POST['search'];
         $params['user_id'] = $this->UserId;
         
         
@@ -579,11 +579,74 @@ class Profile extends CI_Controller
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
         
+        $this->load->view("user/public-profile-search", $this->data);*/
+        $this->data['results'] = null;
+        if (isset($_POST['search'])) {
+            $params['gender']      = $this->input->post("looking");
+			$params['searchkey']   = trim($this->input->post("search"));
+            $params['age']         = $this->input->post("age");
+            $params['country']     = $this->input->post("country");
+			
+            
+            if ($params['age'] == 1) {
+                $params['age_from'] = 18;
+                $params['age_to']   = 20;
+            }
+            if ($params['age'] == 2) {
+                $params['age_from'] = 20;
+                $params['age_to']   = 22;
+            }
+            if ($params['age'] == 3) {
+                $params['age_from'] = 22;
+                $params['age_to']   = 24;
+            }
+		
+            $this->data['countries'] = $this->users_model->getAllcountries();
+            $params['user_id']       = $this->UserId;
+            $this->data['results']   = $this->users_model->GetSearchFriends($params);
+            
+        }
+        $this->data['user']          = $this->users_model->userinfo($this->UserId);
+        $this->data['selLokkingFor'] = $params['gender'];
+        $this->data['searchKey']     = $params['searchkey'];
+        $this->data['selage']        = $params['age'];
+        $this->data['selcountry']    = $params['country'];
+        $this->data['openToken']     = base64_encode($this->session->userdata('token'));
+        $this->data['openSessionId'] = $this->session->userdata('openSessionId');
+        $this->data['apiKey']        = $this->config->item('opentok_key');
+        
         $this->load->view("user/public-profile-search", $this->data);
         
     }
-    
-    
+    public function getProfileSearchResult(){
+        $this->data['results'] = null;
+        if (isset($_POST['search'])) {
+            $params['gender']      = $this->input->post("looking");
+			$params['searchkey']   = trim($this->input->post("search"));
+            $params['age']         = $this->input->post("age");
+            $params['country']     = $this->input->post("country");
+			
+            
+            if ($params['age'] == 1) {
+                $params['age_from'] = 18;
+                $params['age_to']   = 20;
+            }
+            if ($params['age'] == 2) {
+                $params['age_from'] = 20;
+                $params['age_to']   = 22;
+            }
+            if ($params['age'] == 3) {
+                $params['age_from'] = 22;
+                $params['age_to']   = 24;
+            }
+		
+            $this->data['countries'] = $this->users_model->getAllcountries();
+            $params['user_id']       = $this->UserId;
+            $this->data['results']   = $this->users_model->GetSearchFriends($params);
+            
+        }
+        $this->load->view("user/profile_search_result", $this->data);
+    }
     public function delete_img()
     {
         $img_id = $this->input->post('selID');
@@ -604,12 +667,19 @@ class Profile extends CI_Controller
     }
     public function update_privacy()
     {
-      
         $user_id = $this->session->userdata('user_id');
+        if(isset($_POST['profilestatus'])){
+            $currentStatus             = trim($_POST['profilestatus']);
+            $requestVisiblility = ($currentStatus == '1') ? 'false' : 'true' ;
+            $result = $this->profile_model->updateprivacy($user_id,$requestVisiblility);
+            echo '{"status":"sucess","visibility" : "'.$requestVisiblility.'"}';
+        }else {
+            echo '{"status":"failed"}}';
+        }
         
-        $result = $this->profile_model->updateprivacy($user_id);
+        
         //    redirect('/user/profile', "refresh");
-        echo json_encode();
+        
     }
     public function update_privacy_private()
     {
