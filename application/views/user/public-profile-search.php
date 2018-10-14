@@ -338,10 +338,6 @@ echo "<div class='alert alert-danger' >No results </div> ";
 then close all select boxes:*/
   document.addEventListener("click", closeAllSelect);
 
-  $("#btnSearch").click(function() {
-    console.log("enter here");
-  });
-
   $("#serachfriend").submit(function(e) {
     var form = $(this);
     var url = form.attr('action');
