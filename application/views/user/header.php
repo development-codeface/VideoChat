@@ -196,7 +196,7 @@ toggle between hiding and showing the dropdown content */
                 </div>
                 <div class="ed-opts  form_wrapper notmsg">
                   <a   href ="#" id="mes" class=" not-box-open ed-opts-open "   title="Messages">
-                    <i class="fa fa-bell follow_friend" data-id="<?php echo $user_id;?>" aria-hidden="true">
+                    <i class="fa fa-bell follow_friends" data-id="<?php echo $user_id;?>" aria-hidden="true">
                     </i>
                   </a>
 				  
@@ -209,30 +209,11 @@ toggle between hiding and showing the dropdown content */
 				  
 				  
 				  
-				  
-				  
-				  
-				  
-				  
                   <ul class="ed-options not1" id="myModal">
 <div class="nott-list">
-<div class="notfication-details">
-<div class="noty-user-img">
-<img src="<?php echo base_url(); ?>assets/images/resources/ny-img1.png" alt="">
-</div>
-<div class="notification-info" id="notification_chat" >
-<input type="text" name="noty" id="noty" >
-</div>
-</div>
-<div class="notfication-details ">
-                                              <div class="noty-user-img">
-                                              <img src="<?php echo base_url(); ?>assets/images/resources/ny-img2.png" alt="">
-                                              </div>
-                                              <div class="notification-info">
-                                                  <h3><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="">Jassica William</a></h3>
-                                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do.</p>
-                                                  <span>2 min ago</span>
-                                              </div>
+
+<div class="notfication-details " id="noth">
+                                              
                                           </div>
 <div class="view-all-nots">
 <a href="<?php echo base_url(); ?>index.php/Profile/Notifications" title="" class="viewpad">View All Notifications</a>
@@ -424,6 +405,28 @@ else
     $('#checkbox1').val(publicStatus);
  }
  
+ 
+ 
+ 
+ 
+      $('.follow_friends').click(function() {
+          var uid =$(this).data('id');
+          $.ajax({
+            type: "POST",
+            url: "../Profile/notifications_tab",
+            data:{
+              uid:uid}
+            ,
+            dataType:"text", 
+            success: function(result){
+				//alert(result);
+				
+         $("#noth").html(result);
+            }
+          }
+                );
+        }
+                                 );
     </script>
 
 	<div id="myOverlay"></div>

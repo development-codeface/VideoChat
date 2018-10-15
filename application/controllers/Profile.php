@@ -197,7 +197,7 @@ class Profile extends CI_Controller
     public function notifications_tab()
     {
       
-        
+         $html ="";
         $this->data['feeds']         = $this->profile_model->GetAllfeeds($this->UserId);
         $this->data['onlinef']       = $this->users_model->GetOnlineFriends($this->UserId);
         $this->data['user']          = $this->users_model->userinfo($this->UserId);
@@ -217,13 +217,34 @@ class Profile extends CI_Controller
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
            foreach($this->data['notifications']  as $row){
+       
+  
+                  $html .= '
+				
+                     <div class="noty-user-img">
+                                              <img src="<?php echo base_url(); ?>uploads/profile_pic/"'.$row->profile_pic.' alt="">
+                                              </div>
+                                              <div class="notification-info">
+                                                  <h3> '.$row->messages.'</h3>
+                                                
+                                              </div>
+                  ';
+				  
+			
+			  }
+			  
+			  
+			  
+			  echo $html;
+	
+		
+			     $status=1;
+			return json_encode(['status' => $status, 'html' => $html]);
+           
+
+		   
         
-        $this->data    ='<div>"'.$row->messages.''.$row->profile_pic.''.$row->gender.'</div>';
-            echo json_encode($this->data);
-            }
-        
-        
-        $this->load->view("user/header", $this->data);
+      //  $this->load->view("user/header", $this->data);
         
     }
     

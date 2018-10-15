@@ -613,12 +613,12 @@ class Users_model extends CI_Model
         $query = $this->db->query("
             
             SELECT ns.messages,ns.fri_id,ns.user_id,up.profile_pic,us.gender   from notification ns 
-            JOIN
+            INNER JOIN
             user_profile up  ON up.user_id = ns.user_id
-             JOIN
+             INNER JOIN
             users us  ON us.user_id = up.user_id
-            where ns.fri_id=$id ORDER BY cur_time DESC");
-        //echo $this->db->last_query();
+            where ns.fri_id=$id ORDER BY cur_time DESC LIMIT 5");
+    //    echo $this->db->last_query();
         return $query->result();
     }
     function user_pass_rest($str, $pass, $user)
