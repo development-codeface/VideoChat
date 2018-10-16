@@ -121,8 +121,8 @@ function sessageCallback(event){
       case 'signal:INITIATECALL' : console.log("INITIATECALL"); reciveVideoCallInChat(event);break;
       case 'signal:ACCEPTCALL'   : console.log("ACCEPTCALL"); callAccepted(event);break;
       case 'signal:CALLSTOPPED'  : console.log("CALLSTOPPED"); callStopped(event);break;
-      case 'signal:CUTCALL'      : console.log("CUTCALL"); callAccepted(event);break;
-      case 'signal:CUTCALLTERMINATED' : console.log("CUTCALL"); callterminated(event);break;
+      case 'signal:CUTCALL'      : console.log("CUTCALL"); callrejectedCall(event);break;
+      case 'signal:CUTCALLTERMINATED' : console.log("CALL TERMINATED"); callterminated(event);break;
    }
 }
 function recicveChat(event){
@@ -132,6 +132,12 @@ function recicveChat(event){
   msg.className = event.from.connectionId === session.connection.connectionId ? 'mine' : 'theirs';
   msgHistory.append(msg);
   msg.scrollIntoView();
+}
+function callrejectedCall(event){
+  if(!isSameSesssion(event)){
+    callterminated(event);
+  }
+  
 }
 
 $( "#btnSendchat").click(function() {
@@ -275,9 +281,14 @@ function acceptCall(){
   sendMessage("ACCEPTCALL","try it",function (){});
   document.location.href = '../Profile/messages';
 }
-function callStopped(){
-  document.getElementById('callerTone').pause();
-  document.getElementById("rcivModal").style.display = 'none';
+function callStopped(event){
+  if(!isSameSesssion(event)){
+    document.getElementById('callerTone').pause();
+    document.getElementById("rcivModal").style.display = 'none';
+  }else{
+    session.destroy();
+    history.back();
+  }
 }
 
 function cutVideoCall(){
