@@ -202,6 +202,7 @@ class Profile extends CI_Controller
         $this->data['onlinef']       = $this->users_model->GetOnlineFriends($this->UserId);
         $this->data['user']          = $this->users_model->userinfo($this->UserId);
         $this->data['notifications'] = $this->users_model->notication_list($this->UserId);
+		$this->data['notifications_status'] = $this->users_model->notication_status_up($this->UserId);
 		//print_r(  $this->data['notifications']);exit;
         //    foreach($this->data['notifications']  as $row){
         //    
@@ -216,24 +217,61 @@ class Profile extends CI_Controller
         $this->data['openToken']     = base64_encode($this->session->userdata('token'));
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
+		// <img src="/videoCHAT-master/uploads/profile_pic/'.$row->profile_pic.'" alt="">
+		     $i=1;
            foreach($this->data['notifications']  as $row){
-       
-  
+
+	 if($i<=5)
+	 {
+	  
+	  if(($row->gender==1)&&($row->profile_pic==null))
+	  
+	  {
+	  
                   $html .= '
-				
+				<div class="notfication-details ">
                      <div class="noty-user-img">
-                                              <img src="<?php echo base_url(); ?>uploads/profile_pic/"'.$row->profile_pic.' alt="">
+                                              <img src="../../assets/images/resources/malemaleavatar.png" alt="">
                                               </div>
                                               <div class="notification-info">
                                                   <h3> '.$row->messages.'</h3>
                                                 
+                                              </div></div>
+                  ';
+				  
+	  }
+	  else  if(($row->gender==2)&&($row->profile_pic==null))
+	  
+	  {
+	      $html .= '
+				<div class="notfication-details ">
+                     <div class="noty-user-img">
+                                              <img src="../../assets/images/resources/femalemaleavatar.png" alt="">
                                               </div>
+                                              <div class="notification-info">
+                                                  <h3> '.$row->messages.'</h3>
+                                                
+                                              </div></div>
+                  ';
+				  
+	  }
+	  else{
+  
+                  $html .= '
+				<div class="notfication-details ">
+                     <div class="noty-user-img">
+                                              <img src="../../uploads/profile_pic/'.$row->profile_pic.'" alt="">
+                                              </div>
+                                              <div class="notification-info">
+                                                  <h3> '.$row->messages.'</h3>
+                                                
+                                              </div></div>
                   ';
 				  
 			
 			  }
-			  
-			  
+	$i++; }	  
+		   }
 			  
 			  echo $html;
 	

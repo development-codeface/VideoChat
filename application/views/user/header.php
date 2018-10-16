@@ -194,9 +194,23 @@ toggle between hiding and showing the dropdown content */
                     </i>
                   </a>
                 </div>
+				<?php
+				
+				$query = $this->db->query("select count(messages) as cs  from notification where fri_id=$uid and status=0");
+        foreach ($query->result() as $row) {
+            $cnt = $row->cs;
+            
+        }
+       
+				
+				?>
+				
                 <div class="ed-opts  form_wrapper notmsg">
-                  <a   href ="#" id="mes" class=" not-box-open ed-opts-open "   title="Messages">
-                    <i class="fa fa-bell follow_friends" data-id="<?php echo $user_id;?>" aria-hidden="true">
+				<?php if($cnt!=0){?>
+				<span class="count"><?php echo $cnt ?></span>
+				<?php } ?>
+                  <a   href ="#" id="mes" class=" not-box-open ed-opts-open follow_friends" data-id="<?php echo $user_id;?>"  title="Messages">
+                    <i class="fa fa-bell "  aria-hidden="true">
                     </i>
                   </a>
 				  

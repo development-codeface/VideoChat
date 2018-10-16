@@ -284,7 +284,7 @@ class Users_model extends CI_Model
     
     public function UpdateBasic($param, $params, $user_id, $dob, $gen, $age,$ageuser)
     {
-        
+       
         $this->db->where('user_id', $user_id);
         $this->db->update('users', $param);
         $this->db->where('user_id', $user_id);
@@ -292,6 +292,7 @@ class Users_model extends CI_Model
         $query = $this->db->query("UPDATE  user_profile SET age_hide=$age where user_id=$user_id");
         $query = $this->db->query("UPDATE  users SET dob='$dob',gender=$gen where user_id=$user_id"); 
 		$query = $this->db->query("UPDATE  users SET age='$ageuser' where user_id=$user_id");
+		$query = $this->db->query("select age  from users  where user_id=$user_id");
         return 1;
     }
     public function Updateintrest($params, $user_id)
@@ -617,9 +618,17 @@ class Users_model extends CI_Model
             user_profile up  ON up.user_id = ns.user_id
              INNER JOIN
             users us  ON us.user_id = up.user_id
-            where ns.fri_id=$id ORDER BY cur_time DESC LIMIT 5");
+            where ns.fri_id=$id ORDER BY cur_time DESC ");
     //    echo $this->db->last_query();
         return $query->result();
+    }  
+	function notication_status_up($id)
+    {
+        $query = $this->db->query("update notification set status =1 where fri_id=$id;
+            
+         ");
+    //    echo $this->db->last_query();
+       return true;
     }
     function user_pass_rest($str, $pass, $user)
     {

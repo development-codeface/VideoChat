@@ -48,7 +48,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 								  					
 								  				</div>
 								  				
-								  				
+											<?php } ?>
 								  				
 								  				<div class="notification-info">
 								  				    
@@ -62,7 +62,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 								  			
 							  				</div>
 							  			    
-												<?php } }}
+												<?php }}
 else{
 											?>		<div class="alert alert-danger"  >No Result Found !!!</div>
 										<?php	}
