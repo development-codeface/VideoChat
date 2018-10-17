@@ -127,8 +127,11 @@ var age=$("#age_id").val();
 				 $("#experience-box").removeClass("open");
 				$(".wrapper").removeClass("overlay");
 				$("#full_names" ).html(full_name);
+				$("#full" ).html(full_name);
+				$("#hful" ).html(full_name);
 				$("#nick_names" ).html(nick_name);
 				$("#dobs" ).html(dob);
+				$("#ager" ).html(data.ageuser);
 				var container = $('#visib');
 
 				if(visibility==true){
@@ -150,7 +153,7 @@ var age=$("#age_id").val();
 				}else{
 				$("#genders" ).html("Female");	
 				}
-				 window.setTimeout(function(){location.reload()},1000);
+				 // window.setTimeout(function(){location.reload()},1000);
 
               }else{
 				$('#Eeror').hide();

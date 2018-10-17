@@ -195,7 +195,7 @@
 												
 												<div class="col-lg-6 no-pdrt">
 												<div class="sn-field" id="age" >
-												<input type="text" id="dob" name="dob" placeholder="Date of birth" maxlength="10" value=""  readonly>
+												<input type="text" id="dob" name="dob" placeholder="Date of birth *" maxlength="10" value=""  readonly>
 												
 												<!--input type="text" id="dob" name="dob"  data-masked-input="99/99/9999" placeholder="Date of birth *" maxlength="10" value="" required-->
 												<i class="la la-calendar-check-o"></i>
@@ -209,6 +209,7 @@
 														</div>
 													
 												</div>
+													<div class="alert alert-danger"  id="alerts" style="display:none">User Name Already Exist !!!</div> 
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
 														<input type="text" name="nick_name" placeholder="Nickname *" id="nick_name">
@@ -216,7 +217,7 @@
 														</div>
 													
 												</div>
-												<div class="alert alert-danger"  id="alerts" style="display:none">User Name Already Exist !!!</div> 
+											
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
 														<input type="password" name="u_pass" id="u_pass" placeholder="Password *"  minlength="6"  >

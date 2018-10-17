@@ -48,7 +48,7 @@ else
                   </a>
                   <ul class="flw-status">
                     <li>
-                      <span> 
+                      <span id="full"> 
                         <?php  echo $mydata['full_name'] ;?>
                       </span>
                     </li>
@@ -390,7 +390,7 @@ list($date,$time)=explode(' ',$timestamp);
                         </td>
                         <td>
                           <i id="dobs"> 
-                            <?php  echo $mydata['birth'];?>
+                            <?php echo date("d-m-Y", strtotime($mydata['birth']));?>
                           </i>
                         </td>
                       </tr>
@@ -398,7 +398,7 @@ list($date,$time)=explode(' ',$timestamp);
                         <td class="pers">Age
                         </td>
                         <td>
-                          <i id="age"> 
+                          <i id="ager"> 
                             <?php  echo $mydata['ag'];?>
                           </i> 
                          
@@ -463,7 +463,7 @@ Public
                   <div class="user-profile-ov">
                     <h3> 
                       <i class="fa fa-pencil" aria-hidden="true">
-                      </i> Description  
+                      </i>About me 
                       <a href="#" title="" class="overview-open pull-right">
                         <i class="fa fa-pencil-square-o ">
                         </i> 
@@ -492,7 +492,7 @@ Public
 {
 ?>
                       <li >
-                        <a href="#" title="" id="Interest_ar">
+                        <a  id="Interest_ar">
                           <?php echo "Boy" ;?>
                         </a>
                       </li>
@@ -502,7 +502,7 @@ else
 {
 ?>
                       <li >
-                        <a href="#" title="" id="Interest_ar">
+                        <a  id="Interest_ar">
                           <?php echo "Girl" ;?>
                         </a>
                       </li>
@@ -521,7 +521,7 @@ else
                       <div class="">
                         
 						
-						<form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadPhotos/'; ?>" id="">
+						<form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadPhotos/'; ?>" id="myimg" name="myimg">
 										  <?php	
 $user_id =$this->session->userdata('user_id');
 	$data = $this->users_model->countimage($user_id);
@@ -815,7 +815,7 @@ include 'footer.php';?>
   <div class="overview-edit">
     <h3>
       <i class="fa fa-pencil" aria-hidden="true">
-      </i> Description
+      </i>About me
     </h3>
     <span>5000 character left
     </span>
@@ -872,7 +872,7 @@ include 'footer.php';?>
       <label class="mylab">Date of birth
       </label>
       <!--input type="text" id="dob" name="dob" class="form-control" data-masked-input="99/99/9999" placeholder="Date of birth" maxlength="10" value="<?php  echo $mydata['birth'];?>"-->
-      <input type="text" id="dob" name="dob" placeholder="Date of birth" maxlength="10" value="<?php  echo $mydata['birth'];?>"  readonly>
+      <input type="text" id="dob" name="dob" placeholder="Date of birth" maxlength="10" value="<?php echo date("d-m-Y", strtotime($mydata['birth']));?>"  readonly>
       <label class="mylab">Age Privacy
       </label>
       <div class="datefm">
@@ -935,7 +935,7 @@ include 'footer.php';?>
     </div>		
     <div class="col-lg-12">
       <p class="sav_bt">	
-        <button type="button" id="basicinfo" class="buttonlo save" >Save
+        <button type="button" id="basicinfo" class="save" >Save
         </button>
       </p>
       <div class="clearfix">
@@ -970,8 +970,7 @@ foreach($countries as $row)
         </select>
         <i class="fa fa-sort-desc frig"  aria-hidden="true">
         </i>
-        <i class="fa fa-map-marker">
-        </i>
+       
       </div>
       <p class="sav_bt">
         <button type="button" class="save" id="locationSave" >Save
@@ -1287,6 +1286,23 @@ $(document).ready(function() {
                          );
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js">
+</script>
+
+
+<!--------------------------------------Form Validation script---------------------------->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+
+<script type="text/javascript"> 
+  $("#myimg").validate({
+    rules: {
+      photopublic:"required"
+    }
+    ,
+    messages: {
+      photopublic:"Please choose the file"
+    }
+  }
+                      );
 </script>
 <script>
   var selID = "";

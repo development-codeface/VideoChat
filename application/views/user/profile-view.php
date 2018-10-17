@@ -37,7 +37,7 @@ else
                   <ul class="flw-status">
                     <li>
                       <span> 
-                        <?php if($mydata['nick_name']!=""){ echo $mydata['nick_name'] ;}else { echo $mydata['full_name'];}?>
+                        <?php  echo $mydata['full_name'];?>
                       </span>
                     </li>
                   </ul>
@@ -245,17 +245,18 @@ else
                         </td>
                       </tr>
                       <tr>
+					                       <?php if($mydata['age_hide']!=2)
+{
+?>
                         <td class="pers">Date of birth
                         </td>
                         <td>
                           <i id="dobs">
-                            <?php  echo $mydata['dob'];?> 
+                            <?php  echo $mydata['birth'];?> 
                           </i>
                         </td>
                       </tr>
-                      <?php if($mydata['age_hide']==1)
-{
-?>
+ 
                       <tr>
                         <td class="pers">Age
                         </td>
@@ -268,8 +269,8 @@ else
                       <?php
 } ?>
                       <tr class="no_br">
-                        <td>Private /  Public
-                        </td>
+                     <!--   <td>Private /  Public
+                        </td>-->
                         <td>
                           <i id="visib">
                             <?php if($mydata['visibility']=='true'){?>
@@ -291,7 +292,7 @@ else
                   </h3>
                   <div class="locpad">
                     <h4 id="country_ids">
-                      <?php  echo $mydata['country_id'];?>
+                      <?php  echo $mydata['country'];?>
                     </h4>
                     <p id="addres"> 
                       <?php  echo $mydata['address'];?>
@@ -320,7 +321,21 @@ else
                     <ul>
                       <li>
                         <a href="#" title="" id="Interest_ar">
-                          <?php echo $mydata['interest_area'] ;?>
+                          <?php
+
+if($mydata['interest_area']==1)
+{
+	echo "Boy";
+}
+else if($mydata['interest_area']==2)
+{
+	echo "Girl";
+}
+else if($mydata['interest_area']==3)
+{
+	echo "Others";
+}
+						?>
                         </a>
                       </li>
                     </ul>

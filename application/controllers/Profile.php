@@ -69,7 +69,7 @@ class Profile extends CI_Controller
         $this->data['profileViewer'] = $this->profile_model->GetProfileViewerList($friendId);
         $this->data['mydata']        = $this->users_model->GetMyData($friendId);
         
-        //print_r($this->data['photos']);exit;
+       // print_r($this->data['mydata']);exit;
         $this->data['feeds'] = $this->profile_model->GetUserfeeds($friendId);
         $this->data['user']  = $this->users_model->userinfo($this->UserId);
         $this->data['age']   = $this->users_model->friendage($friendId);
@@ -234,7 +234,7 @@ class Profile extends CI_Controller
                                               <img src="../../assets/images/resources/malemaleavatar.png" alt="">
                                               </div>
                                               <div class="notification-info">
-                                                  <h3> '.$row->messages.'</h3>
+                                                  <p> '.$row->messages.'</p>
                                                 
                                               </div></div>
                   ';
@@ -249,7 +249,7 @@ class Profile extends CI_Controller
                                               <img src="../../assets/images/resources/femalemaleavatar.png" alt="">
                                               </div>
                                               <div class="notification-info">
-                                                  <h3> '.$row->messages.'</h3>
+                                                  <p> '.$row->messages.'</p>
                                                 
                                               </div></div>
                   ';
@@ -263,7 +263,7 @@ class Profile extends CI_Controller
                                               <img src="../../uploads/profile_pic/'.$row->profile_pic.'" alt="">
                                               </div>
                                               <div class="notification-info">
-                                                  <h3> '.$row->messages.'</h3>
+                                                  <p> '.$row->messages.'</p>
                                                 
                                               </div></div>
                   ';

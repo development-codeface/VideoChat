@@ -271,9 +271,11 @@ else
                 <img src="<?php echo base_url() .'uploads/profile_pic/'.$rss['profile_pic'] ;?>" alt="" class="user-info1">
                 <?php }?>
                 <span class="fa fa-circle msg-top">
-                </span> 
+                </span > 
+				<span id="hful"> 
                 <?php //echo $rss['full_name'];?>
                 <?php  echo $rss['full_name'];?> 
+				</span>
               </button>
               <div id="myDropdown" class="dropdown-content">
                 <a href="<?php echo base_url(); ?>index.php/Profile/myProfile" title="">

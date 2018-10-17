@@ -172,7 +172,7 @@ class User extends CI_Controller
         $return               = $this->users_model->UpdateBasic($param, $params, $this->UserId, $dob, $gen, $age,$ageuser);
         if (!empty($return)) {
             echo json_encode(array(
-                'status' => 1
+                'status' => 1, 'ageuser' => $ageuser
             ));
         } else {
             echo json_encode(array(
