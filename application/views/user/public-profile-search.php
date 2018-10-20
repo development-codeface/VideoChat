@@ -46,11 +46,12 @@ $user=$this->session->userdata('user_id');?>
                             <select name="looking">
 							           <option value="0">All
                               </option>
-                              <option value="3">Others
-                              </option>
+                            
                               <option value="1">A guy
                               </option>
                               <option value="2">A girl
+                              </option>
+							    <option value="3">Others
                               </option>
                             </select>
                           </div>

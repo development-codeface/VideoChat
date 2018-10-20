@@ -162,7 +162,7 @@ $user=$this->session->userdata('user_id');?>
 								<div class="row">
 								<?php 
 								
-								if(!empty($friendOnline)){
+									if(!empty($friendOnline)){
 											$i=1;
 											foreach($friendOnline as $frq){
 												
@@ -171,8 +171,9 @@ $user=$this->session->userdata('user_id');?>
 							<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="company_profile_info">
 								<div class="company-up-info">
-								<?php if( $frq->logged_time!=""){?>
+								<?php if( $frq->status==1){?>
 								<i class="fa fa-circle msg-online" aria-hidden="true"> <span>Online</span></i><?php }?>
+								
 								<div class="ed-opts form_wrapper unfr">
                                                     <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
                                                      <ul class="ed-options unfrhide" data-id="<?php echo $frq->user_id;?>"    style="display: none;">

@@ -63,7 +63,7 @@ class Users_model extends CI_Model
     //Online friends    
     public function GetOnlineFriends($userId)
     {
-        $this->db->select('us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name,od.logged_time');
+        $this->db->select('us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status');
         $this->db->from('users us');
         $this->db->join('friends um', 'um.friend_id=us.user_id', 'INNER');
         $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
@@ -198,11 +198,13 @@ class Users_model extends CI_Model
     
     public function checkEmail($params)
     {
-        $this->db->select('ph.*,');
+		 $query = $this->db->query("SELECT email from users WHERE  email='$params'");
+       return $query->result_array();
+    /*    $this->db->select('ph.*,');
         $this->db->from('users ph');
         $this->db->like('ph.email', $params);
         $result = $this->db->get();
-        return $result->row_array();
+        return $result->row_array();*/
         
     }
     public function checkmail($params)
@@ -230,11 +232,13 @@ class Users_model extends CI_Model
     }
     public function checkUserName($params)
     {
-        $this->db->select('ph.*,');
+		 $query = $this->db->query("SELECT user_name from users WHERE  user_name='$params'");
+       return $query->result_array();
+      /*  $this->db->select('ph.*,');
         $this->db->from('users ph');
         $this->db->like('ph.user_name', $params);
-        $result = $this->db->get();
-        return $result->row_array();
+        $result = $this->db->get();*/
+     //   return $result->row_array();
         
     }
     
@@ -282,17 +286,17 @@ class Users_model extends CI_Model
         return $result->row_array();
     }
     
-    public function UpdateBasic($param, $params, $user_id, $dob, $gen, $age,$ageuser)
+    public function UpdateBasic($param, $params, $user_id, $dob, $gen, $ager,$age)
     {
        
         $this->db->where('user_id', $user_id);
         $this->db->update('users', $param);
         $this->db->where('user_id', $user_id);
         $this->db->update('user_profile', $params);
-        $query = $this->db->query("UPDATE  user_profile SET age_hide=$age where user_id=$user_id");
+        $query = $this->db->query("UPDATE  user_profile SET age_hide=$ager where user_id=$user_id");
         $query = $this->db->query("UPDATE  users SET dob='$dob',gender=$gen where user_id=$user_id"); 
-		$query = $this->db->query("UPDATE  users SET age='$ageuser' where user_id=$user_id");
-		$query = $this->db->query("select age  from users  where user_id=$user_id");
+		$query = $this->db->query("UPDATE  users SET age='$age' where user_id=$user_id");
+		$query = $this->db->query("select age   from users  where user_id=$user_id");
         return 1;
     }
     public function Updateintrest($params, $user_id)
