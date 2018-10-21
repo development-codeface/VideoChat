@@ -606,7 +606,25 @@ class Users_model extends CI_Model
         $query = $this->db->query("select * from stranger_det");
         return $query->result();
         
-    }   
+    }  
+    function clearoldstranger(){
+     $query = $this->db->query("DELETE from stranger_det WHERE requestedtime > NOW() - INTERVAL 1 MINUTE");
+     return 1;
+    }
+
+    function removeuserfromStranger($uid){
+        $query = $this->db->query("DELETE from stranger_det WHERE 	user_id = $uid");
+        $query = $this->db->get_where('users', array(
+            'user_id' => $uid
+        ));
+        return $query->row_array();
+    }
+    function getStrangerAvaiUser($user_id){
+        $query = $this->db->query("SELECT user_id FROM stranger_det WHERE user_id != $user_id LIMIT 1");
+        return $query->row_array();
+    }
+    
+    
 	function countimage($uid)
     {
         $query = $this->db->query("select count(user_id) as cs from user_photos where user_id=$uid");
@@ -626,11 +644,26 @@ class Users_model extends CI_Model
         return 1;
     }
     function stranger_update($uid)
-    {
-        $query = $this->db->query("INSERT INTO stranger_det (user_id)
-              VALUES ($uid) ");
-        // echo $this->db->last_query();
-        return 1;
+    {   $this->db->select("user_id");
+        $this->db->from("stranger_det");
+        $this->db->where(array('user_id'=>$uid));
+        $prevQuery = $this->db->get();
+        $prevCheck = $prevQuery->num_rows();
+        if($prevCheck > 1){
+            $prevResult = $prevQuery->row_array();
+            //update user data
+            $userData['status'] = 1;
+            $this->db->set('requestedtime', 'NOW()', FALSE);
+            $update = $this->db->update("stranger_det",$userData,array('user_id'=>$prevResult['user_id']));
+            $userID = $prevResult['user_id'];
+        }else {
+            $userData['user_id']  = $uid;
+            $userData['status'] = 1;
+            $userData['requestedtime'] = date("Y-m-d H:i:s");
+            $insert = $this->db->insert("stranger_det",$userData);
+            $userID = $this->db->insert_id();
+        }
+        return $userID?$userID:FALSE;
     }
     function stranger_delete($user)
     {

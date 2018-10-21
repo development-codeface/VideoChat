@@ -70,14 +70,7 @@ include 'header.php';?>
 	  <div class="top_menu">
 	
 	  <div class="title"><span class="glyphicon btn-glyphicon glyphicon-minus fa fa-comments-o img-circle text-warning"></span>
-	  
-	  <?php 
-											foreach($onlinef as $frq){?>
-								  					<?php echo $frq->full_name;?>
-								  				
-													
- 
-											<?php } ?>
+	
 	  </div></div>
         <div class="chatContainer">
           <div id="chatHistory">
@@ -98,12 +91,23 @@ include 'header.php';?>
 
  
 <div id="callModal" class="modal t92">
-            <div class="modal-content text-center">
-                <!--div class="modal-header" id="callerInfo"></div-->
+  <div class="modal-content text-center">
+      <!--div class="modal-header" id="callerInfo"></div-->
 
-             
-            </div>
-        </div>
+    
+  </div>
+</div>
+
+<div id="findstranger" class="modal">
+  <div class="modal-content text-center">
+      <div class="modal-header" id="callerInfo"></div>
+      <div class="modal-body">
+          <button type="button" class="btn btn-danger btn-sm" id='finduser'>
+              <i class="fa fa-times-circle"></i> Find chat user
+          </button>
+      </div>
+  </div>
+</div>
 <script>
 var elem = document.getElementById("myvideo");
 function openFullscreen() {
@@ -131,7 +135,9 @@ function openFullscreen() {
 <audio id="dialTone" src="<?php echo base_url(); ?>assets/media/dialtone.mp3" preload="auto"></audio>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/strangerchat.js"></script>
 <script>
     $("#subscriber").hide();
     openOpentokConnection ('<?php echo $openSessionId ?>');
+    document.getElementById("findstranger").style.display = 'block';
 </script>

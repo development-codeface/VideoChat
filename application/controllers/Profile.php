@@ -158,15 +158,31 @@ class Profile extends CI_Controller
             'sessionId' => $opentok_sessionid,
             'token' => $opntok_tokenId
         ));
-        $this->data['stranger_check'] = $this->users_model->stranger_check();
+
+        /*$this->data['stranger_check'] = $this->users_model->stranger_check();
         if ($this->data['stranger_check'] == null) {
             $this->data['stranger'] = $this->users_model->stranger_update($this->UserId);
         } else {
             // $this->users_model->stranger_delete($this->UserId) ;
-        }
+        }*/
+
         $this->data['user'] = $this->users_model->userinfo($this->UserId);
         $this->load->view("user/messages_stranger", $this->data);
         
+    }
+    public function getStranger(){
+        $this->users_model->clearoldstranger();
+        $resultval = $this->users_model->getStrangerAvaiUser($this->session->userdata('user_id'));
+
+        if(null != $resultval){
+            $resultval = $this->users_model->removeuserfromStranger($resultval['user_id']);
+        }else {
+            $result = $this->users_model->stranger_update($this->session->userdata('user_id'));
+            $resultval = array("errormsg"=>"No user","errorcode"=> "1");
+        }
+
+        echo json_encode($resultval);
+
     }
     public function messagesUser()
     {
