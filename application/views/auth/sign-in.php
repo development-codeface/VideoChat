@@ -103,7 +103,7 @@
 											<div class="col-lg-12 no-pdd">
 												<div class="checky-sec">
 													<div class="fgt-sec">
-														<input type="checkbox" name="cc" id="c1">
+														<input type="checkbox" name="remeberme" id="c1">
 														<label for="c1">
 															<span></span>
 														</label>
@@ -139,7 +139,7 @@
 	}
 </style-->
 										<ul>
-											<li><a href="#" title="" class="fb"><i class="fa fa-facebook"></i>Login Via Facebook</a></li>
+											<li><a href="<?php echo $authURL ?>" title="" class="fb"><i class="fa fa-facebook"></i>Login Via Facebook</a></li>
 											<li><a href="#" title="" class="tw"><i class="fa fa-twitter"></i>Login Via Twitter</a></li>
 										</ul>
 									</div><!--login-resources end-->

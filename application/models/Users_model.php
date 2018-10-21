@@ -17,6 +17,31 @@ class Users_model extends CI_Model
         ));
         return $query->row_array();
     }
+
+    public function getUserById($userid = null)
+    {
+        $query = $this->db->get_where('users', array(
+            'user_id' => $userid,
+            'status' => 1
+        ));
+        return $query->row_array();
+    }
+
+    public function getUserByToken($token = null,$serial =null)
+    {
+        $query = $this->db->get_where('users', array(
+            'series_identifier' => $serial,
+            'token' => $token
+        ));
+        return $query->row_array();
+    }
+
+    public function setUserToken($array = null,$userid= null)
+    {
+        $this->db->set($array);
+        $this->db->where('user_id', $userid);
+        return $this->db->update('users');
+    }
     
     public function get_email($admin_id)
     {
@@ -42,11 +67,11 @@ class Users_model extends CI_Model
         } else {
             $array = array(
                 'user_id' => $user_id,
+                'nick_name' => $nick,
                 'visibility' => 'true'
             );
             $this->db->insert('user_profile', $array);
-			 $query = $this->db->query("UPDATE  user_profile SET nick_name='$nick' where user_id=$user_id");
-			 $query = $this->db->query("UPDATE  user_profile SET nick_name='$nick' where user_id=$user_id");
+			//$query = $this->db->query("UPDATE  user_profile SET nick_name='$nick' where user_id=$user_id");
             return array(
                 'success' => true,
                 'message' => $user_id

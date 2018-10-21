@@ -5,7 +5,7 @@ class Login extends  CI_Controller
 	public function __construct()
 	{
 		 parent::__construct();
-        $this->load->library(array('session', 'form_validation'));
+		$this->load->library(array('session', 'form_validation','facebook'));
         $this->load->helper(array('url', 'form', 'html'));
         $this->load->model('users_model');
 	}
@@ -18,8 +18,8 @@ class Login extends  CI_Controller
 		       redirect('employee/Dashboard');
 		         exit();
 		}else{
-			
-			$this->load->view('login');
+			$data['authURL'] =  $this->facebook->login_url();
+			$this->load->view('login',$data);
 		}
 		
 		

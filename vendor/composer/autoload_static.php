@@ -6,6 +6,11 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit47d13628d66cf2bec8d3767c71689fa2
 {
+    public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'p' => 
         array (
@@ -17,6 +22,7 @@ class ComposerStaticInit47d13628d66cf2bec8d3767c71689fa2
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\EventDispatcher\\' => 34,
         ),
@@ -27,6 +33,7 @@ class ComposerStaticInit47d13628d66cf2bec8d3767c71689fa2
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
+            'Facebook\\' => 9,
         ),
         'D' => 
         array (
@@ -45,6 +52,10 @@ class ComposerStaticInit47d13628d66cf2bec8d3767c71689fa2
         array (
             0 => __DIR__ . '/..' . '/webmozart/assert/src',
         ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
         'Symfony\\Component\\Yaml\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
@@ -60,6 +71,10 @@ class ComposerStaticInit47d13628d66cf2bec8d3767c71689fa2
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
+        'Facebook\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -86,11 +101,11 @@ class ComposerStaticInit47d13628d66cf2bec8d3767c71689fa2
         array (
             'Guzzle\\Tests' => 
             array (
-                0 => __DIR__ . '/..' . '/guzzle/guzzle/tests',
+                0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/tests',
             ),
             'Guzzle' => 
             array (
-                0 => __DIR__ . '/..' . '/guzzle/guzzle/src',
+                0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
             ),
         ),
     );
@@ -385,9 +400,12 @@ class ComposerStaticInit47d13628d66cf2bec8d3767c71689fa2
         'PHPUnitTestRunner' => __DIR__ . '/..' . '/phing/phing/classes/phing/tasks/ext/phpunit/PHPUnitTestRunner.php',
         'PHPUnitUtil' => __DIR__ . '/..' . '/phing/phing/classes/phing/tasks/ext/phpunit/PHPUnitUtil.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Assert.php',
+        'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/AssertionFailedError.php',
         'PHPUnit\\Framework\\BaseTestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/BaseTestListener.php',
+        'PHPUnit\\Framework\\Test' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/Test.php',
         'PHPUnit\\Framework\\TestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestCase.php',
         'PHPUnit\\Framework\\TestListener' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestListener.php',
+        'PHPUnit\\Framework\\TestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/ForwardCompatibility/TestSuite.php',
         'PHPUnit_Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit_Extensions_GroupTestSuite' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/GroupTestSuite.php',
         'PHPUnit_Extensions_PhptTestCase' => __DIR__ . '/..' . '/phpunit/phpunit/src/Extensions/PhptTestCase.php',

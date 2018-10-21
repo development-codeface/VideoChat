@@ -8,6 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'JohnStevenson\\JsonWorks' => array($vendorDir . '/aoberoi/json-works/src'),
-    'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
-    'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
+    'Guzzle\\Tests' => array($vendorDir . '/guzzlehttp/guzzle/tests'),
+    'Guzzle' => array($vendorDir . '/guzzlehttp/guzzle/src'),
 );
