@@ -402,13 +402,25 @@ list($date,$time)=explode(' ',$timestamp);
                             <?php  echo $mydata['ag'];?>
                           </i> 
 						  
+						  		<?php
+			$uid=$this->UserId = $this->session->userdata('user_id');
+			
+			    $query=$this->db->query("select age_hide from user_profile where user_id=$uid");
+
+              $result=$query->result_array();
+                    
+                    foreach($result as $value){ 
+					$status=$value['age_hide'];
+					
+					}
+					?>
 						  
-						  
-						  
-                         <div class="togl_divv">
-           <input type="checkbox" name="checkbox11" id="checkbox11" class="ios-toggle" checked="">
- <label for="checkbox11" class="checkbox-label" data-off="Private" data-on="Public" onclick="changeColor()"></label>
-</div>
+						   <div class="togl_div">
+            <?php $currentStatus = ($status=='true')? "1" : "2";?> 
+            <?php $checked = ($currentStatus== 1) ? "checked=''" :  ""; ?>
+            <input type="checkbox" name="checkbox11" id="checkbox11" value="<?php echo $currentStatus?>" class="ios-toggle" <?php echo $checked?> >
+            <label for="checkbox11" class="checkbox-label" data-off="Private" data-on="Public" ></label>
+          </div>    
                           
 
 
@@ -1339,15 +1351,16 @@ $(document).ready(function() {
       data:{profilestatus:status},
       dataType:"text", 
       success: function(result){
-        privacyChangeCallback(result);
+        privacyChangeCallbacks(result);
         //location.reload();
       }
 	
  }); });
 
- function privacyChangeCallback(result){
+ function privacyChangeCallbacks(result){
 
     var status = JSON.parse(result);
+	
     var publicStatus = "2";
     if(status.visibility == "true"){
       publicStatus   = "1"

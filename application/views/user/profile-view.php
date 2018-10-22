@@ -233,6 +233,7 @@ else
                           </i>
                         </td>
                       </tr-->
+					 
                       <tr>
                         <td class="pers">Gender
                         </td>
@@ -245,7 +246,20 @@ else
                         </td>
                       </tr>
                       <tr>
-					                       <?php if($mydata['age_hide']!=2)
+					  
+					  
+						  		<?php
+			$uid=$mydata['user_id'];
+			    $query=$this->db->query("select age_hide from user_profile where user_id=$uid");
+
+              $result=$query->result_array();
+                    
+                    foreach($result as $value){ 
+					$status=$value['age_hide'];
+					echo $status;
+					}
+					?>
+					                       <?php if($status=="true")
 {
 ?>
                         <td class="pers">Date of birth
@@ -267,7 +281,28 @@ else
                         </td>
                       </tr>
                       <?php
-} ?>
+}else 
+{
+?>
+   <td class="pers">Date of birth
+                        </td>
+                        <td>
+                          <i id="dobs">
+                            <?php  echo "** ** ****";?> 
+                          </i>
+                        </td>
+                      </tr>
+ 
+                      <tr>
+                        <td class="pers">Age
+                        </td>
+                        <td>
+                          <i id="age"> 
+                            <?php  echo "**";?>
+                          </i> 
+                        </td>
+                      </tr>
+<?php } ?>
                       <tr class="no_br">
                      <!--   <td>Private /  Public
                         </td>-->
