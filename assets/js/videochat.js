@@ -39,7 +39,7 @@ function openOpentokConnection(sessionId) {
     },
     streamCreated : function(event){
       var subscriber = session.subscribe(event.stream, 'subscriber', {
-        insertMode: 'append',
+        //insertMode: 'append',
         width: '100%',
         height: '100%'
       }, handleErrorOpen);
@@ -50,6 +50,12 @@ function openOpentokConnection(sessionId) {
         },
         connected: function(event) {
           openTokErrormessage("Subscriber connected");
+          if($("#loadingmessage") != null){
+            $("#loadingmessage").hide();
+            if(typeof(strangerWaitingtimer) != "undefined")
+               clearTimeout(strangerWaitingtimer);
+          }
+              
           $("#subscriber").show();
         }
       });
@@ -57,7 +63,7 @@ function openOpentokConnection(sessionId) {
   });
   // Create a publisher
   var publisher = OT.initPublisher('publisher', {
-    insertMode: 'append',
+    //insertMode: 'append',
     width: '100%',
     height: '100%'
   }, handleErrorOpen);
