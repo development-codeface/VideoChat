@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.3
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Oct 21, 2018 at 11:46 AM
--- Server version: 5.6.35
--- PHP Version: 7.1.8
+-- Host: 127.0.0.1
+-- Generation Time: Oct 22, 2018 at 05:04 PM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `alitqanl_videochat`
+-- Database: `chat`
 --
 
 -- --------------------------------------------------------
@@ -121,7 +123,10 @@ INSERT INTO `feed_like` (`id`, `user_id`, `feed_id`) VALUES
 (45, 17, 22),
 (46, 17, 23),
 (47, 17, 24),
-(48, 22, 25);
+(48, 22, 25),
+(49, 69, 26),
+(50, 70, 26),
+(51, 70, 27);
 
 -- --------------------------------------------------------
 
@@ -234,7 +239,10 @@ INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`) VALUES
 (104, 59, 60, 1),
 (105, 60, 59, 1),
 (106, 64, 60, 1),
-(107, 60, 64, 1);
+(107, 60, 64, 1),
+(110, 21, 69, 0),
+(113, 69, 70, 1),
+(114, 70, 69, 1);
 
 -- --------------------------------------------------------
 
@@ -388,7 +396,16 @@ INSERT INTO `notification` (`n_id`, `messages`, `fri_id`, `user_id`, `cur_time`,
 (118, 'nazneen mohammed send a friend request to you', 59, 60, '2018-10-09 22:53:55.293078', 1),
 (119, 'irshad illias Accepted your friend request', 60, 59, '2018-10-11 18:19:38.649172', 0),
 (120, 'nazneen mohammed sent a friend request to you', 64, 60, '2018-10-13 22:08:45.118945', 0),
-(121, 'irshadstar test Accepted your friend request', 60, 64, '2018-10-13 22:09:17.560627', 0);
+(121, 'irshadstar test Accepted your friend request', 60, 64, '2018-10-13 22:09:17.560627', 0),
+(122, 'mary mary sent a friend request to you', 69, 70, '2018-10-22 12:33:42.886312', 1),
+(123, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-22 12:34:05.852132', 0),
+(124, 'mary mary Liked your post', 69, 70, '2018-10-22 12:34:24.844320', 1),
+(125, 'mary mary Liked your post', 69, 70, '2018-10-22 12:34:46.417562', 1),
+(126, 'joseph joseph sent a friend request to you', 21, 69, '2018-10-22 20:03:06.489257', 0),
+(127, 'mary mary sent a friend request to you', 69, 70, '2018-10-22 20:04:11.547851', 0),
+(128, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-22 20:04:33.337890', 0),
+(129, 'mary mary sent a friend request to you', 69, 70, '2018-10-22 20:05:34.127929', 0),
+(130, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-22 20:05:53.806640', 0);
 
 -- --------------------------------------------------------
 
@@ -451,7 +468,9 @@ INSERT INTO `online_user` (`id`, `user_id`, `logged_time`, `status`, `logout_tim
 (71, 65, NULL, 1, NULL),
 (72, 66, NULL, 1, NULL),
 (73, 67, NULL, 1, '2018-10-21 11:08:04'),
-(74, 68, NULL, 1, NULL);
+(74, 68, NULL, 1, NULL),
+(75, 69, NULL, 1, NULL),
+(76, 70, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -492,7 +511,9 @@ INSERT INTO `profile_visit` (`id`, `user_id`, `visitor_id`, `visited_at`) VALUES
 (145, 24, 22, '2018-09-19 18:38:41'),
 (146, 42, 17, '2018-09-25 18:39:41'),
 (147, 63, 59, '2018-10-14 22:55:25'),
-(148, 59, 68, '2018-10-21 11:24:10');
+(148, 59, 68, '2018-10-21 11:24:10'),
+(149, 70, 69, '2018-10-22 20:05:56'),
+(150, 69, 70, '2018-10-22 20:10:27');
 
 -- --------------------------------------------------------
 
@@ -627,7 +648,9 @@ INSERT INTO `users` (`user_id`, `full_name`, `email`, `user_name`, `password`, `
 (60, 'nazneen mohammed', 'nazneen@gmail.com', 'nazneen', '583d8c3bc38a14fa7e6c8ab317dd6c1a', 2, '1980-07-10', 38, '', NULL, NULL, 1, '2018-10-09 22:53:27', '1_MX40NjIwMTA5Mn5-MTUzOTI1MzE2OTAyN35XVUIvdHRsRXdsT2s2OS85MS9NMnA2dkV-fg', '', '', '0000-00-00 00:00:00', 'b6b738ac81c97181e36a2dfcb3e5a5e65567a5da', 'dcc53e69442629fb843f1a3cfce36bcec561889a'),
 (63, 'irshadtest test', 'irshadtest@gmail.com', 'irshadtest', 'e71ec642c41049181fe837ee9f2ec9fb', 1, '1970-01-01', 48, '', NULL, NULL, 1, '2018-10-13 20:57:51', '1_MX40NjIwMTA5Mn5-MTUzOTQzNTUwODUyN35qcHJITlVwaHZjbENtanhESjZSOVBFdXZ-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
 (64, 'irshadstar test', 'irshadstartest@gmail.com', 'irshadtest1', '583d8c3bc38a14fa7e6c8ab317dd6c1a', 1, '1970-01-01', 48, '', NULL, NULL, 1, '2018-10-13 22:05:35', '1_MX40NjIwMTA5Mn5-MTUzOTQzOTU5NjE3MX5ybnZNRDZwL3dRK1o4K3MwWlRjdFN6V2V-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
-(68, 'Irshad Illias', 'irshadstar@gmail.com', 'irshadstar@gmail.com', '', 0, '0000-00-00', 0, '', NULL, NULL, 1, '2018-10-21 05:09:17', '2_MX40NjIwMTA5Mn5-MTU0MDA5MTM2MjE2MX5GZGhZS2RyQzdaS0x0Q0tXRk55TVBUL0h-fg', 'facebook', '1895854510521946', '2018-10-21 11:13:32', NULL, NULL);
+(68, 'Irshad Illias', 'irshadstar@gmail.com', 'irshadstar@gmail.com', '', 0, '0000-00-00', 0, '', NULL, NULL, 1, '2018-10-21 05:09:17', '2_MX40NjIwMTA5Mn5-MTU0MDA5MTM2MjE2MX5GZGhZS2RyQzdaS0x0Q0tXRk55TVBUL0h-fg', 'facebook', '1895854510521946', '2018-10-21 11:13:32', NULL, NULL),
+(69, 'joseph joseph', 'derin@gmail.comf', 'joseph', '25d55ad283aa400af464c76d713c07ad', 1, '2000-09-10', 18, '', NULL, NULL, 1, '2018-10-22 12:14:39', '1_MX40NjIwMTA5Mn5-MTU0MDE5MDY4MTYxM351ZDBCMWtQb05RYXNrcHZwUzNTZXdYSDB-fg', '', '', '0000-00-00 00:00:00', 'fbab888cc4e405d646bafb0e8d843cc00ffa9941', 'f31cf3b062e3a972adaa80be79198bd65ff493f1'),
+(70, 'mary mary', 'derin@gmail.comyy', 'mary', '25d55ad283aa400af464c76d713c07ad', 2, '2000-03-10', 18, '', NULL, NULL, 1, '2018-10-22 12:29:45', '2_MX40NjIwMTA5Mn5-MTU0MDE5MTY3OTIxN35ROGhONlNjL0t3Q2laeThHLzE3My9BUDZ-fg', '', '', '0000-00-00 00:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -673,7 +696,9 @@ INSERT INTO `user_feed` (`id`, `user_id`, `feeds`, `no_likes`, `status`, `create
 (22, 17, 'sdddsdsddddsddsds', 1, 1, '2018-10-05 12:16:18'),
 (23, 17, 'uuu', 1, 1, '2018-10-05 12:35:13'),
 (24, 17, 'hi', 1, 1, '2018-10-05 13:08:03'),
-(25, 22, 'dd', 1, 1, '2018-10-05 17:25:35');
+(25, 22, 'dd', 1, 1, '2018-10-05 17:25:35'),
+(26, 69, 'sdfsffsd', 2, 1, '2018-10-22 12:25:56'),
+(27, 69, 'fgd', 1, 1, '2018-10-22 12:34:39');
 
 -- --------------------------------------------------------
 
@@ -742,7 +767,7 @@ CREATE TABLE `user_profile` (
   `country_id` varchar(255) DEFAULT NULL,
   `interest_area` text,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
-  `age_hide` int(2) NOT NULL DEFAULT '1'
+  `age_hide` varchar(20) NOT NULL DEFAULT 'true'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -750,64 +775,66 @@ CREATE TABLE `user_profile` (
 --
 
 INSERT INTO `user_profile` (`id`, `user_id`, `gender`, `dob`, `visibility`, `nick_name`, `profile_pic`, `cover_photo`, `description`, `address`, `country_id`, `interest_area`, `created_at`, `age_hide`) VALUES
-(1, 2, 2, '', 'true', 'tesr', NULL, NULL, 'testing', NULL, NULL, NULL, '2018-07-24 13:56:25', 1),
-(3, 1, 2, '2018-07-11', 'true', 'ramu', NULL, 'company-cover.jpg', 'Testing Make sense means perfects', 'Perumkadavila', 'India', 'Boy', '2018-07-24 14:40:39', 1),
-(4, 3, 2, '', 'false', 'Tester', NULL, NULL, 'testing purpose', NULL, 'India', NULL, '2018-07-24 14:40:51', 1),
-(5, 5, 1, NULL, 'true', NULL, NULL, NULL, NULL, NULL, 'India', NULL, '2018-07-24 14:40:51', 1),
-(6, 8, 1, '10/04/1987', 'false', 'hhhh', NULL, NULL, NULL, 'asas', 'Country', NULL, '2018-07-30 20:54:56', 1),
-(7, 9, 1, '2018-08-05', 'true', 'sam123', '75b6533d-1537-4b6f-bc16-b1944d467715.jpg', '01_(1).jpg', 'jbsafhgafgjabfbjgafm', 'kerala', 'Kazakhstan', 'Boy', '2018-07-30 22:13:48', 1),
-(8, 10, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-31 23:36:32', 1),
-(9, 11, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-01 00:05:32', 1),
-(10, 12, NULL, NULL, 'true', NULL, 'about-absolute.png', NULL, NULL, NULL, NULL, NULL, '2018-08-01 15:19:38', 1),
-(11, 13, 1, '', 'false', 'abcd1', NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-01 16:16:22', 1),
-(12, 14, 2, '2018-08-17', 'true', 'samual', NULL, NULL, 'hfhghbnhgvbnvhgjhjhjmbmjhk', 'keral', 'India', NULL, '2018-08-09 14:47:01', 1),
-(13, 15, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-09 15:19:38', 1),
-(14, 16, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-28 16:21:28', 1),
-(15, 17, 0, 'undefined', 'false', 'undefined', 'm-img4.png', 'download (7).jpg', 'dgdgdfghrfg', 'undefined', '3', '3', '2018-09-04 15:13:24', 2),
-(16, 18, NULL, NULL, 'true', NULL, 'Koala.jpg', NULL, NULL, NULL, NULL, NULL, '2018-09-04 16:49:28', 1),
-(17, 19, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 11:15:12', 1),
-(18, 20, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:00:33', 1),
-(19, 21, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:01:07', 1),
-(20, 22, 0, 'undefined', 'false', 'fsad', NULL, NULL, 'bjhkhlh', 'undefined', '11', '2', '2018-09-07 10:14:38', 1),
-(21, 23, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
-(22, 24, NULL, NULL, 'false', '', 'download (4).jpg', NULL, NULL, NULL, NULL, NULL, NULL, 2),
-(23, 25, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
-(24, 26, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
-(25, 27, 1, '', 'false', 'all', 'fbcp.jpg', 'fbcp3.jpg', 'fghfhfgffgasdfff', 'undefined', '10', '2', NULL, 1),
-(26, 28, NULL, NULL, 'false', '', NULL, NULL, NULL, 'undefined', '6', NULL, '2018-09-14 18:16:18', 1),
-(27, 29, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 18:37:18', 1),
-(28, 30, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 18:59:52', 1),
-(29, 31, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 19:46:08', 1),
-(30, 32, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-17 09:41:17', 1),
-(31, 33, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-18 12:38:48', 1),
-(32, 34, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-19 16:33:58', 1),
-(33, 35, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-19 18:03:25', 1),
-(34, 36, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-20 10:58:44', 1),
-(35, 37, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-20 12:41:10', 1),
-(36, 38, NULL, NULL, 'true', NULL, NULL, NULL, NULL, 'undefined', '12', NULL, '2018-09-21 14:10:21', 1),
-(37, 39, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 14:11:01', 1),
-(38, 40, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, '2', '2018-09-21 14:42:00', 1),
-(39, 41, 2, '2000-11-11', 'false', 'nna', NULL, NULL, 'grfgfddddddddddddddddddddddddddddddddddddddddddddddddddddd', 'sss', 'Country', NULL, '2018-09-21 16:27:25', 1),
-(40, 42, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 16:28:00', 1),
-(41, 43, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 11:50:34', 1),
-(42, 44, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 11:57:09', 1),
-(43, 46, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 12:03:34', 1),
-(44, 47, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 12:26:34', 1),
-(45, 48, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:02:11', 1),
-(46, 49, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:05:30', 1),
-(47, 50, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:22:16', 1),
-(48, 51, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:23:36', 1),
-(49, 52, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 16:13:54', 1),
-(50, 53, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 19:05:39', 1),
-(51, 54, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:02:44', 1),
-(52, 55, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:12:30', 1),
-(53, 56, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-03 14:30:52', 1),
-(54, 57, NULL, NULL, 'true', NULL, NULL, NULL, NULL, 'undefined', '9', NULL, '2018-10-03 14:37:08', 1),
-(55, 58, NULL, NULL, 'true', NULL, NULL, NULL, NULL, 'undefined', '10', NULL, '2018-10-03 16:43:48', 1),
-(56, 59, NULL, NULL, 'true', '', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-09 22:51:29', 1),
-(57, 60, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-09 22:53:27', 1),
-(60, 64, NULL, NULL, 'true', 'irshu123', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-13 22:05:35', 1),
-(63, 68, NULL, NULL, 'true', 'Irshad Illias', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-21 11:09:17', 1);
+(1, 2, 2, '', 'true', 'tesr', NULL, NULL, 'testing', NULL, NULL, NULL, '2018-07-24 13:56:25', '1'),
+(3, 1, 2, '2018-07-11', 'true', 'ramu', NULL, 'company-cover.jpg', 'Testing Make sense means perfects', 'Perumkadavila', 'India', 'Boy', '2018-07-24 14:40:39', '1'),
+(4, 3, 2, '', 'false', 'Tester', NULL, NULL, 'testing purpose', NULL, 'India', NULL, '2018-07-24 14:40:51', '1'),
+(5, 5, 1, NULL, 'true', NULL, NULL, NULL, NULL, NULL, 'India', NULL, '2018-07-24 14:40:51', '1'),
+(6, 8, 1, '10/04/1987', 'false', 'hhhh', NULL, NULL, NULL, 'asas', 'Country', NULL, '2018-07-30 20:54:56', '1'),
+(7, 9, 1, '2018-08-05', 'true', 'sam123', '75b6533d-1537-4b6f-bc16-b1944d467715.jpg', '01_(1).jpg', 'jbsafhgafgjabfbjgafm', 'kerala', 'Kazakhstan', 'Boy', '2018-07-30 22:13:48', '1'),
+(8, 10, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-07-31 23:36:32', '1'),
+(9, 11, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-01 00:05:32', '1'),
+(10, 12, NULL, NULL, 'true', NULL, 'about-absolute.png', NULL, NULL, NULL, NULL, NULL, '2018-08-01 15:19:38', '1'),
+(11, 13, 1, '', 'false', 'abcd1', NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-01 16:16:22', '1'),
+(12, 14, 2, '2018-08-17', 'true', 'samual', NULL, NULL, 'hfhghbnhgvbnvhgjhjhjmbmjhk', 'keral', 'India', NULL, '2018-08-09 14:47:01', '1'),
+(13, 15, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-09 15:19:38', '1'),
+(14, 16, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-08-28 16:21:28', '1'),
+(15, 17, 0, 'undefined', 'false', 'undefined', 'm-img4.png', 'download (7).jpg', 'dgdgdfghrfg', 'undefined', '3', '3', '2018-09-04 15:13:24', '2'),
+(16, 18, NULL, NULL, 'true', NULL, 'Koala.jpg', NULL, NULL, NULL, NULL, NULL, '2018-09-04 16:49:28', '1'),
+(17, 19, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 11:15:12', '1'),
+(18, 20, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:00:33', '1'),
+(19, 21, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-05 12:01:07', '1'),
+(20, 22, 0, 'undefined', 'false', 'fsad', NULL, NULL, 'bjhkhlh', 'undefined', '11', '2', '2018-09-07 10:14:38', '1'),
+(21, 23, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1'),
+(22, 24, NULL, NULL, 'false', '', 'download (4).jpg', NULL, NULL, NULL, NULL, NULL, NULL, '2'),
+(23, 25, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1'),
+(24, 26, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1'),
+(25, 27, 1, '', 'false', 'all', 'fbcp.jpg', 'fbcp3.jpg', 'fghfhfgffgasdfff', 'undefined', '10', '2', NULL, '1'),
+(26, 28, NULL, NULL, 'false', '', NULL, NULL, NULL, 'undefined', '6', NULL, '2018-09-14 18:16:18', '1'),
+(27, 29, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 18:37:18', '1'),
+(28, 30, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 18:59:52', '1'),
+(29, 31, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-14 19:46:08', '1'),
+(30, 32, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-17 09:41:17', '1'),
+(31, 33, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-18 12:38:48', '1'),
+(32, 34, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-19 16:33:58', '1'),
+(33, 35, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-19 18:03:25', '1'),
+(34, 36, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-20 10:58:44', '1'),
+(35, 37, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-20 12:41:10', '1'),
+(36, 38, NULL, NULL, 'true', NULL, NULL, NULL, NULL, 'undefined', '12', NULL, '2018-09-21 14:10:21', '1'),
+(37, 39, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 14:11:01', '1'),
+(38, 40, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, '2', '2018-09-21 14:42:00', '1'),
+(39, 41, 2, '2000-11-11', 'false', 'nna', NULL, NULL, 'grfgfddddddddddddddddddddddddddddddddddddddddddddddddddddd', 'sss', 'Country', NULL, '2018-09-21 16:27:25', '1'),
+(40, 42, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-21 16:28:00', '1'),
+(41, 43, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 11:50:34', '1'),
+(42, 44, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 11:57:09', '1'),
+(43, 46, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 12:03:34', '1'),
+(44, 47, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 12:26:34', '1'),
+(45, 48, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:02:11', '1'),
+(46, 49, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:05:30', '1'),
+(47, 50, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:22:16', '1'),
+(48, 51, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 14:23:36', '1'),
+(49, 52, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 16:13:54', '1'),
+(50, 53, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-26 19:05:39', '1'),
+(51, 54, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:02:44', '1'),
+(52, 55, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-09-27 12:12:30', '1'),
+(53, 56, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-03 14:30:52', '1'),
+(54, 57, NULL, NULL, 'true', NULL, NULL, NULL, NULL, 'undefined', '9', NULL, '2018-10-03 14:37:08', '1'),
+(55, 58, NULL, NULL, 'true', NULL, NULL, NULL, NULL, 'undefined', '10', NULL, '2018-10-03 16:43:48', '1'),
+(56, 59, NULL, NULL, 'true', '', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-09 22:51:29', '1'),
+(57, 60, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-09 22:53:27', '1'),
+(60, 64, NULL, NULL, 'true', 'irshu123', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-13 22:05:35', '1'),
+(63, 68, NULL, NULL, 'true', 'Irshad Illias', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-21 11:09:17', '1'),
+(64, 69, NULL, NULL, 'true', 'joseph', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-22 12:14:39', 'false'),
+(65, 70, NULL, NULL, 'true', 'mary', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-22 12:29:46', 'false');
 
 --
 -- Indexes for dumped tables
@@ -902,66 +929,80 @@ ALTER TABLE `user_profile`
 --
 ALTER TABLE `countries`
   MODIFY `c_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
 -- AUTO_INCREMENT for table `feed_like`
 --
 ALTER TABLE `feed_like`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
 --
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+
 --
 -- AUTO_INCREMENT for table `hide_post`
 --
 ALTER TABLE `hide_post`
   MODIFY `hd_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `n_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `n_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+
 --
 -- AUTO_INCREMENT for table `online_user`
 --
 ALTER TABLE `online_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+
 --
 -- AUTO_INCREMENT for table `profile_visit`
 --
 ALTER TABLE `profile_visit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+
 --
 -- AUTO_INCREMENT for table `stranger_det`
 --
 ALTER TABLE `stranger_det`
   MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT for table `token`
 --
 ALTER TABLE `token`
   MODIFY `t_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+
 --
 -- AUTO_INCREMENT for table `user_feed`
 --
 ALTER TABLE `user_feed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `user_photos`
 --
 ALTER TABLE `user_photos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
