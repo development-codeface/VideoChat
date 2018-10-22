@@ -763,6 +763,19 @@ class Profile extends CI_Controller
         }else {
             echo '{"status":"failed"}}';
         }
+}
+         public function update_age_privacy()
+    {
+		
+        $user_id = $this->session->userdata('user_id');
+        if(isset($_POST['profilestatus'])){
+            $currentStatus             = trim($_POST['profilestatus']);
+            $requestVisiblility = ($currentStatus == '1') ? 'false' : 'true' ;
+            $result = $this->profile_model->update_age_privacy($user_id,$requestVisiblility);
+            echo '{"status":"sucess","visibility" : "'.$requestVisiblility.'"}';
+        }else {
+            echo '{"status":"failed"}}';
+        }
         
         
         //    redirect('/user/profile', "refresh");

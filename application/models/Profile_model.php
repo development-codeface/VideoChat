@@ -218,6 +218,12 @@ class Profile_model extends CI_Model
         $query = $this->db->query("UPDATE user_profile SET visibility='$visibility' WHERE user_id =$uid");
         return true;  
     }
+	public function update_age_privacy($uid,$visibility)
+    {   
+	
+        $query = $this->db->query("UPDATE user_profile SET age_hide='$visibility' WHERE user_id =$uid");
+        return true;  
+    }
     public function updateprivacy_private($uid)
     {
         
