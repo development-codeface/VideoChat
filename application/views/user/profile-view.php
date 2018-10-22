@@ -144,7 +144,7 @@ else
                           <?php }?>
                           <div class="usy-name">
                             <h3>
-                              <?php if($fd->full_name!=""){ echo $fd->full_name ;}else { echo $fd->nick_name;}?>
+                              <?php  echo $fd->full_name ;?>
                             </h3>
                             <span>
                               1 hr
@@ -224,7 +224,7 @@ else
                           </i>
                         </td>
                       </tr>
-                      <tr>
+                      <!--tr>
                         <td class="pers">Nick Name
                         </td>
                         <td> 
@@ -232,7 +232,7 @@ else
                             <?php  echo $mydata['nick_name'];?>
                           </i>
                         </td>
-                      </tr>
+                      </tr-->
                       <tr>
                         <td class="pers">Gender
                         </td>
@@ -577,69 +577,46 @@ else
     </div> 
   </div>
 </main>
-<footer>
-  <div class="footy-sec mn no-margin">
-    <div class="container">
-      <ul>
-        <li>
-          <a href="#" title="">Privacy Policy
-          </a>
-        </li>
-        <li>
-          <a href="#" title="">Terms & Conditions
-          </a>
-        </li>
-        <li>
-          <a href="#" title="">Cookies 
-          </a>
-        </li>
-        <li>
-          <a href="#" title="">Contact
-          </a>
-        </li>
-      </ul>
-      <p>Copyright 2018 . All rights reserved
-      </p>
-    </div>
-  </div>
-</footer>
-<!--Modal to show that we are calling-->
-<div id="callModal" class="modal">
-  <div class="modal-content text-center">
-    <div class="modal-header" id="callerInfo">
-    </div>
-    <div class="modal-body">
-      <button type="button" class="btn btn-danger btn-sm" id='endCall'>
-        <i class="fa fa-times-circle">
-        </i> End Call
-      </button>
-    </div>
-  </div>
-</div>
-<!--Modal end-->
-<!--Modal to give options to receive call-->
-<div id="rcivModal" class="modal">
-  <div class="modal-content text-center">
-    <div class="" id="calleeInfo">
-      <h4>Abhi
-      </h4>
-    </div>
-    <div class="modal-body">
-      <button type="button" class="btn answerCall" id='startVideo'>
-        <i class="fa fa-video-camera">
-        </i> Video Call
-      </button>
-      <button type="button" class="btn  rejectCall" id='rejectCall'>
-        <i class="fa fa-times-circle">
-        </i> Reject Call
-      </button>
-    </div>
-  </div>
-</div>
-<!--Modal end-->
-<!--Snackbar -->
-<div id="snackbar">
-</div>
+<?php
+include 'footer.php';?>
+  <!--Modal to show that we are calling-->
+        <div id="callModal" class="modal modov">
+            <div class="modal-content text-center modsty">
+                <div class="modal-header modname" id="callerInfo"></div>
+
+                <div class="modal-body pttop">
+                    <button type="button" class="btnvide " id='endCall'>
+                        <i class="fa fa-times-circle"></i> End Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+
+
+        <!--Modal to give options to receive call-->
+        <div id="rcivModal" class="modal modov">
+            <div class="modal-content text-center modsty">
+                <div class="modname" id="calleeInfo">
+				
+				</div>
+
+                <div class="modal-body pttop">
+                    <button type="button" class="btnvide  answerCall" id='startVideo'>
+                        <i class="fa fa-video-camera"></i> Video Call
+                    </button>
+                    <button type="button" class="btnvide rejectCall" id='rejectCall'>
+                        <i class="fa fa-times-circle"></i> Reject Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+        
+        <!--Snackbar -->
+        <div id="snackbar"></div>
+
+
 <!-- Snackbar -->
 <div class="overview-box" id="overview-box">
   <div class="overview-edit">
@@ -692,7 +669,7 @@ else
     </h3>
     <form method="POST" ACTION="">
       <input type="text" name="full_name" id="full_name" placeholder="Name" value="<?php  echo $mydata['full_name'];?>">
-      <input type="text" name="nick_name" id="nick_name" placeholder="Nick Name" value="<?php  echo $mydata['nick_name'];?>">
+      <!--input type="text" name="nick_name" id="nick_name" placeholder="Nick Name" value="<?php  echo $mydata['nick_name'];?>"-->
       <input type="date" name="dob"  id="dob" placeholder="Date of birth" value="<?php  echo $mydata['dob'];?>">
       <div class="form-group">
         <label class="checkbox-inline">

@@ -6,7 +6,7 @@ class Auth extends   CI_Controller {
 	function __construct() {
 	parent::__construct();
 	//error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
-	$this->load->library(array('session', 'upload','form_validation','facebook'));
+	$this->load->library(array('session', 'upload','form_validation','Facebook'));
 	$this->load->helper(array('url', 'html', 'form','cookie'));
 	 $this->load->model('Users_model', 'obj_model', TRUE);  
    $this->load->helper('date');    

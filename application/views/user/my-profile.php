@@ -401,8 +401,23 @@ list($date,$time)=explode(' ',$timestamp);
                           <i id="ager"> 
                             <?php  echo $mydata['ag'];?>
                           </i> 
-                         
-                            </td>
+						  
+						  
+						  
+						  
+                         <div class="togl_divv">
+           <input type="checkbox" name="checkbox11" id="checkbox11" class="ios-toggle" checked="">
+ <label for="checkbox11" class="checkbox-label" data-off="Private" data-on="Public" onclick="changeColor()"></label>
+</div>
+                          
+
+
+
+
+
+
+
+						  </td>
                       </tr>
                       <tr class="no_br">
                         <td>Age Privacy
@@ -772,44 +787,44 @@ foreach($friendList as $frq){?>
 </div>
 </main>
 <?php
-include 'footer.php';?> 
-<!--Modal to show that we are calling-->
-<div id="callModal" class="modal">
-  <div class="modal-content text-center">
-    <div class="modal-header" id="callerInfo">
-    </div>
-    <div class="modal-body">
-      <button type="button" class="btn btn-danger btn-sm" id='endCall'>
-        <i class="fa fa-times-circle">
-        </i> End Call
-      </button>
-    </div>
-  </div>
-</div>
-<!--Modal end-->
-<!--Modal to give options to receive call-->
-<div id="rcivModal" class="modal">
-  <div class="modal-content text-center">
-    <div class=" " id="calleeInfo">
-      <h4>Abhi Calling
-      </h4>
-    </div>
-    <div class="modal-body">
-      <button type="button" class="btn answerCall" id='startVideo'>
-        <i class="fa fa-video-camera">
-        </i> Video Call
-      </button>
-      <button type="button" class="btn btn-sm rejectCall" id='rejectCall'>
-        <i class="fa fa-times-circle">
-        </i> Reject Call
-      </button>
-    </div>
-  </div>
-</div>
-<!--Modal end-->
-<!--Snackbar -->
-<div id="snackbar">
-</div>
+include 'footer.php';?>
+  <!--Modal to show that we are calling-->
+        <div id="callModal" class="modal modov">
+            <div class="modal-content text-center modsty">
+                <div class="modal-header modname" id="callerInfo"></div>
+
+                <div class="modal-body pttop">
+                    <button type="button" class="btnvide " id='endCall'>
+                        <i class="fa fa-times-circle"></i> End Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+
+
+        <!--Modal to give options to receive call-->
+        <div id="rcivModal" class="modal modov">
+            <div class="modal-content text-center modsty">
+                <div class="modname" id="calleeInfo">
+				
+				</div>
+
+                <div class="modal-body pttop">
+                    <button type="button" class="btnvide  answerCall" id='startVideo'>
+                        <i class="fa fa-video-camera"></i> Video Call
+                    </button>
+                    <button type="button" class="btnvide rejectCall" id='rejectCall'>
+                        <i class="fa fa-times-circle"></i> Reject Call
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Modal end-->
+        
+        <!--Snackbar -->
+        <div id="snackbar"></div>
+        <!-- Snackbar -->
 <!-- Snackbar -->
 <div class="overview-box" id="overview-box">
   <div class="overview-edit">
@@ -1020,7 +1035,7 @@ foreach($countries as $row)
       </i> Interest
     </h4>
     <form>
-<!--div id="select7" class="select7_container">
+<div id="select7" class="select7_container">
        <div class="select7_arrow">&#9662;</div>
        <div class="select7_placeholder">Select Interest</div>
        <select class="select7_select" onchange="add_selected_item(this, event);">
@@ -1031,8 +1046,8 @@ foreach($countries as $row)
 
        </select>
        <div class="select7_items"></div>
-   </div-->
-      <div class="datefm">
+   </div>
+      <!--div class="datefm">
         <select name="Interest_id" id="Interest_id">
           <option value="1">Boy
           </option>
@@ -1043,7 +1058,7 @@ foreach($countries as $row)
         </select>
         <i class="fa fa-sort-desc" aria-hidden="true">
         </i>
-      </div>
+      </div-->
       <p class="sav_bt">	
         <button type="button" class="save" id="InterestSave">Save
         </button>
@@ -1303,6 +1318,45 @@ $(document).ready(function() {
     }
   }
                       );
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					  
+					   $('#checkbox11').change(function () {				
+    var status = $(this).val();
+	  //var uid =$(this).data('id');
+    $.ajax({
+      type: "POST",
+      url: "../Profile/update_age_privacy",
+      data:{profilestatus:status},
+      dataType:"text", 
+      success: function(result){
+        privacyChangeCallback(result);
+        //location.reload();
+      }
+	
+ }); });
+
+ function privacyChangeCallback(result){
+
+    var status = JSON.parse(result);
+    var publicStatus = "2";
+    if(status.visibility == "true"){
+      publicStatus   = "1"
+    }
+    $('#checkbox11').val(publicStatus);
+ }
+ 
+ 
+					  
 </script>
 <script>
   var selID = "";

@@ -94,13 +94,15 @@ else{
 		
 		//alert(apiKey +' == '+ sessionId);
 	</script>
+<?php
+include 'footer.php';?>
+  <!--Modal to show that we are calling-->
+        <div id="callModal" class="modal modov">
+            <div class="modal-content text-center modsty">
+                <div class="modal-header modname" id="callerInfo"></div>
 
-   <div id="callModal" class="modal">
-            <div class="modal-content text-center">
-                <div class="modal-header" id="callerInfo"></div>
-
-                <div class="modal-body">
-                    <button type="button" class="btn btn-danger btn-sm" id='endCall'>
+                <div class="modal-body pttop">
+                    <button type="button" class="btnvide " id='endCall'>
                         <i class="fa fa-times-circle"></i> End Call
                     </button>
                 </div>
@@ -110,15 +112,17 @@ else{
 
 
         <!--Modal to give options to receive call-->
-        <div id="rcivModal" class="modal">
-            <div class="modal-content text-center">
-                <div class="modal-header" id="calleeInfo"></div>
+        <div id="rcivModal" class="modal modov">
+            <div class="modal-content text-center modsty">
+                <div class="modname" id="calleeInfo">
+				
+				</div>
 
-                <div class="modal-body">
-                    <button type="button" class="btn btn-success btn-sm answerCall" id='startVideo'>
+                <div class="modal-body pttop">
+                    <button type="button" class="btnvide  answerCall" id='startVideo'>
                         <i class="fa fa-video-camera"></i> Video Call
                     </button>
-                    <button type="button" class="btn btn-danger btn-sm" id='rejectCall'>
+                    <button type="button" class="btnvide rejectCall" id='rejectCall'>
                         <i class="fa fa-times-circle"></i> Reject Call
                     </button>
                 </div>
@@ -128,11 +132,6 @@ else{
         
         <!--Snackbar -->
         <div id="snackbar"></div>
-        <!-- Snackbar -->
-		
-
-	<?php
-include 'footer.php';?>
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
 <audio id="dialTone" src="<?php echo base_url(); ?>assets/media/dialtone.mp3" preload="auto"></audio>

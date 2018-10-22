@@ -6,7 +6,7 @@
 				
 						<li><a href="<?php echo base_url(); ?>index.php/Profile/terms_conditions" title="">Terms Conditions</a></li>
 						
-						<li><a href="<?php echo base_url(); ?>index.php/Profile/contact" title="">Contact </a></li>
+						<li><a href="" data-toggle="modal" data-target="#Contact">Contact </a></li>
 					</ul>
 					<p>Copyright © 2018 IntBuddy. All rights reserved.</p>
 				
@@ -15,6 +15,31 @@
 		</footer>
 
 	</div><!--theme-layout end-->
+	    <div class="modal fade" id="Contact" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content contentimg conwhite">
+          <div class="modal-header">
+            <h4 class="modal-title vich"> 
+              <h4 class="plsech">Contact us
+              </h4>
+            </h4>
+            <button type="button" class="close cloimg" data-dismiss="modal">
+              <img src="<?php echo base_url(); ?>assets/images/close-button-.png">
+            </button>
+          </div>
+          <div class="modal-body infoh">
+		  
+            <h1>
+			<p>"We love to see your feedback so that we can improve Int Buddy."</p>
+			<b> Please email us at : </b> info@intbuddy.com</h1>
+			<a href="<?php echo base_url(); ?>index.php/user/profile" title="">
+                <img src="<?php echo base_url(); ?>assets/images/logo.png" alt="">
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
 <script type="text/javascript" >
 
 

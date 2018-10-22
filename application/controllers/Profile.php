@@ -334,14 +334,22 @@ class Profile extends CI_Controller
     public function UpdateLike()
     {
         
-        
+          
         $feedId = $this->input->post('feedId');
         $uid    = $this->input->post('Uid');
         $fid    = $this->input->post('fid');
-        
+		
+		$nolik     = $this->users_model->checknolike($feedId, $uid);
+		if ($nolik!=1)
+		{
+        if($uid!= $fid)
+		{
         $name     = $this->users_model->username($uid);
         $myString = $name . " Liked your post";
+    
         $name     = $this->users_model->insertnotification($myString, $fid, $uid);
+		 } }
+		 
         $return   = $this->profile_model->setLike($feedId, $this->UserId);
         if (!empty($return)) {
             echo json_encode(array(
@@ -354,6 +362,7 @@ class Profile extends CI_Controller
             ));
         }
     }
+    
     
     public function change()
     {

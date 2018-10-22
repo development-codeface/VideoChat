@@ -528,7 +528,8 @@ class Users_model extends CI_Model
     } 
 	function updateunfriend($friend,$user_id)
     {
-        $query = $this->db->query("delete from friends where user_id=$user_id and friend_id=$friend ");
+       $query = $this->db->query("delete from friends where user_id=$user_id and friend_id=$friend ");
+        $query = $this->db->query("delete from friends where user_id=$friend and friend_id=$user_id ");
         return 1;
     }
     function updatecover($user_id, $file_name)
@@ -709,4 +710,15 @@ class Users_model extends CI_Model
         return 1;
     }
     
+function checknolike($fid, $uid)
+    {
+        $query = $this->db->query("Select * from feed_like where feed_id=$fid and user_id=$uid");
+       //echo $this->db->last_query();
+       $num = $query->num_rows();
+	    if ($query->num_rows() == 1) {
+    return true;
+    } else {
+    return false;
+    }
+    }
 }

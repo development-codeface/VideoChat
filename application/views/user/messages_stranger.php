@@ -98,11 +98,14 @@ include 'header.php';?>
   </div>
 </div>
 
-<div id="findstranger" class="modal">
-  <div class="modal-content text-center">
+
+
+
+<div id="findstranger" class="modal modov">
+  <div class="modal-content text-center modsty">
       <div class="modal-header" id="callerInfo"></div>
-      <div class="modal-body">
-          <button type="button" class="btn btn-danger btn-sm" id='finduser'>
+      <div class="modal-body pttop">
+          <button type="button" class="btnvide" id='finduser'>
               <i class="fa fa-times-circle"></i> Find chat user
           </button>
       </div>

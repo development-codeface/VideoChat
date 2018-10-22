@@ -28,8 +28,35 @@ include 'header.php';?>
   <div class=" ">
     <div class="row">
      
+<div class="col-md-9 no_pad">
+ <div id="myvideo" class="" style="display:block; width:100%">
+            <div class="row">
+                  <div class="col-md-12  ">
+                    <div class="sub_div">
+                  <div id="subscriber"></div>
+</div>
 
-      <div class="col-md-9 no_pad">
+
+				       <div class="col-md-12 vidapp">
+				  <ul class="videoul">
+          
+          <li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li>
+          <li><button name="cutcall" name="cutcall" class="bg-view" onclick="history.back();"> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
+				  <li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-right" aria-hidden="true"></i></button></li>
+				  </ul>
+  </div>
+				  </div>
+             
+ 
+				   <div class="col-md-3 vpos"><div id="publisher"></div></div>
+                </div>    
+        </div>
+ 
+
+      
+
+      </div>
+      <!--div class="col-md-9 no_pad">
  <div id="myvideo" class="" style="display:block; width:100%">
           <div class="row">
             <div class="col-md-12 no_pad">	
@@ -55,7 +82,7 @@ include 'header.php';?>
 
       
 
-      </div>
+      </div-->
       <div class="col-md-3 cht_hd">
 	   
 	  <div class="cw">
