@@ -1,5 +1,10 @@
 $( "#finduser").click(function() {
-    getStranger();
+    if(isFristLoad()){
+        getStranger();
+    }else {
+        nextstranger();
+    }
+    
   });
 
   function getStranger(){
@@ -12,10 +17,11 @@ $( "#finduser").click(function() {
             success: function(result){
                 var resultObj = JSON.parse(result);
                 $("#findstranger").hide();
+                disconnect();
+                TOKEN   =  resultObj.token;
+                openOpentokConnection(resultObj.session_id);
                 if(typeof(resultObj["errorcode"]) == "undefined"){
                     $("#loadingmessage").hide();
-                    TOKEN   =  resultObj.token;
-                    openOpentokConnection(resultObj.session_id);
                 }else{
                     strangerWaitingtimer = setTimeout(function(){
                         strangerwaitexpir();
@@ -26,7 +32,31 @@ $( "#finduser").click(function() {
   }
 
   function nextstranger(){
-    getStranger();
+    //getStranger();
+    sendMessage("STRANGEREND","",function (){});
+    getrefreshWithStranger();
+    
+  }
+  function loadNextStranger(){
+      if(!isFristLoad()){
+        getStranger();
+      }else {
+        document.getElementById("findstranger").style.display = 'block';
+      }
+  }
+  function getrefreshWithStranger(){
+    var url = window.location.href;   
+    if (isFristLoad()){
+       url += '?Next=true'
+    }
+    window.location.href = url;
+  }
+
+  function isFristLoad(){
+    var url = window.location.href; 
+    var url = new URL(url);
+    var c = url.searchParams.get("Next"); 
+    return c == null;
   }
 
   function strangerwaitexpir(){

@@ -146,6 +146,6 @@ function openFullscreen() {
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/strangerchat.js"></script>
 <script>
     $("#subscriber").hide();
-    openOpentokConnection ('<?php echo $openSessionId ?>');
-    document.getElementById("findstranger").style.display = 'block';
+    //openOpentokConnection ('<?php echo $openSessionId ?>');
+    loadNextStranger();
 </script>

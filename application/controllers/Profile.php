@@ -173,16 +173,17 @@ class Profile extends CI_Controller
     public function getStranger(){
         $this->users_model->clearoldstranger();
         $resultval = $this->users_model->getStrangerAvaiUser($this->session->userdata('user_id'));
-
-        if(null != $resultval){
-            $opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
+        $opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
+        if(null != $resultval){  
             $resultval = $this->users_model->removeuserfromStranger($resultval['user_id']);
-            $opntok_tokenId    = $opentok->generateToken($resultval['session_id']);
-            $resultval['token']  = $opntok_tokenId ;
         }else {
             $result = $this->users_model->stranger_update($this->session->userdata('user_id'));
-            $resultval = array("errormsg"=>"No user","errorcode"=> "1");
+            $resultval = $this->users_model->getUserById($this->session->userdata('user_id'));
+            $resultval["errormsg"] = "No user";
+            $resultval["errorcode"] = "1";
         }
+        $opntok_tokenId    = $opentok->generateToken($resultval['session_id']);
+        $resultval['token']  = $opntok_tokenId ;
 
         echo json_encode($resultval);
 

@@ -55,7 +55,6 @@ function openOpentokConnection(sessionId) {
             if(typeof(strangerWaitingtimer) != "undefined")
                clearTimeout(strangerWaitingtimer);
           }
-              
           $("#subscriber").show();
         }
       });
@@ -92,7 +91,8 @@ function openOpentokConnection(sessionId) {
 }
 
 function disconnect() {
-  session.disconnect();
+  if(typeof(session) != "undefined")
+    session.disconnect();
 }
 function sendMessage(type,message,clearfunction){
   if(typeof(session) == 'undefined'){
@@ -129,7 +129,15 @@ function sessageCallback(event){
       case 'signal:CALLSTOPPED'  : console.log("CALLSTOPPED"); callStopped(event);break;
       case 'signal:CUTCALL'      : console.log("CUTCALL"); callrejectedCall(event);break;
       case 'signal:CUTCALLTERMINATED' : console.log("CALL TERMINATED"); callterminated(event);break;
+      case 'signal:STRANGEREND' :  console.log("STRANGE END"); strangerEndCall(event);break;
    }
+}
+
+function strangerEndCall(event){
+  disconnect();
+  if(!isSameSesssion(event)){
+    getrefreshWithStranger();
+  }
 }
 function recicveChat(event){
   var msgHistory = $('#chatHistory');
