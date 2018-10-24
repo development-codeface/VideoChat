@@ -273,7 +273,7 @@ function reciveVideoCall(event){
     document.getElementById('callerTone').play();
     document.getElementById("rcivModal").style.display = 'block';
 
-    var callerName = (event.data.userName != undefined) ? event.data.userName+ " Calling ..." : "";
+    var callerName = (event.data.userName != undefined) ? '<span id="callerUser">'+event.data.userName+ '</span> Calling ...' : "";
     $('#calleeInfo').html(callerName);
     if(typeof(awaitingResponse) != 'undefined')
       clearTimeout(awaitingResponse);
@@ -284,7 +284,8 @@ function reciveVideoCallInChat(event){
   if(!isSameSesssion(event)){
     document.getElementById('callerTone').play();
     document.getElementById("callModal").style.display = 'none';
-    $('#callerInfo').html(event.userName + " Calling ...");
+    $('#callerInfo').html('<span id="callerUser">'+event.userName+'</span> Calling ...');
+    $('#callerName').html(event.userName);
     if(typeof(awaitingResponse) != 'undefined')
       clearTimeout(awaitingResponse);
   } 
@@ -292,8 +293,9 @@ function reciveVideoCallInChat(event){
 
 function acceptCall(){
   document.getElementById('callerTone').pause();
+  var username = $("#callerUser").html();
   sendMessage("ACCEPTCALL","try it",function (){});
-  document.location.href = '../Profile/messages';
+  document.location.href = '../Profile/messages?token='+username;
 }
 function callStopped(event){
   if(!isSameSesssion(event)){

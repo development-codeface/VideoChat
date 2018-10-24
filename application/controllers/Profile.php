@@ -104,14 +104,18 @@ class Profile extends CI_Controller
     public function messages()
     {
         $opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret')); //'46163292', '436f0b34f67e82089f741ff6509c9608919f8d82'
+        $username  = "";
         if (isset($_GET['user'])) {
             $userid               = $_GET['user'];
             $this->data['caller'] = "Y";
         } else {
-            $userid               = $this->UserId;
+            $userid               = $this->UserId; 
+            $username    = isset($_GET['token']) ?$_GET['token'] : "";
             $this->data['caller'] = "N";
         }
         $result            = $this->users_model->fetch_session($userid);
+        
+        $this->data ['fullname']     = $this->data['caller'] == 'Y' ? $result['full_name'] : $username;
         $opentok_sessionid = $result['session_id'];
         $opntok_tokenId    = $opentok->generateToken($opentok_sessionid);
         
@@ -121,9 +125,9 @@ class Profile extends CI_Controller
         $this->date['opentokenid']   = $opntok_tokenId;
         $this->data['openSessionId'] = $opentok_sessionid;
         $str                         = base64_encode($opntok_tokenId);
-        $this->data['openSession']   = urlencode($str);
+        $this->data['openSession']   = urlencode($str); 
         $this->date['responsedata']  = json_encode(array(
-            'apiKey' => $this->config->item('opentok_key'),
+            'apiKey' => $this->config->item('opentok_key'), 
             'sessionId' => $opentok_sessionid,
             'token' => $opntok_tokenId
         ));

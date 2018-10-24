@@ -45,9 +45,10 @@ include 'header.php';?>
 				  <ul class="videoul">
           
           <!--<li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li> -->
-		    <li><button name="cutcall" id="" class="bg-can " onclick="nextstranger()"> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
-          <li><button name="cutcall" name="cutcall" class="bg-view" onclick="history.back();"> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
-				
+		    <li><button name="cutcall" id="" class="bg-can " onclick="history.back();"> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
+          <li><button name="cutcall" name="cutcall" class="bg-view" onclick=""> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
+          <li><button name="cutcall" id="nextstranger" class="bg-can " onclick="nextstranger()" style="display:none"> <i class="fa fa-angle-right" aria-hidden="true"></i></button></li>
+           
 				  </ul>
   </div>
 				  </div>
@@ -147,6 +148,7 @@ function openFullscreen() {
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/strangerchat.js"></script>
 <script>
     $("#subscriber").hide();
+    $("#nextstranger").show();
     //openOpentokConnection ('<?php echo $openSessionId ?>');
     loadNextStranger();
 </script>

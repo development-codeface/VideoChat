@@ -38,6 +38,7 @@ include 'header.php';?>
 
 
 				       <div class="col-md-12 vidapp">
+                 <div id="callerName" style="color:#FFFFFF"> <?php echo $fullname; ?></div>
 				  <ul class="videoul">
           
           <!--li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li>
@@ -90,14 +91,7 @@ include 'header.php';?>
 	  <div class="top_menu">
 	
 	  <div class="title"><span class="glyphicon btn-glyphicon glyphicon-minus fa fa-comments-o img-circle text-warning"></span>
-	  
-	  <?php 
-											foreach($onlinef as $frq){?>
-								  					<?php echo $frq->full_name;?>
-								  				
-													
- 
-											<?php } ?>
+	  <?php echo $fullname; ?>
 	  </div></div>
         <div class="chatContainer">
           <div id="chatHistory">
@@ -116,14 +110,20 @@ include 'header.php';?>
 </section>
 
 
- 
-<div id="callModal" class="modal t92">
-            <div class="modal-content text-center">
-                <!--div class="modal-header" id="callerInfo"></div-->
+<div id="callModal" class="modal modov">
+    <div class="modal-content text-center modsty">
+        <div class="modname" id="calleeInfo">Waiting for !!  <?php echo $fullname ?></div>
 
-             
-            </div>
-        </div>
+      <div class="modal-body pttop">
+          <button type="button" class="btnvide" id='endCall'>
+              <i class="fa fa-video-camera"></i> Cut Call
+          </button>
+          
+      </div>
+    </div>
+  </div>
+
+
 <script>
 var elem = document.getElementById("myvideo");
 function openFullscreen() {
@@ -154,4 +154,7 @@ function openFullscreen() {
 <script>
     $("#subscriber").hide();
     openOpentokConnection ('<?php echo $openSessionId ?>');
+    if(IsCaller == "Y") {
+      $("#callModal").show();
+    }
 </script>
