@@ -41,21 +41,70 @@ else
                       </span>
                     </li>
                   </ul>
-                  <?php if($mydata['user_id']!=$this->session->userdata('user_id')){?>
-                  <ul class="hidvideo">
-                    <li>
-                      <a href="" title="" data-id="" class="follow follow_friend msgch">
-                        <i class="fa fa-video-camera " aria-hidden="true">
-                        </i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="" title="" class="hire-us">
-                        <i class="fa fa-comments-o" aria-hidden="true">
-                        </i>
-                      </a>
-                    </li>
-                  </ul>
+                  <?php $idu=$this->session->userdata('user_id');
+$ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
+				  <input type="text" name="pa" id="pa" hidden value="<?php echo $idu; ?>">
+				  <?php
+				  
+				   $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=0"); 
+         $result=$query->result();
+                    
+                     if($result==true)
+					 {
+						   $i=1;
+						  
+					  }  
+					  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=1"); 
+         $result=$query->result();
+                    
+                     if($result==true)
+					 {
+						   $i=2;
+						  
+					  } 
+					  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu "); 
+         $result=$query->result();
+                    
+                     if($result==false)
+					 {
+						   $i=3;
+						  
+					  }
+                      
+
+				  ?>
+				  <?php if($i==1) {
+					  ?>
+				  
+				<br><br><br>
+                    <button type="button" id="can" name="can" class="sendreq canreq" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
+                          </i> Cancel request
+        </button>
+		
+		
+		
+				  <?php } else if($i==2) {?>
+		
+			  
+				<br><br><br>
+                 <span>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab; ?>" data-username=' <?php echo $mydata['full_name'];?>'  data-id="<?php echo $ab ;?>"  class="follow btnChat "><i class="fa fa-comments-o chatq" aria-hidden="true"></i></a>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab;  ?>" title="" data-id="<?php echo $ab ;?>" class="follow follow_friend"><i class="fa fa-video-camera cmsgq" aria-hidden="true"></i></i></a>
+												
+												</span>
+		
+		
+		  <?php } else if($i==3) {?>
+		
+		
+		
+		<br><br><br>
+                    <button type="button" id="send" name="send"  class="sendreq frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-check" aria-hidden="true">
+                          </i> Send request
+        </button>
+		
+		
+		
                   <?php } ?>
                 </div>
                 <!--user-pro-img end-->
@@ -256,7 +305,7 @@ else
                     
                     foreach($result as $value){ 
 					$status=$value['age_hide'];
-					echo $status;
+					
 					}
 					?>
 					                       <?php if($status=="true")
@@ -486,20 +535,90 @@ else
                             <?php echo $frq->full_name;?>
                           </a>
                         </h3>
-                        <ul>
-                          <li>
-                            <a href="#" title="" class="follow msgch">
-                              <i class="fa fa-video-camera " aria-hidden="true">
-                              </i>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#" title="" class="hire-us">
-                              <i class="fa fa-comments-o" aria-hidden="true">
-                              </i>
-                            </a>
-                          </li>
-                        </ul>
+                    
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					   <?php $idu=$this->session->userdata('user_id');
+$abc=$frq->user_id	;		  //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
+				  <input type="text" name="pad" id="pad" hidden value="<?php echo $idu; ?>">
+				  <?php
+				  
+				   $query = $this->db->query("select * from  friends  where user_id=$abc and friend_id=$idu and status=0"); 
+         $result=$query->result();
+                    
+                     if($result==true)
+					 {
+						   $ii=1;
+						  
+					  }  
+					  $query = $this->db->query("select * from  friends  where user_id=$abc and friend_id=$idu and status=1"); 
+         $result=$query->result();
+                    
+                     if($result==true)
+					 {
+						   $ii=2;
+						  
+					  } 
+					  $query = $this->db->query("select * from  friends  where user_id=$abc and friend_id=$idu "); 
+         $result=$query->result();
+                    
+                     if($result==false)
+					 {
+						   $ii=3;
+						  
+					  }
+                      
+
+				  ?>
+				  <?php if($ii==1) {
+					  ?>
+				  
+				<br><br><br>
+                    <button type="button" id="canf" name="canf" class="sendreq canreqfrd" data-id="<?php echo $abc;?>" > <i class="fa fa-check" aria-hidden="true">
+                          </i> Cancel request
+        </button>
+		
+		
+		
+				  <?php } else if($ii==2) {?>
+		
+			  
+				<br><br><br>
+                  	<span>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" data-username=' <?php echo $frq->full_name;?>'  data-id="<?php echo $frq->user_id;?>"  class="follow btnChat "><i class="fa fa-comments-o chatq" aria-hidden="true"></i></a>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera cmsgq" aria-hidden="true"></i></i></a>
+												
+												</span>
+		
+		  <?php } else if($ii==3) {?>
+		
+		
+		
+		<br><br><br>
+                    <button type="button" id="sendf" name="sendf"  class="sendreq frereqfrd" data-id="<?php echo $abc;?>"  > <i class="fa fa-check" aria-hidden="true">
+                          </i> Send request
+        </button>
+		
+		
+		
+                  <?php } ?>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
                       </div>
                     </div>
                     <!--company_profile_info end-->
@@ -945,4 +1064,100 @@ include 'footer.php';?>
 </script>
 <script>
   normalConnection();
+</script>
+<script>
+
+		$('.frereq').click(function() { 
+	 var Uid = $("#pa").val();
+	var frinedId =$(this).data('id'); 
+	
+	 
+	
+	$.ajax({
+		type: "POST",
+		url:site_url+"User/friendRequest",
+		
+		data:{Uid:Uid,frinedId:frinedId},
+		dataType: 'json',
+        success: function(data) {
+            if(data.status==1){
+			
+				
+			$("#send" ).html("Cancel request");
+			location.reload();
+				}
+
+        },
+
+		});	});
+		
+		 $('.canreq').click(function() { 
+	var uid =$(this).data('id'); 
+				$.ajax({
+			type: "POST",
+				url: site_url+"/Profile/cancel_request",
+				data:{uid:uid},
+				dataType:'json', 
+				success: function(result){
+					
+					 if(result.status==1){
+			
+				
+			$("#can" ).html("Send request");
+		location.reload();
+				}
+
+				},               
+		}); 		
+			             
+				
+		}); 
+		
+		
+	$('.frereqfrd').click(function() { 
+	 var Uid = $("#pad").val();
+	var frinedId =$(this).data('id'); 
+	
+	 
+	
+	$.ajax({
+		type: "POST",
+		url:site_url+"User/friendRequest",
+		
+		data:{Uid:Uid,frinedId:frinedId},
+		dataType: 'json',
+        success: function(data) {
+            if(data.status==1){
+			
+				
+			$("#sendf" ).html("Cancel request");
+			location.reload();
+				}
+
+        },
+
+		});	});
+		
+		 $('.canreqfrd').click(function() { 
+	var uid =$(this).data('id'); 
+				$.ajax({
+			type: "POST",
+				url: site_url+"/Profile/cancel_request",
+				data:{uid:uid},
+				dataType:'json', 
+				success: function(result){
+					
+					 if(result.status==1){
+			
+				
+			$("#canf" ).html("Send request");
+		location.reload();
+				}
+
+				},               
+		}); 		
+			             
+				
+		}); 
+
 </script>

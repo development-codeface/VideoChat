@@ -19,7 +19,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/lib/slick/slick-theme.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/responsive.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/component.css">
 	
+		<script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/select7.css">
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/select7.js"></script>
    
@@ -272,10 +274,10 @@ else
                 <?php }?>
                 <span class="fa fa-circle msg-top">
                 </span > 
-				<span id="hful"> 
+			
                 <?php //echo $rss['full_name'];?>
                 <?php  echo $rss['full_name'];?> 
-				</span>
+				
               </button>
               <div id="myDropdown" class="dropdown-content">
                 <a href="<?php echo base_url(); ?>index.php/Profile/myProfile" title="">

@@ -212,7 +212,7 @@
 													<div class="alert alert-danger"  id="alerts" style="display:none">User Name Already Exist !!!</div> 
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="text" name="nick_name" placeholder="Nickname *" id="nick_name">
+														<input type="text" name="nick_name" placeholder="Nickname * (Private name for your Stranger Chat/list)" id="nick_name">
 														<i class="la la-user"></i>
 														</div>
 													
@@ -252,11 +252,11 @@
 			 
 					<ul>
 						
-						<li><a href="#" title="">Privacy Policy</a></li>
+							<li><a href="<?php echo base_url(); ?>index.php/Auth/privacy_policy" title="">Privacy Policy</a></li>
 				
-						<li><a href="#" title="">Terms & Conditions</a></li>
-						
-						<li><a href="#" title="">Contact</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/Auth/terms_conditions" title="">Terms Conditions</a></li>
+						<li><a href="">How it works </a></li>
+						<li><a href="" data-toggle="modal" data-target="#Contact">Contact </a></li>
 					</ul>
 					 
 				 
@@ -288,7 +288,31 @@
 				<a href="#" title="" class="close-box"><i class="la la-close"></i></a>
 			</div><!--overview-edit end-->
 		</div>
-
+<div class="modal fade" id="Contact" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content contentimg conwhite">
+          <div class="modal-header">
+            <h4 class="modal-title vich"> 
+              <h4 class="plsechcon">Contact us
+              </h4>
+            </h4>
+            <button type="button" class="close cloimg clotop" data-dismiss="modal">
+              <img src="<?php echo base_url(); ?>assets/images/close-button-.png">
+            </button>
+          </div>
+          <div class="modal-body infoh">
+		  
+            <h1>
+			<p>"We love to see your feedback so that we can improve Int Buddy."</p>
+			 Please email us at : <b> info@intbuddy.com</b></h1>
+			<a href="<?php echo base_url(); ?>index.php/user/profile" title="">
+                <img src="<?php echo base_url(); ?>assets/images/logo.png" alt="">
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
 <!--datepicker-->
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-ui.js"></script>

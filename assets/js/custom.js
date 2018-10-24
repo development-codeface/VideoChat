@@ -188,6 +188,7 @@ $( "#locationSave" ).on('click', function (e) {
 				 $("#location-box").removeClass("open");
 				$(".wrapper").removeClass("overlay");
 				$("#country_ids" ).html(data.country);
+				$("#obs" ).html(data.country);
 				
               }else{
 				$('#Eeror').hide();

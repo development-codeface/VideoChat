@@ -40,9 +40,9 @@ include 'header.php';?>
 				       <div class="col-md-12 vidapp">
 				  <ul class="videoul">
           
-          <li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li>
-          <li><button name="cutcall" name="cutcall" class="bg-view" onclick="history.back();"> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
-				  <li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-right" aria-hidden="true"></i></button></li>
+          <!--li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li>
+          <li><button name="cutcall" name="cutcall" class="bg-view" onclick="history.back();"> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li-->
+				  <li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
 				  </ul>
   </div>
 				  </div>

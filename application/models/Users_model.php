@@ -532,6 +532,18 @@ class Users_model extends CI_Model
         $query = $this->db->query("delete from friends where user_id=$friend and friend_id=$user_id ");
         return 1;
     }
+	function cancelfriend($friend,$user_id)
+    {
+     //  $query = $this->db->query("delete from friends where user_id=$user_id and friend_id=$friend ");
+        $query = $this->db->query("delete from friends where user_id=$friend and friend_id=$user_id ");
+        return 1;
+    }
+	function rejectfriend($friend,$user_id)
+    {
+       $query = $this->db->query("delete from friends where user_id=$user_id and friend_id=$friend ");
+       // $query = $this->db->query("delete from friends where user_id=$friend and friend_id=$user_id ");
+        return 1;
+    }
     function updatecover($user_id, $file_name)
     {
         $query = $this->db->query("update user_profile set cover_photo='$file_name' where user_id=$user_id ");

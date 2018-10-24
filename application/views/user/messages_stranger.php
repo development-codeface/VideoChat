@@ -45,8 +45,9 @@ include 'header.php';?>
 				  <ul class="videoul">
           
           <!--<li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li> -->
+		    <li><button name="cutcall" id="" class="bg-can " onclick="nextstranger()"> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
           <li><button name="cutcall" name="cutcall" class="bg-view" onclick="history.back();"> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
-				  <li><button name="cutcall" id="" class="bg-can " onclick="nextstranger()"> <i class="fa fa-angle-right" aria-hidden="true"></i></button></li>
+				
 				  </ul>
   </div>
 				  </div>
@@ -107,7 +108,7 @@ include 'header.php';?>
 
 
 <div id="findstranger" class="modal modov">
-  <div class="modal-content text-center modsty">
+  <div class="modal-content text-center modsty modsty20">
       <div class="modal-header" id="callerInfo"></div>
       <div class="modal-body pttop">
           <button type="button" class="btnvide" id='finduser'>

@@ -35,7 +35,7 @@ class Profile extends CI_Controller
     }
     public function myProfile()
     {
-        
+         $this->data['sendRequest']    = $this->users_model->GetsendRequest($this->UserId);
         $this->data['friendList']     = $this->users_model->GetFriendList($this->UserId);
         $this->data['profileViewer']  = $this->profile_model->GetProfileViewerList($this->UserId);
         $this->data['friendsRequest'] = $this->users_model->GetFriendsRequest($this->UserId);
@@ -828,12 +828,35 @@ class Profile extends CI_Controller
     }
      public function unfriend()
     {
-        
+       
         $friend = $this->input->post('uid');
 		$user_id       = $this->session->userdata('user_id');
       $result = $this->users_model->updateunfriend($friend,$user_id);
         //redirect('/user/profile', "refresh");
       echo json_encode();
+    } 
+		public function cancel_request()
+    {
+      
+        $friend = $this->input->post('uid');
+		$user_id       = $this->session->userdata('user_id');
+      $result = $this->users_model->cancelfriend($friend,$user_id);
+      
+      echo json_encode(array(
+                'status' => 1
+            ));
+    }
+	public function reject_request()
+    {
+        
+        $friend = $this->input->post('uid');
+		$user_id       = $this->session->userdata('user_id');
+      $result = $this->users_model->rejectfriend($friend,$user_id);
+        //redirect('/user/profile', "refresh");
+      echo json_encode(array(
+                'status' => 1
+                
+            ));
     } 
 	public function deactive()
     {
