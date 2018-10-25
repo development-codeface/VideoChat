@@ -90,9 +90,9 @@ include 'header.php';?>
 	  <div class="chat_window">
 	  <div class="top_menu">
 	
-	  <div class="title"><span class="glyphicon btn-glyphicon glyphicon-minus fa fa-comments-o img-circle text-warning"></span>
+	  <!--div class="title"><span class="glyphicon btn-glyphicon glyphicon-minus fa fa-comments-o img-circle text-warning"></span>
 	  <?php echo $fullname; ?>
-	  </div></div>
+	  </div--></div>
         <div class="chatContainer">
           <div id="chatHistory">
           </div>

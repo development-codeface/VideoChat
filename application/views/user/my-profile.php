@@ -74,8 +74,14 @@ else
                       </i>    <?php  echo $mydata['country'] ;?> </li>
 				  <!--li><i class="fa fa-female" aria-hidden="true"></i> Female </li-->
 				  </ul>
-					  <button type="button" class="sendreq" > View Profile
-        </button>
+				<div class="tab-feed fnon">
+                    <ul>
+					<li data-tab="info-dd" class="animated fadeIn ">
+                        <button type="button" class="sendreq" > View Profile </button>
+                      </li>
+        
+                    </ul>
+                  </div>
                 </div>
                 <!--user-pro-img end-->	
               </div>
@@ -440,7 +446,7 @@ list($date,$time)=explode(' ',$timestamp);
             <?php $currentStatus = ($status=='true')? "1" : "2";?> 
             <?php $checked = ($currentStatus== 1) ? "checked=''" :  ""; ?>
             <input type="checkbox" name="checkbox11" id="checkbox11" value="<?php echo $currentStatus?>" class="ios-toggle" <?php echo $checked?> >
-            <label for="checkbox11" class="checkbox-label" data-off="Private" data-on="Public" ></label>
+            <label for="checkbox11" class="checkbox-label checkbox-labelch" data-off="Private" data-on="Public" ></label>
           </div>    
                           
 
@@ -1302,11 +1308,10 @@ foreach($countries as $row)
               <input type ="hidden" name="abc" id="abc" value=
                      <?php echo $mydata['user_id'] ?> >
               <input  type="file" name="photocover" id="photocover">
-            </div>
-            <div class="job-status-bar">
-              <button type="submit" name="register" class="btn btn-success">Upload 
+			   <button type="submit" name="register" class="btn btn-success">Upload 
               </button>
             </div>
+          
           </form>
         </div>
       </div>

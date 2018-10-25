@@ -12,7 +12,7 @@ $open_tokenId=base64_decode(urldecode($openToken));$user=$this->session->userdat
           <div class="acc-leftbar">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
               <!--a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true"><i class="la la-cogs"></i>Account Setting</a-->
-			  <a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false"><i class="fa fa-reply" aria-hidden="true"></i> Friend Requests Sent</a>
+			  <!--a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false"><i class="fa fa-reply" aria-hidden="true"></i> Friend Requests Sent</a-->
 			  
               <a class="nav-item nav-link active" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">
                 <i class="fa fa-lock">

@@ -1,6 +1,38 @@
 
-		
-<section class="pubsec min8" style="    margin-bottom: 26px;">
+		<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>INT BUDDY
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>assets/images/favicon.ico">
+    <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/line-awesome.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/line-awesome-font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/responsive.css">
+
+	
+	  </head>
+	<body>
+	 <header id="heading">
+        <div class="container">
+          <div class="col-lg-12">
+            <div class="logo">
+              <a href="<?php echo base_url(); ?>index.php/user/profile" title="">
+                <img src="<?php echo base_url(); ?>assets/images/logo.png" alt="">
+              </a>
+            </div>
+           
+        </div>
+      </header>
+<section class="pubsec min8 pd40" >
 		<div class="container">
 		<div class="row">
 		
@@ -144,3 +176,53 @@ In case if you have any questions about this Policy, please contact us through t
 		</div>
 		</div>
 		</div></section>
+<footer>
+			<div class="footy-sec mn no-margin">
+				<div class="container">
+					<ul>
+							<li><a href="<?php echo base_url(); ?>index.php/Auth/privacy_policy" title="">Privacy Policy</a></li>
+				
+						<li><a href="<?php echo base_url(); ?>index.php/Auth/terms_conditions" title="">Terms Conditions</a></li>
+						<li><a href="">How it works </a></li>
+						<li><a href="" data-toggle="modal" data-target="#Contact">Contact </a></li>
+					</ul>
+					<p>Copyright © 2018 IntBuddy. All rights reserved.</p>
+				
+				</div>
+			</div>
+		</footer>
+
+	</div><!--theme-layout end-->
+	  <div class="modal fade" id="Contact" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content contentimg conwhite">
+          <div class="modal-header">
+            <h4 class="modal-title vich"> 
+              <h4 class="plsechcon">Contact us
+              </h4>
+            </h4>
+            <button type="button" class="close cloimg clotop" data-dismiss="modal">
+              <img src="<?php echo base_url(); ?>assets/images/close-button-.png">
+            </button>
+          </div>
+          <div class="modal-body infoh">
+		  
+            <h1>
+			<p>"We love to see your feedback so that we can improve Int Buddy."</p>
+			 Please email us at : <b> info@intbuddy.com</b></h1>
+			<a href="<?php echo base_url(); ?>index.php/user/profile" title="">
+                <img src="<?php echo base_url(); ?>assets/images/logo.png" alt="">
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
