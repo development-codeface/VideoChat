@@ -178,14 +178,20 @@ class Profile extends CI_Controller
         $this->users_model->clearoldstranger();
         $resultval = $this->users_model->getStrangerAvaiUser($this->session->userdata('user_id'));
         $opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
+        $nick_name = $resultval ['nick_name']!= null ? $resultval['nick_name'] : "" ;
+        $my_name   = ""; 
         if(null != $resultval){  
             $resultval = $this->users_model->removeuserfromStranger($resultval['user_id']);
+
         }else {
             $result = $this->users_model->stranger_update($this->session->userdata('user_id'));
-            $resultval = $this->users_model->getUserById($this->session->userdata('user_id'));
+            $resultval = $this->users_model->getUserFullDetails($this->session->userdata('user_id'));
+            
             $resultval["errormsg"] = "No user";
             $resultval["errorcode"] = "1";
         }
+        $resultval["myNickName"]  = $resultval["nick_name"];
+        $resultval["nick_name"]  = $nick_name;
         $opntok_tokenId    = $opentok->generateToken($resultval['session_id']);
         $resultval['token']  = $opntok_tokenId ;
 

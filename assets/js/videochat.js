@@ -130,6 +130,7 @@ function sessageCallback(event){
       case 'signal:CUTCALL'      : console.log("CUTCALL"); callrejectedCall(event);break;
       case 'signal:CUTCALLTERMINATED' : console.log("CALL TERMINATED"); callterminated(event);break;
       case 'signal:STRANGEREND' :  console.log("STRANGE END"); strangerEndCall(event);break;
+      case 'signal:GOTSTRANGEUSER': console.log("Normal :: GOTSTRANGEUSER"); getStrangeUser(event);break;
    }
 }
 
@@ -219,7 +220,7 @@ function normalMessageCallback(event){
      case 'signal:ACCEPTCALL'   : console.log("Normal :: ACCEPTCALL");callAccepted(event);break;
      case 'signal:CALLSTOPPED'  : console.log("Normal :: CALLSTOPPED");callStopped(event);break;
      case 'signal:CUTCALL'      : console.log("Normal :: CUTCALL"); callRejected(event);break;
-  }
+    }
 }
 
 function openTokErrormessage(msg){
@@ -234,6 +235,8 @@ function startVideoCall(){
     awaitingResponse = setTimeout(function(){
       stopCall();
     }, 30000);
+  }else if(RECIVEUSER == true){
+    sendMessage("GOTSTRANGEUSER",{userName : "Irshad nickname"},function (){});
   }
 }
 

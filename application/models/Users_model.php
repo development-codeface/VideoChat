@@ -27,6 +27,16 @@ class Users_model extends CI_Model
         return $query->row_array();
     }
 
+    public function getUserFullDetails($userid = null){
+        $this->db->select("*");
+        $this->db->from('users us');
+        $this->db->join('user_profile up', 'up.user_id=us.user_id', 'LEFT');
+        $this->db->where('us.user_id', $userid);
+        $this->db->where('us.status', 1);
+        $result = $this->db->get()->row_array();
+        return $result;
+    }
+
     public function getUserByToken($token = null,$serial =null)
     {
         $query = $this->db->get_where('users', array(
@@ -627,14 +637,11 @@ class Users_model extends CI_Model
 
     function removeuserfromStranger($uid){
         $query = $this->db->query("DELETE from stranger_det WHERE 	user_id = $uid");
-        $query = $this->db->get_where('users', array(
-            'user_id' => $uid
-        ));
-        return $query->row_array();
+        return $this->getUserFullDetails($uid);
     }
     function getStrangerAvaiUser($user_id){
         
-        $query = $this->db->query('SELECT DISTINCT(us.user_id)  from stranger_det sd LEFT JOIN users us ON sd.user_id=us.user_id LEFT JOIN
+        $query = $this->db->query('SELECT DISTINCT(us.user_id),up.nick_name  from stranger_det sd LEFT JOIN users us ON sd.user_id=us.user_id LEFT JOIN
             user_profile up  ON up.user_id=us.user_id
             WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $user_id . ')
             AND us.user_id !=' . $user_id. ' AND us.status =1 LIMIT 1');

@@ -1,3 +1,5 @@
+RECIVEUSER = false;
+USERNAME   = "";
 $( "#finduser").click(function() {
     if(isFristLoad()){
         getStranger();
@@ -19,10 +21,14 @@ $( "#finduser").click(function() {
                 $("#findstranger").hide();
                 disconnect();
                 TOKEN   =  resultObj.token;
+                $("#nickname").html(resultObj.nick_name);
                 openOpentokConnection(resultObj.session_id);
                 if(typeof(resultObj["errorcode"]) == "undefined"){
                     $("#loadingmessage").hide();
+                    RECIVEUSER = true;
                 }else{
+                    RECIVEUSER = false;
+                    USERNAME   = result.myNickName;
                     strangerWaitingtimer = setTimeout(function(){
                         strangerwaitexpir();
                       }, 30000);
@@ -57,6 +63,11 @@ $( "#finduser").click(function() {
     var url = new URL(url);
     var c = url.searchParams.get("Next"); 
     return c == null;
+  }
+  function getStrangeUser(event){
+    if(!isSameSesssion(event)){
+      $("#nickname").html(event.data.userName);
+    }
   }
 
   function strangerwaitexpir(){
