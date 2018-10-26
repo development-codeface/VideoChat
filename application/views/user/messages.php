@@ -43,7 +43,7 @@ include 'header.php';?>
           
           <!--li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li>
           <li><button name="cutcall" name="cutcall" class="bg-view" onclick="history.back();"> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li-->
-				  <li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
+				  <li><button name="cutcall" id="cutCall" name="cutcall" class="bg-can " > <i class="fa fa-phone" aria-hidden="true"></i></button></li>
 				  </ul>
   </div>
 				  </div>

@@ -637,8 +637,7 @@ class Users_model extends CI_Model
         $query = $this->db->query('SELECT DISTINCT(us.user_id)  from stranger_det sd LEFT JOIN users us ON sd.user_id=us.user_id LEFT JOIN
             user_profile up  ON up.user_id=us.user_id
             WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $user_id . ')
-            AND us.user_id !=' . $user_id. ' and 
-            up.visibility="true" AND us.status =1 LIMIT 1');
+            AND us.user_id !=' . $user_id. ' AND us.status =1 LIMIT 1');
        
         //$query = $this->db->query("SELECT user_id FROM stranger_det WHERE user_id != $user_id LIMIT 1");
         return $query->row_array();
