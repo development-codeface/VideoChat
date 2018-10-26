@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>assets/images/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>assets/images/favicon.ico">
     <link rel="icon" type="image/png" href="<?php echo base_url(); ?>assets/images/favicon.png">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/animate.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/line-awesome.css">
@@ -17,8 +18,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/responsive.css">
-
-	
 	  </head>
 	<body>
 	 <header id="heading">
@@ -219,8 +218,21 @@ In case if you have any questions about this Policy, please contact us through t
       </div>
     </div>
 
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.min.js">
+</script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/popper.js">
+</script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.mCustomScrollbar.js">
+</script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/lib/slick/slick.min.js">
+</script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/script.js">
+</script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/custom.js">
+</script>
 
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 
 
 </body>

@@ -270,5 +270,7 @@ class User extends CI_Controller
         $user_id = $this->input->post('Uid');
         
     }
+
+    
     
 }

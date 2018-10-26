@@ -195,14 +195,7 @@ else
                             <h3>
                               <?php  echo $fd->full_name ;?>
                             </h3>
-                            <span>
-                              1 hr
-                            </span> &nbsp;
-                            <span>
-                              <i class="fa fa-flag" aria-hidden="true">
-                              </i> 
-                              <?php echo $fd->country_id;?>
-                            </span>
+                          
                           </div>
                         </div>
                         <div class="ed-opts">

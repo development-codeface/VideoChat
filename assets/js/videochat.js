@@ -276,7 +276,7 @@ function reciveVideoCall(event){
     document.getElementById('callerTone').play();
     document.getElementById("rcivModal").style.display = 'block';
 
-    var callerName = (event.data.userName != undefined) ? '<span id="callerUser">'+event.data.userName+ '</span> Calling ...' : "";
+    var callerName = (event.data.userName != undefined) ? '<p class="wivp"><span id="callerUser">'+event.data.userName+ ' </span> Calling ...</p>' : "";
     $('#calleeInfo').html(callerName);
     if(typeof(awaitingResponse) != 'undefined')
       clearTimeout(awaitingResponse);

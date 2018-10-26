@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+l<!DOCTYPE html>
 <?php  include 'header.php' ;?>
 <?php
 $open_tokenId=base64_decode(urldecode($openToken));
@@ -17,7 +17,7 @@ $user=$this->session->userdata('user_id');?>
                 <ul class="nav nav-tabs2" role="tablist">
                     <li role="presentation" class="active"><a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Write post</a></li>
        <li role="presentation"><a href="#"><i class="fa fa-camera" aria-hidden="true"></i>  <label for="file-4" class="pointpho"><span>Photos</span></label></a></li>
-                    <li role="presentation"><a href="#"><i class="fa fa-file-video-o" aria-hidden="true"></i> Live videos</a></li>
+                    <li role="presentation"><a href="#"><i class="fa fa-file-video-o" aria-hidden="true"></i>Videos</a></li>
                 </ul>
              
             </div>

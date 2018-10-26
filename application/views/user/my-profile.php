@@ -371,7 +371,7 @@ list($date,$time)=explode(' ',$timestamp);
                 </div>
                 <!--product-feed-tab end-->
                 <div class="product-feed-tab" id="info-dd">
-                  <div class="user-profile-ov st2">
+                  <div class="user-profile-ov st2 pbot">
                     <h3>
                       <i class="fa fa-user-circle-o" aria-hidden="true">
                       </i> Basic Information
@@ -446,7 +446,7 @@ list($date,$time)=explode(' ',$timestamp);
             <?php $currentStatus = ($status=='true')? "1" : "2";?> 
             <?php $checked = ($currentStatus== 1) ? "checked=''" :  ""; ?>
             <input type="checkbox" name="checkbox11" id="checkbox11" value="<?php echo $currentStatus?>" class="ios-toggle" <?php echo $checked?> >
-            <label for="checkbox11" class="checkbox-label checkbox-labelch" data-off="Private" data-on="Public" ></label>
+            <label for="checkbox11" class="checkbox-label checkbox-labelch" data-off="Unhide" data-on="Hide" ></label>
           </div>    
                           
 
@@ -1166,10 +1166,75 @@ foreach($countries as $row)
        <div class="select7_placeholder">Select Interest</div>
        <select class="select7_select" name="intr[]" id="selval" onchange="add_selected_item(this, event);">
            <option class="select7_hide" value="filler"></option>
-           <option value="1">design</option>
-           <option value="2">act</option>
-           <option value="3">art</option>
-
+           <option value="1">Acting</option>
+ <option value="1">Acting</option>
+  <option value="2">Archeology</option>
+   <option value="3">Archery</option>
+    <option value="4">Architecture</option>
+     <option value="5">Art</option>
+      <option value="6">Arts & Crafts</option>
+       <option value="7">Astronomy</option>
+        <option value="8">Backpacking</option>
+        <option value="9">Band</option>
+        <option value="10">Baseball</option>
+        <option value="11">Basketball</option>
+        <option value="12">Bird Watching</option>
+        <option value="13">Bowling</option>
+        <option value="14">Camping</option>
+        <option value="15">Canoeing</option>
+        <option value="16">Cards</option>
+        <option value="17">Cars</option>
+         <option value="18">Carving</option>
+          <option value="19">Chess</option>
+           <option value="20">Cleaning</option>
+            <option value="21">Collecting</option>
+             <option value="22">Computer Activites</option>
+              <option value="23">Cooking</option>
+               <option value="24">Dancing</option>
+               <option value="25">Decorating</option>
+               <option value="26">Design</option>
+               <option value="27">Dioramas</option>
+               <option value="28">Doing Good</option>
+               <option value="29">Drinking</option>
+               <option value="30">Driving</option>
+               <option value="31">Eating</option>
+               <option value="32">Exploring</option>
+               <option value="33">Family Time</option>
+               <option value="34">Fantasy Time</option>
+               <option value="35">Fantasy Football</option>
+               <option value="36">Fashion</option>
+               <option value="37">Firewoks/Pyro Staff</option>
+               <option value="38">Fishing</option>
+               <option value="39">Football</option>
+               <option value="40">Gambling</option>
+               <option value="41">Gardening</option>
+               <option value="42">Golf</option>
+               <option value="43">Hiking</option>
+               <option value="44">Hunting</option>
+               <option value="45">Jewellery Making</option>
+               <option value="46">Knitting</option>
+               <option value="47">Listening to music</option>
+               <option value="48">Metal Work</option>
+               <option value="49">Paintball</option>
+               <option value="50">Party Planning</option>
+               <option value="51">Photography</option>
+               <option value="52">Playing Sports</option>
+               <option value="53">Poker</option>
+               <option value="54">Racing</option>
+               <option value="55">Reading</option>
+               <option value="56">Sewing</option>
+               <option value="57">Shopping</option>
+               <option value="58">Singing</option>
+               <option value="59">Skiing</option>
+               <option value="60">Sleeping</option>
+               <option value="61">Snowboarding</option>
+               <option value="62">Soccer</option>
+               <option value="63">Studying</option>
+               <option value="64">Tennis</option>
+               <option value="65">Traveling</option>
+               <option value="66">Video Games</option>
+               <option value="67">Watching TV</option>
+               
        </select>
        <div class="select7_items"></div>
    </div>

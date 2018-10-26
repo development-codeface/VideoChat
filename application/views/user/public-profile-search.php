@@ -116,7 +116,7 @@ $user=$this->session->userdata('user_id');?>
               <h3 class="mg64">
                  Search Results 
               </h3>
-		 <div class="row">
+		 <div class="row" style="width:100% !important">
            
 			                <?php if(!empty($results)){
 $i=1;
@@ -336,12 +336,11 @@ then close all select boxes:*/
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/lib/slick/slick.min.js">
 </script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/script.js">
+<!--script type="text/javascript" src="<?php echo base_url(); ?>assets/js/script.js"-->
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/custom.js">
 </script>
-</body>
-</html>
+
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto">
 </audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto">

@@ -143,6 +143,7 @@
 											<li><a href="#" title="" class="tw"><i class="fa fa-twitter"></i>Login Via Twitter</a></li>
 										</ul>
 									</div><!--login-resources end-->
+								
 								</div><!--sign_in_sec end-->
 								<div class="<?php if($tab =="register")
 { echo $cls = "sign_in_sec animated fadeIn current"; } else { echo $cls = "sign_in_sec animated fadeIn"; } ?>" id="tab-2">

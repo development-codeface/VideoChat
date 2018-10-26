@@ -26,9 +26,9 @@ include 'header.php';?>
  
 <section>
   <div class=" ">
-    <div class="row">
+    <div class="row wio">
      
-<div class="col-md-9 no_pad">
+<div class="col-md-9 no_pad ">
  <div id="myvideo" class="" style="display:block; width:100%">
             <div class="row">
                   <div class="col-md-12  ">
@@ -38,12 +38,12 @@ include 'header.php';?>
 
 
 				       <div class="col-md-12 vidapp">
-                 <div id="callerName" style="color:#FFFFFF"> <?php echo $fullname; ?></div>
+                 <div id="callerName" class="tell""> <?php echo $fullname; ?>  <p>Dialing</p> </div>
 				  <ul class="videoul">
           
           <!--li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li>
           <li><button name="cutcall" name="cutcall" class="bg-view" onclick="history.back();"> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li-->
-				  <li><button name="cutcall" id="cutCall" name="cutcall" class="bg-can " > <i class="fa fa-phone" aria-hidden="true"></i></button></li>
+				  <li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
 				  </ul>
   </div>
 				  </div>
@@ -110,9 +110,18 @@ include 'header.php';?>
 </section>
 
 
-<div id="callModal" class="modal modov">
-    <div class="modal-content text-center modsty">
-        <div class="modname" id="calleeInfo">Waiting for !!  <?php echo $fullname ?></div>
+<div id="callModal" class="modal modov btrs">
+    <div class="modal-content text-center modsty modsty20">
+         <div class="modname" id="calleeInfo">Calling  &nbsp; <?php echo $fullname ?>
+		 <div class="process-comm">
+				 	 <!--p>Dialing</p-->
+											<div class="spinner">
+												<div class="bounce1"></div>
+												<div class="bounce2"></div>
+												<div class="bounce3"></div>
+											</div>
+										</div><!--process-comm end-->
+		</div>
 
       <div class="modal-body pttop">
           <button type="button" class="btnvide" id='endCall'>
