@@ -492,7 +492,7 @@ class Users_model extends CI_Model
     
     public function fetch_session($uid)
     {
-        $query = $this->db->query("SELECT session_id from users WHERE  user_id=$uid");
+        $query = $this->db->query("SELECT session_id,full_name from users WHERE  user_id=$uid");
         return $query->row_array();
     }
     
@@ -530,6 +530,18 @@ class Users_model extends CI_Model
     {
        $query = $this->db->query("delete from friends where user_id=$user_id and friend_id=$friend ");
         $query = $this->db->query("delete from friends where user_id=$friend and friend_id=$user_id ");
+        return 1;
+    }
+	function cancelfriend($friend,$user_id)
+    {
+     //  $query = $this->db->query("delete from friends where user_id=$user_id and friend_id=$friend ");
+        $query = $this->db->query("delete from friends where user_id=$friend and friend_id=$user_id ");
+        return 1;
+    }
+	function rejectfriend($friend,$user_id)
+    {
+       $query = $this->db->query("delete from friends where user_id=$user_id and friend_id=$friend ");
+       // $query = $this->db->query("delete from friends where user_id=$friend and friend_id=$user_id ");
         return 1;
     }
     function updatecover($user_id, $file_name)
@@ -621,7 +633,14 @@ class Users_model extends CI_Model
         return $query->row_array();
     }
     function getStrangerAvaiUser($user_id){
-        $query = $this->db->query("SELECT user_id FROM stranger_det WHERE user_id != $user_id LIMIT 1");
+        
+        $query = $this->db->query('SELECT DISTINCT(us.user_id)  from stranger_det sd LEFT JOIN users us ON sd.user_id=us.user_id LEFT JOIN
+            user_profile up  ON up.user_id=us.user_id
+            WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $user_id . ')
+            AND us.user_id !=' . $user_id. ' and 
+            up.visibility="true" AND us.status =1 LIMIT 1');
+       
+        //$query = $this->db->query("SELECT user_id FROM stranger_det WHERE user_id != $user_id LIMIT 1");
         return $query->row_array();
     }
     

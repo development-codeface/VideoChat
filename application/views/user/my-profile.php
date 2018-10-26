@@ -53,16 +53,45 @@ else
                       </span>
                     </li>
                   </ul>
+				    <ul class="myprf">
+				
+				  <li><i class="fa fa-male" aria-hidden="true"></i>
+
+      <?php if($user['gender']==1)
+{
+?>
+                 <label>Male </label>
+                  <?php
+}
+else
+{ ?>
+                  <label>Female </label>
+                  <?php	} ?>
+
+
+				  </li>
+				    <li id="obs"><i class="fa fa-map-marker" aria-hidden="true">
+                      </i>    <?php  echo $mydata['country'] ;?> </li>
+				  <!--li><i class="fa fa-female" aria-hidden="true"></i> Female </li-->
+				  </ul>
+				<div class="tab-feed fnon">
+                    <ul>
+					<li data-tab="info-dd" class="animated fadeIn ">
+                        <button type="button" class="sendreq" > View Profile </button>
+                      </li>
+        
+                    </ul>
+                  </div>
                 </div>
                 <!--user-pro-img end-->	
               </div>
               <!--user_profile end-->
-              <div class="suggestions full-width">
+              <!--div class="suggestions full-width">
                 <div class="sd-title">
                   <h3>People Viewed Profile
                   </h3>
                 </div>
-                <!--sd-title end-->
+              
                 <div class="suggestions-list">
                   <?php if(!empty($profileViewer)){
 $i=1;
@@ -98,14 +127,12 @@ else
                       </div>
                     <?php }}}
 else{ ?>
-                    <!--<div class="download-box alert">
-<div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
-</div>--->
+            
                     <?php }?>
                   </div>
-                  <!--suggestions-list end-->
-                </div>
-                <!--suggestions end-->
+              
+                </div-->
+           
               </div>
               <!--main-left-sidebar end-->
             </div>
@@ -344,7 +371,7 @@ list($date,$time)=explode(' ',$timestamp);
                 </div>
                 <!--product-feed-tab end-->
                 <div class="product-feed-tab" id="info-dd">
-                  <div class="user-profile-ov st2">
+                  <div class="user-profile-ov st2 pbot">
                     <h3>
                       <i class="fa fa-user-circle-o" aria-hidden="true">
                       </i> Basic Information
@@ -415,11 +442,11 @@ list($date,$time)=explode(' ',$timestamp);
 					}
 					?>
 						  
-						   <div class="togl_div">
+						   <div class="togl_div togl_divch">
             <?php $currentStatus = ($status=='true')? "1" : "2";?> 
             <?php $checked = ($currentStatus== 1) ? "checked=''" :  ""; ?>
             <input type="checkbox" name="checkbox11" id="checkbox11" value="<?php echo $currentStatus?>" class="ios-toggle" <?php echo $checked?> >
-            <label for="checkbox11" class="checkbox-label" data-off="Private" data-on="Public" ></label>
+            <label for="checkbox11" class="checkbox-label checkbox-labelch" data-off="Unhide" data-on="Hide" ></label>
           </div>    
                           
 
@@ -431,33 +458,7 @@ list($date,$time)=explode(' ',$timestamp);
 
 						  </td>
                       </tr>
-                      <tr class="no_br">
-                        <td>Age Privacy
-                        </td>
-                        <td>
-                         
-						 
-                            <?php if($mydata['age_hide']==1)
-{
-?>
-                            <i id="age_ar">
-                              <?php echo "Public" ;?>
-                            </i> 
-                            <?php
-}
-else
-{
-?>
-                            <i id="age_ar">
-                              <?php echo "Private" ;?> 
-                              <?php
-} ?>
-                            </i>
-						 
-						 
-						 
-                        </td>
-                      </tr>
+                 
                     </table>
                     <!--<label class="switch swtlastm">
 <input type="checkbox" checked>
@@ -650,11 +651,27 @@ foreach($photos as $ph){?>
                   <?php }?>
                 </div>	
                 <div class="product-feed-tab" id="my-frd">
-                  <div class="acc-setting">
-                    <h3>My Friend Requests
-                    </h3>
-                    <div class="col-lg-8">
-                    <div class="requests-list widt100">
+                 
+                    <div class="clerarfix"></div>
+<h3>&nbsp;</h3>
+					<div class="tabbable-panel">
+				<div class="tabbable-line">
+					<ul class="nav nav-tabs myreq">
+						<li class="active">
+							<a href="#tab_default_1" data-toggle="tab">
+							My Friend Requests  </a>
+						</li>
+						<li>
+							<a href="#tab_default_2" data-toggle="tab">
+							 Friend Requests Sent  </a>
+						</li>
+						
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab_default_1">
+						
+						
+						 <div class="requests-list widt100">
                       <?php if(!empty($friendsRequest)){
 $i=1;
 foreach($friendsRequest as $frq){?>
@@ -687,7 +704,7 @@ else
                               </button>
                             </li>
                             <li>
-                              <button type="button" class="close-req">
+                              <button type="button" data-id="<?php echo $frq->user_id;?>" class="close-req">
                                 <i class="la la-close">
                                 </i>
                               </button>
@@ -704,6 +721,85 @@ else{ ?>
 </div> -->
                       <?php }?>
                     </div>
+						
+						
+						
+						</div>
+						<div class="tab-pane" id="tab_default_2">
+						
+						
+						
+						    <div class="requests-list widt100">
+                  <?php if(!empty($sendRequest)){
+$i=1;
+foreach($sendRequest as $frq){
+	
+	?>
+                  <div class="request-details request-detailsch" id="<?php echo $frq->user_id;?>">
+                    <div class="noty-user-img">
+                    	<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
+									
+									<?php if($frq->profile_pic!=""){?>
+											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
+											<?php }else{?>
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											<?php }?>
+									
+									
+									</a>
+                    </div>
+                    <div class="request-info">
+					
+                      <h3>
+                        <?php echo $frq->full_name ;?>
+                      </h3>
+                      <!--<span>Graphic Designer</span>-->
+                    </div>
+                    <div class="accept-feat">
+                      <ul>
+                        <li>
+                          <button type="button" class="accept-req" onclick="">Requested
+                          </button>
+                        </li>
+                        <li>
+                        <button type="button" data-id="<?php echo $frq->user_id;?>"  class="canc-req">
+                            <i class="la la-close">
+                            </i>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                    <!--accept-feat end-->
+                  </div>
+                  <!--request-detailse end-->
+                  <?php }} ?>
+                </div>
+						
+						
+						
+						
+						
+						
+						
+						</div>
+				
+					</div>
+				</div>
+			</div>
+
+                    <div class="col-lg-8">
+                   
+                    </div>
                     </div>
 					
                     <!--requests-list end-->
@@ -718,15 +814,15 @@ else{ ?>
 <div class="info-box alert">
 <div class="msg"><i class="fa fa-database" aria-hidden="true"></i> Info &#8211; Information message will goes here</div>
 </div>-->
-                  </div>
-                </div>
+                 
                 <div class="product-feed-tab" id="my-frd-list">
 				<h3 class="h3cl">My Friend list </h3>
                   <div class="row">
 				  
                     <?php if(!empty($friendList)){
 $i=1;
-foreach($friendList as $frq){?>
+
+foreach($friendList as $frq){?> 
                     <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                       <div class="company_profile_info">
                         <div class="company-up-info">	
@@ -751,11 +847,29 @@ foreach($friendList as $frq){?>
                           <div class="clearfix">
                           </div>
                           <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
-                            <?php if($frq->profile_pic!=""){?>
-                            <img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
-                            <?php }else{?>
-                            <img src="<?php echo base_url(); ?>assets/images/resources/pf-icon8.png" alt="">
-                            <?php }?>
+                         
+						 
+						 
+						 
+						             <?php if($frq->profile_pic!=""){?>
+                          <img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
+                          <?php }else{?>
+                          <?php if($frq->gender==1)
+{
+?>
+                          <img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+                          <?php
+}
+else
+{ ?>
+                          <img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+                          <?php	} ?>
+                          <?php }?>
+						 
+						 
+						 
+						 
+						 
                           </a>
                           <h3>
                             <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
@@ -1050,12 +1164,77 @@ foreach($countries as $row)
 <div id="select7" class="select7_container">
        <div class="select7_arrow">&#9662;</div>
        <div class="select7_placeholder">Select Interest</div>
-       <select class="select7_select" onchange="add_selected_item(this, event);">
+       <select class="select7_select" name="intr[]" id="selval" onchange="add_selected_item(this, event);">
            <option class="select7_hide" value="filler"></option>
-           <option value="option1">Boy</option>
-           <option value="option2">Girl</option>
-           <option value="option3">Other</option>
-
+           <option value="1">Acting</option>
+ <option value="1">Acting</option>
+  <option value="2">Archeology</option>
+   <option value="3">Archery</option>
+    <option value="4">Architecture</option>
+     <option value="5">Art</option>
+      <option value="6">Arts & Crafts</option>
+       <option value="7">Astronomy</option>
+        <option value="8">Backpacking</option>
+        <option value="9">Band</option>
+        <option value="10">Baseball</option>
+        <option value="11">Basketball</option>
+        <option value="12">Bird Watching</option>
+        <option value="13">Bowling</option>
+        <option value="14">Camping</option>
+        <option value="15">Canoeing</option>
+        <option value="16">Cards</option>
+        <option value="17">Cars</option>
+         <option value="18">Carving</option>
+          <option value="19">Chess</option>
+           <option value="20">Cleaning</option>
+            <option value="21">Collecting</option>
+             <option value="22">Computer Activites</option>
+              <option value="23">Cooking</option>
+               <option value="24">Dancing</option>
+               <option value="25">Decorating</option>
+               <option value="26">Design</option>
+               <option value="27">Dioramas</option>
+               <option value="28">Doing Good</option>
+               <option value="29">Drinking</option>
+               <option value="30">Driving</option>
+               <option value="31">Eating</option>
+               <option value="32">Exploring</option>
+               <option value="33">Family Time</option>
+               <option value="34">Fantasy Time</option>
+               <option value="35">Fantasy Football</option>
+               <option value="36">Fashion</option>
+               <option value="37">Firewoks/Pyro Staff</option>
+               <option value="38">Fishing</option>
+               <option value="39">Football</option>
+               <option value="40">Gambling</option>
+               <option value="41">Gardening</option>
+               <option value="42">Golf</option>
+               <option value="43">Hiking</option>
+               <option value="44">Hunting</option>
+               <option value="45">Jewellery Making</option>
+               <option value="46">Knitting</option>
+               <option value="47">Listening to music</option>
+               <option value="48">Metal Work</option>
+               <option value="49">Paintball</option>
+               <option value="50">Party Planning</option>
+               <option value="51">Photography</option>
+               <option value="52">Playing Sports</option>
+               <option value="53">Poker</option>
+               <option value="54">Racing</option>
+               <option value="55">Reading</option>
+               <option value="56">Sewing</option>
+               <option value="57">Shopping</option>
+               <option value="58">Singing</option>
+               <option value="59">Skiing</option>
+               <option value="60">Sleeping</option>
+               <option value="61">Snowboarding</option>
+               <option value="62">Soccer</option>
+               <option value="63">Studying</option>
+               <option value="64">Tennis</option>
+               <option value="65">Traveling</option>
+               <option value="66">Video Games</option>
+               <option value="67">Watching TV</option>
+               
        </select>
        <div class="select7_items"></div>
    </div>
@@ -1072,7 +1251,7 @@ foreach($countries as $row)
         </i>
       </div-->
       <p class="sav_bt">	
-        <button type="button" class="save" id="InterestSave">Save
+        <button type="button" class="save InterestSave" id="InterestSave">Save
         </button>
       </p>
     </form>
@@ -1194,11 +1373,10 @@ foreach($countries as $row)
               <input type ="hidden" name="abc" id="abc" value=
                      <?php echo $mydata['user_id'] ?> >
               <input  type="file" name="photocover" id="photocover">
-            </div>
-            <div class="job-status-bar">
-              <button type="submit" name="register" class="btn btn-success">Upload 
+			   <button type="submit" name="register" class="btn btn-success">Upload 
               </button>
             </div>
+          
           </form>
         </div>
       </div>
@@ -1368,8 +1546,37 @@ $(document).ready(function() {
     $('#checkbox11').val(publicStatus);
  }
  
- 
-					  
+  $('.close-req').click(function() { 
+	var uid =$(this).data('id'); 
+				$.ajax({
+			type: "POST",
+				url: "../Profile/reject_request",
+				data:{uid:uid},
+				dataType:"text", 
+				success: function(result){
+					var resultObj = JSON.parse(result)
+			 window.setTimeout(function(){location.reload()},1000);
+				}               
+		}); }); 		
+			
+
+
+  $('.canc-req').click(function() { 
+	var uid =$(this).data('id'); 
+				$.ajax({
+			type: "POST",
+				url: "../Profile/cancel_request",
+				data:{uid:uid},
+				dataType:"text", 
+				success: function(result){
+					var resultObj = JSON.parse(result)
+			 window.setTimeout(function(){location.reload()},1000);
+				}               
+		}); 		
+			             
+				
+		}); 
+			
 </script>
 <script>
   var selID = "";

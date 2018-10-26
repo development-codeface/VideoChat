@@ -112,24 +112,23 @@ $user=$this->session->userdata('user_id');?>
                          
                         </center>
 						</div>
-          <div class="col-md-12">
-            <div class="acc-setting" id="searchResult">
+          
               <h3 class="mg64">
                  Search Results 
               </h3>
-			  <div class="clearfix"></div>
-              <div class="col-lg-12">
-              <div class="requests-list">
-                <?php if(!empty($results)){
+		 <div class="row" style="width:100% !important">
+           
+			                <?php if(!empty($results)){
 $i=1;
 foreach($results as $frq){
 	
 if(($frq->user_id)!=($this->session->userdata('user_id'))) {
 	?>
-
-                <div class="request-details" id="<?php echo $frq->user_id;?>">
-                  <div class="noty-user-img">
-                    <?php if($frq->profile_pic!=""){?>
+			  <div class="col-lg-2 col-md-2 col-sm-2 col-12">
+							<div class="company_profile_info">
+								<div class="company-up-info companyfont">								
+								<div class="clearfix"></div>
+									   <?php if($frq->profile_pic!=""){?>
                     <img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
                     <?php }else{?>
                     <?php if($frq->gender==1)
@@ -143,16 +142,12 @@ else
                     <img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
                     <?php	} ?>
                     <?php }?>
-                  </div>
-                  <div class="request-info">
-                    <h3>
+										 <h3>
                       <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
                         <?php echo $frq->full_name ;?>
                       </a>
                     </h3>
-                  </div>
-                  <div class="accept-feat">
-                    <ul>
+									 <ul>
                       <li>
                         <button type="button" class="accept-req" onclick="friendRequest(<?php echo $frq->user_id;?>)"> 
                           <i class="fa fa-check" aria-hidden="true">
@@ -160,12 +155,11 @@ else
                         </button>
                       </li>
                     </ul>
-                  </div>
-                  <!--accept-feat end-->
-                </div>
-				
-                <!--request-detailse end-->
-                <?php 
+								</div>
+			
+							</div><!--company_profile_info end-->
+						</div>
+						                <?php 
 $i++;
 if($i==6){
 ?>
@@ -174,13 +168,11 @@ if($i==6){
 } else{
 echo "<div class='alert alert-danger' >No results </div> ";
 }?>
-              </div>
-              </div>
+            
+            
               <!--requests-list end-->	
-            </div>
+         
           </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -344,12 +336,11 @@ then close all select boxes:*/
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/lib/slick/slick.min.js">
 </script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/script.js">
+<!--script type="text/javascript" src="<?php echo base_url(); ?>assets/js/script.js"-->
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/custom.js">
 </script>
-</body>
-</html>
+
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto">
 </audio>
 <audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto">

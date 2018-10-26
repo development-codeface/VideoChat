@@ -12,7 +12,7 @@ $open_tokenId=base64_decode(urldecode($openToken));$user=$this->session->userdat
           <div class="acc-leftbar">
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
               <!--a class="nav-item nav-link active" id="nav-acc-tab" data-toggle="tab" href="#nav-acc" role="tab" aria-controls="nav-acc" aria-selected="true"><i class="la la-cogs"></i>Account Setting</a-->
-			  <a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false"><i class="fa fa-reply" aria-hidden="true"></i> Friend Requests Sent</a>
+			  <!--a class="nav-item nav-link" id="nav-requests-tab" data-toggle="tab" href="#nav-requests" role="tab" aria-controls="nav-requests" aria-selected="false"><i class="fa fa-reply" aria-hidden="true"></i> Friend Requests Sent</a-->
 			  
               <a class="nav-item nav-link active" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false">
                 <i class="fa fa-lock">
@@ -83,61 +83,7 @@ $open_tokenId=base64_decode(urldecode($openToken));$user=$this->session->userdat
               <div class="acc-setting">
                 <h3>Friend Requests Sent
                 </h3>
-                <div class="requests-list widt100">
-                  <?php if(!empty($sendRequest)){
-$i=1;
-foreach($sendRequest as $frq){
-	
-	?>
-                  <div class="request-details request-detailsch" id="<?php echo $frq->user_id;?>">
-                    <div class="noty-user-img">
-                    	<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
-									
-									<?php if($frq->profile_pic!=""){?>
-											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
-											<?php }else{?>
-											<?php if($frq->gender==1)
-											{
-												?>
-											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
-											<?php
-											}
-											else
-											{ ?>
-												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
-										<?php	} ?>
-											
-											<?php }?>
-									
-									
-									</a>
-                    </div>
-                    <div class="request-info">
-					
-                      <h3>
-                        <?php echo $frq->full_name ;?>
-                      </h3>
-                      <!--<span>Graphic Designer</span>-->
-                    </div>
-                    <div class="accept-feat">
-                      <ul>
-                        <li>
-                          <button type="button" class="accept-req" onclick="">Requested
-                          </button>
-                        </li>
-                        <li>
-                          <button type="button" class="close-req">
-                            <i class="la la-close">
-                            </i>
-                          </button>
-                        </li>
-                      </ul>
-                    </div>
-                    <!--accept-feat end-->
-                  </div>
-                  <!--request-detailse end-->
-                  <?php }} ?>
-                </div>
+            
                 <!--requests-list end-->
                 <div class="clearfix">
                 </div>
@@ -183,13 +129,13 @@ foreach($sendRequest as $frq){
                   </div>
                   <div class="cp-field">
 				  
-												<label class="containerc"> <a href="#" title="" class="exp-bx-open aqw"><small>I accept
+												<label class="containerc"> <a href="#" title="" class="exp-bx-open aqw"><small>Are you sure you want to deactivate your account?
 												</small></a>
   <input type="checkbox"  name="agree" id="agree" value="agree" required>
   <span class="checkmarkc"></span>
 </label>
                    
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pretium nulla quis erat dapibus, varius hendrerit neque suscipit. Integer in ex euismod, posuere lectus id,
+                    <p> Deactivating your account will disable your profile and remove your name and photo that you've shared on Int Buddy.
                     </p>
                   </div>
                   <div class="clearfix">
@@ -312,4 +258,5 @@ include 'footer.php';?>
 		        }
     
 	   }); 
+	    
 	   </script>

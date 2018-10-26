@@ -294,4 +294,24 @@ class Auth extends   CI_Controller {
 			$unameTest=$this->users_model->delete_token($user);
 			redirect('user/profile',"refresh");
 			}
+			
+			
+			  public function privacy_policy()
+    {
+		
+        $this->load->view("user/privacy_policy1");
+      
+      
+       
+    }
+	public function terms_conditions()
+    {
+		
+        $this->load->view("user/terms_conditions1");
+      
+      
+       
+    }
+			
+			
 }

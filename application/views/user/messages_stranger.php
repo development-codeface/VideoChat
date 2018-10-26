@@ -26,7 +26,7 @@ include 'header.php';?>
  
 <section>
   <div class=" ">
-    <div class="row">
+    <div class="row wio">
      
 
       <div class="col-md-9 no_pad">
@@ -45,8 +45,10 @@ include 'header.php';?>
 				  <ul class="videoul">
           
           <!--<li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li> -->
-          <li><button name="cutcall" name="cutcall" class="bg-view" onclick="history.back();"> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
-				  <li><button name="cutcall" id="" class="bg-can " onclick="nextstranger()"> <i class="fa fa-angle-right" aria-hidden="true"></i></button></li>
+		    <li><button name="cutcall" id="" class="bg-can " onclick="history.back();"> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
+          <li><button name="cutcall" name="cutcall" class="bg-view" onclick=""> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
+          <li><button name="cutcall" id="nextstranger" class="bg-can " onclick="nextstranger()" style="display:none"> <i class="fa fa-angle-right" aria-hidden="true"></i></button></li>
+           
 				  </ul>
   </div>
 				  </div>
@@ -67,11 +69,11 @@ include 'header.php';?>
 	   
 	  <div class="cw">
 	  <div class="chat_window">
-	  <div class="top_menu">
+	  <!--div class="top_menu">
 	
 	  <div class="title"><span class="glyphicon btn-glyphicon glyphicon-minus fa fa-comments-o img-circle text-warning"></span>
 	
-	  </div></div>
+	  </div></div-->
         <div class="chatContainer">
           <div id="chatHistory">
           </div>
@@ -106,16 +108,56 @@ include 'header.php';?>
 
 
 
-<div id="findstranger" class="modal modov">
-  <div class="modal-content text-center modsty">
-      <div class="modal-header" id="callerInfo"></div>
-      <div class="modal-body pttop">
-          <button type="button" class="btnvide" id='finduser'>
-              <i class="fa fa-times-circle"></i> Find chat user
+
+<div id="findstranger" class="modal modov btrs ">
+  <div class="modal-content text-center modsty modsty20 Comanda" style="    width: 641px!important;">
+      <div class="modal-header lokfo" id="callerInfo">
+	  Looking for
+	  </div>
+
+      <div class="modal-body pttop ">
+	
+          <button type="button" class="btnvide " id='finduser' disabled>
+              <i class="fa fa-times-circle"></i> Friend</a>
           </button>
+		   <!--button type="button" class="btnvide" id='buttonLogin'  onclick = "displayLoginBox()"-->
+		   <button type="button" class="btnvide Comanda"  data-clicked="unclicked" id='buttonLogin'  onclick = "displayLoginBox()">
+              <i class="fa fa-times-circle"></i>  Stranger   
+          </button>
+		   <button type="button" class="btnvide" id='finduser' disabled>
+              <i class="fa fa-times-circle"></i>  Others
+          </button>
+	
       </div>
+	  	
   </div>
+    <div  class="lokfosear"> 
+    Searching	 <div class="process-comm">
+				 	 <!--p>Dialing</p-->
+											<div class="spinner spinnercy">
+												<div class="bounce1"></div>
+												<div class="bounce2"></div>
+												<div class="bounce3"></div>
+											</div>
+										</div><!--process-comm end-->
+     </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('#buttonLogin').on('click', function(e){
+
+    $(".lokfosear").toggle();
+    $(this).toggleClass('class1')
+});
+$('.Comanda')
+.click(
+     function ()
+     {
+         $(this).hide();
+     }
+);
+});
+</script>
 <script>
 var elem = document.getElementById("myvideo");
 function openFullscreen() {
@@ -146,6 +188,7 @@ function openFullscreen() {
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/strangerchat.js"></script>
 <script>
     $("#subscriber").hide();
+    $("#nextstranger").show();
     //openOpentokConnection ('<?php echo $openSessionId ?>');
     loadNextStranger();
 </script>

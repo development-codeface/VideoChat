@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+l<!DOCTYPE html>
 <?php  include 'header.php' ;?>
 <?php
 $open_tokenId=base64_decode(urldecode($openToken));
@@ -16,11 +16,13 @@ $user=$this->session->userdata('user_id');?>
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs2" role="tablist">
                     <li role="presentation" class="active"><a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Write post</a></li>
-                    <li role="presentation"><a href="#"><i class="fa fa-camera" aria-hidden="true"></i> Photos</a></li>
-                    <li role="presentation"><a href="#"><i class="fa fa-file-video-o" aria-hidden="true"></i> Live videos</a></li>
+       <li role="presentation"><a href="#"><i class="fa fa-camera" aria-hidden="true"></i>  <label for="file-4" class="pointpho"><span>Photos</span></label></a></li>
+                    <li role="presentation"><a href="#"><i class="fa fa-file-video-o" aria-hidden="true"></i>Videos</a></li>
                 </ul>
              
             </div>
+					<input type="file" name="file-4[]" id="file-4" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple />
+						<label for="file-4"><span></span></label>
 												<form method="post" action="<?php echo base_url(); ?>index.php/Profile/postFeed" name="signupform" id="signupform">
 										<input type='text' name="userid" id="userid" value='<?php echo $user; ?>' hidden >
 												<div class="job_descp">
@@ -240,7 +242,30 @@ list($date,$time)=explode(' ',$timestamp);
 										</div>--><?php }?>
 						
 						
-											
+					<div class="clearfix"></div>
+	<!--ul class="pagination modal-5" style="    position: fixed;
+    bottom: 97px;
+    margin-top: -21px;">
+  <li><a href="#" class="prev fa fa-arrow-left"> </a></li>
+  <li> <a href="#"  class="active">1</a></li>
+  <li> <a href="#">2</a></li>
+  <li> <a href="#">3</a></li>
+  <li> <a href="#">4</a></li>
+  <li><a href="#">5</a></li>
+  <li> <a href="#">6</a></li>
+  <li> <a href="#">7</a></li>
+  <li> <a href="#">8</a></li>
+  <li> <a href="#">9</a></li>
+  <li> <a href="#">10</a></li>
+  <li> <a href="#">11</a></li>
+  <li> <a href="#">12</a></li>
+  <li> <a href="#">13</a></li>
+  <li> <a href="#">14</a></li>
+  <li> <a href="#">15</a></li>
+ 
+  <li><a href="#" class="next fa fa-arrow-right"></a></li>
+</ul-->
+										
 										
 		</div>
 		<div class="col-md-4">

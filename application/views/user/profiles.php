@@ -261,7 +261,7 @@ $user=$this->session->userdata('user_id');?>
 							  					<div class="accept-feat">
 							  						<ul>
 							  							<li><button type="button" class="accept-req" onclick="friendAccept(<?php echo $frq->user_id;?>)">Accept</button></li>
-							  							<li><button type="button" class="close-req"><i class="la la-close"></i></button></li>
+							  							<li><button type="button" class="close-req" data-id="<?php echo $frq->user_id;?>"><i class="la la-close"></i></button></li>
 							  						</ul>
 							  					</div><!--accept-feat end-->
 							  				</div><!--request-detailse end-->
@@ -446,6 +446,20 @@ $(document).ready(function() {
 	
 	
 });
+
+
+ $('.close-req').click(function() { 
+	var uid =$(this).data('id'); 
+				$.ajax({
+			type: "POST",
+				url: "../Profile/reject_request",
+				data:{uid:uid},
+				dataType:"text", 
+				success: function(result){
+					var resultObj = JSON.parse(result)
+			 window.setTimeout(function(){location.reload()},1000);
+				}               
+		}); }); 
 </script>
 
 
