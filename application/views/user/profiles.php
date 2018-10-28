@@ -290,7 +290,7 @@ $user=$this->session->userdata('user_id');?>
 									
 									<div class="product-feed-tab" id="portfolio-dn">
 								<div class="acc-setting">
-								<h3 class="h3cl">My Send Requests </h3>
+								<h3 class="h3cl">My Sent Requests </h3>
 							  			
 										<div class="clearfix"></div>
 										<div class="requests-list">

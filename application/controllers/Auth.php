@@ -296,10 +296,10 @@ class Auth extends   CI_Controller {
 			}
 			
 			
-			  public function privacy_policy()
+			  public function cookies()
     {
 		
-        $this->load->view("user/privacy_policy1");
+        $this->load->view("user/cookies_nologin");
       
       
        
@@ -308,6 +308,15 @@ class Auth extends   CI_Controller {
     {
 		
         $this->load->view("user/terms_conditions1");
+      
+      
+       
+	}
+	
+	public function howitwork()
+    {
+		
+        $this->load->view("user/howitworks_nologin");
       
       
        

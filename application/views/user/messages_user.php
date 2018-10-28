@@ -209,7 +209,7 @@ include 'header.php';?>
 									<form>
 										<div class="mf-field">
 											<input type="text" name="message" placeholder="Type a message here">
-											<button type="submit">Send</button>
+											<button type="submit">Sent</button>
 										</div>
 										<ul>
 											<li><a href="#" title=""><i class="fa fa-smile-o"></i></a></li>

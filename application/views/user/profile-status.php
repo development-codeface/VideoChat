@@ -191,7 +191,7 @@ list($date,$time)=explode(' ',$timestamp);
 								</div><!--overview-box end-->
 								<div class="overview-box fade" id="experience-box">
 										<div class="overview-edit">
-            <h3 class="ayu">Are you sure delete !</h3>
+            <h3 class="ayu">Are you hide this post !</h3>
 
             <form name="hideform" id="hideform" class="">
                	<?php $fd->hide_user=$this->session->userdata('user_id'); ?>

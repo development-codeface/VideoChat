@@ -57,11 +57,11 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
                             <select name="age">
                               <option value="0">All
                               </option> 
-							  <option value="1">18-20 years old
+                              <option value="1">18-30 
                               </option>
-                              <option value="2">20-22 yeaffrs old
+                              <option value="2">30-45 
                               </option>
-                              <option value="3">22-25 years old
+                              <option value="3">40 and above
                               </option>
                             </select>
                           </div>

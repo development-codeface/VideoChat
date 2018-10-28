@@ -100,7 +100,7 @@ $ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('
 		
 		<br><br><br>
                     <button type="button" id="send" name="send"  class="sendreq frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-check" aria-hidden="true">
-                          </i> Send request
+                          </i> Sent request
         </button>
 		
 		
@@ -281,9 +281,10 @@ else
                         </td>
                         <td>
                           <i id="genders"> 
-                            <?php if($mydata['gender']==1){?>Female
-                            <?php }else {?> Male 
-                            <?php }?>
+                          <?php if($mydata['gen']==1){?>Male
+                            <?php }else if($mydata['gen']==2){?> Female 
+                            <?php }else {?> Other
+                            <?php  } ?> 
                           </i>
                         </td>
                       </tr>
@@ -336,7 +337,7 @@ else
                       </tr>
  
                       <tr>
-                        <td class="pers">Age
+                        <td>Age
                         </td>
                         <td>
                           <i id="age"> 
@@ -345,19 +346,20 @@ else
                         </td>
                       </tr>
 <?php } ?>
-                      <tr class="no_br">
-                     <!--   <td>Private /  Public
-                        </td>-->
+                      <!-- <tr class="no_br">
+                       <td>Private /  Public
+                        </td>
                         <td>
                           <i id="visib">
                             <?php if($mydata['visibility']=='true'){?>
                             Public
-                            <?php }else{
-?>Private
+                            <?php }else{?>
+                              Private
                             <?php }?>  
                           </i>
                         </td>
-                      </tr>
+
+                      </tr>-->
                     </tbody>
                   </table>
                 </div>
@@ -380,7 +382,7 @@ else
                 <div class="user-profile-ov">
                   <h3>
                     <i class="fa fa-pencil" aria-hidden="true">
-                    </i> Description
+                    </i> About me
                   </h3>
                   <div class="locpad">
                     <p id="descriptions">
@@ -596,7 +598,7 @@ $abc=$frq->user_id	;		  //if($mydata['user_id']!=$this->session->userdata('user_
 		
 		<br><br><br>
                     <button type="button" id="sendf" name="sendf"  class="sendreq frereqfrd" data-id="<?php echo $abc;?>"  > <i class="fa fa-check" aria-hidden="true">
-                          </i> Send request
+                          </i> Sent request
         </button>
 		
 		
@@ -823,7 +825,11 @@ include 'footer.php';?>
           <b>Gender 
           </b> :
         </label>
-        <?php   $f="";$m="";if($mydata['gender']==1){ $m="checked";}else{ $f="checked";}?>
+        <?php   $o="";$f="";$m="";
+        if($mydata['gender']==1){ 
+          $m="checked";
+          }else if($mydata['gender']==2){ $f="checked";
+          }else { $o="checked";}?>
         <label class="checkbox-inline">
           <input type="radio" name="gender" id="gender" 
                  <?php echo $f;?> style=" width: 15px;
@@ -833,6 +839,11 @@ include 'footer.php';?>
           <input type="radio" name="gender"  id="gender" 
                  <?php echo $m;?> style="width: 15px;
           height: 15px;"  value="2">&nbsp;Male 
+        </label>
+        <label class="checkbox-inline">
+          <input type="radio" name="gender"  id="gender" 
+                 <?php echo $o;?> style="width: 15px;
+          height: 15px;"  value="3">&nbsp;Other 
         </label>
       </div>
       <div class="form-group">
@@ -1096,7 +1107,7 @@ include 'footer.php';?>
 					 if(result.status==1){
 			
 				
-			$("#can" ).html("Send request");
+			$("#can" ).html("Sent request");
 		location.reload();
 				}
 
@@ -1143,7 +1154,7 @@ include 'footer.php';?>
 					 if(result.status==1){
 			
 				
-			$("#canf" ).html("Send request");
+			$("#canf" ).html("Sent request");
 		location.reload();
 				}
 

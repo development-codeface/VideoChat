@@ -42,8 +42,8 @@ include 'header.php';?>
 
 
 				       <div class="col-md-12 vidapp">
+                 <div id="nickname" class="tell"">  </div>
 				  <ul class="videoul">
-          <div id="nickname" style="color:#FFFFFF"></div>
           
           <!--<li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li> -->
 		    <li><button name="cutcall" id="" class="bg-can " onclick="history.back();"> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
@@ -101,64 +101,79 @@ include 'header.php';?>
   </div>
 </div>
 
-<div id='loadingmessage' class="modal modov" style='display:none'>
-  <p>Searching.....</p>
-  <img src="<?php echo base_url(); ?>assets/images/ajaxloader.gif"/>
-</div>
-
-
 
 
 
 <div id="findstranger" class="modal modov btrs ">
-  <div class="modal-content text-center modsty modsty20 Comanda" style="    width: 641px!important;">
+  <div class="modal-content text-center modsty modsty20" style="    width: 641px!important;">
+       
       <div class="modal-header lokfo" id="callerInfo">
-	  Looking for
+      <div><button type="button" class="close cloimg" onclick="history.back();" data-dismiss="modal">
+              <img src="http://localhost:8888/VideoChat/assets/images/close-button-.png">
+            </button></div>
+
+    <h4 class="modal-title vich"> 
+              </h4><h4 class="plsech">Looking for
+              </h4>
+            
+            
 	  </div>
 
       <div class="modal-body pttop ">
-	
-          <button type="button" class="btnvide " id='finduser' disabled>
-              <i class="fa fa-times-circle"></i> Friend</a>
+          <button type="button" class="btnvide " data-clicked="unclicked" id='findmaleuser'  >
+              <i class="fa fa-times-circle"></i> Male</a>
           </button>
 		   <!--button type="button" class="btnvide" id='buttonLogin'  onclick = "displayLoginBox()"-->
-		   <button type="button" class="btnvide Comanda"  data-clicked="unclicked" id='buttonLogin'  onclick = "displayLoginBox()">
-              <i class="fa fa-times-circle"></i>  Stranger   
-          </button>
-		   <button type="button" class="btnvide" id='finduser' disabled>
+		   <button type="button" class="btnvide"  data-clicked="unclicked" id='findfemaleuser'   >
+              <i class="fa fa-times-circle"></i>  Female   
+        </button>
+		   <button type="button" class="btnvide"  data-clicked="unclicked" id='findotheruser'>
               <i class="fa fa-times-circle"></i>  Others
-          </button>
-	
+        </button>
       </div>
 	  	
   </div>
-    <div  class="lokfosear"> 
-    Searching	 <div class="process-comm">
-				 	 <!--p>Dialing</p-->
-											<div class="spinner spinnercy">
-												<div class="bounce1"></div>
-												<div class="bounce2"></div>
-												<div class="bounce3"></div>
-											</div>
-										</div><!--process-comm end-->
-     </div>
 </div>
-<script>
-$(document).ready(function(){
-    $('#buttonLogin').on('click', function(e){
 
-    $(".lokfosear").toggle();
-    $(this).toggleClass('class1')
-});
-$('.Comanda')
-.click(
-     function ()
-     {
-         $(this).hide();
-     }
-);
-});
-</script>
+<div id="loadingmessage" class="modal modov btrs ">
+  <div class="modal-content text-center modsty modsty20" style="    width: 641px!important;">
+       
+      <div class="modal-header lokfo" id="callerInfo">
+      <div><button type="button" class="close cloimg" onclick="history.back();" data-dismiss="modal">
+              <img src="http://localhost:8888/VideoChat/assets/images/close-button-.png">
+            </button></div>
+
+    <h4 class="modal-title vich"> 
+              </h4><h4 class="plsech">Looking for
+              </h4>
+            
+            
+	  </div>
+
+      <div class="modal-body pttop ">
+          <div>  
+              <div> 
+              Searching	 <div class="process-comm">
+                    <!--p>Dialing</p-->
+                                <div class="spinner spinnercy">
+                                  <div class="bounce1"></div>
+                                  <div class="bounce2"></div>
+                                  <div class="bounce3"></div>
+                                </div>
+                          </div><!--process-comm end-->
+              </div>
+          </div>
+		   
+      </div>
+	  	
+  </div>
+</div>
+
+       
+</div>
+  </div>     
+</div>
+
 <script>
 var elem = document.getElementById("myvideo");
 function openFullscreen() {

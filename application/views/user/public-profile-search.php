@@ -65,11 +65,11 @@ $user=$this->session->userdata('user_id');?>
                             <select name="age">
 							 <option value="0">All
                               </option>
-                              <option value="1">18-20 years old
+                              <option value="1">18-30 
                               </option>
-                              <option value="2">20-22 years old
+                              <option value="2">30-45 
                               </option>
-                              <option value="3">22-25 years old
+                              <option value="3">40 and above
                               </option>
                             </select>
                           </div>
@@ -116,9 +116,9 @@ $user=$this->session->userdata('user_id');?>
               <h3 class="mg64">
                  Search Results 
               </h3>
-		 <div class="row" style="width:100% !important">
+		 <div class="row" id="searchResult" style="width:100% !important">
            
-			                <?php if(!empty($results)){
+     <?php if(!empty($results)){
 $i=1;
 foreach($results as $frq){
 	
@@ -127,7 +127,8 @@ if(($frq->user_id)!=($this->session->userdata('user_id'))) {
 			  <div class="col-lg-2 col-md-2 col-sm-2 col-12">
 							<div class="company_profile_info">
 								<div class="company-up-info companyfont">								
-								<div class="clearfix"></div>
+                <div class="clearfix"></div>
+                <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>"> <div>
 									   <?php if($frq->profile_pic!=""){?>
                     <img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
                     <?php }else{?>
@@ -143,15 +144,15 @@ else
                     <?php	} ?>
                     <?php }?>
 										 <h3>
-                      <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
+                      
                         <?php echo $frq->full_name ;?>
-                      </a>
-                    </h3>
+                     
+                    </h3> </div></a>
 									 <ul>
                       <li>
                         <button type="button" class="accept-req" onclick="friendRequest(<?php echo $frq->user_id;?>)"> 
                           <i class="fa fa-check" aria-hidden="true">
-                          </i> Send request
+                          </i> Sent request
                         </button>
                       </li>
                     </ul>

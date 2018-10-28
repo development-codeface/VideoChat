@@ -65,15 +65,15 @@ class User extends CI_Controller
             
             if ($params['age'] == 1) {
                 $params['age_from'] = 18;
-                $params['age_to']   = 20;
+                $params['age_to']   = 30;
             }
             if ($params['age'] == 2) {
-                $params['age_from'] = 20;
-                $params['age_to']   = 22;
+                $params['age_from'] = 30;
+                $params['age_to']   = 45;
             }
             if ($params['age'] == 3) {
                 $params['age_from'] = 22;
-                $params['age_to']   = 24;
+                $params['age_to']   = 200;
             }
 		
             $this->data['countries'] = $this->users_model->getAllcountries();

@@ -407,8 +407,9 @@ list($date,$time)=explode(' ',$timestamp);
                         <td>
                           <i id="genders"> 
                             <?php if($mydata['gen']==1){?>Male
-                            <?php }else {?> Female 
-                            <?php }?>
+                            <?php }else if($mydata['gen']==2){?> Female 
+                            <?php }else {?> Other
+                            <?php  } ?> 
                           </i>
                         </td>
                       </tr>
@@ -1014,7 +1015,7 @@ include 'footer.php';?>
       </label>
       <!--input type="text" id="dob" name="dob" class="form-control" data-masked-input="99/99/9999" placeholder="Date of birth" maxlength="10" value="<?php  echo $mydata['birth'];?>"-->
       <input type="text" id="dob" name="dob" placeholder="Date of birth" maxlength="10" value="<?php echo date("d-m-Y", strtotime($mydata['birth']));?>"  readonly>
-      <label class="mylab">Age Privacy
+      <!--<label class="mylab">Age Privacy
       </label>
       <div class="datefm">
         <select name="age_id" id="age_id">
@@ -1026,7 +1027,7 @@ include 'footer.php';?>
         <i class="fa fa-sort-desc" aria-hidden="true">
         </i>
         </td>
-      </div>
+      </div> -->
     <div class="col-lg-12 no-pdd">
       <div class="checky-sec">
         <div class="fgt-sec">
@@ -1036,7 +1037,11 @@ include 'footer.php';?>
           </small>
         </div>
         <!--fgt-sec end-->
-        <?php   $f="";$m="";if($mydata['gender']==1){ $m="checked";}else{ $f="checked";}?>
+        <?php   $o="";$f="";$m="";
+        if($mydata['gender']==1){ 
+          $m="checked";
+          }else if($mydata['gender']==2){ $f="checked";
+          }else { $o="checked";}?>
         <div class="fgt-sec">
           <input type="radio" name="gender" id="c5" 
                  <?php echo $f;?>   value="1">
@@ -1044,7 +1049,7 @@ include 'footer.php';?>
             <span>
             </span>
           </label>
-          <small>Boy &nbsp;
+          <small>Male &nbsp;
           </small>
         </div>
         <!--fgt-sec end-->
@@ -1055,12 +1060,14 @@ include 'footer.php';?>
             <span>
             </span>
           </label>
-          <small> Girl &nbsp;
+          <small> Female &nbsp;
           </small>
         </div>
         <!--fgt-sec end-->
         <div class="fgt-sec">
-          <input type="radio" name="gender" id="c7">
+          <input type="radio" name="gender" id="c7"
+          <?php echo $o;?>   value="3">
+          
           <label for="c7">
             <span>
             </span>
@@ -1150,7 +1157,7 @@ foreach($countries as $row)
       <i class="la la-close">
       </i>
     </a>
-  </div>
+  </div> 
   <!--overview-edit end-->
 </div>
 <!--overview-box end-->

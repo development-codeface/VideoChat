@@ -1,34 +1,66 @@
 RECIVEUSER = false;
 USERNAME   = "";
+USERPREFERENCE = "";
 $( "#finduser").click(function() {
-    if(isFristLoad()){
+    if(isFristLoad()){  
+      USERPREFERENCE = 1  
         getStranger();
+    }else {
+        nextstranger();
+    } 
+  });
+
+  $( "#findmaleuser").click(function() {
+    if(isFristLoad()){ 
+      USERPREFERENCE =1    
+        getStranger(USERPREFERENCE);
+    }else {
+        nextstranger();
+    }   
+  });
+
+  $( "#findfemaleuser").click(function() {
+    if(isFristLoad()){ 
+      USERPREFERENCE =2   
+        getStranger(USERPREFERENCE);
     }else {
         nextstranger();
     }
     
   });
 
-  function getStranger(){
+  $( "#findotheruser").click(function() {
+    if(isFristLoad()){    
+      USERPREFERENCE =3
+        getStranger(USERPREFERENCE);
+    }else {
+        nextstranger();
+    }  
+  });
+
+  function getStranger(usertype){
     $("#loadingmessage").show();
     $.ajax({
         type: "POST",
             url: "getStranger",
-            data:{},
+            data:{
+              usertype: usertype
+            },
             dataType:"text", 
             success: function(result){
                 var resultObj = JSON.parse(result);
-                $("#findstranger").hide();
+                document.getElementById("findstranger").style.display = 'none';
                 disconnect();
                 TOKEN   =  resultObj.token;
-                $("#nickname").html(resultObj.nick_name);
+                $("#nickname").html(resultObj.stranger_nikename);
                 openOpentokConnection(resultObj.session_id);
                 if(typeof(resultObj["errorcode"]) == "undefined"){
                     $("#loadingmessage").hide();
                     RECIVEUSER = true;
+                    USERNAME   = resultObj.myNickName;
                 }else{
-                    RECIVEUSER = false;
-                    USERNAME   = result.myNickName;
+                    $("#loadingmessage").show();
+                    RECIVEUSER = false;   
                     strangerWaitingtimer = setTimeout(function(){
                         strangerwaitexpir();
                       }, 30000);
@@ -45,7 +77,8 @@ $( "#finduser").click(function() {
   }
   function loadNextStranger(){
       if(!isFristLoad()){
-        getStranger();
+        var type = url.searchParams.get("usertype");
+        getStranger(type);
       }else {
         document.getElementById("findstranger").style.display = 'block';
       }
@@ -53,7 +86,7 @@ $( "#finduser").click(function() {
   function getrefreshWithStranger(){
     var url = window.location.href;   
     if (isFristLoad()){
-       url += '?Next=true'
+       url += '?Next=true&usertype='+USERPREFERENCE
     }
     window.location.href = url;
   }
@@ -72,6 +105,6 @@ $( "#finduser").click(function() {
 
   function strangerwaitexpir(){
     $("#loadingmessage").hide();
-    $("#findstranger").show();
+    document.getElementById("findstranger").style.display = 'block';
     clearTimeout(strangerWaitingtimer);
   }

@@ -58,7 +58,8 @@ $( "#mobile" ).blur(function() {
   $('#Em').hide();
 }
 });
-$( "#user_name" ).blur(function() {
+
+$( "#reg_user_name" ).blur(function() {
 	var uname=this.value;
   if(uname!=""){
  $.ajax({
@@ -69,9 +70,9 @@ $( "#user_name" ).blur(function() {
         success: function(data) {
             if(data.status==1){
 				 $( "#user_name" ).val("");
-				$('#alerts').show();
+				$('#alertsU').show();
               }else{
-				$('#alerts').hide();
+				$('#alertsU').hide();
 			  }
 
         },
@@ -150,8 +151,10 @@ var age=$("#age_id").val();
 				}
 				if(gender==1){
 				$("#genders" ).html("Male");
-				}else{
+				}else if(gender==2){
 				$("#genders" ).html("Female");	
+				}else {
+					$("#genders" ).html("Other");
 				}
 				 // window.setTimeout(function(){location.reload()},1000);
 
@@ -349,7 +352,7 @@ function friendRequest(userId){
 				$("#"+userId).remove();
 				
 				
-				$("#Interest_ar" ).html("<div class='alert alert-success'> Your Request has been send </div>");
+				$("#Interest_ar" ).html("<div class='alert alert-success'> Your Request has been sent </div>");
 				 window.setTimeout(function(){location.reload()},1000);
 				}
 

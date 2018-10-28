@@ -175,23 +175,28 @@ class Profile extends CI_Controller
         
     }
     public function getStranger(){
+        $gender    = $this->input->post('usertype');
+        if (!isset($gender)) {
+            $gender  = "1"; 
+        } 
         $this->users_model->clearoldstranger();
-        $resultval = $this->users_model->getStrangerAvaiUser($this->session->userdata('user_id'));
+        $resultval = $this->users_model->getStrangerAvaiUser($this->session->userdata('user_id'),$gender);
         $opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
-        $nick_name = $resultval ['nick_name']!= null ? $resultval['nick_name'] : "" ;
+        $stranger_nickname = $resultval ['nick_name']!= null ? $resultval['nick_name'] : "" ;
         $my_name   = ""; 
         if(null != $resultval){  
             $resultval = $this->users_model->removeuserfromStranger($resultval['user_id']);
-
+            $mydetails = $this->users_model->getUserFullDetails($this->session->userdata('user_id'));
+            $resultval["myNickName"] = $mydetails['nick_name'];
         }else {
             $result = $this->users_model->stranger_update($this->session->userdata('user_id'));
             $resultval = $this->users_model->getUserFullDetails($this->session->userdata('user_id'));
-            
             $resultval["errormsg"] = "No user";
             $resultval["errorcode"] = "1";
+            $resultval["myNickName"]  = $resultval ['nick_name'];
         }
-        $resultval["myNickName"]  = $resultval["nick_name"];
-        $resultval["nick_name"]  = $nick_name;
+        $resultval['stranger_nikename'] = $stranger_nickname;
+        //$resultval["myNickName"]  = $resultval["nick_name"];
         $opntok_tokenId    = $opentok->generateToken($resultval['session_id']);
         $resultval['token']  = $opntok_tokenId ;
 
@@ -688,15 +693,15 @@ class Profile extends CI_Controller
             
             if ($params['age'] == 1) {
                 $params['age_from'] = 18;
-                $params['age_to']   = 20;
+                $params['age_to']   = 30;
             }
             if ($params['age'] == 2) {
-                $params['age_from'] = 20;
-                $params['age_to']   = 22;
+                $params['age_from'] = 30;
+                $params['age_to']   = 45;
             }
             if ($params['age'] == 3) {
-                $params['age_from'] = 22;
-                $params['age_to']   = 24;
+                $params['age_from'] = 45;
+                $params['age_to']   = 200;
             }
 		
             $this->data['countries'] = $this->users_model->getAllcountries();
@@ -727,15 +732,15 @@ class Profile extends CI_Controller
             
             if ($params['age'] == 1) {
                 $params['age_from'] = 18;
-                $params['age_to']   = 20;
+                $params['age_to']   = 30;
             }
             if ($params['age'] == 2) {
-                $params['age_from'] = 20;
-                $params['age_to']   = 22;
+                $params['age_from'] = 30;
+                $params['age_to']   = 45;
             }
             if ($params['age'] == 3) {
-                $params['age_from'] = 22;
-                $params['age_to']   = 24;
+                $params['age_from'] = 45;
+                $params['age_to']   = 200;
             }
 		
             $this->data['countries'] = $this->users_model->getAllcountries();
@@ -801,7 +806,7 @@ class Profile extends CI_Controller
         //redirect('/user/profile', "refresh");
         echo json_encode();
     }
-     public function privacy_policy()
+     public function cookies()
     {
 		$this->data['feeds']         = $this->profile_model->GetAllfeeds($this->UserId);
         $this->data['onlinef']       = $this->users_model->GetOnlineFriends($this->UserId);
@@ -814,7 +819,7 @@ class Profile extends CI_Controller
         $this->data['openToken']     = base64_encode($this->session->userdata('token'));
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
-        $this->load->view("user/privacy_policy", $this->data);
+        $this->load->view("user/cookies", $this->data);
       
       
        
@@ -832,6 +837,25 @@ class Profile extends CI_Controller
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
         $this->load->view("user/terms_conditions", $this->data);
+      
+      
+       
+    }
+
+    public function howit_work()
+    {
+		$this->data['feeds']         = $this->profile_model->GetAllfeeds($this->UserId);
+        $this->data['onlinef']       = $this->users_model->GetOnlineFriends($this->UserId);
+        $this->data['user']          = $this->users_model->userinfo($this->UserId);
+        $this->data['notifications'] = $this->users_model->notication_list($this->UserId);
+        
+        //print_r($this->data['notifications']);exit;
+        
+        
+        $this->data['openToken']     = base64_encode($this->session->userdata('token'));
+        $this->data['openSessionId'] = $this->session->userdata('openSessionId');
+        $this->data['apiKey']        = $this->config->item('opentok_key');
+        $this->load->view("user/howitworks", $this->data);
       
       
        

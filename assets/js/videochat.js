@@ -236,7 +236,7 @@ function startVideoCall(){
       stopCall();
     }, 30000);
   }else if(RECIVEUSER == true){
-    sendMessage("GOTSTRANGEUSER",{userName : "Irshad nickname"},function (){});
+    sendMessage("GOTSTRANGEUSER",{userName :USERNAME},function (){});
   }
 }
 

@@ -176,7 +176,7 @@
 													</div>
 												</div>
 													<div class="col-lg-12 ">
-												<div class="alert alert-danger"  id="alertE" style="display:none">Email Already Exist !!!</div> 
+<div class="alert alert-danger"  id="alertE" style="display:none">Email Already Exist !!!</div> 
 												
 												</div>
 												<div class="clearfix"></div>
@@ -205,12 +205,11 @@
 												
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="text" name="u_name" placeholder="Username *" id="user_name">
+														<input type="text" name="u_name" placeholder="Username *" id="reg_user_name">
 														<i class="la la-user"></i>
 														</div>
-													
 												</div>
-													<div class="alert alert-danger"  id="alerts" style="display:none">User Name Already Exist !!!</div> 
+												<div class="alert alert-danger"  id="alertsU" style="display:none">User Name Already Exist !!!</div> 
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
 														<input type="text" name="nick_name" placeholder="Nickname * (Private name for your Stranger Chat/list)" id="nick_name">
@@ -253,11 +252,11 @@
 			 
 					<ul>
 						
-							<li><a href="<?php echo base_url(); ?>index.php/Auth/privacy_policy" title="">Privacy Policy</a></li>
+							<li><a href="<?php echo base_url(); ?>index.php/Auth/cookies" title="">Cookies</a></li>
 				
-						<li><a href="<?php echo base_url(); ?>index.php/Auth/terms_conditions" title="">Terms Conditions</a></li>
-						<li><a href="">How it works </a></li>
-						<li><a href="" data-toggle="modal" data-target="#Contact">Contact </a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/Auth/terms_conditions" title="">User Terms & Privacy Policy</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/Auth/howitwork">How it works </a></li>
+						<li><a href="" data-toggle="modal" data-target="#Contact">Contact Us</a></li>
 					</ul>
 					 
 				 

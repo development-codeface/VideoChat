@@ -2678,7 +2678,10 @@ color: #464242;}
     right: 58%!important;display: contents;
 
 }
-.lokfosear{   display:none; color: #4f5963;
+#loadingmessage {
+	display: none;
+}
+.lokfosear{    color: #4f5963;
     font-size: 18px;
     font-weight: 800;
     margin-left: 35%;
@@ -3817,8 +3820,10 @@ input:checked + .slider:before {
     float: l;
     height: 14px!important;
     width: 26px!important;}
-	.aqw{float: left!important;
-    color: #4f596 !important;}
+.aqw{
+	float: left!important;
+	color: #4f5960 !important;
+}
 .sn-field > i {
 	position: absolute;
 	top: 42px;
@@ -9201,6 +9206,8 @@ button.close:hover {
 
 }
 
+
+
 /* Large screens ----------- */
 @media only screen  and (min-width : 1824px) {
     .min8{    min-height: 799px;}
@@ -9210,4 +9217,9 @@ button.close:hover {
 	#chatHistory{
 	height: 812px;}
 /* Styles */
+}
+
+/* Hide chat for work around **/
+.chatq {
+	display: none;
 }
