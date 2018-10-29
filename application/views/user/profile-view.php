@@ -23,7 +23,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
                   <?php if($mydata['profile_pic']!=""){?>
                   <img src="<?php echo base_url() .'uploads/profile_pic/'.$mydata['profile_pic'] ;?>" alt="">
                   <?php }else{?>
-                  <?php if($mydata['gender']==1)
+                  <?php if($mydata['gen']==1)
 {
 ?>
                   <img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
@@ -41,6 +41,44 @@ else
                       </span>
                     </li>
                   </ul>
+				  
+				  
+				  
+				  
+				    <ul class="myprf">
+				
+				  <li><i class="fa fa-male" aria-hidden="true"></i>
+
+      <?php if($mydata['gen']==1)
+{
+?>
+                 <label>Male </label>
+                  <?php
+}
+else if($mydata['gen']==2)
+{ ?>
+                  <label>Female </label>
+                  <?php	} 
+				  
+				  else 
+{ ?>
+                  <label>Others </label>
+                  <?php	} ?>
+
+
+				  </li>
+				    <li id="obs"><i class="fa fa-map-marker" aria-hidden="true">
+                      </i>    <?php  echo $mydata['country'] ;?> </li>
+				  <!--li><i class="fa fa-female" aria-hidden="true"></i> Female </li-->
+				  </ul>
+				
+					
+					
+				  
+				  
+				  
+				  
+				  
                   <?php $idu=$this->session->userdata('user_id');
 $ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
 				  <input type="text" name="pa" id="pa" hidden value="<?php echo $idu; ?>">
@@ -107,6 +145,14 @@ $ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('
 		
                   <?php } ?>
                 </div>
+				
+			
+				
+				  
+					
+				
+				
+				
                 <!--user-pro-img end-->
               </div>
               <!--user_profile end-->
@@ -148,14 +194,14 @@ $ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('
                         </span>
                       </a>
                     </li>
-                    <li data-tab="my-frd-list">
+                    <!--li data-tab="my-frd-list">
                       <a href="#" title="">
                         <i class="fa fa-address-card col-sdd" aria-hidden="true">
                         </i>
                         <span>Friends list
                         </span>
                       </a>
-                    </li>
+                    </li-->
                     <!--li data-tab="payment-dd">
 <a href="#" title="">
 <i class="fa fa-money" aria-hidden="true"></i>

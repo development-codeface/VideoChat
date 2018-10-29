@@ -88,15 +88,15 @@ $user=$this->session->userdata('user_id');?>
 												
 												?>
 										<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="company_profile_info">
+							<div class="company_profile_info" id="un_<?php echo $frq->user_id;?>">
 								<div class="company-up-info">
 								<?php if( $frq->status==1){?>
 								<i class="fa fa-circle msg-online" aria-hidden="true"> <span>Online</span></i><?php }else{?>
 								<i class="fa fa-circle msg-off" aria-hidden="true"> <span>Offline</span></i><?php }?>
 								<div class="ed-opts form_wrapper unfr">
-                                                    <a href="" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                    <a title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
                                                     <ul class="ed-options unfrhide" data-id="<?php echo $frq->user_id;?>"    style="display: none;">
-                                                                                                                            <li><a href="" title=""><i class="fa fa-user-times " aria-hidden="true"></i> &nbsp; Unfriend</a></li>
+                                                                                                                            <li><a  title=""><i class="fa fa-user-times " aria-hidden="true"></i> &nbsp; Unfriend</a></li>
                                                         
                                                                                                         </ul>
                                                 </div>
@@ -130,11 +130,11 @@ $user=$this->session->userdata('user_id');?>
 									
 									<h3><a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>"><?php echo $frq->full_name;?> </a></h3>
 									
-										<ul class="job-dt jobint"><li>Interest :  <a href="" title=""> Girl</a></li></ul>
+										<ul></ul>
 										<ul>
 										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend msgch"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
 										
-										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
+										<!--li><a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li-->
 									</ul>
 												
 									<ul>
@@ -169,15 +169,15 @@ $user=$this->session->userdata('user_id');?>
 												?>
 									
 							<div class="col-lg-3 col-md-4 col-sm-6 col-12">
-							<div class="company_profile_info">
+							<div class="company_profile_info" id="un_<?php echo $frq->user_id;?>">
 								<div class="company-up-info">
 								<?php if( $frq->status==1){?>
 								<i class="fa fa-circle msg-online" aria-hidden="true"> <span>Online</span></i><?php }?>
 								
 								<div class="ed-opts form_wrapper unfr">
-                                                    <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
+                                                    <a  title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
                                                      <ul class="ed-options unfrhide" data-id="<?php echo $frq->user_id;?>"    style="display: none;">
-                                                                                                                            <li><a href="" title=""><i class="fa fa-user-times " aria-hidden="true"></i> &nbsp; Unfriend</a></li>
+                                                                                                                            <li><a  title=""><i class="fa fa-user-times " aria-hidden="true"></i> &nbsp; Unfriend</a></li>
                                                         
                                                                                                         </ul>
                                                 </div>
@@ -205,10 +205,10 @@ $user=$this->session->userdata('user_id');?>
 									</a>
 										<h3><a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>"><?php echo $frq->full_name;?></a></h3>
 										
-								<ul class="job-dt jobint"><li>Interest :  <a href="" title=""> Girl</a></li></ul>
+								<ul></ul>
 										<ul>
 										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="" class="follow msgch" data-id="<?php $frq->user_id; ?>"><i class="fa fa-video-camera " aria-hidden="true"></i></a></li>
-										<li><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li>
+										<!--li><a href="<?php echo base_url(); ?>index.php/Profile/messages" title="" class="hire-us"><i class="fa fa-comments-o" aria-hidden="true"></i></a></li-->
 									</ul>
 								</div>
 			
@@ -234,8 +234,8 @@ $user=$this->session->userdata('user_id');?>
 											foreach($friendsRequest as $frq){?>
 										
 										
-							  				<div class="request-details" id="<?php echo $frq->user_id;?>">
-							  					<div class="noty-user-img">
+							  				<div class="request-details" id="imr_<?php echo $frq->user_id;?>">
+							  		   <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">			<div class="noty-user-img">
 												 <?php if($frq->profile_pic!=""){?>
 											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
 											<?php }else{?>
@@ -257,10 +257,11 @@ $user=$this->session->userdata('user_id');?>
 							  					<div class="request-info">
 							  						<h3><?php echo $frq->full_name ;?></h3>
 							  						
-							  					</div>
+							  					</div></a>
 							  					<div class="accept-feat">
 							  						<ul>
-							  							<li><button type="button" class="accept-req" onclick="friendAccept(<?php echo $frq->user_id;?>)">Accept</button></li>
+							  						  </a>
+                   	<li><button type="button" class="accept-req" onclick="friendAccept(<?php echo $frq->user_id;?>)">Accept</button></li>
 							  							<li><button type="button" class="close-req" data-id="<?php echo $frq->user_id;?>"><i class="la la-close"></i></button></li>
 							  						</ul>
 							  					</div><!--accept-feat end-->
@@ -437,10 +438,15 @@ $(document).ready(function() {
 				url: "../Profile/unfriend",
 				data:{uid:uid},
 				dataType:"text", 
-				success: function(result){
-					var resultObj = JSON.parse(result)
-			
+					success: function(result){
+					
+				
+						$("#un_"+uid).remove();
+					;
+					/*var resultObj = JSON.parse(result)
+			 window.setTimeout(function(){location.reload()},1000);*/
 				}               
+	            
 		}); 		
 		}); 
 	
@@ -455,10 +461,15 @@ $(document).ready(function() {
 				url: "../Profile/reject_request",
 				data:{uid:uid},
 				dataType:"text", 
-				success: function(result){
-					var resultObj = JSON.parse(result)
-			 window.setTimeout(function(){location.reload()},1000);
+					success: function(result){
+					
+				
+						$("#imr_"+uid).remove();
+
+					/*var resultObj = JSON.parse(result)
+			 window.setTimeout(function(){location.reload()},1000);*/
 				}               
+				
 		}); }); 
 </script>
 

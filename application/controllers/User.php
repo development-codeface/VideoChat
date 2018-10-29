@@ -161,13 +161,19 @@ class User extends CI_Controller
         $params['nick_name']  = $this->input->post('nick_name');
         $dob                  = $this->input->post('dob');
         $age                  = $this->input->post('age');
-        $dob                  = date('Y-m-d', strtotime($dob));
+       //
         $gen                  = $this->input->post('gender');
         $params['visibility'] = $this->input->post('visibility');
 		
 				$from = new DateTime($dob);
 				$to   = new DateTime('today');
-				$ageuser= $from->diff($to)->y;
+				$ageus= $from->diff($to)->y;
+				
+			 
+    $diff = (date('Y') - date('Y',strtotime($dob)));
+  $ageuser= $diff;
+				 $dob                  = date('Y-m-d', strtotime($dob));
+				
 				
         $return               = $this->users_model->UpdateBasic($param, $params, $this->UserId, $dob, $gen, $age,$ageuser);
         if (!empty($return)) {

@@ -326,9 +326,10 @@ function friendAccept(userId){
 		dataType: 'json',
         success: function(data) {
             if(data.status==1){
-				$("#"+userId).remove();
-				location.reload();
-
+				
+				//$("#"+userId).remove();
+			//	location.reload();
+$("#imr_"+frinedId).remove();
 				}
 
         },

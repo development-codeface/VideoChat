@@ -50,6 +50,7 @@ class Profile extends CI_Controller
         $this->data['user']          = $this->users_model->userinfo($this->UserId);
         $this->data['image']         = $this->users_model->imageinfo($this->UserId);
         $this->data['countries']     = $this->users_model->getAllcountries();
+		$this->data['intrest']     = $this->users_model->getAllintrest();
         //print_r($this->UserId);exit;
         $this->data['feeds']         = $this->profile_model->GetUserfeeds($this->UserId);
 		//print_r($this->data['feeds']);exit;
@@ -696,11 +697,11 @@ class Profile extends CI_Controller
                 $params['age_to']   = 30;
             }
             if ($params['age'] == 2) {
-                $params['age_from'] = 30;
+                $params['age_from'] = 31;
                 $params['age_to']   = 45;
             }
             if ($params['age'] == 3) {
-                $params['age_from'] = 45;
+                $params['age_from'] = 46;
                 $params['age_to']   = 200;
             }
 		
@@ -735,11 +736,11 @@ class Profile extends CI_Controller
                 $params['age_to']   = 30;
             }
             if ($params['age'] == 2) {
-                $params['age_from'] = 30;
+                $params['age_from'] = 31;
                 $params['age_to']   = 45;
             }
             if ($params['age'] == 3) {
-                $params['age_from'] = 45;
+                $params['age_from'] = 46;
                 $params['age_to']   = 200;
             }
 		

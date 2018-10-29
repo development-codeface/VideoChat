@@ -212,7 +212,7 @@
 												<div class="alert alert-danger"  id="alertsU" style="display:none">User Name Already Exist !!!</div> 
 												<div class="col-lg-12 no-pdd">
 													<div class="sn-field">
-														<input type="text" name="nick_name" placeholder="Nickname * (Private name for your Stranger Chat/list)" id="nick_name">
+														<input type="text" name="nick_name" placeholder="Nickname (this will only appear on your stranger chat)*" id="nick_name">
 														<i class="la la-user"></i>
 														</div>
 													

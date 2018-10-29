@@ -18,7 +18,7 @@ class Profile_model extends CI_Model
         $this->db->join('user_feed uf', 'uf.user_id= us.user_id', 'INNER');
         $this->db->join('countries cf', 'cf.c_id= up.country_id', 'LEFT');
         //$this->db->join('hide_post hd', 'hd.feed_id = uf.id','LEFT');
-        $this->db->where("uf.id NOT IN (SELECT feed_id FROM hide_post WHERE user_id =$userId)", NULL, FALSE);
+        $this->db->where("um.status NOT IN (SELECT status FROM friends WHERE status =0)", NULL, FALSE);
         
         $this->db->where('um.user_id', $userId);
         $this->db->or_where('us.user_id', $userId);

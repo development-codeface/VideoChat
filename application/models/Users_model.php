@@ -599,6 +599,16 @@ class Users_model extends CI_Model
         return $query->result();
         
         
+    } function getAllintrest()
+    {
+        
+        
+        $query = $this->db->query('SELECT * FROM user_intrest');
+        
+        
+        return $query->result();
+        
+        
     }
     function friendage($uid)
     {
