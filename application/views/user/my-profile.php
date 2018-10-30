@@ -661,7 +661,7 @@ foreach($photos as $ph){?>
 					<ul class="nav nav-tabs myreq">
 						<li class="active">
 							<a href="#tab_default_1" data-toggle="tab">
-							Requests Send </a>
+							Requests Sent </a>
 						</li>
 						<li>
 							<a href="#tab_default_2" data-toggle="tab">
@@ -678,7 +678,7 @@ foreach($photos as $ph){?>
 $i=1;
 foreach($friendsRequest as $frq){?>
                       <div class="request-details request-detailsch" id="imr_<?php echo $frq->user_id;?>">
-                        <div class="noty-user-img" id="imgg_<?php echo $frq->user_id;?>">
+                        <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">		   <div class="noty-user-img" id="imgg_<?php echo $frq->user_id;?>">
                           <?php if($frq->profile_pic!=""){?>
                           <img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
                           <?php }else{?>
@@ -698,7 +698,7 @@ else
                           <h3>
                             <?php  echo $frq->full_name ;?>
                           </h3>
-                        </div>
+                        </div></a>
                         <div class="accept-feat">
                           <ul>
                             <li>
@@ -738,7 +738,7 @@ foreach($sendRequest as $frq){
 	
 	?>
                   <div class="request-details request-detailsch" id="req_<?php echo $frq->user_id;?>">
-                    <div class="noty-user-img" id="img_<?php echo $frq->user_id;?>">
+                <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">		       <div class="noty-user-img" id="img_<?php echo $frq->user_id;?>">
                     	<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
 									
 									<?php if($frq->profile_pic!=""){?>
@@ -758,7 +758,6 @@ foreach($sendRequest as $frq){
 											<?php }?>
 									
 									
-									</a>
                     </div>
                     <div class="request-info" id="nam_<?php echo $frq->user_id;?>">
 					
@@ -766,7 +765,7 @@ foreach($sendRequest as $frq){
                         <?php echo $frq->full_name ;?>
                       </h3>
                       <!--<span>Graphic Designer</span>-->
-                    </div>
+                    </div></a>
                     <div class="accept-feat">
                       <ul>
                         <li>

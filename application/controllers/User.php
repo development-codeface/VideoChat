@@ -165,9 +165,9 @@ class User extends CI_Controller
         $gen                  = $this->input->post('gender');
         $params['visibility'] = $this->input->post('visibility');
 		
-				$from = new DateTime($dob);
-				$to   = new DateTime('today');
-				$ageus= $from->diff($to)->y;
+			//	$from = new DateTime($dob);
+			//	$to   = new DateTime('today');
+				//$ageus= $from->diff($to)->y;
 				
 			 
     $diff = (date('Y') - date('Y',strtotime($dob)));

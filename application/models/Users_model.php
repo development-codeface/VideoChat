@@ -599,7 +599,8 @@ class Users_model extends CI_Model
         return $query->result();
         
         
-    } function getAllintrest()
+    }
+	function getAllintrest()
     {
         
         

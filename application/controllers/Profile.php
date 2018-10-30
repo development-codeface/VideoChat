@@ -480,10 +480,10 @@ class Profile extends CI_Controller
     public function hideFeed()
     {
         
-        $id  = $this->uri->segment('3');
-        $uid = $this->uri->segment('4');
+        $fid = $this->input->post('fid');
+        $uid = $this->session->userdata('user_id');
         
-        $result = $this->profile_model->hideFeed($id, $uid);
+        $result = $this->profile_model->hideFeed($fid, $uid);
         redirect('/user/profile', "refresh");
     }
     public function getprofile()

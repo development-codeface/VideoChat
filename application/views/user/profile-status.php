@@ -195,7 +195,7 @@ list($date,$time)=explode(' ',$timestamp);
 
             <form name="hideform" id="hideform" class="">
                	<?php $fd->hide_user=$this->session->userdata('user_id'); ?>
-				   <button type="submit" class="btn btn-danger btn-success padc "  style="color:white;"><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->hide_user;?>" style="color:white;">Yes  </a></button>
+				   <button type="button" class="btn btn-danger btn-success padc frc "  data-id="<?php echo $fd->id;?>" style="color:white;"><a href="" style="color:white;">Yes  </a></button>
 				   <button type="submit" class="btn btn-danger btn-default  " data-dismiss="modal">   No </button>
                 <!--a href="<!?php echo base_url()." index.php/User/Profile/ "?>">	<button type="button" class="cancel">Cancel</button></a-->
 				</form>
@@ -458,7 +458,22 @@ function getFeeds(intValue) {
 			}                
 	}); 				
 }
-
+  $('.frc').click(function() { 
+	var fid =$(this).data('id'); 
+				$.ajax({
+			type: "POST",
+				url: "../Profile/hideFeed",
+				data:{fid:fid},
+				dataType:"text", 
+				success: function(result){
+					
+				
+					
+				}               
+		}); 		
+			             
+				
+		}); 
 
 </script>
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
