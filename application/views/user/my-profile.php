@@ -672,63 +672,7 @@ foreach($photos as $ph){?>
 					<div class="tab-content">
 						<div class="tab-pane active" id="tab_default_1">
 						
-						
-						 <div class="requests-list widt100">
-                      <?php if(!empty($friendsRequest)){
-$i=1;
-foreach($friendsRequest as $frq){?>
-                      <div class="request-details request-detailsch" id="imr_<?php echo $frq->user_id;?>">
-                        <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">		   <div class="noty-user-img" id="imgg_<?php echo $frq->user_id;?>">
-                          <?php if($frq->profile_pic!=""){?>
-                          <img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
-                          <?php }else{?>
-                          <?php if($frq->gender==1)
-{
-?>
-                          <img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
-                          <?php
-}
-else
-{ ?>
-                          <img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
-                          <?php	} ?>
-                          <?php }?>
-                        </div>
-                        <div class="request-info" id="namm_<?php echo $frq->user_id;?>">
-                          <h3>
-                            <?php  echo $frq->full_name ;?>
-                          </h3>
-                        </div></a>
-                        <div class="accept-feat">
-                          <ul>
-                            <li>
-                              <button type="button" class="accept-req" id="friendAccept_<?php echo $frq->user_id;?>" onclick="friendAccept(<?php echo $frq->user_id;?>)">Accept
-                              </button>
-                            </li>
-                            <li>
-                              <button type="button" data-id="<?php echo $frq->user_id;?>" id="close-req_<?php echo $frq->user_id;?>" class="close-req ">
-                                <i class="la la-close">
-                                </i>
-                              </button>
-                            </li>
-                          </ul>
-                        </div>
-                        <!--accept-feat end-->
-                      </div>
-                      <!--request-detailse end-->
-                      <?php }}
-else{ ?>
-                      <!--	<div class="download-box alert">
-<div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
-</div> -->
-                      <?php }?>
-                    </div>
-						
-						
-						
-						</div>
-						<div class="tab-pane" id="tab_default_2">
-						
+					
 						
 						
 						    <div class="requests-list widt100">
@@ -788,6 +732,62 @@ foreach($sendRequest as $frq){
 						
 						
 						
+						</div>
+						<div class="tab-pane" id="tab_default_2">
+						
+												 <div class="requests-list widt100">
+                      <?php if(!empty($friendsRequest)){
+$i=1;
+foreach($friendsRequest as $frq){?>
+                      <div class="request-details request-detailsch" id="imr_<?php echo $frq->user_id;?>">
+                        <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">		   <div class="noty-user-img" id="imgg_<?php echo $frq->user_id;?>">
+                          <?php if($frq->profile_pic!=""){?>
+                          <img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
+                          <?php }else{?>
+                          <?php if($frq->gender==1)
+{
+?>
+                          <img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+                          <?php
+}
+else
+{ ?>
+                          <img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+                          <?php	} ?>
+                          <?php }?>
+                        </div>
+                        <div class="request-info" id="namm_<?php echo $frq->user_id;?>">
+                          <h3>
+                            <?php  echo $frq->full_name ;?>
+                          </h3>
+                        </div></a>
+                        <div class="accept-feat">
+                          <ul>
+                            <li>
+                              <button type="button" class="accept-req" id="friendAccept_<?php echo $frq->user_id;?>" onclick="friendAccept(<?php echo $frq->user_id;?>)">Accept
+                              </button>
+                            </li>
+                            <li>
+                              <button type="button" data-id="<?php echo $frq->user_id;?>" id="close-req_<?php echo $frq->user_id;?>" class="close-req ">
+                                <i class="la la-close">
+                                </i>
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
+                        <!--accept-feat end-->
+                      </div>
+                      <!--request-detailse end-->
+                      <?php }}
+else{ ?>
+                      <!--	<div class="download-box alert">
+<div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
+</div> -->
+                      <?php }?>
+                    </div>
+						
+						
+						
 						
 						
 						
@@ -824,8 +824,8 @@ foreach($sendRequest as $frq){
 $i=1;
 
 foreach($friendList as $frq){?> 
-                    <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                      <div class="company_profile_info " id="un_<?php echo $frq->user_id;?>">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-12"  id="un_<?php echo $frq->user_id;?>">
+                      <div class="company_profile_info " >
                         <div class="company-up-info">	
                           <?php if( $frq->status==1){?>
                           <i class="fa fa-circle msg-online" aria-hidden="true"> 

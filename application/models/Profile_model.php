@@ -134,12 +134,16 @@ class Profile_model extends CI_Model
     
     //update feeds
     
-    public function InserFeeds($params)
+    public function InserFeeds($params,$file_name)
     {
         $this->db->insert('user_feed', $params);
         $user_id = $this->db->insert_id();
         $error   = $this->db->error();
-        return true;
+		
+       
+ $query = $this->db->query("INSERT INTO user_feed_image (image_name ,feed_id)
+              VALUES ('$file_name',$user_id) ");
+	   return true;
         
     }
     
