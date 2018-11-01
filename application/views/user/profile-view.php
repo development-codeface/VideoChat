@@ -80,7 +80,7 @@ else if($mydata['gen']==2)
 				  
 				  
                   <?php $idu=$this->session->userdata('user_id');
-$ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
+$ab=	$mydata['user_id'];		$i=0;	  //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
 				  <input type="text" name="pa" id="pa" hidden value="<?php echo $idu; ?>">
 				  <?php
 				  
@@ -99,13 +99,28 @@ $ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('
 					 {
 						   $i=2;
 						  
+					  }
+
+
+					  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=0"); 
+         $result=$query->result();
+                    
+                     if($result==true)
+					 {
+						   $i=3;
+						  
 					  } 
-					  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu "); 
+					  
+					  
+					  
+					  
+					  
+					  $query = $this->db->query("select * from  friends  where NOT  (user_id=$idu and friend_id=$ab)  "); 
          $result=$query->result();
                     
                      if($result==false)
 					 {
-						   $i=3;
+						   $i=4;
 						  
 					  }
                       
@@ -133,6 +148,18 @@ $ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('
 		
 		
 		  <?php } else if($i==3) {?>
+		
+		
+		
+		<br><br><br>
+                  
+                           <button type="button" id="canss" name="canss" class="sendreq confi" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
+                          </i> Confirm Request
+        </button>
+		
+		
+		
+                  <?php } else if($i==4) {?>
 		
 		
 		
@@ -1208,6 +1235,29 @@ include 'footer.php';?>
 		}); 		
 			             
 				
+		}); 
+
+
+		$('.confi').click(function() { 
+	      var Uid = $("#pa").val();
+	var frinedId =$(this).data('id'); 
+	
+		$.ajax({
+		type: "POST",
+		url:site_url+"User/AccetFriends",
+		data:{Uid:Uid,frinedId:frinedId},
+		dataType: 'json',
+        success: function(data) {
+            if(data.status==1){
+				
+				//$("#"+userId).remove();
+				location.reload();
+
+				}
+
+        },
+
+		});		
 		}); 
 
 </script>

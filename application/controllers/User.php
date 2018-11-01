@@ -163,19 +163,40 @@ class User extends CI_Controller
         $age                  = $this->input->post('age');
        //
         $gen                  = $this->input->post('gender');
-        $params['visibility'] = $this->input->post('visibility');
+     //   $params['visibility'] = $this->input->post('visibility');
+		
+	/*	echo $dob;
+		echo $age;
+		echo $gen;
+		print_r($param);	print_r($params);exit;*/
+		
+		
 		
 			//	$from = new DateTime($dob);
 			//	$to   = new DateTime('today');
 				//$ageus= $from->diff($to)->y;
 				
 			 
-    $diff = (date('Y') - date('Y',strtotime($dob)));
+  /*  $diff = (date('Y') - date('Y',strtotime($dob)));
   $ageuser= $diff;
-				 $dob                  = date('Y-m-d', strtotime($dob));
+				 $dob                  = date('Y-m-d', strtotime($dob));*/
+				 
+				 
+				  $now = date('d-m-Y');
+				      $t = $dob;          
+			    	  $val =  explode("/",$dob);
+				
+                  $tdye =  $val[2]; 
+			       $val1 =  explode("-",$now);	
+			
+                   $nw =  $val1[2] ;			 
+			     	$age=$nw- $tdye ;
+					 $dobs = $this->input->post("dob"); 
+			$dobs=  $val[2]."/".  $val[1]."/".  $val[0];
+$ageuser=$age;
 				
 				
-        $return               = $this->users_model->UpdateBasic($param, $params, $this->UserId, $dob, $gen, $age,$ageuser);
+        $return               = $this->users_model->UpdateBasic($param, $params, $this->UserId, $dobs, $gen, $age,$ageuser);
         if (!empty($return)) {
             echo json_encode(array(
                 'status' => 1, 'ageuser' => $ageuser

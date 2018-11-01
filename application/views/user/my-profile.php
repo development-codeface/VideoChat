@@ -419,7 +419,7 @@ list($date,$time)=explode(' ',$timestamp);
                         <td>
                           <i id="dobs"> 
 						
-                            <?php echo date("m-d-Y", strtotime($mydata['birth']));?>
+                            <?php echo date("d-m-Y", strtotime($mydata['birth']));?>
                           </i>
                         </td>
                       </tr>
@@ -1028,13 +1028,13 @@ include 'footer.php';?>
         </div>
         <!--fgt-sec end-->
         <?php   $o="";$f="";$m="";
-        if($mydata['gender']==1){ 
+        if($mydata['gen']==1){ 
           $m="checked";
-          }else if($mydata['gender']==2){ $f="checked";
+          }else if($mydata['gen']==2){ $f="checked";
           }else { $o="checked";}?>
         <div class="fgt-sec">
           <input type="radio" name="gender" id="c5" 
-                 <?php echo $f;?>   value="1">
+                 <?php echo $m;?>   value="1">
           <label for="c5">
             <span>
             </span>
@@ -1045,7 +1045,7 @@ include 'footer.php';?>
         <!--fgt-sec end-->
         <div class="fgt-sec">
           <input type="radio" name="gender" id="c6" 
-                 <?php echo $m;?>   value="2">
+                 <?php echo $f;?>   value="2">
           <label for="c6">
             <span>
             </span>
@@ -1467,10 +1467,11 @@ $(document).ready(function() {
 					  
 					   $('#checkbox11').change(function () {				
     var status = $(this).val();
+//	alert(status);
 	  //var uid =$(this).data('id');
     $.ajax({
       type: "POST",
-      url: "../Profile/update_age_privacy",
+     url: "../Profile/update_age_privacy",
       data:{profilestatus:status},
       dataType:"text", 
       success: function(result){
