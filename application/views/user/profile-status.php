@@ -10,25 +10,57 @@ $user=$this->session->userdata('user_id');?>
 		<div class="row">
 		
 		<div class="col-md-8">
-		
+			<form method="post" action="<?php echo base_url(); ?>index.php/Profile/postFeed" name="signupform" id="signupform" enctype="multipart/form-data" class="form-horizontal">
+												
 		<div class="post-bar" style="background:white;">
 																						<div class="tab2" role="tabpanel">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs2" role="tablist">
                     <li role="presentation" class="active"><a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Write post</a></li>
        <li role="presentation"><a href="#"><i class="fa fa-camera" aria-hidden="true"></i>  <label for="file-4" class="pointpho"><span>Photos</span></label></a></li>
-                    <li role="presentation"><a href="#"><i class="fa fa-file-video-o" aria-hidden="true"></i>Videos</a></li>
+                  
+				  <li role="presentation"><a href="#"><i class="fa fa-file-video-o" aria-hidden="true"></i>Videos</a></li>
                 </ul>
              
             </div>
-					<input type="file" name="file-4[]" id="file-4" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple />
-						<label for="file-4"><span></span></label>
-												<form method="post" action="<?php echo base_url(); ?>index.php/Profile/postFeed" name="signupform" id="signupform">
+					
+						
+						
+						
+						
+						
+						
+						
+						
+					
+
+    	
+						
+						
+						
+											
+												
+												
+												
+												
+						
+						
+												
+												
+												
 										<input type='text' name="userid" id="userid" value='<?php echo $user; ?>' hidden >
 												<div class="job_descp">
 													<div class="cp-field">
+												<input type="file" name="file-4" id="file-4" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple />
+					
+						<label for="file-4" id="abc" name="abc"><span></span></label>
+								
+												<textarea placeholder="Write something here..." name="feeds" id="feeds" required >
 												
-												<textarea placeholder="Write something here..." name="feeds" id="feeds" required ></textarea>
+												
+													
+												
+												</textarea>
 												
 											</div>
 										
@@ -38,6 +70,12 @@ $user=$this->session->userdata('user_id');?>
 												<button type="submit" name="register" class="btn btn-success">post</button>
 												</div>
 												</form>
+												
+												
+												
+												
+												
+												
 											</div>
 											<?php  if(!empty($feeds)){
 												foreach($feeds as $fd){?>
@@ -195,7 +233,7 @@ list($date,$time)=explode(' ',$timestamp);
 
             <form name="hideform" id="hideform" class="">
                	<?php $fd->hide_user=$this->session->userdata('user_id'); ?>
-				   <button type="submit" class="btn btn-danger btn-success padc "  style="color:white;"><a href="<?php echo base_url()."index.php/Profile/hideFeed/".$fd->id.'/'.$fd->hide_user;?>" style="color:white;">Yes  </a></button>
+				   <button type="button" class="btn btn-danger btn-success padc frc "  data-id="<?php echo $fd->id;?>" style="color:white;"><a href="" style="color:white;">Yes  </a></button>
 				   <button type="submit" class="btn btn-danger btn-default  " data-dismiss="modal">   No </button>
                 <!--a href="<!?php echo base_url()." index.php/User/Profile/ "?>">	<button type="button" class="cancel">Cancel</button></a-->
 				</form>
@@ -481,7 +519,22 @@ function getFeeds(intValue) {
 			}                
 	}); 				
 }
-
+  $('.frc').click(function() { 
+	var fid =$(this).data('id'); 
+				$.ajax({
+			type: "POST",
+				url: "../Profile/hideFeed",
+				data:{fid:fid},
+				dataType:"text", 
+				success: function(result){
+					
+				
+					
+				}               
+		}); 		
+			             
+				
+		}); 
 
 </script>
 <audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>

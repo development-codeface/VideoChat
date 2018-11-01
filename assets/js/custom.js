@@ -113,17 +113,19 @@ var age=$("#age_id").val();
   var nick_name=$("#nick_name" ).val();
   var dob=$("#dob" ).val();
   var gender=$('input:radio[name=gender]:checked').val();
+  alert(gender);
  // var visibility=$("#visibility" ).val();
-  var visibility = $('#visibility').is(':checked'); 
+ // var visibility = $('#visibility').is(':checked'); 
 
   if(full_name!=""){
     $.ajax({
 		type: "POST",
 		url:site_url+"User/UpdateBasic",
-		data:'full_name='+full_name +"&nick_name="+nick_name+"&dob="+dob+"&gender="+gender+"&visibility="+visibility+"&age="+age,
+		data:'full_name='+full_name +"&nick_name="+nick_name+"&dob="+dob+"&gender="+gender+"&age="+age,
 		dataType: 'json',
 
         success: function(data) {
+			
            if(data.status==1){
 				 $("#experience-box").removeClass("open");
 				$(".wrapper").removeClass("overlay");
@@ -135,20 +137,7 @@ var age=$("#age_id").val();
 				$("#ager" ).html(data.ageuser);
 				var container = $('#visib');
 
-				if(visibility==true){
-
-				$("#visib" ).html('Public');
 				
-					
-				}else{
-				
-					$("#visib" ).html('Private');
-				}
-				 if(age==1){
-				$("#age_ar" ).html("public");
-				}else{
-				$("#age_ar" ).html("private");	
-				}
 				if(gender==1){
 				$("#genders" ).html("Male");
 				}else if(gender==2){
@@ -326,9 +315,10 @@ function friendAccept(userId){
 		dataType: 'json',
         success: function(data) {
             if(data.status==1){
-				$("#"+userId).remove();
-				location.reload();
-
+				
+				//$("#"+userId).remove();
+			//	location.reload();
+$("#imr_"+frinedId).remove();
 				}
 
         },

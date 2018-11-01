@@ -67,9 +67,9 @@ $user=$this->session->userdata('user_id');?>
                               </option>
                               <option value="1">18-30 
                               </option>
-                              <option value="2">30-45 
+                              <option value="2">31-45 
                               </option>
-                              <option value="3">40 and above
+                              <option value="3">46 and above
                               </option>
                             </select>
                           </div>

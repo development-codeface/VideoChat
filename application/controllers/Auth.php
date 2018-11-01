@@ -12,7 +12,7 @@ class Auth extends   CI_Controller {
 	parent::__construct();
 	//error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 	$this->load->library(array('session', 'upload','form_validation','Facebook'));
-	$this->load->helper(array('url', 'html', 'form','cookie'));
+	$this->load->helper(array('url', 'html', 'date', 'form','cookie'));
 	 $this->load->model('Users_model', 'obj_model', TRUE);  
    $this->load->helper('date');    
     }
@@ -143,12 +143,26 @@ class Auth extends   CI_Controller {
 				$full_name = $first. " " . $last;
                 $dob = $this->input->post("dob"); 
 				$nick = $this->input->post("nick_name");
-                $dob=date('Y-m-d', strtotime($dob))   ;
-				$from = new DateTime($dob);
+             //   $dob=date('Y-m-d', strtotime($dob))   ;
+			/*	$from = new DateTime($dob);
 				$to   = new DateTime('today');
-				$age= $from->diff($to)->y;
+				$age= $from->diff($to)->y;*/
+			
+					 $now = date('d-m-Y');
+				      $t = $dob;          
+			    	  $val =  explode("/",$dob);
 				
-				$insertData=array('full_name'=>$full_name,'email'=>$this->input->post("email"),'gender'=>$this->input->post("gender"),'dob'=>$dob,'age'=>$age,'user_name'=>$this->input->post("u_name"),'password'=>md5($this->input->post("u_pass")));
+                  $tdye =  $val[2]; 
+			       $val1 =  explode("-",$now);	
+			
+                   $nw =  $val1[2] ;			 
+			     	$age=$nw- $tdye ;
+					 $dobs = $this->input->post("dob"); 
+			$dobs=  $val[2]."/".  $val[1]."/".  $val[0];
+
+	
+				
+				$insertData=array('full_name'=>$full_name,'email'=>$this->input->post("email"),'gender'=>$this->input->post("gender"),'dob'=>$dobs,'age'=>$age,'user_name'=>$this->input->post("u_name"),'password'=>md5($this->input->post("u_pass")));
 					$result_data = $this->users_model->InsertUser($insertData,$nick);
 				
 				if($result_data['success'])

@@ -52,6 +52,7 @@ class Profile extends CI_Controller
         $this->data['user']          = $this->users_model->userinfo($this->UserId);
         $this->data['image']         = $this->users_model->imageinfo($this->UserId);
         $this->data['countries']     = $this->users_model->getAllcountries();
+		$this->data['intrest']     = $this->users_model->getAllintrest();
         //print_r($this->UserId);exit;
         $myfeeds =          $this->profile_model->GetAllfeeds($this->UserId);
         $myfeedsurldetails = array();     
@@ -516,20 +517,76 @@ class Profile extends CI_Controller
     }
     public function postFeed()
     {
+		
+		
+		
+        
+		
+		
+		
+		
+		
+	
+        
+        $flag      = 0;
+        $file      = $_FILES['file-4'];
+        $file_name = $file['name'];
+        $file_tmp  = $file['tmp_name'];
+        $file_ext  = explode('.', $file_name);
+        $file_ext  = strtolower(end($file_ext));
+        $allowed   = array(
+            "gif",
+            "png",
+            "jpg",
+            "jpeg"
+        );
+        if (in_array($file_ext, $allowed)) {
+            $file_name_new    = uniqid('', true) . '.' . $file_ext;
+            $file_destination = './uploads/status/' . $file_name;
+            if (move_uploaded_file($file_tmp, $file_destination)) {
+                
+                $flag = 1;
+            }
+        }
+      //  if ($flag == 1) {
+            
+     //       $data = $this->users_model->updatecover($user_id, $file_name);
+            
+   //     }
+        
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
         if (isset($_POST['register'])) {
-            $this->form_validation->set_rules('feeds', 'feeds', 'required');
-            if ($this->form_validation->run() == TRUE) {
+        //    $this->form_validation->set_rules('feeds', 'feeds', 'required');
+        //    if ($this->form_validation->run() == TRUE) {
                 
                 $insertData  = array(
                     'user_id' => $this->UserId,
                     'feeds' => $this->input->post("feeds")
+					
                 );
-                $result_data = $this->profile_model->InserFeeds($insertData);
+                $result_data = $this->profile_model->InserFeeds($insertData,$file_name);
                 if ($result_data['success']) {
                     
                     redirect('/user/profile', "refresh");
                 }
-            }
+          //  }
         }
         redirect('/user/profile', "refresh");
     }
@@ -561,10 +618,10 @@ class Profile extends CI_Controller
     public function hideFeed()
     {
         
-        $id  = $this->uri->segment('3');
-        $uid = $this->uri->segment('4');
+        $fid = $this->input->post('fid');
+        $uid = $this->session->userdata('user_id');
         
-        $result = $this->profile_model->hideFeed($id, $uid);
+        $result = $this->profile_model->hideFeed($fid, $uid);
         redirect('/user/profile', "refresh");
     }
     public function getprofile()
@@ -778,11 +835,11 @@ class Profile extends CI_Controller
                 $params['age_to']   = 30;
             }
             if ($params['age'] == 2) {
-                $params['age_from'] = 30;
+                $params['age_from'] = 31;
                 $params['age_to']   = 45;
             }
             if ($params['age'] == 3) {
-                $params['age_from'] = 45;
+                $params['age_from'] = 46;
                 $params['age_to']   = 200;
             }
 		
@@ -817,11 +874,11 @@ class Profile extends CI_Controller
                 $params['age_to']   = 30;
             }
             if ($params['age'] == 2) {
-                $params['age_from'] = 30;
+                $params['age_from'] = 31;
                 $params['age_to']   = 45;
             }
             if ($params['age'] == 3) {
-                $params['age_from'] = 45;
+                $params['age_from'] = 46;
                 $params['age_to']   = 200;
             }
 		

@@ -211,7 +211,7 @@ toggle between hiding and showing the dropdown content */
 				<?php if($cnt!=0){?>
 				<span class="count"><?php echo $cnt ?></span>
 				<?php } ?>
-                  <a   href ="#" id="mes" class=" not-box-open ed-opts-open follow_friends" data-id="<?php echo $user_id;?>"  title="Messages">
+                  <a   href ="#" id="mes" class=" not-box-open ed-opts-open follow_friends" data-id="<?php echo $user_id;?>"  title="Notifications">
                     <i class="fa fa-bell "  aria-hidden="true">
                     </i>
                   </a>

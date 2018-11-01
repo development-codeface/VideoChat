@@ -18,7 +18,9 @@ class Profile_model extends CI_Model
         $this->db->join('user_feed uf', 'uf.user_id= us.user_id', 'INNER');
         $this->db->join('countries cf', 'cf.c_id= up.country_id', 'LEFT');
         //$this->db->join('hide_post hd', 'hd.feed_id = uf.id','LEFT');
-        $this->db->where("uf.id NOT IN (SELECT feed_id FROM hide_post WHERE user_id =$userId)", NULL, FALSE);
+        $this->db->where("um.status NOT IN (SELECT status FROM friends WHERE status =0)", NULL, FALSE);  
+		    $this->db->where("uf.id NOT IN (SELECT feed_id FROM hide_post WHERE user_id =$userId)", NULL, FALSE);
+   
         
         $this->db->where('um.user_id', $userId);
         $this->db->or_where('us.user_id', $userId);
@@ -132,12 +134,16 @@ class Profile_model extends CI_Model
     
     //update feeds
     
-    public function InserFeeds($params)
+    public function InserFeeds($params,$file_name)
     {
         $this->db->insert('user_feed', $params);
         $user_id = $this->db->insert_id();
         $error   = $this->db->error();
-        return true;
+		
+       
+ $query = $this->db->query("INSERT INTO user_feed_image (image_name ,feed_id)
+              VALUES ('$file_name',$user_id) ");
+	   return true;
         
     }
     

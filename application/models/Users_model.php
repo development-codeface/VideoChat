@@ -328,7 +328,7 @@ class Users_model extends CI_Model
         $this->db->update('users', $param);
         $this->db->where('user_id', $user_id);
         $this->db->update('user_profile', $params);
-        $query = $this->db->query("UPDATE  user_profile SET age_hide=$ager where user_id=$user_id");
+      //  $query = $this->db->query("UPDATE  user_profile SET age_hide=$ager where user_id=$user_id");
         $query = $this->db->query("UPDATE  users SET dob='$dob',gender=$gen where user_id=$user_id"); 
 		$query = $this->db->query("UPDATE  users SET age='$age' where user_id=$user_id");
 		$query = $this->db->query("select age   from users  where user_id=$user_id");
@@ -600,6 +600,17 @@ class Users_model extends CI_Model
         
         
     }
+	function getAllintrest()
+    {
+        
+        
+        $query = $this->db->query('SELECT * FROM user_intrest');
+        
+        
+        return $query->result();
+        
+        
+    }
     function friendage($uid)
     {
         
@@ -733,8 +744,8 @@ class Users_model extends CI_Model
         $query = $this->db->query(" DELETE from token where user_id=$user");
         //  echo $this->db->last_query();exit;
         return 1;
-    }
-    
+    } 
+	
 function checknolike($fid, $uid)
     {
         $query = $this->db->query("Select * from feed_like where feed_id=$fid and user_id=$uid");

@@ -23,7 +23,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
                   <?php if($mydata['profile_pic']!=""){?>
                   <img src="<?php echo base_url() .'uploads/profile_pic/'.$mydata['profile_pic'] ;?>" alt="">
                   <?php }else{?>
-                  <?php if($mydata['gender']==1)
+                  <?php if($mydata['gen']==1)
 {
 ?>
                   <img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
@@ -41,8 +41,46 @@ else
                       </span>
                     </li>
                   </ul>
+				  
+				  
+				  
+				  
+				    <ul class="myprf">
+				
+				  <li><i class="fa fa-male" aria-hidden="true"></i>
+
+      <?php if($mydata['gen']==1)
+{
+?>
+                 <label>Male </label>
+                  <?php
+}
+else if($mydata['gen']==2)
+{ ?>
+                  <label>Female </label>
+                  <?php	} 
+				  
+				  else 
+{ ?>
+                  <label>Others </label>
+                  <?php	} ?>
+
+
+				  </li>
+				    <li id="obs"><i class="fa fa-map-marker" aria-hidden="true">
+                      </i>    <?php  echo $mydata['country'] ;?> </li>
+				  <!--li><i class="fa fa-female" aria-hidden="true"></i> Female </li-->
+				  </ul>
+				
+					
+					
+				  
+				  
+				  
+				  
+				  
                   <?php $idu=$this->session->userdata('user_id');
-$ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
+$ab=	$mydata['user_id'];		$i=0;	  //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
 				  <input type="text" name="pa" id="pa" hidden value="<?php echo $idu; ?>">
 				  <?php
 				  
@@ -61,13 +99,28 @@ $ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('
 					 {
 						   $i=2;
 						  
+					  }
+
+
+					  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=0"); 
+         $result=$query->result();
+                    
+                     if($result==true)
+					 {
+						   $i=3;
+						  
 					  } 
-					  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu "); 
+					  
+					  
+					  
+					  
+					  
+					  $query = $this->db->query("select * from  friends  where NOT  (user_id=$idu and friend_id=$ab)  "); 
          $result=$query->result();
                     
                      if($result==false)
 					 {
-						   $i=3;
+						   $i=4;
 						  
 					  }
                       
@@ -99,6 +152,18 @@ $ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('
 		
 		
 		<br><br><br>
+                  
+                           <button type="button" id="canss" name="canss" class="sendreq confi" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
+                          </i> Confirm Request
+        </button>
+		
+		
+		
+                  <?php } else if($i==4) {?>
+		
+		
+		
+		<br><br><br>
                     <button type="button" id="send" name="send"  class="sendreq frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-check" aria-hidden="true">
                           </i> Sent request
         </button>
@@ -107,6 +172,14 @@ $ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('
 		
                   <?php } ?>
                 </div>
+				
+			
+				
+				  
+					
+				
+				
+				
                 <!--user-pro-img end-->
               </div>
               <!--user_profile end-->
@@ -148,14 +221,14 @@ $ab=	$mydata['user_id'];			  //if($mydata['user_id']!=$this->session->userdata('
                         </span>
                       </a>
                     </li>
-                    <li data-tab="my-frd-list">
+                    <!--li data-tab="my-frd-list">
                       <a href="#" title="">
                         <i class="fa fa-address-card col-sdd" aria-hidden="true">
                         </i>
                         <span>Friends list
                         </span>
                       </a>
-                    </li>
+                    </li-->
                     <!--li data-tab="payment-dd">
 <a href="#" title="">
 <i class="fa fa-money" aria-hidden="true"></i>
@@ -1187,6 +1260,29 @@ include 'footer.php';?>
 		}); 		
 			             
 				
+		}); 
+
+
+		$('.confi').click(function() { 
+	      var Uid = $("#pa").val();
+	var frinedId =$(this).data('id'); 
+	
+		$.ajax({
+		type: "POST",
+		url:site_url+"User/AccetFriends",
+		data:{Uid:Uid,frinedId:frinedId},
+		dataType: 'json',
+        success: function(data) {
+            if(data.status==1){
+				
+				//$("#"+userId).remove();
+				location.reload();
+
+				}
+
+        },
+
+		});		
 		}); 
 
 </script>
