@@ -1,6 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 use OpenTok\OpenTok;
+use OpenTok\Role;
 use OpenTok\MediaMode;
+use OpenTok\OutputMode;
+use LinkPreview\LinkPreview;
+use LinkPreview\Model\VideoLink;
+
 class Auth extends   CI_Controller {
 	 public $opentok;
 	function __construct() {
@@ -314,13 +319,34 @@ class Auth extends   CI_Controller {
 	}
 	
 	public function howitwork()
-    {
-		
-        $this->load->view("user/howitworks_nologin");
-      
-      
-       
+    {	
+        $this->load->view("user/howitworks_nologin");          
+	}
+	public function getpost(){
+		$this->load->view("auth/post");   
+	}
+	public function get_preview(){
+		/*$urlVal =$this->input->get('url');
+		if (!isset($urlVal)) die();
+		$url = urldecode($urlVal);
+		$url = 'http://' . str_replace('http://', '', $url); // Avoid accessing the file system
+		echo file_get_contents($url);*/
+		$linkPreview = new LinkPreview('https://www.youtube.com/watch?v=8ZcmTl_1ER8');
+		$parsed = $linkPreview->getParsed();
+		foreach ($parsed as $parserName => $link) {
+    		echo $parserName . PHP_EOL . PHP_EOL;
+    		echo $link->getUrl() . PHP_EOL;
+    		echo $link->getRealUrl() . PHP_EOL;
+    		echo $link->getTitle() . PHP_EOL;
+    		echo $link->getDescription() . PHP_EOL;
+    		echo $link->getImage() . PHP_EOL;
+    if ($link instanceof VideoLink) {
+        echo $link->getVideoId() . PHP_EOL;
+        echo $link->getEmbedCode() . PHP_EOL;
     }
+}
+
+	}
 			
 			
 }

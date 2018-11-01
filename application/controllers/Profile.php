@@ -3,6 +3,8 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 use OpenTok\OpenTok;
 use OpenTok\MediaMode;
+use LinkPreview\LinkPreview;
+use LinkPreview\Model\VideoLink;
 class Profile extends CI_Controller
 {
     protected $data = array();
@@ -51,7 +53,46 @@ class Profile extends CI_Controller
         $this->data['image']         = $this->users_model->imageinfo($this->UserId);
         $this->data['countries']     = $this->users_model->getAllcountries();
         //print_r($this->UserId);exit;
-        $this->data['feeds']         = $this->profile_model->GetUserfeeds($this->UserId);
+        $myfeeds =          $this->profile_model->GetAllfeeds($this->UserId);
+        $myfeedsurldetails = array();     
+        foreach ($myfeeds as $i => $item) {
+            $title = "";
+            $description= "";
+            $image = "";
+            $videoid = "";
+            $videoidEmbe = "";
+            $linkUrl = "";
+            $isLink = false;
+            preg_match_all('#\b(https|http)?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $item->feeds, $match);
+            if(sizeof($match[0]) > 0){
+                $linkPreview = new LinkPreview($match[0][0]);
+                $parsed = $linkPreview->getParsed();
+                $isLink = true;
+                foreach ($parsed as $parserName => $link) {
+                    //$parserName . PHP_EOL . PHP_EOL;
+                    //echo $link->getUrl() . PHP_EOL;
+                    //echo $link->getRealUrl() . PHP_EOL;
+                    $title = $link->getTitle() . PHP_EOL;
+                    $linkUrl  = $link->getUrl() . PHP_EOL;
+                    $description =  $link->getDescription() . PHP_EOL;
+                    $image =  $link->getImage() . PHP_EOL;
+                    if ($link instanceof VideoLink) {
+                        $videoid = $link->getVideoId() . PHP_EOL;
+                        $videoidEmbe = $link->getEmbedCode() . PHP_EOL;
+                        
+                    }
+                }
+            }		    
+            $itemVal = $item;           
+            $itemVal->islink = $isLink;
+            $itemVal->linkUrl = $linkUrl;
+            $itemVal->linktitle = $title;
+            $itemVal->linkdescription = $description;
+            $itemVal->videoEmbeded = $videoidEmbe;
+            $itemVal->linkimage = $image;
+            $myfeedsurldetails[$i] = $itemVal;
+        }
+        $this->data['feeds']   = $myfeedsurldetails;
 		//print_r($this->data['feeds']);exit;
         $this->data['openToken']     = base64_encode($this->session->userdata('token'));
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
@@ -70,7 +111,48 @@ class Profile extends CI_Controller
         $this->data['mydata']        = $this->users_model->GetMyData($friendId);
         
        // print_r($this->data['mydata']);exit;
-        $this->data['feeds'] = $this->profile_model->GetUserfeeds($friendId);
+        //$this->data['feeds'] = $this->profile_model->GetUserfeeds($friendId);
+        $myfeeds =          $this->profile_model->GetUserfeeds($friendId);
+        $myfeedsurldetails = array();     
+        foreach ($myfeeds as $i => $item) {
+            $title = "";
+            $description= "";
+            $image = "";
+            $videoid = "";
+            $videoidEmbe = "";
+            $linkUrl = "";
+            $isLink = false;
+            preg_match_all('#\b(https|http)?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $item->feeds, $match);
+            if(sizeof($match[0]) > 0){
+                $linkPreview = new LinkPreview($match[0][0]);
+                $parsed = $linkPreview->getParsed();
+                $isLink = true;
+                foreach ($parsed as $parserName => $link) {
+                    //$parserName . PHP_EOL . PHP_EOL;
+                    //echo $link->getUrl() . PHP_EOL;
+                    //echo $link->getRealUrl() . PHP_EOL;
+                    $title = $link->getTitle() . PHP_EOL;
+                    $linkUrl  = $link->getUrl() . PHP_EOL;
+                    $description =  $link->getDescription() . PHP_EOL;
+                    $image =  $link->getImage() . PHP_EOL;
+                    if ($link instanceof VideoLink) {
+                        $videoid = $link->getVideoId() . PHP_EOL;
+                        $videoidEmbe = $link->getEmbedCode() . PHP_EOL;
+                        
+                    }
+                }
+            }		    
+            $itemVal = $item;           
+            $itemVal->islink = $isLink;
+            $itemVal->linkUrl = $linkUrl;
+            $itemVal->linktitle = $title;
+            $itemVal->linkdescription = $description;
+            $itemVal->videoEmbeded = $videoidEmbe;
+            $itemVal->linkimage = $image;
+            $myfeedsurldetails[$i] = $itemVal;
+        }
+        $this->data['feeds']   = $myfeedsurldetails;
+
         $this->data['user']  = $this->users_model->userinfo($this->UserId);
         $this->data['age']   = $this->users_model->friendage($friendId);
         //print_r($this->data['age']);exit;

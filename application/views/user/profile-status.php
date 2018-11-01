@@ -1,4 +1,4 @@
-l<!DOCTYPE html>
+<!DOCTYPE html>
 <?php  include 'header.php' ;?>
 <?php
 $open_tokenId=base64_decode(urldecode($openToken));
@@ -205,7 +205,30 @@ list($date,$time)=explode(' ',$timestamp);
 		
 					
 												<div class="job_descp">
-													
+												<?php if($fd->islink){
+													   if(strlen($fd->videoEmbeded) > 0){?>
+															<div class="feedVideo">
+																<?php echo $fd->videoEmbeded ?> </iframe></div>	
+													   <?php }else{
+														   if(strlen($fd->linkimage) > 0){ ?>
+															<div class="feedImage">
+																<img src="<?php echo $fd->linkimage ?>"/> 
+															</div>
+														<?php } }?>
+														
+														<?php if(strlen($fd->linktitle)>0){?>
+															<div class="linktitle">
+																<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linktitle ?>"></p></a> 
+															</div>
+														<?php } ?>
+
+														<?php if(strlen($fd->linkdescription)> 0){?>
+															<div class="link">
+															<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linkdescription ?></p></a> 
+															</div>
+														<?php } ?>
+
+												<?php } ?>
 													
 													
 													<p><?php echo $fd->feeds;?>..... </p>

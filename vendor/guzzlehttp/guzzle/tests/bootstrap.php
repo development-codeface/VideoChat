@@ -1,10 +1,24 @@
 <?php
+namespace GuzzleHttp\Test {
+    require __DIR__ . '/../vendor/autoload.php';
+    require __DIR__ . '/Server.php';
+    use GuzzleHttp\Tests\Server;
 
-error_reporting(E_ALL | E_STRICT);
+    Server::start();
+    register_shutdown_function(function () {
+        Server::stop();
+    });
+}
 
-require_once 'PHPUnit/TextUI/TestRunner.php';
-require dirname(__DIR__) . '/vendor/autoload.php';
-
-// Add the services file to the default service builder
-$servicesFile = __DIR__ . '/Guzzle/Tests/TestData/services/services.json';
-Guzzle\Tests\GuzzleTestCase::setServiceBuilder(Guzzle\Service\Builder\ServiceBuilder::factory($servicesFile));
+// Override curl_setopt_array() to get the last set curl options
+namespace GuzzleHttp\Handler {
+    function curl_setopt_array($handle, array $options)
+    {
+        if (!empty($_SERVER['curl_test'])) {
+            $_SERVER['_curl'] = $options;
+        } else {
+            unset($_SERVER['_curl']);
+        }
+        \curl_setopt_array($handle, $options);
+    }
+}

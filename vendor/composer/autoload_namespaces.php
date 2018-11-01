@@ -6,8 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
-    'JohnStevenson\\JsonWorks' => array($vendorDir . '/aoberoi/json-works/src'),
-    'Guzzle\\Tests' => array($vendorDir . '/guzzlehttp/guzzle/tests'),
-    'Guzzle' => array($vendorDir . '/guzzlehttp/guzzle/src'),
+    'Twig_' => array($vendorDir . '/twig/twig/lib'),
+    'Slim' => array($vendorDir . '/slim/slim'),
+    'LinkPreview' => array($vendorDir . '/kasp3r/link-preview/src'),
+    'Gregwar\\Cache' => array($vendorDir . '/gregwar/cache'),
 );
