@@ -245,18 +245,18 @@ list($date,$time)=explode(' ',$timestamp);
 												<div class="job_descp">
 												<?php if($fd->islink){
 													   if(strlen($fd->videoEmbeded) > 0){?>
-															<div class="feedVideo">
+															<div class="feedVideo videmp">
 																<?php echo $fd->videoEmbeded ?> </iframe></div>	
 													   <?php }else{
 														   if(strlen($fd->linkimage) > 0){ ?>
 															<div class="feedImage">
-																<img src="<?php echo $fd->linkimage ?>"/> 
+																<img src="<?php echo $fd->linkimage ?>"/ class="image-responsive imgfeed"> 
 															</div>
 														<?php } }?>
 														
 														<?php if(strlen($fd->linktitle)>0){?>
 															<div class="linktitle">
-																<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linktitle ?>"></p></a> 
+																<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linktitle ?> </p></a> 
 															</div>
 														<?php } ?>
 
@@ -269,7 +269,7 @@ list($date,$time)=explode(' ',$timestamp);
 												<?php } ?>
 													
 													
-													<p><?php echo $fd->feeds;?>..... </p>
+													<p  class="feedp"><?php echo $fd->feeds;?>..... </p>
 										
 												</div>
 				

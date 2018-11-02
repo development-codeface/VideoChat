@@ -76,22 +76,62 @@ else if($mydata['gen']==2)
 					
 				  
 				  
+				 
 				  
 				  
 				  
                   <?php $idu=$this->session->userdata('user_id');
-$ab=	$mydata['user_id'];		$i=0;	  //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
+$ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
 				  <input type="text" name="pa" id="pa" hidden value="<?php echo $idu; ?>">
 				  <?php
 				  
 				   $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=0"); 
-         $result=$query->result();
-                    
+         $result=$query->result(); //echo $this->db->last_query();
+                    foreach ($result as $row) {
+            $fi = $row->friend_id;
+            
+        $ui=$row->user_id;
+		
+					}
+					
+					if(($fi==$idu)&&($ui==$ab))
+					{
+					
+					
                      if($result==true)
 					 {
 						   $i=1;
 						  
 					  }  
+					}
+					
+					/////////////////
+					
+					 $query = $this->db->query("select * from  friends  where user_id=$idu and friend_id=$ab and status=0"); 
+         $result=$query->result(); //echo $this->db->last_query();
+                    foreach ($result as $row) {
+            $f = $row->friend_id;
+            
+        $u=$row->user_id;
+		
+					}
+					
+					if(($f==$ab)&&($u==$idu))
+					{
+					
+					
+                     if($result==true)
+					 {
+						   $i=3;
+						  
+					  }  
+					}
+					
+					/////////
+					
+					
+					
+					
 					  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=1"); 
          $result=$query->result();
                     
@@ -102,7 +142,7 @@ $ab=	$mydata['user_id'];		$i=0;	  //if($mydata['user_id']!=$this->session->userd
 					  }
 
 
-					  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=0"); 
+					/*  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=0"); 
          $result=$query->result();
                     
                      if($result==true)
@@ -110,12 +150,12 @@ $ab=	$mydata['user_id'];		$i=0;	  //if($mydata['user_id']!=$this->session->userd
 						   $i=3;
 						  
 					  } 
+					  */
 					  
 					  
 					  
 					  
-					  
-					  $query = $this->db->query("select * from  friends  where NOT  (user_id=$idu and friend_id=$ab)  "); 
+				  $query = $this->db->query("select * from  friends  where   ((user_id=$idu and friend_id=$ab) or (user_id=$ab and friend_id=$idu))  "); 
          $result=$query->result();
                     
                      if($result==false)
@@ -129,7 +169,7 @@ $ab=	$mydata['user_id'];		$i=0;	  //if($mydata['user_id']!=$this->session->userd
 				  <?php if($i==1) {
 					  ?>
 				  
-				<br><br><br>
+				<br>
                     <button type="button" id="can" name="can" class="sendreq canreq" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
                           </i> Cancel request
         </button>
@@ -139,10 +179,10 @@ $ab=	$mydata['user_id'];		$i=0;	  //if($mydata['user_id']!=$this->session->userd
 				  <?php } else if($i==2) {?>
 		
 			  
-				<br><br><br>
+				<br>
                  <span>
-												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab; ?>" data-username=' <?php echo $mydata['full_name'];?>'  data-id="<?php echo $ab ;?>"  class="follow btnChat "><i class="fa fa-comments-o chatq" aria-hidden="true"></i></a>
-												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab;  ?>" title="" data-id="<?php echo $ab ;?>" class="follow follow_friend"><i class="fa fa-video-camera cmsgq" aria-hidden="true"></i></i></a>
+											
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab;  ?>" title="" data-id="<?php echo $ab ;?>" class="follow follow_friend "><i class="fa fa-video-camera cmsgq vbut" aria-hidden="true"></i></i></a>
 												
 												</span>
 		
@@ -151,8 +191,7 @@ $ab=	$mydata['user_id'];		$i=0;	  //if($mydata['user_id']!=$this->session->userd
 		
 		
 		
-		<br><br><br>
-                  
+		<br>
                            <button type="button" id="canss" name="canss" class="sendreq confi" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
                           </i> Confirm Request
         </button>
@@ -163,7 +202,7 @@ $ab=	$mydata['user_id'];		$i=0;	  //if($mydata['user_id']!=$this->session->userd
 		
 		
 		
-		<br><br><br>
+		<br>
                     <button type="button" id="send" name="send"  class="sendreq frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-check" aria-hidden="true">
                           </i> Sent request
         </button>
@@ -299,12 +338,12 @@ else
                       <div class="job_descp">
 												<?php if($fd->islink){
 													   if(strlen($fd->videoEmbeded) > 0){?>
-															<div class="feedVideo">
+															<div class="feedVideo videmp">
 																<?php echo $fd->videoEmbeded ?> </iframe></div>	
 													   <?php }else{
 														   if(strlen($fd->linkimage) > 0){ ?>
 															<div class="feedImage">
-																<img src="<?php echo $fd->linkimage ?>"/> 
+																<img src="<?php echo $fd->linkimage ?>"/ class="image-responsive imgfeed"> 
 															</div>
 														<?php } }?>
 														
@@ -323,7 +362,7 @@ else
 												<?php } ?>
 													
 													
-													<p><?php echo $fd->feeds;?>..... </p>
+													<p class="feedp"><?php echo $fd->feeds;?>..... </p>
 										      <br>
 												</div>
                       <div class="job-status-bar">

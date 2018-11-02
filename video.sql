@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2018 at 05:04 PM
+-- Generation Time: Nov 02, 2018 at 02:08 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -87,7 +87,6 @@ INSERT INTO `feed_like` (`id`, `user_id`, `feed_id`) VALUES
 (6, 17, 17),
 (7, 17, 16),
 (8, 17, 15),
-(9, 32, 29),
 (10, 17, 30),
 (11, 18, 30),
 (12, 22, 30),
@@ -146,103 +145,8 @@ CREATE TABLE `friends` (
 --
 
 INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`) VALUES
-(14, 5, 1, 1),
-(15, 1, 5, 1),
-(16, 9, 1, 1),
-(17, 1, 9, 1),
-(18, 11, 9, 0),
-(19, 10, 9, 0),
-(20, 5, 9, 0),
-(21, 12, 9, 1),
-(22, 9, 13, 1),
-(23, 13, 9, 1),
-(24, 1, 13, 1),
-(25, 13, 1, 1),
-(26, 1, 13, 1),
-(27, 13, 1, 1),
-(28, 2, 9, 0),
-(29, 9, 14, 1),
-(30, 14, 9, 1),
-(31, 15, 9, 1),
-(32, 9, 15, 1),
-(33, 9, 12, 1),
-(34, 1, 12, 0),
-(35, 2, 12, 0),
-(36, 14, 12, 0),
-(37, 5, 12, 0),
-(38, 16, 9, 0),
-(39, 18, 17, 1),
-(40, 16, 17, 0),
-(41, 17, 18, 1),
-(42, 18, 19, 1),
-(43, 19, 18, 1),
-(44, 21, 20, 1),
-(45, 20, 21, 1),
-(46, 17, 22, 1),
-(47, 22, 17, 1),
-(48, 1, 22, 0),
-(49, 21, 22, 0),
-(50, 20, 22, 0),
-(51, 19, 22, 0),
-(52, 24, 17, 1),
-(53, 17, 24, 1),
-(54, 27, 28, 1),
-(55, 28, 27, 1),
-(56, 22, 34, 1),
-(57, 9, 17, 0),
-(58, 1, 28, 0),
-(59, 9, 28, 0),
-(60, 25, 28, 0),
-(61, 19, 28, 0),
-(62, 2, 28, 0),
-(63, 5, 28, 0),
-(64, 10, 28, 0),
-(65, 1, 17, 0),
-(66, 2, 17, 0),
-(67, 5, 17, 0),
-(68, 10, 17, 0),
-(69, 11, 17, 0),
-(70, 12, 17, 0),
-(71, 14, 17, 0),
-(72, 15, 17, 0),
-(73, 19, 17, 0),
-(74, 20, 17, 0),
-(75, 21, 17, 0),
-(76, 23, 17, 0),
-(77, 28, 36, 0),
-(78, 28, 32, 0),
-(79, 39, 38, 0),
-(80, 38, 40, 1),
-(81, 40, 38, 1),
-(82, 38, 17, 1),
-(83, 38, 24, 0),
-(84, 42, 41, 0),
-(85, 42, 17, 1),
-(86, 17, 42, 1),
-(87, 22, 24, 1),
-(88, 24, 22, 1),
-(89, 25, 17, 0),
-(90, 37, 17, 0),
-(91, 36, 17, 1),
-(92, 17, 36, 1),
-(93, 17, 36, 1),
-(94, 39, 17, 0),
-(95, 34, 17, 0),
-(96, 40, 17, 1),
-(97, 17, 40, 1),
-(98, 25, 22, 0),
-(99, 42, 22, 0),
-(100, 58, 17, 0),
-(101, 34, 22, 1),
-(102, 38, 22, 0),
-(103, 17, 38, 1),
-(104, 59, 60, 1),
-(105, 60, 59, 1),
-(106, 64, 60, 1),
-(107, 60, 64, 1),
-(110, 21, 69, 0),
-(113, 69, 70, 1),
-(114, 70, 69, 1);
+(65, 82, 78, 1),
+(66, 78, 82, 1);
 
 -- --------------------------------------------------------
 
@@ -261,11 +165,16 @@ CREATE TABLE `hide_post` (
 --
 
 INSERT INTO `hide_post` (`hd_id`, `user_id`, `feed_id`) VALUES
-(44, 17, 14),
-(45, 17, 15),
-(46, 17, 13),
-(47, 17, 12),
-(48, 17, 11);
+(75, 72, 32),
+(76, 69, 34),
+(77, 69, 33),
+(78, 69, 32),
+(79, 72, 32),
+(80, 72, 32),
+(81, 72, 32),
+(82, 72, 32),
+(83, 72, 32),
+(84, 72, 32);
 
 -- --------------------------------------------------------
 
@@ -398,14 +307,258 @@ INSERT INTO `notification` (`n_id`, `messages`, `fri_id`, `user_id`, `cur_time`,
 (120, 'nazneen mohammed sent a friend request to you', 64, 60, '2018-10-13 22:08:45.118945', 0),
 (121, 'irshadstar test Accepted your friend request', 60, 64, '2018-10-13 22:09:17.560627', 0),
 (122, 'mary mary sent a friend request to you', 69, 70, '2018-10-22 12:33:42.886312', 1),
-(123, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-22 12:34:05.852132', 0),
+(123, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-22 12:34:05.852132', 1),
 (124, 'mary mary Liked your post', 69, 70, '2018-10-22 12:34:24.844320', 1),
 (125, 'mary mary Liked your post', 69, 70, '2018-10-22 12:34:46.417562', 1),
 (126, 'joseph joseph sent a friend request to you', 21, 69, '2018-10-22 20:03:06.489257', 0),
-(127, 'mary mary sent a friend request to you', 69, 70, '2018-10-22 20:04:11.547851', 0),
-(128, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-22 20:04:33.337890', 0),
-(129, 'mary mary sent a friend request to you', 69, 70, '2018-10-22 20:05:34.127929', 0),
-(130, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-22 20:05:53.806640', 0);
+(127, 'mary mary sent a friend request to you', 69, 70, '2018-10-22 20:04:11.547851', 1),
+(128, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-22 20:04:33.337890', 1),
+(129, 'mary mary sent a friend request to you', 69, 70, '2018-10-22 20:05:34.127929', 1),
+(130, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-22 20:05:53.806640', 1),
+(131, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 11:37:38.856445', 1),
+(132, 'mary mary Accepted your friend request', 69, 70, '2018-10-24 11:42:13.608398', 1),
+(133, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 11:52:38.625976', 1),
+(134, 'mary mary Accepted your friend request', 69, 70, '2018-10-24 12:11:19.378906', 1),
+(135, 'mary mary sent a friend request to you', 69, 70, '2018-10-24 12:13:59.064453', 1),
+(136, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 12:15:57.012695', 1),
+(137, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 12:20:15.820312', 1),
+(138, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 12:23:08.469726', 1),
+(139, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 12:27:58.435546', 1),
+(140, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 12:29:58.741210', 1),
+(141, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 12:32:13.143554', 1),
+(142, 'mary mary Accepted your friend request', 69, 70, '2018-10-24 12:32:48.767578', 1),
+(143, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 14:19:04.881835', 1),
+(144, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 14:19:27.407226', 1),
+(145, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 14:20:11.922851', 1),
+(146, 'mary mary Accepted your friend request', 69, 70, '2018-10-24 14:27:04.374023', 1),
+(147, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 14:27:51.760742', 1),
+(148, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 14:29:30.829101', 1),
+(149, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:13:05.063476', 1),
+(150, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:13:35.221679', 1),
+(151, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:16:53.811523', 1),
+(152, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:17:17.693359', 1),
+(153, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:17:27.178710', 1),
+(154, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:17:36.830078', 1),
+(155, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:17:40.869140', 1),
+(156, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:17:41.359375', 1),
+(157, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:21:13.519531', 1),
+(158, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:22:47.116210', 1),
+(159, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:22:49.707031', 1),
+(160, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:22:58.908203', 1),
+(161, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:23:42.922851', 1),
+(162, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:37:44.132812', 1),
+(163, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:38:01.324218', 1),
+(164, 'mary mary sent a friend request to you', 43, 70, '2018-10-24 15:40:14.793945', 0),
+(165, 'dq qq sent a friend request to you', 70, 71, '2018-10-24 15:42:08.865234', 1),
+(166, 'mary mary Accepted your friend request', 71, 70, '2018-10-24 15:42:44.272460', 0),
+(167, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:50:49.864257', 1),
+(168, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:51:02.259765', 1),
+(169, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:52:53.089843', 1),
+(170, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:55:36.451171', 1),
+(171, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:55:41.123046', 1),
+(172, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:56:41.047851', 1),
+(173, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:56:47.429687', 1),
+(174, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:57:09.775390', 1),
+(175, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:57:33.241210', 1),
+(176, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:59:09.843750', 1),
+(177, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:59:17.869140', 1),
+(178, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:59:25.139648', 1),
+(179, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:59:31.554687', 1),
+(180, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 15:59:40.605468', 1),
+(181, 'joseph joseph sent a friend request to you', 71, 69, '2018-10-24 16:00:34.456054', 0),
+(182, 'joseph joseph sent a friend request to you', 71, 69, '2018-10-24 16:01:00.492187', 0),
+(183, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 16:01:17.918945', 1),
+(184, 'joseph joseph sent a friend request to you', 71, 69, '2018-10-24 16:01:24.304687', 0),
+(185, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 16:03:31.954101', 1),
+(186, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 16:03:41.395507', 1),
+(187, 'joseph joseph sent a friend request to you', 71, 69, '2018-10-24 16:03:47.929687', 0),
+(188, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-24 16:31:14.971679', 1),
+(189, 'mary mary Accepted your friend request', 69, 70, '2018-10-24 16:31:27.417968', 1),
+(190, 'joseph joseph sent a friend request to you', 5, 69, '2018-10-24 17:04:55.868164', 0),
+(191, 'joseph joseph sent a friend request to you', 9, 69, '2018-10-24 17:05:02.671875', 0),
+(192, 'mary mary sent a friend request to you', 69, 70, '2018-10-24 17:15:10.183593', 1),
+(193, 'joseph joseph sent a friend request to you', 11, 69, '2018-10-25 12:02:52.828125', 0),
+(194, 'joseph joseph sent a friend request to you', 1, 69, '2018-10-25 12:10:13.358398', 0),
+(195, 'joseph joseph sent a friend request to you', 5, 69, '2018-10-25 12:10:15.227539', 0),
+(196, 'joseph joseph sent a friend request to you', 2, 69, '2018-10-25 12:10:20.721679', 0),
+(197, 'joseph joseph sent a friend request to you', 1, 69, '2018-10-25 12:13:56.946289', 0),
+(198, 'joseph joseph sent a friend request to you', 2, 69, '2018-10-25 12:13:57.488281', 0),
+(199, 'joseph joseph sent a friend request to you', 5, 69, '2018-10-25 12:13:58.640625', 0),
+(200, 'joseph joseph sent a friend request to you', 9, 69, '2018-10-25 12:13:59.231445', 0),
+(201, 'joseph joseph sent a friend request to you', 1, 69, '2018-10-25 12:17:49.688476', 0),
+(202, 'joseph joseph sent a friend request to you', 5, 69, '2018-10-25 12:17:51.239257', 0),
+(203, 'joseph joseph sent a friend request to you', 9, 69, '2018-10-25 12:17:51.817382', 0),
+(204, 'joseph joseph sent a friend request to you', 2, 69, '2018-10-25 12:21:08.825195', 0),
+(205, 'joseph joseph sent a friend request to you', 9, 69, '2018-10-25 12:21:10.530273', 0),
+(206, 'joseph joseph sent a friend request to you', 12, 69, '2018-10-25 12:21:14.137695', 0),
+(207, 'joseph joseph sent a friend request to you', 16, 69, '2018-10-25 12:31:25.228515', 0),
+(208, 'joseph joseph sent a friend request to you', 18, 69, '2018-10-25 12:31:26.607421', 0),
+(209, 'joseph joseph sent a friend request to you', 21, 69, '2018-10-25 12:31:30.753906', 0),
+(210, 'joseph joseph sent a friend request to you', 23, 69, '2018-10-25 12:31:32.369140', 0),
+(211, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 10:31:37.047734', 1),
+(212, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 10:32:06.108281', 1),
+(213, 'alp nsa sent a friend request to you', 69, 72, '2018-10-29 11:06:58.154179', 1),
+(214, 'alp nsa sent a friend request to you', 70, 72, '2018-10-29 11:07:06.584843', 1),
+(215, 'joseph joseph sent a friend request to you', 1, 69, '2018-10-29 11:09:03.711796', 0),
+(216, 'joseph joseph sent a friend request to you', 5, 69, '2018-10-29 11:09:05.481328', 0),
+(217, 'alp nsa sent a friend request to you', 69, 72, '2018-10-29 11:37:11.585820', 1),
+(218, 'joseph joseph Accepted your friend request', 72, 69, '2018-10-29 12:06:56.163945', 0),
+(219, 'joseph joseph Accepted your friend request', 72, 69, '2018-10-29 12:06:58.966679', 0),
+(220, 'joseph joseph Accepted your friend request', 72, 69, '2018-10-29 12:06:59.682500', 0),
+(221, 'joseph joseph Accepted your friend request', 72, 69, '2018-10-29 12:07:00.609257', 0),
+(222, 'joseph joseph Accepted your friend request', 72, 69, '2018-10-29 12:07:10.150273', 0),
+(223, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 12:11:03.859257', 1),
+(224, 'mary mary sent a friend request to you', 72, 70, '2018-10-29 12:11:04.933476', 0),
+(225, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:11:46.947148', 1),
+(226, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 12:14:35.981328', 1),
+(227, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:15:38.983281', 1),
+(228, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:15:46.845585', 1),
+(229, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 12:19:22.710820', 1),
+(230, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:21:30.902226', 1),
+(231, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:21:40.951054', 1),
+(232, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 12:25:21.628789', 1),
+(233, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:30:09.730351', 1),
+(234, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 12:40:32.813359', 1),
+(235, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:41:03.671757', 1),
+(236, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 12:41:49.620000', 1),
+(237, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:42:11.881718', 1),
+(238, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 12:44:11.489140', 1),
+(239, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 12:49:40.025273', 1),
+(240, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:52:00.231328', 1),
+(241, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:52:04.173710', 1),
+(242, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 12:52:11.348515', 1),
+(243, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 12:53:38.593632', 1),
+(244, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 12:55:51.039921', 1),
+(245, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 14:16:21.058593', 1),
+(246, 'joseph joseph sent a friend request to you', 72, 69, '2018-10-29 14:27:26.271484', 0),
+(247, 'joseph joseph sent a friend request to you', 72, 69, '2018-10-29 14:27:34.688476', 0),
+(248, 'mary mary sent a friend request to you', 1, 70, '2018-10-29 14:39:16.885742', 0),
+(249, 'mary mary sent a friend request to you', 2, 70, '2018-10-29 14:39:18.058593', 0),
+(250, 'mary mary sent a friend request to you', 11, 70, '2018-10-29 14:39:21.638671', 0),
+(251, 'mary mary sent a friend request to you', 12, 70, '2018-10-29 14:39:23.415039', 0),
+(252, 'mary mary sent a friend request to you', 15, 70, '2018-10-29 14:39:25.478515', 0),
+(253, 'mary mary sent a friend request to you', 16, 70, '2018-10-29 14:39:26.966796', 0),
+(254, 'mary mary sent a friend request to you', 9, 70, '2018-10-29 14:39:29.329101', 0),
+(255, 'mary mary sent a friend request to you', 14, 70, '2018-10-29 14:39:31.161132', 0),
+(256, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-29 18:07:22.904296', 1),
+(257, 'mary mary Accepted your friend request', 69, 70, '2018-10-29 18:07:48.169921', 1),
+(258, 'joseph joseph sent a friend request to you', 72, 69, '2018-10-29 19:03:21.446289', 0),
+(259, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-29 19:21:48.892578', 1),
+(260, 'mary mary Accepted your friend request', 69, 70, '2018-10-29 19:25:39.166015', 1),
+(261, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 19:33:47.540039', 1),
+(262, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-29 19:35:08.749023', 1),
+(263, 'mary mary Accepted your friend request', 69, 70, '2018-10-29 19:59:18.299804', 1),
+(264, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-29 20:30:41.750000', 1),
+(265, 'mary mary Accepted your friend request', 69, 70, '2018-10-29 20:31:14.744140', 1),
+(266, 'mary mary sent a friend request to you', 69, 70, '2018-10-29 20:32:25.431640', 1),
+(267, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-29 20:32:44.964843', 1),
+(268, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-29 20:33:46.102539', 1),
+(269, 'mary mary Accepted your friend request', 69, 70, '2018-10-29 20:34:01.849609', 1),
+(270, 'joseph joseph sent a friend request to you', 70, 69, '2018-10-30 11:47:17.533203', 0),
+(271, 'mary mary Accepted your friend request', 69, 70, '2018-10-30 11:47:48.556640', 1),
+(272, 'mary mary sent a friend request to you', 69, 70, '2018-10-30 11:48:18.370117', 1),
+(273, 'alp nsa sent a friend request to you', 69, 72, '2018-10-30 12:45:39.221679', 1),
+(274, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-30 12:46:23.912109', 0),
+(275, 'joseph joseph sent a friend request to you', 2, 69, '2018-10-30 12:46:38.239257', 0),
+(276, 'joseph joseph sent a friend request to you', 5, 69, '2018-10-30 12:46:39.820312', 0),
+(277, 'joseph joseph sent a friend request to you', 11, 69, '2018-10-30 12:46:42.750976', 0),
+(278, 'mary mary sent a friend request to you', 69, 70, '2018-10-30 12:50:26.950195', 1),
+(279, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-30 12:51:05.429687', 0),
+(280, 'alp nsa sent a friend request to you', 69, 72, '2018-10-30 15:58:01.208984', 0),
+(281, 'joseph joseph Accepted your friend request', 72, 69, '2018-10-30 15:59:27.836914', 0),
+(282, 'alp nsa sent a friend request to you', 69, 72, '2018-10-30 17:55:26.010742', 0),
+(283, 'joseph joseph Accepted your friend request', 72, 69, '2018-10-30 17:56:15.843750', 0),
+(284, 'mary mary sent a friend request to you', 11, 70, '2018-10-31 09:56:18.011718', 0),
+(285, 'mary mary sent a friend request to you', 5, 70, '2018-10-31 09:56:19.731445', 0),
+(286, 'mary mary sent a friend request to you', 1, 70, '2018-10-31 09:56:20.872070', 0),
+(287, 'mary mary sent a friend request to you', 69, 70, '2018-10-31 10:02:18.074218', 0),
+(288, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-31 10:02:31.599609', 0),
+(289, 'mary mary sent a friend request to you', 69, 70, '2018-10-31 10:04:55.820312', 0),
+(290, 'alp nsa sent a friend request to you', 69, 72, '2018-10-31 10:09:46.708984', 0),
+(291, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-31 10:11:23.752929', 0),
+(292, 'joseph joseph Accepted your friend request', 72, 69, '2018-10-31 10:11:28.087890', 0),
+(293, 'mary mary sent a friend request to you', 69, 70, '2018-10-31 10:19:28.423828', 0),
+(294, 'joseph joseph Accepted your friend request', 70, 69, '2018-10-31 10:19:43.153320', 0),
+(295, 'martin tgdrfgdbwin sent a friend request to you', 1, 84, '2018-11-01 17:16:32.291015', 0),
+(296, 'martin tgdrfgdbwin sent a friend request to you', 83, 84, '2018-11-01 17:16:48.106445', 0),
+(297, 'martin tgdrfgdbwin sent a friend request to you', 82, 84, '2018-11-01 17:16:49.194335', 0),
+(298, 'martin tgdrfgdbwin sent a friend request to you', 11, 84, '2018-11-01 17:18:03.620117', 0),
+(299, 'martin tgdrfgdbwin sent a friend request to you', 80, 84, '2018-11-01 17:35:09.902343', 0),
+(300, 'martin tgdrfgdbwin sent a friend request to you', 78, 84, '2018-11-01 17:35:11.806640', 1),
+(301, 'martin tgdrfgdbwin sent a friend request to you', 78, 84, '2018-11-01 17:35:17.365234', 1),
+(302, 'vasu sss Accepted your friend request', 84, 78, '2018-11-01 18:26:37.052734', 0),
+(303, 'vasu sss Accepted your friend request', 84, 78, '2018-11-01 18:26:40.077148', 0),
+(304, 'vasu sss sent a friend request to you', 2, 78, '2018-11-01 18:28:25.159179', 0),
+(305, 'vasu sss sent a friend request to you', 82, 78, '2018-11-01 18:29:07.053710', 0),
+(306, 'jiss ss Accepted your friend request', 84, 82, '2018-11-01 18:29:49.509765', 0),
+(307, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 18:32:03.180664', 0),
+(308, 'jiss ss sent a friend request to you', 83, 82, '2018-11-01 18:32:16.016601', 0),
+(309, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 18:38:55.624023', 0),
+(310, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 18:53:16.607421', 0),
+(311, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 18:53:20.711914', 0),
+(312, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 18:57:29.803710', 0),
+(313, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 18:59:27.636718', 0),
+(314, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 19:01:48.897460', 0),
+(315, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 19:02:13.806640', 0),
+(316, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 19:02:49.145507', 0),
+(317, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 19:04:07.350585', 0),
+(318, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 19:07:53.012695', 0),
+(319, 'jiss ss sent a friend request to you', 80, 82, '2018-11-01 19:08:05.306640', 0),
+(320, 'jhon homnay Accepted your friend request', 82, 80, '2018-11-01 19:11:21.421875', 0),
+(321, 'jiss ss sent a friend request to you', 78, 82, '2018-11-02 10:32:01.231445', 1),
+(322, 'vasu sss sent a friend request to you', 82, 78, '2018-11-02 10:49:10.672851', 0),
+(323, 'vasu sss sent a friend request to you', 82, 78, '2018-11-02 10:52:57.041015', 0),
+(324, 'vasu sss sent a friend request to you', 82, 78, '2018-11-02 10:53:05.534179', 0),
+(325, 'vasu sss sent a friend request to you', 82, 78, '2018-11-02 10:58:30.725585', 0),
+(326, 'vasu sss sent a friend request to you', 82, 78, '2018-11-02 11:01:56.709960', 0),
+(327, 'jiss ss sent a friend request to you', 78, 82, '2018-11-02 11:07:08.510742', 1),
+(328, 'jiss ss sent a friend request to you', 78, 82, '2018-11-02 11:23:08.465820', 1),
+(329, 'vasu sss Accepted your friend request', 82, 78, '2018-11-02 11:23:55.586914', 0),
+(330, 'jiss ss sent a friend request to you', 78, 82, '2018-11-02 11:30:14.189453', 1),
+(331, 'jiss ss sent a friend request to you', 78, 82, '2018-11-02 11:30:38.387695', 1),
+(332, 'jiss ss sent a friend request to you', 78, 82, '2018-11-02 11:30:43.126953', 1),
+(333, 'vasu sss sent a friend request to you', 82, 78, '2018-11-02 11:30:47.500976', 0),
+(334, 'vasu sss Accepted your friend request', 82, 78, '2018-11-02 11:30:57.942382', 0),
+(335, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 14:54:43.794921', 0),
+(336, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 14:55:09.607421', 0),
+(337, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 14:55:14.480468', 0),
+(338, 'jiss ss Accepted your friend request', 78, 82, '2018-11-02 14:55:43.195312', 1),
+(339, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 15:33:58.206054', 0),
+(340, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 15:34:12.124023', 0),
+(341, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 15:34:18.329101', 0),
+(342, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 15:34:25.452148', 0),
+(343, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 15:34:50.230468', 0),
+(344, 'vasu ssst sent a friend request to you', 85, 78, '2018-11-02 15:40:41.534179', 0),
+(345, 'vasu ssst sent a friend request to you', 85, 78, '2018-11-02 15:40:46.868164', 0),
+(346, 'vasu ssst sent a friend request to you', 84, 78, '2018-11-02 15:48:17.768554', 0),
+(347, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 15:48:18.432617', 0),
+(348, 'vasu ssst sent a friend request to you', 55, 78, '2018-11-02 15:51:47.235351', 0),
+(349, 'vasu ssst sent a friend request to you', 55, 78, '2018-11-02 15:51:50.003906', 0),
+(350, 'vasu ssst sent a friend request to you', 55, 78, '2018-11-02 15:51:52.255859', 0),
+(351, 'vasu ssst sent a friend request to you', 55, 78, '2018-11-02 15:52:53.878906', 0),
+(352, 'vasu ssst sent a friend request to you', 55, 78, '2018-11-02 15:52:56.614257', 0),
+(353, 'vasu ssst sent a friend request to you', 55, 78, '2018-11-02 15:53:00.034179', 0),
+(354, 'vasu ssst sent a friend request to you', 55, 78, '2018-11-02 15:53:30.817382', 0),
+(355, 'vasu ssst sent a friend request to you', 55, 78, '2018-11-02 15:59:05.164062', 0),
+(356, 'vasu ssst sent a friend request to you', 55, 78, '2018-11-02 16:29:42.236328', 0),
+(357, 'vasu ssst sent a friend request to you', 85, 78, '2018-11-02 16:37:52.342773', 0),
+(358, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:38:56.249023', 0),
+(359, 'jiss ss Accepted your friend request', 78, 82, '2018-11-02 16:39:16.198242', 0),
+(360, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:39:58.510742', 0),
+(361, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:41:25.069335', 0),
+(362, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:42:56.575195', 0),
+(363, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:43:00.250000', 0),
+(364, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:43:27.866210', 0),
+(365, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:44:54.508789', 0),
+(366, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:46:18.465820', 0),
+(367, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:46:22.689453', 0),
+(368, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:46:51.443359', 0),
+(369, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:46:51.689453', 0),
+(370, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:47:41.137695', 0),
+(371, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:49:28.699218', 0),
+(372, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:49:40.199218', 0),
+(373, 'vasu ssst sent a friend request to you', 82, 78, '2018-11-02 16:49:48.784179', 0),
+(374, 'jiss ss Accepted your friend request', 78, 82, '2018-11-02 16:50:11.775390', 0);
 
 -- --------------------------------------------------------
 
@@ -469,8 +622,16 @@ INSERT INTO `online_user` (`id`, `user_id`, `logged_time`, `status`, `logout_tim
 (72, 66, NULL, 1, NULL),
 (73, 67, NULL, 1, '2018-10-21 11:08:04'),
 (74, 68, NULL, 1, NULL),
-(75, 69, NULL, 1, NULL),
-(76, 70, NULL, 1, NULL);
+(75, 69, NULL, 0, '2018-11-01 12:54:29'),
+(76, 70, NULL, 1, NULL),
+(77, 71, NULL, 1, NULL),
+(78, 72, NULL, 0, '2018-10-31 10:09:53'),
+(79, 78, NULL, 1, NULL),
+(80, 80, NULL, 1, NULL),
+(81, 81, NULL, 0, '2018-11-01 18:07:42'),
+(82, 84, NULL, 0, '2018-11-01 17:35:22'),
+(83, 82, NULL, 1, NULL),
+(84, 85, NULL, 1, '2018-11-02 12:34:45');
 
 -- --------------------------------------------------------
 
@@ -513,7 +674,34 @@ INSERT INTO `profile_visit` (`id`, `user_id`, `visitor_id`, `visited_at`) VALUES
 (147, 63, 59, '2018-10-14 22:55:25'),
 (148, 59, 68, '2018-10-21 11:24:10'),
 (149, 70, 69, '2018-10-22 20:05:56'),
-(150, 69, 70, '2018-10-22 20:10:27');
+(150, 69, 70, '2018-10-22 20:10:27'),
+(151, 70, 70, '2018-10-24 14:29:07'),
+(152, 71, 69, '2018-10-24 16:33:15'),
+(153, 2, 69, '2018-10-24 17:35:51'),
+(154, 5, 69, '2018-10-25 12:10:14'),
+(155, 14, 69, '2018-10-25 12:21:14'),
+(156, 72, 69, '2018-10-29 14:27:18'),
+(157, 14, 70, '2018-10-29 17:42:06'),
+(158, 11, 69, '2018-10-29 18:06:51'),
+(159, 12, 70, '2018-10-29 18:30:33'),
+(160, 72, 70, '2018-10-29 18:39:56'),
+(161, 9, 69, '2018-10-29 18:47:24'),
+(162, 69, 72, '2018-10-29 19:07:59'),
+(163, 1, 69, '2018-10-30 15:54:34'),
+(164, 1, 70, '2018-10-31 09:56:20'),
+(165, 2, 84, '2018-11-01 17:16:33'),
+(166, 1, 84, '2018-11-01 17:18:22'),
+(167, 84, 78, '2018-11-01 17:36:55'),
+(168, 5, 78, '2018-11-01 18:09:00'),
+(169, 2, 78, '2018-11-01 18:28:39'),
+(170, 78, 82, '2018-11-01 18:29:34'),
+(171, 84, 82, '2018-11-01 18:29:45'),
+(172, 2, 82, '2018-11-01 18:30:19'),
+(173, 80, 82, '2018-11-01 18:33:02'),
+(174, 82, 80, '2018-11-01 19:08:50'),
+(175, 82, 78, '2018-11-02 10:32:31'),
+(176, 85, 78, '2018-11-02 15:40:28'),
+(177, 55, 78, '2018-11-02 15:50:51');
 
 -- --------------------------------------------------------
 
@@ -524,15 +712,18 @@ INSERT INTO `profile_visit` (`id`, `user_id`, `visitor_id`, `visited_at`) VALUES
 CREATE TABLE `stranger_det` (
   `id` int(2) NOT NULL,
   `user_id` int(2) NOT NULL,
-  `status` int(2) NOT NULL DEFAULT '0'
+  `status` int(2) NOT NULL DEFAULT '0',
+  `requestedtime` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stranger_det`
 --
 
-INSERT INTO `stranger_det` (`id`, `user_id`, `status`) VALUES
-(2, 22, 0);
+INSERT INTO `stranger_det` (`id`, `user_id`, `status`, `requestedtime`) VALUES
+(209, 69, 1, '2018-10-31'),
+(210, 69, 1, '2018-10-31'),
+(217, 78, 1, '2018-11-01');
 
 -- --------------------------------------------------------
 
@@ -649,8 +840,23 @@ INSERT INTO `users` (`user_id`, `full_name`, `email`, `user_name`, `password`, `
 (63, 'irshadtest test', 'irshadtest@gmail.com', 'irshadtest', 'e71ec642c41049181fe837ee9f2ec9fb', 1, '1970-01-01', 48, '', NULL, NULL, 1, '2018-10-13 20:57:51', '1_MX40NjIwMTA5Mn5-MTUzOTQzNTUwODUyN35qcHJITlVwaHZjbENtanhESjZSOVBFdXZ-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
 (64, 'irshadstar test', 'irshadstartest@gmail.com', 'irshadtest1', '583d8c3bc38a14fa7e6c8ab317dd6c1a', 1, '1970-01-01', 48, '', NULL, NULL, 1, '2018-10-13 22:05:35', '1_MX40NjIwMTA5Mn5-MTUzOTQzOTU5NjE3MX5ybnZNRDZwL3dRK1o4K3MwWlRjdFN6V2V-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
 (68, 'Irshad Illias', 'irshadstar@gmail.com', 'irshadstar@gmail.com', '', 0, '0000-00-00', 0, '', NULL, NULL, 1, '2018-10-21 05:09:17', '2_MX40NjIwMTA5Mn5-MTU0MDA5MTM2MjE2MX5GZGhZS2RyQzdaS0x0Q0tXRk55TVBUL0h-fg', 'facebook', '1895854510521946', '2018-10-21 11:13:32', NULL, NULL),
-(69, 'joseph joseph', 'derin@gmail.comf', 'joseph', '25d55ad283aa400af464c76d713c07ad', 1, '2000-09-10', 18, '', NULL, NULL, 1, '2018-10-22 12:14:39', '1_MX40NjIwMTA5Mn5-MTU0MDE5MDY4MTYxM351ZDBCMWtQb05RYXNrcHZwUzNTZXdYSDB-fg', '', '', '0000-00-00 00:00:00', 'fbab888cc4e405d646bafb0e8d843cc00ffa9941', 'f31cf3b062e3a972adaa80be79198bd65ff493f1'),
-(70, 'mary mary', 'derin@gmail.comyy', 'mary', '25d55ad283aa400af464c76d713c07ad', 2, '2000-03-10', 18, '', NULL, NULL, 1, '2018-10-22 12:29:45', '2_MX40NjIwMTA5Mn5-MTU0MDE5MTY3OTIxN35ROGhONlNjL0t3Q2laeThHLzE3My9BUDZ-fg', '', '', '0000-00-00 00:00:00', NULL, NULL);
+(69, 'joseph joseph', 'derin@gmail.comf', 'joseph', '25d55ad283aa400af464c76d713c07ad', 3, '1996-06-11', 22, '', NULL, NULL, 1, '2018-10-22 12:14:39', '1_MX40NjIwMTA5Mn5-MTU0MDE5MDY4MTYxM351ZDBCMWtQb05RYXNrcHZwUzNTZXdYSDB-fg', '', '', '0000-00-00 00:00:00', 'fbab888cc4e405d646bafb0e8d843cc00ffa9941', 'f31cf3b062e3a972adaa80be79198bd65ff493f1'),
+(70, 'mary mary', 'derin@gmail.comyy', 'mary', '25d55ad283aa400af464c76d713c07ad', 3, '1990-01-10', 28, '', NULL, NULL, 1, '2018-10-22 12:29:45', '2_MX40NjIwMTA5Mn5-MTU0MDE5MTY3OTIxN35ROGhONlNjL0t3Q2laeThHLzE3My9BUDZ-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
+(71, 'dq qq', 'cfemp08d@gmail.comqq', 'dq', '25d55ad283aa400af464c76d713c07ad', 1, '2000-04-10', 18, '', NULL, NULL, 1, '2018-10-24 15:41:11', '1_MX40NjIwMTA5Mn5-MTU0MDM3NTg1OTk2MX5hdDd4UU9hNmVCN1Ara096ZkEyd2VlRlZ-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
+(72, 'alp nsa', 'derin@gmail.comrr', 'aru', '25d55ad283aa400af464c76d713c07ad', 1, '2000-02-10', 18, '', NULL, NULL, 1, '2018-10-29 11:06:25', '2_MX40NjIwMTA5Mn5-MTU0MDc5MTM5MjI4NH5VN3ZVVkFzSHpPTDhaUE81d05qcFNLKzN-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
+(73, 'jijo sdf', 'cfemp08d@gmail.comh', 'jijo', '7fa8282ad93047a4d6fe6111c93b308a', 1, '0000-00-00', 48, '', NULL, NULL, 1, '2018-10-31 11:53:03', NULL, '', '', '0000-00-00 00:00:00', NULL, NULL),
+(74, 'rr rr', 'rtrt@gdfgdr', 'rrr', '25d55ad283aa400af464c76d713c07ad', 1, '1970-01-01', 48, '', NULL, NULL, 1, '2018-10-31 12:26:37', NULL, '', '', '0000-00-00 00:00:00', NULL, NULL),
+(75, 'we we', 'derin@gmail.comerr', 'yuy', '25d55ad283aa400af464c76d713c07ad', 1, '1970-01-01', 48, '', NULL, NULL, 1, '2018-10-31 12:27:16', NULL, '', '', '0000-00-00 00:00:00', NULL, NULL),
+(76, 'er er', 'cfemp08d@gmail.comrr', 'rr', '0dbab03f8212aef25beec61dcf26c370', 1, '0000-00-00', 0, '', NULL, NULL, 1, '2018-10-31 15:30:40', NULL, '', '', '0000-00-00 00:00:00', NULL, NULL),
+(77, 'frr dffd', 'degrin@gmail.comdfd', 'sdfs', '25d55ad283aa400af464c76d713c07ad', 1, '1970-01-01', 48, '', NULL, NULL, 1, '2018-10-31 16:41:12', NULL, '', '', '0000-00-00 00:00:00', NULL, NULL),
+(78, 'vasu ssst', 'cfemp08d@gmail.comcc', 'vasu', '25d55ad283aa400af464c76d713c07ad', 2, '0000-00-00', 2018, '', NULL, NULL, 1, '2018-11-01 12:37:48', '1_MX40NjIwMTA5Mn5-MTU0MTA1NjA3NTk3M35ISGM0QTN4U3F3c0RWNlVhQzVMQ1c1RHl-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
+(79, 'fr ff', 'cfemp08d@gmail.comff', 'ffff', '9b2e91684227b22239d022c0e9c424e5', 1, '1997-11-11', 21, '', NULL, NULL, 1, '2018-11-01 14:09:41', NULL, '', '', '0000-00-00 00:00:00', NULL, NULL),
+(80, 'jhon homnay', 'cfemp08d@gmail.comrrfff', 'jhon', '25d55ad283aa400af464c76d713c07ad', 1, '1970-01-01', 25, '', NULL, NULL, 1, '2018-11-01 14:10:54', '2_MX40NjIwMTA5Mn5-MTU0MTA2MTY2MjE2OX4xZTR5NTVWaDhEeFRlQUNiS2w0Z0dUN2N-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
+(81, 'abin rtr', 'all@gmail.comsss', 'abin', '25d55ad283aa400af464c76d713c07ad', 3, '1993-01-01', 25, '', NULL, NULL, 1, '2018-11-01 14:13:07', '2_MX40NjIwMTA5Mn5-MTU0MTA2MTgyMjQxMH4vb2grcUFaNkNlN3h1dUFvaUN5VDc2T1N-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
+(82, 'jiss ss', 'cfemp08d@gmail.comrrss', 'jiss', '25d55ad283aa400af464c76d713c07ad', 2, '1995-03-01', 23, '', NULL, NULL, 1, '2018-11-01 14:15:33', '2_MX40NjIwMTA5Mn5-MTU0MTA3NzE1MjI4Nn5WMjhQdmNYZmJqOFNXZ3BWSzBPZ2lPNTZ-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
+(83, 'fgh g', 'cfemp08d@gmail.comrrgh', 'ghgh', '79c5202b7c271f69f709f618ccc5e50e', 1, '1993-08-17', 25, '', NULL, NULL, 1, '2018-11-01 15:19:27', NULL, '', '', '0000-00-00 00:00:00', NULL, NULL),
+(84, 'martin tgdrfgdbwin', 'cfemp08d@gmail.comgg', 'martin', '25d55ad283aa400af464c76d713c07ad', 1, '2000-11-01', 18, '', NULL, NULL, 1, '2018-11-01 15:21:29', '1_MX40NjIwMTA5Mn5-MTU0MTA2NTkwODI3Nn44WDFkbFAzQ05ZNVYxQWozSmVadU1QSHZ-fg', '', '', '0000-00-00 00:00:00', NULL, NULL),
+(85, 'dona joseph', 'derin@gmail.comggg', 'do', '25d55ad283aa400af464c76d713c07ad', 1, '2000-11-01', 18, '', NULL, NULL, 1, '2018-11-02 12:34:33', '2_MX40NjIwMTA5Mn5-MTU0MTE0MjI3MDkyOX5wRnVYTEtIUDhIRUxWM3dTUFpxYzlzc1B-fg', '', '', '0000-00-00 00:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -698,7 +904,147 @@ INSERT INTO `user_feed` (`id`, `user_id`, `feeds`, `no_likes`, `status`, `create
 (24, 17, 'hi', 1, 1, '2018-10-05 13:08:03'),
 (25, 22, 'dd', 1, 1, '2018-10-05 17:25:35'),
 (26, 69, 'sdfsffsd', 2, 1, '2018-10-22 12:25:56'),
-(27, 69, 'fgd', 1, 1, '2018-10-22 12:34:39');
+(27, 69, 'fgd', 1, 1, '2018-10-22 12:34:39'),
+(30, 69, 'derin', 0, 1, '2018-10-30 15:56:54'),
+(31, 69, 'derin12', 0, 1, '2018-10-30 15:57:03'),
+(32, 72, 'aru test', 0, 1, '2018-10-30 15:58:27'),
+(33, 70, 'mary', 0, 1, '2018-10-30 15:58:42'),
+(34, 70, 'bnmb', 0, 1, '2018-10-30 16:06:16'),
+(35, 69, '												\r\n												\r\n													\r\n												\r\n												', 0, 1, '2018-10-31 18:52:46'),
+(36, 69, '												\r\n												\r\n													fffffff\r\n												\r\n												', 0, 1, '2018-10-31 19:00:39'),
+(37, 78, '												\r\n												\r\n													\r\n												\r\n												', 0, 1, '2018-11-02 14:49:26'),
+(38, 78, '												\r\n												\r\n													\r\n												\r\n												', 0, 1, '2018-11-02 14:49:49'),
+(39, 78, '												\r\n												\r\n													\r\n												\r\n												', 0, 1, '2018-11-02 14:52:51'),
+(40, 78, '												\r\n												\r\n													\r\n												\r\n												', 0, 1, '2018-11-02 15:38:50'),
+(41, 78, '												\r\n												\r\n						gggggg  https://www.youtube.com/watch?v=6fD-XLMiUso&list=RD6fD-XLMiUso&start_radio=1							\r\n												\r\n												', 0, 1, '2018-11-02 17:44:47'),
+(42, 78, '												\r\n												\r\n							https://www.manoramaonline.com/news/latest-news/2018/11/02/some-ornaments-of-lord-ayyappa-is-missing-swami-sandeepanandagiri.html				\r\n												\r\n												', 0, 1, '2018-11-02 17:45:57'),
+(43, 78, 'https://www.manoramaonline.com/news/latest-news/2018/11/02/some-ornaments-of-lord-ayyappa-is-missing-swami-sandeepanandagiri.html\r\n\r\n\r\ngffgfdgggggggggggggggggggggggggggggd\r\n												\r\n													\r\n												\r\n												', 0, 1, '2018-11-02 18:07:34');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_feed_image`
+--
+
+CREATE TABLE `user_feed_image` (
+  `id` int(2) NOT NULL,
+  `image_name` varchar(50) NOT NULL,
+  `feed_id` int(2) NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_feed_image`
+--
+
+INSERT INTO `user_feed_image` (`id`, `image_name`, `feed_id`, `status`) VALUES
+(1, 'PHOTO-2018-10-29-10-23-45.jpg', 35, 0),
+(2, 'images.jpg', 36, 0),
+(3, 'PHOTO-2018-10-29-10-23-45.jpg', 37, 0),
+(4, 'PHOTO-2018-10-29-10-23-45.jpg', 38, 0),
+(5, 'PHOTO-2018-10-29-10-23-45.jpg', 39, 0),
+(6, '', 40, 0),
+(7, '', 41, 0),
+(8, '', 42, 0),
+(9, '', 43, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_intrest`
+--
+
+CREATE TABLE `user_intrest` (
+  `in_id` int(2) NOT NULL,
+  `intrest` varchar(50) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_intrest`
+--
+
+INSERT INTO `user_intrest` (`in_id`, `intrest`, `status`) VALUES
+(1, 'Acting', 1),
+(2, 'Archeology', 1),
+(3, 'Archery', 1),
+(4, 'Architecture', 1),
+(5, 'Art', 1),
+(6, 'Arts & Crafts', 1),
+(7, 'Astronomy', 1),
+(8, 'Backpacking', 1),
+(9, 'Band', 1),
+(10, 'Baseball', 1),
+(11, 'Basketball', 1),
+(12, 'Bird Watching', 1),
+(13, 'Bowling', 1),
+(14, 'Camping', 1),
+(15, 'Canoeing', 1),
+(16, 'Cards', 1),
+(17, 'Cars', 1),
+(18, 'Carving', 1),
+(19, 'Chess', 1),
+(20, 'Cleaning', 1),
+(21, 'Collecting', 1),
+(22, 'Computer Activites', 1),
+(23, 'Cooking', 1),
+(24, 'Dancing', 1),
+(25, 'Decorating', 1),
+(26, 'Design', 1),
+(27, 'Dioramas', 1),
+(28, 'Doing Good', 1),
+(29, 'Drinking', 1),
+(30, 'Driving', 1),
+(31, 'Eating', 1),
+(32, 'Exploring', 1),
+(33, 'Family Time', 1),
+(34, 'Fantasy Time', 1),
+(35, 'Fantasy Football', 1),
+(36, 'Fashion', 1),
+(37, 'Firewoks/Pyro Staff', 1),
+(38, 'Fishing', 1),
+(39, 'Football', 1),
+(40, 'Gambling', 1),
+(41, 'Gardening', 1),
+(42, 'Golf', 1),
+(43, 'Hiking', 1),
+(44, 'Hunting', 1),
+(45, 'Jewellery Making', 1),
+(46, 'Knitting', 1),
+(47, 'Listening to music', 1),
+(48, 'Metal Work', 1),
+(49, 'Paintball', 1),
+(50, 'Party Planning', 1),
+(51, 'Photography', 1),
+(52, 'Playing Sports', 1),
+(53, 'Poker', 1),
+(54, 'Racing', 1),
+(55, 'Reading', 1),
+(56, 'Sewing', 1),
+(57, 'Shopping', 1),
+(58, 'Shopping', 1),
+(59, 'Skiing', 1),
+(60, 'Sleeping', 1),
+(61, 'Snowboarding', 1),
+(62, 'Soccer', 1),
+(63, 'Studying', 1),
+(64, 'Tennis', 1),
+(65, 'Traveling', 1),
+(66, 'Video Games', 1),
+(67, 'Watching TV', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_intrest_list`
+--
+
+CREATE TABLE `user_intrest_list` (
+  `int_id` int(2) NOT NULL,
+  `user_id` int(2) NOT NULL,
+  `intrest_id` int(2) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -745,7 +1091,8 @@ INSERT INTO `user_photos` (`id`, `user_id`, `file_name`, `create_at`, `status`) 
 (24, 22, 'download (1).jpg', '2018-10-05 17:47:39', 0),
 (25, 22, 'download (6).jpg', '2018-10-05 17:47:45', 0),
 (26, 22, 'download (2).jpg', '2018-10-05 17:47:53', 0),
-(27, 22, 'download (1).jpg', '2018-10-05 17:48:08', 0);
+(27, 22, 'download (1).jpg', '2018-10-05 17:48:08', 0),
+(31, 69, 'Chrysanthemum.jpg', '2018-10-30 14:33:09', 0);
 
 -- --------------------------------------------------------
 
@@ -833,8 +1180,23 @@ INSERT INTO `user_profile` (`id`, `user_id`, `gender`, `dob`, `visibility`, `nic
 (57, 60, NULL, NULL, 'true', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-09 22:53:27', '1'),
 (60, 64, NULL, NULL, 'true', 'irshu123', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-13 22:05:35', '1'),
 (63, 68, NULL, NULL, 'true', 'Irshad Illias', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-21 11:09:17', '1'),
-(64, 69, NULL, NULL, 'true', 'joseph', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-22 12:14:39', 'false'),
-(65, 70, NULL, NULL, 'true', 'mary', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-22 12:29:46', 'false');
+(64, 69, NULL, NULL, 'false', 'joseph', NULL, NULL, '                      yhfgh      bjnb', NULL, '9', '1', '2018-10-22 12:14:39', '1'),
+(65, 70, NULL, NULL, 'false', 'mary', NULL, NULL, NULL, NULL, '8', '1', '2018-10-22 12:29:46', 'true'),
+(66, 71, NULL, NULL, 'true', 'ddd', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-24 15:41:12', 'true'),
+(67, 72, NULL, NULL, 'true', '12', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-29 11:06:25', 'true'),
+(68, 73, NULL, NULL, 'true', 'aaaa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-31 11:53:04', 'true'),
+(69, 74, NULL, NULL, 'true', 'rrr', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-31 12:26:37', 'true'),
+(70, 75, NULL, NULL, 'true', 'aaaa', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-31 12:27:17', 'true'),
+(71, 76, NULL, NULL, 'true', 'jay', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-31 15:30:41', 'true'),
+(72, 77, NULL, NULL, 'true', 'sffs', NULL, NULL, NULL, NULL, NULL, NULL, '2018-10-31 16:41:13', 'true'),
+(73, 78, NULL, NULL, 'true', 'vasut', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-01 12:37:48', 'false'),
+(74, 79, NULL, NULL, 'true', 'werwe', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-01 14:09:41', 'true'),
+(75, 80, NULL, NULL, 'true', 'jhon', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-01 14:10:55', 'true'),
+(76, 81, NULL, NULL, 'false', 'abin', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-01 14:13:07', '1'),
+(77, 82, NULL, NULL, 'true', 'jids', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-01 14:15:33', 'true'),
+(78, 83, NULL, NULL, 'true', 'fghh', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-01 15:19:27', 'true'),
+(79, 84, NULL, NULL, 'true', 'martinbwin', NULL, NULL, '              fhffhfh', NULL, '7', NULL, '2018-11-01 15:21:30', 'false'),
+(80, 85, NULL, NULL, 'true', 'dona', NULL, NULL, NULL, NULL, NULL, NULL, '2018-11-02 12:34:33', 'true');
 
 --
 -- Indexes for dumped tables
@@ -909,6 +1271,24 @@ ALTER TABLE `user_feed`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_feed_image`
+--
+ALTER TABLE `user_feed_image`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_intrest`
+--
+ALTER TABLE `user_intrest`
+  ADD PRIMARY KEY (`in_id`);
+
+--
+-- Indexes for table `user_intrest_list`
+--
+ALTER TABLE `user_intrest_list`
+  ADD PRIMARY KEY (`int_id`);
+
+--
 -- Indexes for table `user_photos`
 --
 ALTER TABLE `user_photos`
@@ -934,43 +1314,43 @@ ALTER TABLE `countries`
 -- AUTO_INCREMENT for table `feed_like`
 --
 ALTER TABLE `feed_like`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `hide_post`
 --
 ALTER TABLE `hide_post`
-  MODIFY `hd_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `hd_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `n_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `n_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=375;
 
 --
 -- AUTO_INCREMENT for table `online_user`
 --
 ALTER TABLE `online_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `profile_visit`
 --
 ALTER TABLE `profile_visit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT for table `stranger_det`
 --
 ALTER TABLE `stranger_det`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
 -- AUTO_INCREMENT for table `token`
@@ -982,25 +1362,43 @@ ALTER TABLE `token`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `user_feed`
 --
 ALTER TABLE `user_feed`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+
+--
+-- AUTO_INCREMENT for table `user_feed_image`
+--
+ALTER TABLE `user_feed_image`
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `user_intrest`
+--
+ALTER TABLE `user_intrest`
+  MODIFY `in_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+
+--
+-- AUTO_INCREMENT for table `user_intrest_list`
+--
+ALTER TABLE `user_intrest_list`
+  MODIFY `int_id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_photos`
 --
 ALTER TABLE `user_photos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -336,12 +336,12 @@ list($date,$time)=explode(' ',$timestamp);
                       <div class="job_descp">
 												<?php if($fd->islink){
 													   if(strlen($fd->videoEmbeded) > 0){?>
-															<div class="feedVideo">
+															<div class="feedVideo videmp">
 																<?php echo $fd->videoEmbeded ?> </iframe></div>	
 													   <?php }else{
 														   if(strlen($fd->linkimage) > 0){ ?>
 															<div class="feedImage">
-																<img src="<?php echo $fd->linkimage ?>"/> 
+																<img src="<?php echo $fd->linkimage ?>"/ class="image-responsive imgfeed"> 
 															</div>
 														<?php } }?>
 														
@@ -360,7 +360,7 @@ list($date,$time)=explode(' ',$timestamp);
 												<?php } ?>
 													
 													
-													<p><?php echo $fd->feeds;?>..... </p>
+													<p class="feedp"><?php echo $fd->feeds;?>..... </p>
 										      <br>
 												</div>
                       <div class="job-status-bar">
@@ -443,7 +443,7 @@ list($date,$time)=explode(' ',$timestamp);
                         <td>
                           <i id="dobs"> 
 						
-                            <?php echo date("d-m-Y", strtotime($mydata['birth']));?>
+                            <?php echo date("d/m/Y", strtotime($mydata['birth']));?>
                           </i>
                         </td>
                       </tr>
@@ -1028,7 +1028,7 @@ include 'footer.php';?>
       <label class="mylab">Date of birth
       </label>
       <!--input type="text" id="dob" name="dob" class="form-control" data-masked-input="99/99/9999" placeholder="Date of birth" maxlength="10" value="<?php  echo $mydata['birth'];?>"-->
-      <input type="text" id="dob" name="dob" placeholder="Date of birth" maxlength="10" value="<?php echo date("d-m-Y", strtotime($mydata['birth']));?>"  readonly>
+      <input type="text" id="dob" name="dob" placeholder="Date of birth" maxlength="10" value="<?php echo date("d/m/Y", strtotime($mydata['birth']));?>"  readonly>
       <!--<label class="mylab">Age Privacy
       </label>
       <div class="datefm">

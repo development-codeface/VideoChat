@@ -226,12 +226,12 @@ class User extends CI_Controller
 				 $dob                  = date('Y-m-d', strtotime($dob));*/
 				 
 				 
-				  $now = date('d-m-Y');
+				  $now = date('d/m/Y');
 				      $t = $dob;          
 			    	  $val =  explode("/",$dob);
 				
                   $tdye =  $val[2]; 
-			       $val1 =  explode("-",$now);	
+			       $val1 =  explode("/",$now);	
 			
                    $nw =  $val1[2] ;			 
 			     	$age=$nw- $tdye ;
