@@ -42,7 +42,7 @@ include 'header.php';?>
 
 
 				       <div class="col-md-12 vidapp">
-                 <div id="nickname" class="tell"">  </div>
+                 <div id="nickname" class="tell">  </div>
 				  <ul class="videoul">
           
           <!--<li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li> -->

@@ -230,13 +230,14 @@ $( "#locationSave" ).on('click', function (e) {
 // interest save
  $( "#InterestSave" ).on('click', function (e) {
 
-  var interest=$("#Interest_id").val();
- 
+  //var interest=$("#Interest_id").val();
+  var interest = get_selected_items("select7","value");
+  var interestList = interest.join(",");
   if(interest!=""){
     $.ajax({
 		type: "POST",
 		url:site_url+"User/update_Interest",
-		data:'interest='+interest,
+		data:'interest='+interestList,
 		dataType: 'json',
 
         success: function(data) {

@@ -77,6 +77,8 @@ $( "#finduser").click(function() {
   }
   function loadNextStranger(){
       if(!isFristLoad()){
+        var strUrl = window.location.href; 
+        var url = new URL(strUrl);
         var type = url.searchParams.get("usertype");
         getStranger(type);
       }else {
@@ -108,3 +110,11 @@ $( "#finduser").click(function() {
     document.getElementById("findstranger").style.display = 'block';
     clearTimeout(strangerWaitingtimer);
   }
+  function wait(ms){
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
+      end = new Date().getTime();
+   }
+ }
+ 

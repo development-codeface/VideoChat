@@ -45,7 +45,7 @@ class User extends CI_Controller
             $linkUrl = "";
             $isLink = false;
             preg_match_all('#\b(https|http)?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $item->feeds, $match);
-            if(sizeof($match[0]) > 0){
+            if(sizeof($match[0]) > 0 && sizeof($item->image_name) < 2){
                 $linkPreview = new LinkPreview($match[0][0]);
                 $parsed = $linkPreview->getParsed();
                 $isLink = true;
@@ -72,6 +72,7 @@ class User extends CI_Controller
             $itemVal->videoEmbeded = $videoidEmbe;
             $itemVal->linkimage = $image;
             $myfeedsurldetails[$i] = $itemVal;
+            log_message('error','here getstranger >>'.$this->session->userdata('user_id').'<< going to stranger >>'.print_r($itemVal, TRUE).'<<..');
         }
         $this->data['feeds']   = $myfeedsurldetails;
         $this->data['friendOnline']  = $this->users_model->GetOnlineFriends($this->UserId);
@@ -273,8 +274,8 @@ $ageuser=$age;
     public function update_Interest()
     {
         $intr = $this->input->post('interest');
-        
-        $return = $this->users_model->Updateintrest($intr, $this->UserId);
+        $intrList = explode(',', $intr);
+        $return = $this->users_model->updateAreaofinterest($intrList, $this->UserId);
         if (!empty($return)) {
             echo json_encode(array(
                 'status' => 1

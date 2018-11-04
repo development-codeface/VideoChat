@@ -65,7 +65,7 @@ class Profile extends CI_Controller
             $linkUrl = "";
             $isLink = false;
             preg_match_all('#\b(https|http)?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $item->feeds, $match);
-            if(sizeof($match[0]) > 0){
+            if(sizeof($match[0]) > 0  && sizeof($item->image_name) < 2){
                 $linkPreview = new LinkPreview($match[0][0]);
                 $parsed = $linkPreview->getParsed();
                 $isLink = true;
@@ -124,7 +124,7 @@ class Profile extends CI_Controller
             $linkUrl = "";
             $isLink = false;
             preg_match_all('#\b(https|http)?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $item->feeds, $match);
-            if(sizeof($match[0]) > 0){
+            if(sizeof($match[0]) > 0  && sizeof($item->image_name) < 2){
                 $linkPreview = new LinkPreview($match[0][0]);
                 $parsed = $linkPreview->getParsed();
                 $isLink = true;
@@ -262,11 +262,14 @@ class Profile extends CI_Controller
         if (!isset($gender)) {
             $gender  = "1"; 
         } 
+        //log_message('error', 'here getstranger >> '.$this->session->userdata('user_id').'<< going to clear..');
         $this->users_model->clearoldstranger();
+        //log_message('error', 'here getstranger >>'.$this->session->userdata('user_id').'<< going to getuser..');
         $resultval = $this->users_model->getStrangerAvaiUser($this->session->userdata('user_id'),$gender);
         $opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
         $stranger_nickname = $resultval ['nick_name']!= null ? $resultval['nick_name'] : "" ;
         $my_name   = ""; 
+        //log_message('error','here getstranger >>'.$this->session->userdata('user_id').'<< going to stranger >>'.print_r($resultval, TRUE).'<<..');
         if(null != $resultval){  
             $resultval = $this->users_model->removeuserfromStranger($resultval['user_id']);
             $mydetails = $this->users_model->getUserFullDetails($this->session->userdata('user_id'));
@@ -278,6 +281,7 @@ class Profile extends CI_Controller
             $resultval["errorcode"] = "1";
             $resultval["myNickName"]  = $resultval ['nick_name'];
         }
+        
         $resultval['stranger_nikename'] = $stranger_nickname;
         //$resultval["myNickName"]  = $resultval["nick_name"];
         $opntok_tokenId    = $opentok->generateToken($resultval['session_id']);

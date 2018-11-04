@@ -335,10 +335,27 @@ class Users_model extends CI_Model
         return 1;
     }
     public function Updateintrest($params, $user_id)
-    {
+    {   
         $query = $this->db->query("UPDATE  user_profile SET interest_area=$params where user_id=$user_id");
         return 1;
     }
+
+    public function updateAreaofinterest($params, $user_id){
+        $query = $this->db->query("DELETE from user_intrest_list where user_id=$user_id");
+        $arrayList =array();
+        foreach ($params as $key => $interest){
+            $intererstItem[] = array(
+                'user_id' => $user_id,
+                'intrest_id' => $interest,
+                'status' => 1
+               );
+        }
+
+        $this->db->insert_batch(
+            'user_intrest_list',$intererstItem
+            
+        );
+    } 
     public function ageintrest($params, $user_id)
     {
         $query = $this->db->query("UPDATE  user_profile SET age_hide=$params where user_id=$user_id");
@@ -642,7 +659,7 @@ class Users_model extends CI_Model
         
     }  
     function clearoldstranger(){
-     $query = $this->db->query("DELETE from stranger_det WHERE requestedtime > NOW() - INTERVAL 1 MINUTE");
+     $query = $this->db->query("DELETE from stranger_det WHERE requestedtime < NOW() - INTERVAL 1 MINUTE");
      return 1;
     }
 
@@ -656,7 +673,7 @@ class Users_model extends CI_Model
             user_profile up  ON up.user_id=us.user_id
             WHERE us.user_id not in(select fm.user_id from friends fm where fm.friend_id =' . $user_id . ')
             AND us.user_id !=' . $user_id. ' AND us.status =1 AND us.gender ='.$gender.' LIMIT 1');
-       
+        
         //$query = $this->db->query("SELECT user_id FROM stranger_det WHERE user_id != $user_id LIMIT 1");
         return $query->row_array();
     }
@@ -686,7 +703,7 @@ class Users_model extends CI_Model
         $this->db->where(array('user_id'=>$uid));
         $prevQuery = $this->db->get();
         $prevCheck = $prevQuery->num_rows();
-        if($prevCheck > 1){
+        if($prevCheck > 0){
             $prevResult = $prevQuery->row_array();
             //update user data
             $userData['status'] = 1;
@@ -696,7 +713,7 @@ class Users_model extends CI_Model
         }else {
             $userData['user_id']  = $uid;
             $userData['status'] = 1;
-            $userData['requestedtime'] = date("Y-m-d H:i:s");
+            $this->db->set('requestedtime', 'NOW()', FALSE);
             $insert = $this->db->insert("stranger_det",$userData);
             $userID = $this->db->insert_id();
         }

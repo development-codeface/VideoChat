@@ -359,7 +359,12 @@ else
 															</div>
 														<?php } ?>
 
-												<?php } ?>
+												<?php } else {
+													if(strlen($fd->image_name) > 0){ ?>
+															<div class="feedImage">
+																<img src="../../uploads/status/<?php echo $fd->image_name ?>" class="image-responsive imgfeed"> 
+															</div>
+												<?php } }?>	
 													
 													
 													<p class="feedp"><?php echo $fd->feeds;?>..... </p>

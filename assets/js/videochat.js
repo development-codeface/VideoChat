@@ -137,7 +137,10 @@ function sessageCallback(event){
 function strangerEndCall(event){
   disconnect();
   if(!isSameSesssion(event)){
-    getrefreshWithStranger();
+    setTimeout(function () {
+        getrefreshWithStranger();
+  }, 1000);
+    
   }
 }
 function recicveChat(event){
