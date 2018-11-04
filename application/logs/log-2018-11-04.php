@@ -3348,3 +3348,878 @@ ERROR - 2018-11-04 13:08:36 --> Severity: Warning --> Cannot modify header infor
 ERROR - 2018-11-04 13:08:44 --> Severity: Notice --> Array to string conversion /Users/irshadillias/ApplicarionServer/php/htdocs/VideoChat/application/models/Users_model.php 339
 ERROR - 2018-11-04 13:08:44 --> Query error: Unknown column 'Array' in 'field list' - Invalid query: UPDATE  user_profile SET interest_area=Array where user_id=60
 ERROR - 2018-11-04 13:08:44 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /Users/irshadillias/ApplicarionServer/php/htdocs/VideoChat/system/core/Exceptions.php:271) /Users/irshadillias/ApplicarionServer/php/htdocs/VideoChat/system/core/Common.php 570
+ERROR - 2018-11-04 13:12:32 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 19:04:17
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => https://www.youtube.com/watch?v=K0UICM4S0AU			
+													
+												
+												
+    [no_likes] => 1
+    [id] => 39
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=K0UICM4S0AU
+
+    [linktitle] => Incredibles 2 - Jack-Jack Memorable Moments
+
+    [linkdescription] => Thank for watching, Subscribe iMovies for more videos. Like Us on FB â¥ http://bit.ly/AniUniFB
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/K0UICM4S0AU" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/K0UICM4S0AU/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:12:32 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => famous.jpg
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 18:32:23
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => 	test my image post											
+												
+													
+												
+												
+    [no_likes] => 0
+    [id] => 36
+    [country_id] => 
+    [country] => 
+    [islink] => 
+    [linkUrl] => 
+    [linktitle] => 
+    [linkdescription] => 
+    [videoEmbeded] => 
+    [linkimage] => 
+)
+<<..
+ERROR - 2018-11-04 13:12:33 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:01:13
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => foot ball is my life https://www.youtube.com/watch?v=miSfsIn8pME
+    [no_likes] => 0
+    [id] => 31
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=miSfsIn8pME
+
+    [linktitle] => Here's Why Ronaldo is the Greatest Real Madrid Player Ever!
+
+    [linkdescription] => This is why Cristiano Ronaldo is Real Madrid's best player of all time! All the Ballon d'Or, golden shoes, titles, skills; goals, records etc before his tran...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/miSfsIn8pME" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/miSfsIn8pME/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:12:33 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:00:40
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => my news https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+    [no_likes] => 0
+    [id] => 30
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+
+    [linktitle] => ഇന്ത്യാ - ബംഗ്ലാദേശ് വ്യോമാതിര്‍ത്തിയില്‍ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍
+
+    [linkdescription] => കൊല്‍ക്കത്ത: രണ്ട് ഇന്‍ഡിഗോ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍. എയര്‍ട്രാഫിക് ..
+
+    [videoEmbeded] => 
+    [linkimage] => https://www.mathrubhumi.com/polopoly_fs/1.3004993.1541089357!/image/image.jpg_gen/derivatives/landscape_607/image.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:15:30 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 19:04:17
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => https://www.youtube.com/watch?v=K0UICM4S0AU			
+													
+												
+												
+    [no_likes] => 1
+    [id] => 39
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=K0UICM4S0AU
+
+    [linktitle] => Incredibles 2 - Jack-Jack Memorable Moments
+
+    [linkdescription] => Thank for watching, Subscribe iMovies for more videos. Like Us on FB â¥ http://bit.ly/AniUniFB
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/K0UICM4S0AU" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/K0UICM4S0AU/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:15:30 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => famous.jpg
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 18:32:23
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => 	test my image post											
+												
+													
+												
+												
+    [no_likes] => 0
+    [id] => 36
+    [country_id] => 
+    [country] => 
+    [islink] => 
+    [linkUrl] => 
+    [linktitle] => 
+    [linkdescription] => 
+    [videoEmbeded] => 
+    [linkimage] => 
+)
+<<..
+ERROR - 2018-11-04 13:15:31 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:01:13
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => foot ball is my life https://www.youtube.com/watch?v=miSfsIn8pME
+    [no_likes] => 0
+    [id] => 31
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=miSfsIn8pME
+
+    [linktitle] => Here's Why Ronaldo is the Greatest Real Madrid Player Ever!
+
+    [linkdescription] => This is why Cristiano Ronaldo is Real Madrid's best player of all time! All the Ballon d'Or, golden shoes, titles, skills; goals, records etc before his tran...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/miSfsIn8pME" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/miSfsIn8pME/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:15:31 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:00:40
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => my news https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+    [no_likes] => 0
+    [id] => 30
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+
+    [linktitle] => ഇന്ത്യാ - ബംഗ്ലാദേശ് വ്യോമാതിര്‍ത്തിയില്‍ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍
+
+    [linkdescription] => കൊല്‍ക്കത്ത: രണ്ട് ഇന്‍ഡിഗോ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍. എയര്‍ട്രാഫിക് ..
+
+    [videoEmbeded] => 
+    [linkimage] => https://www.mathrubhumi.com/polopoly_fs/1.3004993.1541089357!/image/image.jpg_gen/derivatives/landscape_607/image.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:15:57 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 68
+    [image_name] => 
+    [gender] => 0
+    [profile_pic] => 
+    [created_at] => 2018-11-02 02:18:29
+    [nick_name] => Irshad Illias
+    [full_name] => Irshad Illias
+    [feeds] => irshad illlias cooking https://www.youtube.com/watch?v=HCAPjIVOdJw
+    [no_likes] => 0
+    [id] => 32
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=HCAPjIVOdJw
+
+    [linktitle] => Make Your Own: Pepperoni Pizza
+
+    [linkdescription] => Learn how to make your own pizza crust, pizza sauce and pepperoni pizza that will rival any take-out pizza joint! These are cheaper to make than take-out, do...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/HCAPjIVOdJw" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/HCAPjIVOdJw/hqdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:17:16 --> 404 Page Not Found: Profile/images
+ERROR - 2018-11-04 13:18:43 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 19:04:17
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => https://www.youtube.com/watch?v=K0UICM4S0AU			
+													
+												
+												
+    [no_likes] => 1
+    [id] => 39
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=K0UICM4S0AU
+
+    [linktitle] => Incredibles 2 - Jack-Jack Memorable Moments
+
+    [linkdescription] => Thank for watching, Subscribe iMovies for more videos. Like Us on FB â¥ http://bit.ly/AniUniFB
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/K0UICM4S0AU" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/K0UICM4S0AU/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:18:43 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => famous.jpg
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 18:32:23
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => 	test my image post											
+												
+													
+												
+												
+    [no_likes] => 0
+    [id] => 36
+    [country_id] => 
+    [country] => 
+    [islink] => 
+    [linkUrl] => 
+    [linktitle] => 
+    [linkdescription] => 
+    [videoEmbeded] => 
+    [linkimage] => 
+)
+<<..
+ERROR - 2018-11-04 13:18:44 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:01:13
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => foot ball is my life https://www.youtube.com/watch?v=miSfsIn8pME
+    [no_likes] => 0
+    [id] => 31
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=miSfsIn8pME
+
+    [linktitle] => Here's Why Ronaldo is the Greatest Real Madrid Player Ever!
+
+    [linkdescription] => This is why Cristiano Ronaldo is Real Madrid's best player of all time! All the Ballon d'Or, golden shoes, titles, skills; goals, records etc before his tran...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/miSfsIn8pME" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/miSfsIn8pME/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:18:44 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:00:40
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => my news https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+    [no_likes] => 0
+    [id] => 30
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+
+    [linktitle] => ഇന്ത്യാ - ബംഗ്ലാദേശ് വ്യോമാതിര്‍ത്തിയില്‍ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍
+
+    [linkdescription] => കൊല്‍ക്കത്ത: രണ്ട് ഇന്‍ഡിഗോ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍. എയര്‍ട്രാഫിക് ..
+
+    [videoEmbeded] => 
+    [linkimage] => https://www.mathrubhumi.com/polopoly_fs/1.3004993.1541089357!/image/image.jpg_gen/derivatives/landscape_607/image.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:18:45 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 19:04:17
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => https://www.youtube.com/watch?v=K0UICM4S0AU			
+													
+												
+												
+    [no_likes] => 1
+    [id] => 39
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=K0UICM4S0AU
+
+    [linktitle] => Incredibles 2 - Jack-Jack Memorable Moments
+
+    [linkdescription] => Thank for watching, Subscribe iMovies for more videos. Like Us on FB â¥ http://bit.ly/AniUniFB
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/K0UICM4S0AU" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/K0UICM4S0AU/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:18:45 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => famous.jpg
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 18:32:23
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => 	test my image post											
+												
+													
+												
+												
+    [no_likes] => 0
+    [id] => 36
+    [country_id] => 
+    [country] => 
+    [islink] => 
+    [linkUrl] => 
+    [linktitle] => 
+    [linkdescription] => 
+    [videoEmbeded] => 
+    [linkimage] => 
+)
+<<..
+ERROR - 2018-11-04 13:18:46 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:01:13
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => foot ball is my life https://www.youtube.com/watch?v=miSfsIn8pME
+    [no_likes] => 0
+    [id] => 31
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=miSfsIn8pME
+
+    [linktitle] => Here's Why Ronaldo is the Greatest Real Madrid Player Ever!
+
+    [linkdescription] => This is why Cristiano Ronaldo is Real Madrid's best player of all time! All the Ballon d'Or, golden shoes, titles, skills; goals, records etc before his tran...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/miSfsIn8pME" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/miSfsIn8pME/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:18:46 --> here getstranger >>60<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:00:40
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => my news https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+    [no_likes] => 0
+    [id] => 30
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+
+    [linktitle] => ഇന്ത്യാ - ബംഗ്ലാദേശ് വ്യോമാതിര്‍ത്തിയില്‍ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍
+
+    [linkdescription] => കൊല്‍ക്കത്ത: രണ്ട് ഇന്‍ഡിഗോ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍. എയര്‍ട്രാഫിക് ..
+
+    [videoEmbeded] => 
+    [linkimage] => https://www.mathrubhumi.com/polopoly_fs/1.3004993.1541089357!/image/image.jpg_gen/derivatives/landscape_607/image.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:18:56 --> 404 Page Not Found: Profile/images
+ERROR - 2018-11-04 13:19:07 --> 404 Page Not Found: Profile/images
+ERROR - 2018-11-04 13:20:45 --> 404 Page Not Found: Profile/images
+ERROR - 2018-11-04 13:21:10 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 19:04:17
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => https://www.youtube.com/watch?v=K0UICM4S0AU			
+													
+												
+												
+    [no_likes] => 1
+    [id] => 39
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=K0UICM4S0AU
+
+    [linktitle] => Incredibles 2 - Jack-Jack Memorable Moments
+
+    [linkdescription] => Thank for watching, Subscribe iMovies for more videos. Like Us on FB â¥ http://bit.ly/AniUniFB
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/K0UICM4S0AU" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/K0UICM4S0AU/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:10 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => famous.jpg
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 18:32:23
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => 	test my image post											
+												
+													
+												
+												
+    [no_likes] => 0
+    [id] => 36
+    [country_id] => 
+    [country] => 
+    [islink] => 
+    [linkUrl] => 
+    [linktitle] => 
+    [linkdescription] => 
+    [videoEmbeded] => 
+    [linkimage] => 
+)
+<<..
+ERROR - 2018-11-04 13:21:11 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 68
+    [image_name] => 
+    [gender] => 0
+    [profile_pic] => 
+    [created_at] => 2018-11-02 02:18:29
+    [nick_name] => Irshad Illias
+    [full_name] => Irshad Illias
+    [feeds] => irshad illlias cooking https://www.youtube.com/watch?v=HCAPjIVOdJw
+    [no_likes] => 0
+    [id] => 32
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=HCAPjIVOdJw
+
+    [linktitle] => Make Your Own: Pepperoni Pizza
+
+    [linkdescription] => Learn how to make your own pizza crust, pizza sauce and pepperoni pizza that will rival any take-out pizza joint! These are cheaper to make than take-out, do...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/HCAPjIVOdJw" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/HCAPjIVOdJw/hqdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:11 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:01:13
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => foot ball is my life https://www.youtube.com/watch?v=miSfsIn8pME
+    [no_likes] => 0
+    [id] => 31
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=miSfsIn8pME
+
+    [linktitle] => Here's Why Ronaldo is the Greatest Real Madrid Player Ever!
+
+    [linkdescription] => This is why Cristiano Ronaldo is Real Madrid's best player of all time! All the Ballon d'Or, golden shoes, titles, skills; goals, records etc before his tran...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/miSfsIn8pME" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/miSfsIn8pME/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:11 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:00:40
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => my news https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+    [no_likes] => 0
+    [id] => 30
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+
+    [linktitle] => ഇന്ത്യാ - ബംഗ്ലാദേശ് വ്യോമാതിര്‍ത്തിയില്‍ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍
+
+    [linkdescription] => കൊല്‍ക്കത്ത: രണ്ട് ഇന്‍ഡിഗോ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍. എയര്‍ട്രാഫിക് ..
+
+    [videoEmbeded] => 
+    [linkimage] => https://www.mathrubhumi.com/polopoly_fs/1.3004993.1541089357!/image/image.jpg_gen/derivatives/landscape_607/image.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:30 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 19:04:17
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => https://www.youtube.com/watch?v=K0UICM4S0AU			
+													
+												
+												
+    [no_likes] => 1
+    [id] => 39
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=K0UICM4S0AU
+
+    [linktitle] => Incredibles 2 - Jack-Jack Memorable Moments
+
+    [linkdescription] => Thank for watching, Subscribe iMovies for more videos. Like Us on FB â¥ http://bit.ly/AniUniFB
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/K0UICM4S0AU" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/K0UICM4S0AU/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:30 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => famous.jpg
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 18:32:23
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => 	test my image post											
+												
+													
+												
+												
+    [no_likes] => 0
+    [id] => 36
+    [country_id] => 
+    [country] => 
+    [islink] => 
+    [linkUrl] => 
+    [linktitle] => 
+    [linkdescription] => 
+    [videoEmbeded] => 
+    [linkimage] => 
+)
+<<..
+ERROR - 2018-11-04 13:21:31 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 68
+    [image_name] => 
+    [gender] => 0
+    [profile_pic] => 
+    [created_at] => 2018-11-02 02:18:29
+    [nick_name] => Irshad Illias
+    [full_name] => Irshad Illias
+    [feeds] => irshad illlias cooking https://www.youtube.com/watch?v=HCAPjIVOdJw
+    [no_likes] => 0
+    [id] => 32
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=HCAPjIVOdJw
+
+    [linktitle] => Make Your Own: Pepperoni Pizza
+
+    [linkdescription] => Learn how to make your own pizza crust, pizza sauce and pepperoni pizza that will rival any take-out pizza joint! These are cheaper to make than take-out, do...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/HCAPjIVOdJw" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/HCAPjIVOdJw/hqdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:31 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:01:13
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => foot ball is my life https://www.youtube.com/watch?v=miSfsIn8pME
+    [no_likes] => 0
+    [id] => 31
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=miSfsIn8pME
+
+    [linktitle] => Here's Why Ronaldo is the Greatest Real Madrid Player Ever!
+
+    [linkdescription] => This is why Cristiano Ronaldo is Real Madrid's best player of all time! All the Ballon d'Or, golden shoes, titles, skills; goals, records etc before his tran...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/miSfsIn8pME" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/miSfsIn8pME/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:32 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:00:40
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => my news https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+    [no_likes] => 0
+    [id] => 30
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+
+    [linktitle] => ഇന്ത്യാ - ബംഗ്ലാദേശ് വ്യോമാതിര്‍ത്തിയില്‍ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍
+
+    [linkdescription] => കൊല്‍ക്കത്ത: രണ്ട് ഇന്‍ഡിഗോ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍. എയര്‍ട്രാഫിക് ..
+
+    [videoEmbeded] => 
+    [linkimage] => https://www.mathrubhumi.com/polopoly_fs/1.3004993.1541089357!/image/image.jpg_gen/derivatives/landscape_607/image.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:48 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 19:04:17
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => https://www.youtube.com/watch?v=K0UICM4S0AU			
+													
+												
+												
+    [no_likes] => 1
+    [id] => 39
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=K0UICM4S0AU
+
+    [linktitle] => Incredibles 2 - Jack-Jack Memorable Moments
+
+    [linkdescription] => Thank for watching, Subscribe iMovies for more videos. Like Us on FB â¥ http://bit.ly/AniUniFB
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/K0UICM4S0AU" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/K0UICM4S0AU/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:48 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => famous.jpg
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-04 18:32:23
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => 	test my image post											
+												
+													
+												
+												
+    [no_likes] => 0
+    [id] => 36
+    [country_id] => 
+    [country] => 
+    [islink] => 
+    [linkUrl] => 
+    [linktitle] => 
+    [linkdescription] => 
+    [videoEmbeded] => 
+    [linkimage] => 
+)
+<<..
+ERROR - 2018-11-04 13:21:49 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 68
+    [image_name] => 
+    [gender] => 0
+    [profile_pic] => 
+    [created_at] => 2018-11-02 02:18:29
+    [nick_name] => Irshad Illias
+    [full_name] => Irshad Illias
+    [feeds] => irshad illlias cooking https://www.youtube.com/watch?v=HCAPjIVOdJw
+    [no_likes] => 0
+    [id] => 32
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=HCAPjIVOdJw
+
+    [linktitle] => Make Your Own: Pepperoni Pizza
+
+    [linkdescription] => Learn how to make your own pizza crust, pizza sauce and pepperoni pizza that will rival any take-out pizza joint! These are cheaper to make than take-out, do...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/HCAPjIVOdJw" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/HCAPjIVOdJw/hqdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:50 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:01:13
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => foot ball is my life https://www.youtube.com/watch?v=miSfsIn8pME
+    [no_likes] => 0
+    [id] => 31
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.youtube.com/watch?v=miSfsIn8pME
+
+    [linktitle] => Here's Why Ronaldo is the Greatest Real Madrid Player Ever!
+
+    [linkdescription] => This is why Cristiano Ronaldo is Real Madrid's best player of all time! All the Ballon d'Or, golden shoes, titles, skills; goals, records etc before his tran...
+
+    [videoEmbeded] => <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/miSfsIn8pME" frameborder="0"/>
+
+    [linkimage] => https://i.ytimg.com/vi/miSfsIn8pME/maxresdefault.jpg
+
+)
+<<..
+ERROR - 2018-11-04 13:21:50 --> here getstranger >>68<< going to stranger >>stdClass Object
+(
+    [user_id] => 60
+    [image_name] => 
+    [gender] => 2
+    [profile_pic] => famous.jpg
+    [created_at] => 2018-11-02 02:00:40
+    [nick_name] => Nazzzzzzzz...
+    [full_name] => nazneen mohammed
+    [feeds] => my news https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+    [no_likes] => 0
+    [id] => 30
+    [country_id] => 
+    [country] => 
+    [islink] => 1
+    [linkUrl] => https://www.mathrubhumi.com/news/india/indigo-flights-came-too-close-on-air-route-1.3273719
+
+    [linktitle] => ഇന്ത്യാ - ബംഗ്ലാദേശ് വ്യോമാതിര്‍ത്തിയില്‍ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍
+
+    [linkdescription] => കൊല്‍ക്കത്ത: രണ്ട് ഇന്‍ഡിഗോ വിമാനങ്ങള്‍ നേര്‍ക്കുനേര്‍. എയര്‍ട്രാഫിക് ..
+
+    [videoEmbeded] => 
+    [linkimage] => https://www.mathrubhumi.com/polopoly_fs/1.3004993.1541089357!/image/image.jpg_gen/derivatives/landscape_607/image.jpg
+
+)
+<<..

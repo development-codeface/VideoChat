@@ -127,9 +127,9 @@ include 'header.php';?>
 		   <button type="button" class="btnvide"  data-clicked="unclicked" id='findfemaleuser'   >
               <i class="fa fa-times-circle"></i>  Female   
         </button>
-		   <button type="button" class="btnvide"  data-clicked="unclicked" id='findotheruser'>
+		   <!--<button type="button" class="btnvide"  data-clicked="unclicked" id='findotheruser'>
               <i class="fa fa-times-circle"></i>  Others
-        </button>
+        </button> -->
       </div>
 	  	
   </div>
