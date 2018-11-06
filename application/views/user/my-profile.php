@@ -365,7 +365,7 @@ list($date,$time)=explode(' ',$timestamp);
 												<?php } }?>	
 													
 													
-													<p class="feedp"><?php echo $fd->feeds;?> </p>
+													<p class="feedp"><?php echo $fd->feeds;?>..... </p>
 										      <br>
 												</div>
                       <div class="job-status-bar">
@@ -437,12 +437,32 @@ list($date,$time)=explode(' ',$timestamp);
                           <i id="genders"> 
                             <?php if($mydata['gen']==1){?>Male
                             <?php }else if($mydata['gen']==2){?> Female 
-                            <?php }else {?> Other
+                            <?php }else {?> 
                             <?php  } ?> 
                           </i>
                         </td>
                       </tr>
-                      <tr>
+                    
+                          
+                          
+                          
+                          
+						  		<?php
+			$uid=$mydata['user_id'];
+			    $query=$this->db->query("select age_hide from user_profile where user_id=$uid");
+
+              $result=$query->result_array();
+                    
+                    foreach($result as $value){ 
+					$status=$value['age_hide'];
+					
+					}
+					
+					?>
+					                       <?php if($status=="false")
+{
+?>
+                            <tr> 
                         <td class="pers">Date of birth
                         </td>
                         <td>
@@ -459,6 +479,40 @@ list($date,$time)=explode(' ',$timestamp);
                           <i id="ager"> 
                             <?php  echo $mydata['ag'];?>
                           </i> 
+
+						  <td>
+                          <i id="send"> 
+                         
+                          </i> 
+                        </td>
+                     </tr>
+                      <?php
+}else if($status=="true")
+{
+?> <tr>
+   <td class="pers">Date of birth
+                        </td>
+                        <td>
+                          <i id="dobs">
+                            <?php  echo "** ** ****";?> 
+                          </i>
+                        </td>
+                      </tr>
+ 
+                      <tr>
+                        <td>Age
+                        </td>
+                        <td>
+                          <i id="ager"> 
+                            <?php  echo "**";?>
+                          </i> 
+						    
+                    
+						
+<?php } ?>
+                          
+                          
+         
 						  
 						  		<?php
 			$uid=$this->UserId = $this->session->userdata('user_id');
@@ -482,13 +536,10 @@ list($date,$time)=explode(' ',$timestamp);
                           
 
 
-
-
-
-
-
-						  </td>
+   </td>
                       </tr>
+ 
+						  
                  
                     </table>
                     <!--<label class="switch swtlastm">
@@ -1083,17 +1134,7 @@ include 'footer.php';?>
           </small>
         </div>
         <!--fgt-sec end-->
-        <div class="fgt-sec">
-          <input type="radio" name="gender" id="c7"
-          <?php echo $o;?>   value="3">
-          
-          <label for="c7">
-            <span>
-            </span>
-          </label>
-          <small> Other
-          </small>
-        </div>
+      
         <!--fgt-sec end-->
       </div>
     </div>
@@ -1213,8 +1254,7 @@ foreach($countries as $row)
           </option>
           <option value="2">Girl
           </option>
-          <option value="3">Other
-          </option>
+         
         </select>
         <i class="fa fa-sort-desc" aria-hidden="true">
         </i>
@@ -1504,6 +1544,7 @@ $(document).ready(function() {
       data:{profilestatus:status},
       dataType:"text", 
       success: function(result){
+	
         privacyChangeCallbacks(result);
         //location.reload();
       }
@@ -1514,6 +1555,15 @@ $(document).ready(function() {
 
     var status = JSON.parse(result);
 	
+	 if(status.st == "false"){
+		$("#dobs" ).html("** ** ****");
+		$("#ager" ).html("**");
+	 }else if(status.st == "true"){
+		
+		 $("#dobs" ).html(status.dobs);
+		$("#ager" ).html(status.ag);
+	 }
+		
     var publicStatus = "2";
     if(status.visibility == "true"){
       publicStatus   = "1"

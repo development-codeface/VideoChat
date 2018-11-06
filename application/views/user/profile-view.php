@@ -260,14 +260,14 @@ $ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!
                         </span>
                       </a>
                     </li>
-                    <!--li data-tab="my-frd-list">
+                    <li data-tab="my-frd-list">
                       <a href="#" title="">
                         <i class="fa fa-address-card col-sdd" aria-hidden="true">
                         </i>
                         <span>Friends list
                         </span>
                       </a>
-                    </li-->
+                    </li>
                     <!--li data-tab="payment-dd">
 <a href="#" title="">
 <i class="fa fa-money" aria-hidden="true"></i>
@@ -367,7 +367,7 @@ else
 												<?php } }?>	
 													
 													
-													<p class="feedp"><?php echo $fd->feeds;?> </p>
+													<p class="feedp"><?php echo $fd->feeds;?>..... </p>
 										      <br>
 												</div>
                       <div class="job-status-bar">
@@ -635,20 +635,20 @@ foreach($friendsRequest as $frq){?>
                   <?php if(!empty($friendList)){
 $i=1;
 foreach($friendList as $frq){?>
-                  <div class="col-lg-3 col-md-4 col-sm-6 col-12">
-                    <div class="company_profile_info">
-                      <div class="company-up-info">	
-                        <?php if( $frq->status==1){?>
-                        <i class="fa fa-circle msg-online" aria-hidden="true"> 
-                          <span>Online
-                          </span>
-                        </i>
-                        <?php }else{?>
-                        <i class="fa fa-circle msg-off" aria-hidden="true"> 
-                          <span>Offline
-                          </span>
-                        </i>
-                        <?php }?>
+                   <div class="col-lg-3 col-md-4 col-sm-6 col-12"  id="un_<?php echo $frq->user_id;?>">
+                      <div class="company_profile_info " >
+                        <div class="company-up-info">	
+                          <?php if( $frq->status==1){?>
+                          <i class="fa fa-circle msg-online" aria-hidden="true"> 
+                            <span>Online
+                            </span>
+                          </i>
+                          <?php }else{?>
+                          <i class="fa fa-circle msg-off" aria-hidden="true"> 
+                            <span>Offline
+                            </span>
+                          </i>
+                          <?php }?>
                         <div class="clearfix">
                         </div>
                         <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
@@ -680,87 +680,178 @@ else
 					
 					
 					
-					
-					
-					   <?php $idu=$this->session->userdata('user_id');
-$abc=$frq->user_id	;		  //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
-				  <input type="text" name="pad" id="pad" hidden value="<?php echo $idu; ?>">
+					 <ul>
+					  
+				  
+				 
+				  
+				  
+				  
+                  <?php $idu=$this->session->userdata('user_id');
+$ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$this->session->userdata('user_id')){?>
+				  <input type="text" name="pa" id="pa" hidden value="<?php echo $idu; ?>">
 				  <?php
 				  
-				   $query = $this->db->query("select * from  friends  where user_id=$abc and friend_id=$idu and status=0"); 
-         $result=$query->result();
-                    
+				   $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=0"); 
+         $result=$query->result(); //echo $this->db->last_query();
+                    foreach ($result as $row) {
+            $fi = $row->friend_id;
+            
+        $ui=$row->user_id;
+		
+					}
+					
+					if(($fi==$idu)&&($ui==$ab))
+					{
+					
+					
                      if($result==true)
 					 {
-						   $ii=1;
+						   $i=1;
 						  
 					  }  
-					  $query = $this->db->query("select * from  friends  where user_id=$abc and friend_id=$idu and status=1"); 
+					}
+					
+					/////////////////
+					
+					 $query = $this->db->query("select * from  friends  where user_id=$idu and friend_id=$ab and status=0"); 
+         $result=$query->result(); //echo $this->db->last_query();
+                    foreach ($result as $row) {
+            $f = $row->friend_id;
+            
+        $u=$row->user_id;
+		
+					}
+					
+					if(($f==$ab)&&($u==$idu))
+					{
+					
+					
+                     if($result==true)
+					 {
+						   $i=3;
+						  
+					  }  
+					}
+					
+					/////////
+					
+					
+					
+					
+					  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=1"); 
          $result=$query->result();
                     
                      if($result==true)
 					 {
-						   $ii=2;
+						   $i=2;
+						  
+					  }
+
+
+					/*  $query = $this->db->query("select * from  friends  where user_id=$ab and friend_id=$idu and status=0"); 
+         $result=$query->result();
+                    
+                     if($result==true)
+					 {
+						   $i=3;
 						  
 					  } 
-					  $query = $this->db->query("select * from  friends  where user_id=$abc and friend_id=$idu "); 
+					  */
+					  
+					  
+					  
+					  
+				  $query = $this->db->query("select * from  friends  where   ((user_id=$idu and friend_id=$ab) or (user_id=$ab and friend_id=$idu))  "); 
          $result=$query->result();
                     
                      if($result==false)
 					 {
-						   $ii=3;
+						   $i=4;
 						  
 					  }
                       
 
 				  ?>
-				  <?php if($ii==1) {
+				  
+				  
+				 
+				  
+				  
+				  
+				  
+				  
+				  <?php 
+				  
+				   if($ab==$idu) {?>
+				     <button type="button" id="can" name="can" class="sendreq" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
+                          </i> Friends
+        </button>
+		<?php
+				   }
+				   else
+				   {
+				  
+				  if($i==1) {
 					  ?>
 				  
-				<br><br><br>
-                    <button type="button" id="canf" name="canf" class="sendreq canreqfrd" data-id="<?php echo $abc;?>" > <i class="fa fa-check" aria-hidden="true">
+				
+                    <button type="button" id="can" name="can" class="sendreq canreq" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
                           </i> Cancel request
         </button>
 		
 		
 		
-				  <?php } else if($ii==2) {?>
+				  <?php } else if($i==2) {?>
 		
 			  
-				<br><br><br>
-                  	<span>
-												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" data-username=' <?php echo $frq->full_name;?>'  data-id="<?php echo $frq->user_id;?>"  class="follow btnChat "><i class="fa fa-comments-o chatq" aria-hidden="true"></i></a>
-												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $frq->user_id ?>" title="" data-id="<?php echo $frq->user_id;?>" class="follow follow_friend"><i class="fa fa-video-camera cmsgq" aria-hidden="true"></i></i></a>
+				
+                 <span>
+											
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab;  ?>" title="" data-id="<?php echo $ab ;?>" class="follow follow_friend "><i class="fa fa-video-camera cmsgq vbut" aria-hidden="true"></i></i></a>
 												
 												</span>
 		
-		  <?php } else if($ii==3) {?>
+		
+		  <?php } else if($i==3) {?>
 		
 		
 		
-		<br><br><br>
-                    <button type="button" id="sendf" name="sendf"  class="sendreq frereqfrd" data-id="<?php echo $abc;?>"  > <i class="fa fa-check" aria-hidden="true">
+		
+                           <button type="button" id="canss" name="canss" class="sendreq confi" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
+                          </i> Confirm Request
+        </button>
+		
+		
+		
+                  <?php } else if($i==4) {?>
+		
+		
+		
+	
+                    <button type="button" id="send" name="send"  class="sendreq frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-check" aria-hidden="true">
                           </i> Sent request
         </button>
 		
 		
 		
                   <?php } ?>
+                </div>
+				
+			
+				
+				  
+				</ul>
 					
 					
 					
 					
 					
-					
-					
-					
-					
-					
-                      </div>
+                     
                     </div>
                     <!--company_profile_info end-->
                   </div>
-                  <?php }} ?>
+<?php }} }?>
                 </div>
               </div>
               <!--div class="product-feed-tab" id="payment-dd">

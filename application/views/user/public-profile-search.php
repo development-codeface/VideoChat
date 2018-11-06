@@ -51,8 +51,7 @@ $user=$this->session->userdata('user_id');?>
                               </option>
                               <option value="2">A girl
                               </option>
-							    <option value="3">Others
-                              </option>
+							   
                             </select>
                           </div>
                         </div>
@@ -152,7 +151,7 @@ else
                       <li>
                         <button type="button" class="accept-req" onclick="friendRequest(<?php echo $frq->user_id;?>)"> 
                           <i class="fa fa-check" aria-hidden="true">
-                          </i> Sent request
+                          </i> Send request
                         </button>
                       </li>
                     </ul>

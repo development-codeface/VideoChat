@@ -774,4 +774,22 @@ function checknolike($fid, $uid)
     return false;
     }
     }
+	
+	function age_hide_value($uid)
+    {
+	
+			    $query=$this->db->query("select age_hide from user_profile where user_id=$uid");
+
+            $result=$query->result_array();
+               return $result;     
+	}
+	function age_dob_value($uid)
+    {
+	
+			    $query=$this->db->query("select age,dob from users where user_id=$uid");
+
+           $result=$query->result_array();
+               return $result;  
+	}
+	
 }

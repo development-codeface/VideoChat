@@ -43,8 +43,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
                               </option>
                               <option value="2">A girl
                               </option>
-							   <option value="3" >Others
-                              </option>
+							 
                             </select>
                           </div>
                         </div>

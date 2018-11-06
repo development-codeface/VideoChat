@@ -113,7 +113,7 @@ var age=$("#age_id").val();
   var nick_name=$("#nick_name" ).val();
   var dob=$("#dob" ).val();
   var gender=$('input:radio[name=gender]:checked').val();
-  alert(gender);
+  
  // var visibility=$("#visibility" ).val();
  // var visibility = $('#visibility').is(':checked'); 
 

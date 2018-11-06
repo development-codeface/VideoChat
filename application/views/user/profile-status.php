@@ -19,7 +19,7 @@ $user=$this->session->userdata('user_id');?>
                     <li role="presentation" class="active"><a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Write post</a></li>
        <li role="presentation"><a href="#"><i class="fa fa-camera" aria-hidden="true"></i>  <label for="file-4" class="pointpho"><span>Photos</span></label></a></li>
                   
-				  <!--<li role="presentation"><a href="#"><i class="fa fa-file-video-o" aria-hidden="true"></i>Videos</a></li> -->
+				  <!--li role="presentation"><a href="#"><i class="fa fa-file-video-o" aria-hidden="true"></i>Videos</a></li-->
                 </ul>
              
             </div>
@@ -55,12 +55,7 @@ $user=$this->session->userdata('user_id');?>
 					
 						<label for="file-4" id="abc" name="abc"><span></span></label>
 								
-												<textarea placeholder="Write something here..." name="feeds" id="feeds" required >
-												
-												
-													
-												
-												</textarea>
+												<textarea placeholder="Write something here..." name="feeds" id="feeds" required ></textarea>
 												
 											</div>
 										
@@ -229,7 +224,7 @@ list($date,$time)=explode(' ',$timestamp);
 								</div><!--overview-box end-->
 								<div class="overview-box fade" id="experience-box">
 										<div class="overview-edit">
-            <h3 class="ayu">Are you hide this post !</h3>
+            <h3 class="ayu">Are you sure to hide this post?</h3>
 
             <form name="hideform" id="hideform" class="">
                	<?php $fd->hide_user=$this->session->userdata('user_id'); ?>
@@ -262,18 +257,14 @@ list($date,$time)=explode(' ',$timestamp);
 
 														<?php if(strlen($fd->linkdescription)> 0){?>
 															<div class="link">
-															<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linkdescription ?></p></a> 
+															<a href="<?php echo $fd->linkUrl ?>" target="blank"><p><?php echo $fd->linkdescription ?></p></a> 
 															</div>
 														<?php } ?>
 
-												<?php } else {
-													if(strlen($fd->image_name) > 0){ ?>
-															<div class="feedImage">
-																<img src="../../uploads/status/<?php echo $fd->image_name ?>" class="image-responsive imgfeed"> 
-															</div>
-												<?php } }?>	
+												<?php } ?>
 													
-													<p  class="feedp"><?php echo $fd->feeds;?> </p>
+													
+													<p  class="feedp"><?php echo $fd->feeds;?>..... </p>
 										
 												</div>
 				

@@ -54,7 +54,7 @@ class Profile extends CI_Controller
         $this->data['countries']     = $this->users_model->getAllcountries();
 		$this->data['intrest']     = $this->users_model->getAllintrest();
         //print_r($this->UserId);exit;
-        $myfeeds =          $this->profile_model->GetAllfeeds($this->UserId);
+        $myfeeds =          $this->profile_model->GetAllfeedss($this->UserId);
         $myfeedsurldetails = array();     
         foreach ($myfeeds as $i => $item) {
             $title = "";
@@ -579,7 +579,7 @@ class Profile extends CI_Controller
         if (isset($_POST['register'])) {
         //    $this->form_validation->set_rules('feeds', 'feeds', 'required');
         //    if ($this->form_validation->run() == TRUE) {
-            
+                
                 $insertData  = array(
                     'user_id' => $this->UserId,
                     'feeds' => $this->input->post("feeds")
@@ -928,10 +928,36 @@ class Profile extends CI_Controller
 		
         $user_id = $this->session->userdata('user_id');
         if(isset($_POST['profilestatus'])){
+			
+		
+			   
+$data   = $this->users_model->age_hide_value($user_id );
+                    
+                    foreach($data as $value){ 
+					$st=$value['age_hide'];
+					
+					}
+					
+					
+					$res   = $this->users_model->age_dob_value($user_id );
+			
+			 foreach($res as $val)
+			 { 
+					$ag=$val['age'];
+					$db=$val['dob'];
+					
+					}
+					
+			  $val1 =  explode("-",$db);		
+			$dobs=  $val1[2]."/".  $val1[1]."/".  $val1[0];
+
+				
+			
+		
             $currentStatus             = trim($_POST['profilestatus']);
             $requestVisiblility = ($currentStatus == '1') ? 'false' : 'true' ;
             $result = $this->profile_model->update_age_privacy($user_id,$requestVisiblility);
-            echo '{"status":"sucess","visibility" : "'.$requestVisiblility.'"}';
+            echo '{"status":"sucess","visibility" : "'.$requestVisiblility.'","st" : "'.$st.'","ag" : "'.$ag.'","dobs" : "'.$dobs.'"}';
         }else {
             echo '{"status":"failed"}}';
         }
