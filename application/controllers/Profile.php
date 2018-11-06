@@ -579,7 +579,7 @@ class Profile extends CI_Controller
         if (isset($_POST['register'])) {
         //    $this->form_validation->set_rules('feeds', 'feeds', 'required');
         //    if ($this->form_validation->run() == TRUE) {
-                
+            
                 $insertData  = array(
                     'user_id' => $this->UserId,
                     'feeds' => $this->input->post("feeds")

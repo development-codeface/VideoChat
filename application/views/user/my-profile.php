@@ -365,7 +365,7 @@ list($date,$time)=explode(' ',$timestamp);
 												<?php } }?>	
 													
 													
-													<p class="feedp"><?php echo $fd->feeds;?>..... </p>
+													<p class="feedp"><?php echo $fd->feeds;?> </p>
 										      <br>
 												</div>
                       <div class="job-status-bar">
