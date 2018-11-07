@@ -34,7 +34,7 @@ class User extends CI_Controller
     }
     public function profile()
     {
-        $myfeeds =          $this->profile_model->GetAllfeeds($this->UserId);
+       $myfeeds =          $this->profile_model->GetAllfeeds($this->UserId);
         $myfeedsurldetails = array();     
         foreach ($myfeeds as $i => $item) {
             $title = "";
@@ -83,8 +83,64 @@ class User extends CI_Controller
         $this->data['apiKey']        = $this->config->item('opentok_key');
         
         $this->load->view("user/profile-status", $this->data);
+    }  
+
+	public function profile_limit()
+    {
+		  $fi   = $this->input->post('fi');
+        $la    = $this->input->post('la');
+       $myfeeds =          $this->profile_model->GetAllfeeds_limit($this->UserId,$fi,$la);
+	//   print_r($myfeeds);exit;
+        $myfeedsurldetails = array();     
+        foreach ($myfeeds as $i => $item) {
+            $title = "";
+            $description= "";
+            $image = "";
+            $videoid = "";
+            $videoidEmbe = "";
+            $linkUrl = "";
+            $isLink = false;
+            preg_match_all('#\b(https|http)?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $item->feeds, $match);
+            if(sizeof($match[0]) > 0 && sizeof($item->image_name) < 2){
+                $linkPreview = new LinkPreview($match[0][0]);
+                $parsed = $linkPreview->getParsed();
+                $isLink = true;
+                foreach ($parsed as $parserName => $link) {
+                    //$parserName . PHP_EOL . PHP_EOL;
+                    //echo $link->getUrl() . PHP_EOL;
+                    //echo $link->getRealUrl() . PHP_EOL;
+                    $title = $link->getTitle() . PHP_EOL;
+                    $linkUrl  = $link->getUrl() . PHP_EOL;
+                    $description =  $link->getDescription() . PHP_EOL;
+                    $image =  $link->getImage() . PHP_EOL;
+                    if ($link instanceof VideoLink) {
+                        $videoid = $link->getVideoId() . PHP_EOL;
+                        $videoidEmbe = $link->getEmbedCode() . PHP_EOL;
+                        
+                    }
+                }
+            }		    
+            $itemVal = $item;           
+            $itemVal->islink = $isLink;
+            $itemVal->linkUrl = $linkUrl;
+            $itemVal->linktitle = $title;
+            $itemVal->linkdescription = $description;
+            $itemVal->videoEmbeded = $videoidEmbe;
+            $itemVal->linkimage = $image;
+            $myfeedsurldetails[$i] = $itemVal;
+            log_message('error','here getstranger >>'.$this->session->userdata('user_id').'<< going to stranger >>'.print_r($itemVal, TRUE).'<<..');
+        }
+        $this->data['feeds']   = $myfeedsurldetails;
+        $this->data['friendOnline']  = $this->users_model->GetOnlineFriends($this->UserId);
+        $this->data['user']          = $this->users_model->userinfo($this->UserId);
+        $this->data['UserId']        = $this->session->userdata('user_id');
+        $this->data['openToken']     = base64_encode($this->session->userdata('token'));
+        $this->data['openSessionId'] = $this->session->userdata('openSessionId');
+        $this->data['apiKey']        = $this->config->item('opentok_key');
+        
+        $this->load->view("user/profile_feed_result", $this->data);
     }
-    
+  
     public function profileSearch()
     {
         
@@ -202,6 +258,7 @@ class User extends CI_Controller
     
     public function UpdateBasic()
     {
+		 $user_id = $this->session->userdata('user_id');
         $param['full_name']   = $this->input->post('full_name');
         $params['nick_name']  = $this->input->post('nick_name');
         $dob                  = $this->input->post('dob');
@@ -241,10 +298,21 @@ class User extends CI_Controller
 $ageuser=$age;
 				
 				
+				
+				$data   = $this->users_model->age_hide_value($user_id );
+                    
+                    foreach($data as $value){ 
+					$st=$value['age_hide'];
+					
+					}
+					
+				
+				
+				
         $return               = $this->users_model->UpdateBasic($param, $params, $this->UserId, $dobs, $gen, $age,$ageuser);
         if (!empty($return)) {
             echo json_encode(array(
-                'status' => 1, 'ageuser' => $ageuser
+                'status' => 1, 'ageuser' => $ageuser, 'st' => $st
             ));
         } else {
             echo json_encode(array(
@@ -276,9 +344,18 @@ $ageuser=$age;
         $intr = $this->input->post('interest');
         $intrList = explode(',', $intr);
         $return = $this->users_model->updateAreaofinterest($intrList, $this->UserId);
+
+		$res= $this->users_model->fetchintrest($this->UserId);
+		
+		foreach($res as $row)
+{
+        $intid[]=$row->intrest;
+}
+		
+		
         if (!empty($return)) {
             echo json_encode(array(
-                'status' => 1
+                'status' => 1 ,'intid' =>$intid 
             ));
         } else {
             echo json_encode(array(

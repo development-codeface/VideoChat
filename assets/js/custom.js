@@ -133,11 +133,15 @@ var age=$("#age_id").val();
 				$("#full" ).html(full_name);
 				$("#hful" ).html(full_name);
 				$("#nick_names" ).html(nick_name);
-				$("#dobs" ).html(dob);
-				$("#ager" ).html(data.ageuser);
-				var container = $('#visib');
-
 				
+				var container = $('#visib');
+ if(data.st == "true"){
+		$("#dobs" ).html("** ** ****");
+		$("#ager" ).html("**");
+	 }else if(data.st == "false"){
+		$("#dobs" ).html(dob);
+				$("#ager" ).html(data.ageuser);
+	 }				
 				if(gender==1){
 				$("#genders" ).html("Male");
 				}else if(gender==2){
@@ -241,16 +245,16 @@ $( "#locationSave" ).on('click', function (e) {
 		dataType: 'json',
 
         success: function(data) {
+			
+			
+			
            if(data.status==1){
+			   
 			    $("#skills-box").removeClass("open");
 				$(".wrapper").removeClass("overlay");
-			 if(interest==1){
-				$("#Interest_ar" ).html("Boy");
-				}else if(interest==2){
-				$("#Interest_ar" ).html("Girl");	
-				}else{
-				$("#Interest_ar" ).html("Others");	
-				}
+			  $.each(data.intid, function(i,intid) {
+	$("#Interest_ar" ).append(intid);
+  });
 		   }
 				
 			else{

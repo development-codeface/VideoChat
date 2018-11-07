@@ -508,11 +508,12 @@ list($date,$time)=explode(' ',$timestamp);
                           </i> 
 						    
                     
-						
+				        
+                  
+         		
 <?php } ?>
-                          
-                          
-         
+                  
+      
 						  
 						  		<?php
 			$uid=$this->UserId = $this->session->userdata('user_id');
@@ -534,12 +535,11 @@ list($date,$time)=explode(' ',$timestamp);
             <label for="checkbox11" class="checkbox-label checkbox-labelch" data-off="Unhide" data-on="Hide" ></label>
           </div>    
                           
-
-
-   </td>
-                      </tr>
  
-						  
+
+  
+			 </td>
+                      </tr>			  
                  
                     </table>
                     <!--<label class="switch swtlastm">
@@ -597,28 +597,32 @@ Public
                         </span>
                       </a> 
                     </h3>
-                    <!--ul>
-                      <?php if($mydata['interest_area']==1)
-{
-?>
-                      <li >
-                        <a  id="Interest_ar">
-                          <?php echo "Boy" ;?>
-                        </a>
-                      </li>
-                      <?php
-}
-else
-{
-?>
-                      <li >
-                        <a  id="Interest_ar">
-                          <?php echo "Girl" ;?>
-                        </a>
-                      </li>
-                      <?php
-} ?>
-                    </ul-->
+					
+					<?php 
+					$uid =$this->session->userdata('user_id');
+     $this->db->select('up.intrest');
+        $this->db->from('user_intrest up');
+        $this->db->join(' user_intrest_list ul', 'ul.intrest_id=up.in_id');
+        $this->db->where('ul.user_id', $uid);
+       
+    $res = $this->db->get()->result();
+       ?> 
+<ul> <li ><?php
+	foreach($res as $row)
+{?>
+
+  <a  id="Interest_ar">
+                          <?php echo $row->intrest;?>
+						  </a>
+                    
+        
+<?php }?>
+					
+		  </li>
+					  </ul>			
+					
+                
+                    
                   </div>
                   <!--user-profile-ov end-->
                 </div>

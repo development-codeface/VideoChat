@@ -38,7 +38,7 @@ include 'header.php';?>
 
 
 				       <div class="col-md-12 vidapp">
-                 <div id="callerName" class="tell"> <?php echo $fullname; ?>  </div>
+                 <div id="callerName" class="tell""> <?php echo $fullname; ?>  <p>Dialing</p> </div>
 				  <ul class="videoul">
           
           <!--li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li>

@@ -19,7 +19,9 @@ $user=$this->session->userdata('user_id');?>
                     <li role="presentation" class="active"><a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Write post</a></li>
        <li role="presentation"><a href="#"><i class="fa fa-camera" aria-hidden="true"></i>  <label for="file-4" class="pointpho"><span>Photos</span></label></a></li>
                   
-				  <!--li role="presentation"><a href="#"><i class="fa fa-file-video-o" aria-hidden="true"></i>Videos</a></li-->
+				  <input type="file" name="file-4" id="file-4" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple />
+					
+						<label for="file-4" id="abc" name="abc" class="abfile"><span disabled="disabled"></span></label>
                 </ul>
              
             </div>
@@ -51,9 +53,7 @@ $user=$this->session->userdata('user_id');?>
 										<input type='text' name="userid" id="userid" value='<?php echo $user; ?>' hidden >
 												<div class="job_descp">
 													<div class="cp-field">
-												<input type="file" name="file-4" id="file-4" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple />
-					
-						<label for="file-4" id="abc" name="abc"><span></span></label>
+												
 								
 												<textarea placeholder="Write something here..." name="feeds" id="feeds" required ></textarea>
 												
@@ -72,10 +72,10 @@ $user=$this->session->userdata('user_id');?>
 												
 												
 											</div>
-											<?php  if(!empty($feeds)){
-												foreach($feeds as $fd){?>
-												
-											<div class="post-bar">
+											<?php $i=0; if(!empty($feeds)){
+												foreach($feeds as $fd){ if($i<5){		?>
+										
+											<div class="post-bar" id="as">
 													<div class="post_topbar">
 													<div class="usy-dt">
 														<?php 
@@ -290,14 +290,14 @@ list($date,$time)=explode(' ',$timestamp);
 		</div>
 		
 		
-		<?php } }else{ ?>
+												<?php $i++;} }}else{ ?>
 						
 					<!--	<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 
 										</div>--><?php }?>
-						
-						
+							
+						 <div class="container " id="feedResult" ></div>
 					<div class="clearfix"></div>
 	<!--ul class="pagination modal-5" style="    position: fixed;
     bottom: 97px;
@@ -548,3 +548,50 @@ $(document).ready(function(){
     });
 });
 </script>
+
+
+
+
+
+<script >
+
+var i=1;
+var j=1;
+    $(window).scroll(function () {
+		
+		
+        if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
+            var fi=i*5;
+			var la=(i+1)*5;
+		//	alert(fi);	alert(la);
+		
+
+  $.ajax({
+            type: "POST",
+            url: "../user/profile_limit",
+           data:{fi:fi,la:la},
+            dataType:"text", 
+            success: function(result){
+				//alert(result);
+			//	as.append(data);
+         $("#feedResult").html(r); 
+            }
+          }
+                );
+
+
+
+
+
+
+
+
+
+		i++;
+        }
+		
+    });
+</script>
+
+
+

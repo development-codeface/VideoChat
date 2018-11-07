@@ -40,7 +40,6 @@ include 'header.php';?>
                   <div id="subscriber"></div>
 </div>
 
-
 				       <div class="col-md-12 vidapp">
                  <div id="nickname" class="tell">  </div>
 				  <ul class="videoul">
@@ -105,12 +104,12 @@ include 'header.php';?>
 
 
 <div id="findstranger" class="modal modov btrs ">
-  <div class="modal-content text-center modsty modsty20" style="    width: 641px!important;">
-       
-      <div class="modal-header lokfo" id="callerInfo">
-      <div><button type="button" class="close cloimg" onclick="history.back();" data-dismiss="modal">
-              <img src="http://localhost:8888/VideoChat/assets/images/close-button-.png">
+  <div class="modal-content text-center modsty modsty20">
+        <div><button type="button" class="close cloimgc" onclick="history.back();" data-dismiss="modal">
+              <img src="<?php echo base_url(); ?>assets/images/close-button-.png">
             </button></div>
+      <div class="modal-header lokfo" id="callerInfo">
+    
 
     <h4 class="modal-title vich"> 
               </h4><h4 class="plsech">Looking for
@@ -120,27 +119,33 @@ include 'header.php';?>
 	  </div>
 
       <div class="modal-body pttop ">
-          <button type="button" class="btnvide " data-clicked="unclicked" id='findmaleuser'  >
-              <i class="fa fa-times-circle"></i> Male</a>
-          </button>
-		   <!--button type="button" class="btnvide" id='buttonLogin'  onclick = "displayLoginBox()"-->
-		   <button type="button" class="btnvide"  data-clicked="unclicked" id='findfemaleuser'   >
-              <i class="fa fa-times-circle"></i>  Female   
-        </button>
-		   <!--<button type="button" class="btnvide"  data-clicked="unclicked" id='findotheruser'>
-              <i class="fa fa-times-circle"></i>  Others
-        </button> -->
+      <div class="row ">
+	 <div class="col-md-1"> </div>
+	 <div class="col-md-5">
+	   <img src="<?php echo base_url(); ?>assets/images/resources/male-avatar.png" class="img-responsive">
+ <button  data-clicked="unclicked" id='findmaleuser' class="malaa " href="">Male</button>
+
+	
+	 </div>
+	 <div class="col-md-5"> 
+	 <img src="<?php echo base_url(); ?>assets/images/resources/fe-avatar.png" class="img-responsive">
+	
+	  <button  data-clicked="unclicked" id='findfemaleuser' class="malaa " href="">Female</button>
+	 </div>
+	 	 <div class="col-md-1"> </div>
+	 </div>
+
       </div>
 	  	
   </div>
 </div>
 
 <div id="loadingmessage" class="modal modov btrs ">
-  <div class="modal-content text-center modsty modsty20" style="    width: 641px!important;">
+  <div class="modal-content text-center modsty modsty20">
        
       <div class="modal-header lokfo" id="callerInfo">
-      <div><button type="button" class="close cloimg" onclick="history.back();" data-dismiss="modal">
-              <img src="http://localhost:8888/VideoChat/assets/images/close-button-.png">
+      <div><button type="button" class="close cloimgc" onclick="history.back();" data-dismiss="modal">
+              <img src="<?php echo base_url(); ?>assets/images/close-button-.png">
             </button></div>
 
     <h4 class="modal-title vich"> 
@@ -152,7 +157,7 @@ include 'header.php';?>
 
       <div class="modal-body pttop ">
           <div>  
-              <div> 
+              <div style="    font-size: 20px;    font-weight: 600;"> 
               Searching	 <div class="process-comm">
                     <!--p>Dialing</p-->
                                 <div class="spinner spinnercy">
@@ -173,7 +178,22 @@ include 'header.php';?>
 </div>
   </div>     
 </div>
+<script>
+$(document).ready(function(){
+    $('#buttonLogin').on('click', function(e){
 
+    $(".lokfosear").toggle();
+    $(this).toggleClass('class1')
+});
+$('.Comanda')
+.click(
+     function ()
+     {
+         $(this).hide();
+     }
+);
+});
+</script>
 <script>
 var elem = document.getElementById("myvideo");
 function openFullscreen() {

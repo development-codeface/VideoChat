@@ -38,138 +38,80 @@
 		
 		<div class="col-md-12">
 		<div class="widget widget-jobs">
-		                                <div class="sd-titles">
-											<h3>Privacy Policy</h3>
+		                                    <div class="sd-titles">
+											<h3>Cookies</h3>
 											
 										</div>
-										<div class="jobs-list">
-										<p>This privacy policy (hereinafter referred to as "Policy") applies to a video chat (hereinafter referred to as "Application") of Intbuddy.com. (hereinafter referred to as “Company”). </p><p>
-However, this Policy does not apply to the websites operated by third parties and other websites that have installed the Application.</p><p>
-In case if you have any questions about this Policy, please contact us through the <a href=""> feedback form </a> or e-mail at <a href="">info@intbuddy.com</a>
-</p></div>
-										<h4>1. Personal user information that is collected, processed and stored by the Company</h4>
+				
+										<h4>What Are Cookies</h4>
 										<div class="jobs-list">
 											<div class="job-info">
-													<p>The Company collects, processes and stores personal user information, which is needed only to fully provide the Company’s services. The personal information includes: </p>
-																<p> 1.1.1. User’s e-mail address, name, nickname, sex, date of birth, country, region and city of residence.</p>
-																<p>1.1.2. All the personal information that is automatically sent by the user’s installed software, including: user’s IP-address, cookie files content, personal data that is sent by a browser or another software that allows a user to access the Application, as well as date/time you logged into your account and a user requested page URL. </p>
-																<p> 1.1.3. Settings of your webcam, browser, as well as operating system of your device.</p>
-																<p>1.1.4. All the information you share with our Customer Support Team: </p>
-																<p> •	Your Name and Surname;</p>
-																<p>•	Your e-mail address;</p>
-																<p>•	The services you have concern about, your nickname or customers nicknames associated with your request;</p>
-																<p>•	Your opinion as well as advise or comments regarding service;</p>
-																<p>•	Your conversations with the Support Team;</p>
-																<p>•	Another information you decided provide us with.</p>
-																<p>1.1.5. Purchasing Premium account and Minutes.</p>
-																<p>1.2. In some cases, we may ask you for an identity card. This is necessary for us to make sure your age meets our requirements.</p>
-																<p>1.3. The Company does not determine the validity of all the personal information provided by users. The Company believes that a user provides all the necessary accurate personal information about oneself and keeps it up to date.</p>
-															
+													<p>As is common practice with almost all professional websites this site uses cookies, which are tiny files that are downloaded to your computer, to improve your experience. This page describes what information they gather, how we use it and why we sometimes need to store these cookies. We will also share how you can prevent these cookies from being stored however this may downgrade or 'break' certain elements of the sites functionality.</p>
+													<p>For more general information on cookies see the Wikipedia article on HTTP Cookies.</p>
 																
-											</div><!--job-info end-->
-										
+											</div>
 										</div><!--jobs-list end-->
-											<h4>2. The way the Company uses the collected and processed personal user information</h4>
+										<h4>How We Use Cookies</h4>
 										<div class="jobs-list">
 											<div class="job-info">
-												
-																<p>2.1. Under this Policy, the personal user information may be used in the following instances:</p>
-																<p>2.1.1. To identify the user and save user's personal settings.</p>
-																<p>2.1.2. To provide the user with services.</p>
-																<p>2.1.3. To contact the user, as well as to inform the user about new services or promotions of the advertisers and partners collaborating with the Company and to process the user requests.</p>
-																<p>2.1.4. To support, protect and improve the Application and to develop new products and services.</p>
-																<p>2.1.5. To protect the interests of the Company and the interests of the Application users.</p>
-																<p>2.1.6. For other lawful purposes, aimed at improving and ensuring the security of the Application and users.</p>
-															
+													<p>We use cookies for a variety of reasons detailed below. Unfortunately in most cases there are no industry standard options for disabling cookies without completely disabling the functionality and features they add to this site. It is recommended that you leave on all cookies if you are not sure whether you need them or not in case they are used to provide a service that you use.</p>
+											
 																
-											</div><!--job-info end-->
-										
+											</div>
 										</div><!--jobs-list end-->
-										<h4>3. Third Party access to personal information</h4>
+											<h4>Disabling Cookies</h4>
 										<div class="jobs-list">
 											<div class="job-info">
-												
-																<p>3.1. Except as provided by law, the Company undertakes not to sell, rent, exchange or otherwise transfer the personal user information, the user traffic data or the user conversations to third parties without explicit consent of the user.</p>
-																<p>3.2. The Company has the right to grant access to the personal user information to a third party unrelated to the Company, in the following circumstances:</p>
-																<p>3.2.1. A user has expressed one's explicit consent to transfer personal information to third parties.</p>
-																<p>3.2.2. The transfer of the personal information is required for the user's use of Application and/or providing services to the user and/or processing personal user information on behalf of the Company.</p>
-																<p>In these cases, the Company settles a claim to a third party to keep confidentiality of the personal user information and sends the user a notice that user's personal information is transferred to a third party.</p>
-																<p>3.2.3. Personal user information transfer, use, storage or disclosure is necessary:</p>
-																<p>a) to comply with applicable laws and other regulations, court decisions and actual requests from public safety agencies;</p>
-																<p>b) to comply with the applicable User Agreement, including the investigation of User Agreement violation;</p>
-																<p>c) to detect and prevent any fraudulent or criminal activities, as well as to resolve possible security issues and/or assist in resolving technical problems;</p>
-																<p>d) to protect the Company's and Application users' or third parties' interests in the event of an imminent threat of causing damage of any kind.</p>
-																<p>3.3. In the event that the Company makes a full or partial sale or other transfer of its assets, the assets' recipient will be passed all the obligations of confidentiality of the personal information of Application users afforded by this Policy. In these cases, the Company sends the user a notice that user's personal information is transferred to a third party.</p>
-															
-											</div><!--job-info end-->
-										
-										</div><!--jobs-list end-->
-										<h4>4. Voluntary provision of personal user information</h4>
-										<div class="jobs-list">
-											<div class="job-info">
-												
-																<p>4.1. By registering with the Application, you expressly consent to voluntarily provide your personal information to the public. If you do not agree to provide your personal information to the public, please, refuse the registration.</p>
-																<p>4.2. The part of your personal information that becomes accessible after registering with the Application includes your: name; nickname; sex; gender appurtenance; sexual preferences; age; country, region and city of residence; sexual orientation; last Application activity; photo and video content (if any of these are available).</p>
-																<p>4.3. After you enable and turn on your web camera your broadcast may be seen by an undefined number of users from all over the world. By turning on your web camera you explicitly express your consent to broadcast your video for an undefined number of users from all over the world.</p>
-															
-																
-											</div><!--job-info end-->
-										
-										</div><!--jobs-list end-->
-										<h4>5. The right to change your personal information</h4>
-										<div class="jobs-list">
-											<div class="job-info">
-													<p>5.1. Application users have the right to change or remove one's personal information at any time.</p>
-																<p>5.2. Application users have the right to change or remove one's video and photo content at any time.</p>
-																<p>5.3. Application users have the right to delete one's account at any time.</p>
-																
-																
-											</div><!--job-info end-->
-										
-										</div><!--jobs-list end-->
-											<h4>6. User Rights</h4>
-										<div class="jobs-list">
-											<div class="job-info">
-													<p>6.1. As a member, you have the following rights to:</p>
-																<p>•	Get access to your personal data located in your account profile.</p>
-																<p>•	Correct your personal data.</p>
-																<p>•	Delete your personal data.</p>
-																<p>•	Disable processing of your personal data.</p>
-																<p>•	Restrict processing of your personal data.</p>
-																<p>•	Withdraw consent to the processing of your personal data.</p>
-																<p>6.2. You have the right to unsubscribe from notifications you receive by e-mail (hereinafter reffered to as Newsletter) at any time.</p>
-																<p>6.3. Even after you unsubscribe, the company may send you service or legal notifications (hereinafter reffered to as Required information), including but not limited to Application account password reminder e-mails, service changes notifications, as well as Application User agreement or Policy changes notifications, etc.</p>
-																
-											</div><!--job-info end-->
-										
-										</div><!--jobs-list end-->
-											<h4>7. Protection of personal user information</h4>
-										<div class="jobs-list">
-											<div class="job-info">
+													<p>You can prevent the setting of cookies by adjusting the settings on your browser (see your browser Help for how to do this). Be aware that disabling cookies will affect the functionality of this and many other websites that you visit. Disabling cookies will usually result in also disabling certain functionality and features of the this site. Therefore it is recommended that you do not disable cookies.</p>
 													
-																<p>7.1. The Company takes all necessary measures to protect the personal information of Application users. To prevent unauthorized access or use of your information, we have all the necessary measures as technical, physical and/or administrative and we are using highly sophisticated security systems.</p>
-																<p>7.2. However, the company cannot provide the security of those devices that users use to connect to the Internet (PC's, mobile devices, etc.) and the information stored on these devices (passwords, account information, etc.).</p>
-																<p>The Company strongly recommends that Application users ensure the safety of the devices they use to connect to the Internet and securely store passwords and other information about their accounts.</p>
-																<p>7.3. You acknowledge and agree that you are personally responsible for:</p>
-																<p>7.3.1. The security of the device you use to connect to the Internet.</p>
-																<p>7.3.2. The secure storage of your passwords and account information.</p>
-																<p>7.4. You acknowledge and agree that neither the Company nor the Application users, nor any other third party shall be liable for the losses incurred by you because of your negligent attitude to the safety of the device you use to connect to the Internet, or because you have disclosed/entrusted the information about your password or account to other persons or stored it improperly.</p>
 																
-																
-											</div><!--job-info end-->
-										
+											</div>
 										</div><!--jobs-list end-->
-												<h4>8. Change of Privacy Policy</h4>
+											<h4>The Cookies We Set</h4>
 										<div class="jobs-list">
 											<div class="job-info">
+													<p>•	Account related cookies</p>
+													<p>If you create an account with us then we will use cookies for the management of the signup process and general administration. These cookies will usually be deleted when you log out however in some cases they may remain afterwards to remember your site preferences when logged out.</p>
+													<p>•	Login related cookies</p>
+													<p>We use cookies when you are logged in so that we can remember this fact. This prevents you from having to log in every single time you visit a new page. These cookies are typically removed or cleared when you log out to ensure that you can only access restricted features and areas when logged in.</p>
 													
-																<p>8.1. The Company reserves the right to make changes to this Policy at any time. We will let you know regarding changes by placing a notice on the relevant site and/or contact you using other methods such as e-mail. The fact that you continue to use the Application will be deemed as your immediate acceptance of such changes. The changes are effective upon posting the latest </p>
-																<p></p>
-																<p></p>
-																<p></p>
+													<p>•	Surveys related cookies</p>
+													<p>From time to time we offer user surveys and questionnaires to provide you with interesting insights, helpful tools, or to understand our user base more accurately. These surveys may use cookies to remember who has already taken part in a survey or to provide you with accurate results after you change pages.</p>
+													<p>•	Forms related cookies</p>
+													<p>When you submit data to through a form such as those found on contact pages or comment forms cookies may be set to remember your user details for future correspondence.</p>
+													<p>•	Site preferences cookies</p>
+													<p>In order to provide you with a great experience on this site we provide the functionality to set your preferences for how this site runs when you use it. In order to remember your preferences we need to set cookies so that this information can be called whenever you interact with a page is affected by your preferences.</p>
 																
-											</div><!--job-info end-->
-										
+											</div>
+										</div><!--jobs-list end-->
+											<h4>Third Party Cookies</h4>
+										<div class="jobs-list">
+											<div class="job-info">
+													<p>In some special cases we also use cookies provided by trusted third parties. The following section details which third party cookies you might encounter through this site.</p>
+													<p>•	This site uses Google Analytics which is one of the most widespread and trusted analytics solution on the web for helping us to understand how you use the site and ways that we can improve your experience. These cookies may track things such as how long you spend on the site and the pages that you visit so we can continue to produce engaging content.
+For more information on Google Analytics cookies, see the official Google Analytics page.
+</p>
+													<p>•	Third party analytics are used to track and measure usage of this site so that we can continue to produce engaging content. These cookies may track things such as how long you spend on the site or pages you visit which helps us to understand how we can improve the site for you.</p>
+													<p>•	From time to time we test new features and make subtle changes to the way that the site is delivered. When we are still testing new features these cookies may be used to ensure that you receive a consistent experience whilst on the site whilst ensuring we understand which optimisations our users appreciate the most.</p>
+													<p>•	As we sell products it's important for us to understand statistics about how many of the visitors to our site actually make a purchase and as such this is the kind of data that these cookies will track. This is important to you as it means that we can accurately make business predictions that allow us to monitor our advertising and product costs to ensure the best possible price.</p>
+													<p>•	The Google AdSense service we use to serve advertising uses a DoubleClick cookie to serve more relevant ads across the web and limit the number of times that a given ad is shown to you.
+For more information on Google AdSense see the official Google AdSense privacy FAQ.
+</p>
+													<p>•	We use adverts to offset the costs of running this site and provide funding for further development. The behavioural advertising cookies used by this site are designed to ensure that we provide you with the most relevant adverts where possible by anonymously tracking your interests and presenting similar things that may be of interest.</p>
+													<p>•	Several partners advertise on our behalf and affiliate tracking cookies simply allow us to see if our customers have come to the site through one of our partner sites so that we can credit them appropriately and where applicable allow our affiliate partners to provide any bonus that they may provide you for making a purchase.</p>
+													<p>•	We also use social media buttons and/or plugins on this site that allow you to connect with your social network in various ways. For these to work the following social media sites including; facebook,twitter, will set cookies through our site which may be used to enhance your profile on their site or contribute to the data they hold for various purposes outlined in their respective privacy policies.</p>
+												
+																
+											</div>
+										</div><!--jobs-list end-->
+											<h4>More Information</h4>
+										<div class="jobs-list">
+											<div class="job-info">
+													<p>Hopefully that has clarified things for you and as was previously mentioned if there is something that you aren't sure whether you need or not it's usually safer to leave cookies enabled in case it does interact with one of the features you use on our site.  </p>
+													<p>However if you are still looking for more information then you can contact us through one of our preferred contact methods:</p>
+													<p>•	Email: info@intbuddy.com</p>
+																
+											</div>
 										</div><!--jobs-list end-->
 									</div>
 		</div>

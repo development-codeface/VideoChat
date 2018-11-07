@@ -186,7 +186,7 @@
 															<option value="">Select Gender *</option>
 															<option value="1">Male</option>
 															<option value="2">Female</option>
-															<option value="3">Other</option>
+														
 														</select>
 														 <?php echo form_error('gender'); ?>
 														<i class="fa fa-venus" aria-hidden="true"></i>

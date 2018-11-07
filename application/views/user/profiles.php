@@ -87,7 +87,7 @@ $user=$this->session->userdata('user_id');?>
 											{
 												
 												?>
-										<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+										<div class="col-lg-3 col20">
 							<div class="company_profile_info" id="un_<?php echo $frq->user_id;?>">
 								<div class="company-up-info">
 								<?php if( $frq->status==1){?>

@@ -355,6 +355,7 @@ class Users_model extends CI_Model
             'user_intrest_list',$intererstItem
             
         );
+		return 1;
     } 
     public function ageintrest($params, $user_id)
     {
@@ -791,5 +792,23 @@ function checknolike($fid, $uid)
            $result=$query->result_array();
                return $result;  
 	}
+	
+	function fetchintrest($uid)
+    {
+			           $this->db->select('up.intrest');
+        $this->db->from('user_intrest up');
+        $this->db->join(' user_intrest_list ul', 'ul.intrest_id=up.in_id');
+        $this->db->where('ul.user_id', $uid);
+       
+    $result = $this->db->get()->result();
+        
+        //exit;
+        return $result;
+			   
+	}
+	
+	
+	
+	
 	
 }

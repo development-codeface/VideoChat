@@ -182,7 +182,7 @@ $ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!
 				<br>
                  <span>
 											
-												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab;  ?>" title="" data-id="<?php echo $ab ;?>" class="follow follow_friend "><i class="fa fa-video-camera cmsgq vbut" aria-hidden="true"></i></i></a>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab;  ?>" title="" data-id="<?php echo $ab ;?>" class="follow follow_friend "><i class="fa fa-video-camera cmsgq mb20 vbut" aria-hidden="true"></i></i></a>
 												
 												</span>
 		
@@ -204,7 +204,7 @@ $ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!
 		
 		<br>
                     <button type="button" id="send" name="send"  class="sendreq frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-check" aria-hidden="true">
-                          </i> Sent request
+                          </i> Send request
         </button>
 		
 		
@@ -635,6 +635,7 @@ foreach($friendsRequest as $frq){?>
                   <?php if(!empty($friendList)){
 $i=1;
 foreach($friendList as $frq){?>
+
                    <div class="col-lg-3 col-md-4 col-sm-6 col-12"  id="un_<?php echo $frq->user_id;?>">
                       <div class="company_profile_info " >
                         <div class="company-up-info">	
@@ -680,8 +681,7 @@ else
 					
 					
 					
-					 <ul>
-					  
+					
 				  
 				 
 				  
@@ -784,8 +784,7 @@ $ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$thi
 				  <?php 
 				  
 				   if($ab==$idu) {?>
-				     <button type="button" id="can" name="can" class="sendreq" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
-                          </i> Friends
+				     <button type="button" id="can" name="can" class="sendreq " data-id="<?php echo $ab;?>" > <i class="fa fa-user" aria-hidden="true"></i> </i> Friends
         </button>
 		<?php
 				   }
@@ -797,7 +796,7 @@ $ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$thi
 				  
 				
                     <button type="button" id="can" name="can" class="sendreq canreq" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
-                          </i> Cancel request
+                          </i><i class="fa fa-window-close" aria-hidden="true"></i> Cancel request
         </button>
 		
 		
@@ -808,7 +807,7 @@ $ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$thi
 				
                  <span>
 											
-												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab;  ?>" title="" data-id="<?php echo $ab ;?>" class="follow follow_friend "><i class="fa fa-video-camera cmsgq vbut" aria-hidden="true"></i></i></a>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab;  ?>" title="" data-id="<?php echo $ab ;?>" class="follow follow_friend "><i class="fa fa-video-camera cmsgq mb20 vbut" aria-hidden="true"></i></i></a>
 												
 												</span>
 		
@@ -818,8 +817,7 @@ $ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$thi
 		
 		
 		
-                           <button type="button" id="canss" name="canss" class="sendreq confi" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
-                          </i> Confirm Request
+                           <button type="button" id="canss" name="canss" class="sendreq confi" data-id="<?php echo $ab;?>" > <i class="fa fa-check-square-o" aria-hidden="true"></i> Confirm Request
         </button>
 		
 		
@@ -829,31 +827,27 @@ $ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$thi
 		
 		
 	
-                    <button type="button" id="send" name="send"  class="sendreq frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-check" aria-hidden="true">
-                          </i> Sent request
+                    <button type="button" id="send" name="send"  class="sendreq frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-paper-plane" aria-hidden="true"></i> Send request
         </button>
 		
 		
 		
-                  <?php } ?>
-                </div>
-				
-			
-				
+				   <?php }} ?>
+              
+		
 				  
-				</ul>
 					
 					
 					
+					  </div>   </div>  
+               </div>  
 					
-					
-                     
-                    </div>
+              
+<?php }} ?>   
                     <!--company_profile_info end-->
-                  </div>
-<?php }} }?>
-                </div>
-              </div>
+                 
+              
+               </div> </div>  
               <!--div class="product-feed-tab" id="payment-dd">
 <div class="billing-method">
 <ul>
@@ -1284,8 +1278,8 @@ include 'footer.php';?>
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/lib/slick/slick.min.js">
 </script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/script.js">
-</script>
+<!--script type="text/javascript" src="<?php echo base_url(); ?>assets/js/script.js">
+</script-->
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/custom.js">
 </script>
 </body>
