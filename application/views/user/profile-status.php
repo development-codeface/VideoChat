@@ -270,7 +270,7 @@ list($date,$time)=explode(' ',$timestamp);
 												<?php } }?>	
 													
 													<div class="clearfix"></div>
-													<a href="<?php echo $fd->linkUrl ?>" target="blank" class="feedp"><?php echo $fd->feeds;?> </a></p>
+												<p>	<a href="<?php echo $fd->linkUrl ?>" target="blank" class="feedp"><?php echo $fd->feeds;?> </a></p>
 										      <br>
 												</div>
 				

@@ -2637,7 +2637,7 @@ float: left;
 }
 .job_descp > p {
 	 word-wrap: break-word;
-	padding-left: 47px;
+	padding-left: 0px;
     padding-right: 14px;
     color: #667079;
     font-size: 13px;
@@ -9307,7 +9307,35 @@ button.close:hover {
 
 	}  
 @media only screen and (min-width: 992px) and (max-width: 1199px){ 
+header nav {
+    background-color: #fbfbfb!important;
 
+}
+nav ul li a {
+    padding: 12px 12px;
+}.prof {
+    margin-left: -25px!important;
+}
+.request-details {
+    width: 93%;
+    border-bottom: 1px solid #e4e4e4;
+}
+.modsty {
+    width: 352px!important;
+    margin: 0 auto;
+    padding: 29px!important;
+    border-radius: 10px;
+}
+.modsty20 {
+    margin-left: 20%!important;
+    margin-top: 7%!important;
+}
+#chatHistory {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    height: 580px;
+    overflow: auto;
+}
 }
 
 
@@ -9319,7 +9347,8 @@ button.close:hover {
 		.msg_sec{    min-height: 883px;
     background: #eeeeee36;}
 	#chatHistory{
-	height: 812px;}
+	height: 812px;
+	}
 	.sub_div {
     
     height: 600px;

@@ -68,7 +68,9 @@ include 'header.php';
 											</div><!--job-info end-->
 										
 										</div><!--jobs-list end-->
-										<h6>PS : Your friends can view your friend list from your profile but stranger list is only visible to you. However, you have the option to hide your friend list. </h6>
+											<div class="jobs-list">
+										<p>PS : Your friends can view your friend list from your profile but stranger list is only visible to you. However, you have the option to hide your friend list. </p>
+										</div><!--job-info end-->
 										<div class="jobs-list">
 											<div class="job-info">
 													
