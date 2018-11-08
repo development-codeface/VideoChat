@@ -150,8 +150,7 @@ else
 									 <ul>
                       <li>
                         <button type="button" class="accept-req" onclick="friendRequest(<?php echo $frq->user_id;?>)"> 
-                          <i class="fa fa-check" aria-hidden="true">
-                          </i> Send request
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i> &nbsp; Send request
                         </button>
                       </li>
                     </ul>

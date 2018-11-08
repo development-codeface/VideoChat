@@ -101,6 +101,79 @@ class Profile extends CI_Controller
         $this->load->view("user/my-profile", $this->data);
         
     }
+       public function myProfile_limit()
+    {
+		 $fi   = $this->input->post('fi');
+        $la    = $this->input->post('la');
+         $this->data['sendRequest']    = $this->users_model->GetsendRequest($this->UserId);
+        $this->data['friendList']     = $this->users_model->GetFriendList($this->UserId);
+        $this->data['profileViewer']  = $this->profile_model->GetProfileViewerList($this->UserId);
+        $this->data['friendsRequest'] = $this->users_model->GetFriendsRequest($this->UserId);
+        $this->data['date']           = $this->users_model->fetch_dob($this->UserId);
+        $this->data['UserId']         = $this->session->userdata('user_id');
+        foreach ($this->data['date'] as $dos) {
+            $dob = $dos['dob'];
+        }
+      
+        $this->data['mydata']        = $this->users_model->GetMyData($this->UserId);
+        //print_r($this->data['mydata']);exit;
+        $this->data['user']          = $this->users_model->userinfo($this->UserId);
+        $this->data['image']         = $this->users_model->imageinfo($this->UserId);
+        $this->data['countries']     = $this->users_model->getAllcountries();
+		$this->data['intrest']     = $this->users_model->getAllintrest();
+        //print_r($this->UserId);exit;
+        $myfeeds =          $this->profile_model->GetAllfeedss_limit($this->UserId,$fi,$la);
+		 if(sizeof($myfeeds) > 0){
+        $myfeedsurldetails = array();     
+        foreach ($myfeeds as $i => $item) {
+            $title = "";
+            $description= "";
+            $image = "";
+            $videoid = "";
+            $videoidEmbe = "";
+            $linkUrl = "";
+            $isLink = false;
+            preg_match_all('#\b(https|http)?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $item->feeds, $match);
+            if(sizeof($match[0]) > 0  && sizeof($item->image_name) < 2){
+                $linkPreview = new LinkPreview($match[0][0]);
+                $parsed = $linkPreview->getParsed();
+                $isLink = true;
+                foreach ($parsed as $parserName => $link) {
+                    //$parserName . PHP_EOL . PHP_EOL;
+                    //echo $link->getUrl() . PHP_EOL;
+                    //echo $link->getRealUrl() . PHP_EOL;
+                    $title = $link->getTitle() . PHP_EOL;
+                    $linkUrl  = $link->getUrl() . PHP_EOL;
+                    $description =  $link->getDescription() . PHP_EOL;
+                    $image =  $link->getImage() . PHP_EOL;
+                    if ($link instanceof VideoLink) {
+                        $videoid = $link->getVideoId() . PHP_EOL;
+                        $videoidEmbe = $link->getEmbedCode() . PHP_EOL;
+                        
+                    }
+                }
+            }		    
+            $itemVal = $item;           
+            $itemVal->islink = $isLink;
+            $itemVal->linkUrl = $linkUrl;
+            $itemVal->linktitle = $title;
+            $itemVal->linkdescription = $description;
+            $itemVal->videoEmbeded = $videoidEmbe;
+            $itemVal->linkimage = $image;
+            $myfeedsurldetails[$i] = $itemVal;
+        }
+        $this->data['feeds']   = $myfeedsurldetails;
+		//print_r($this->data['feeds']);exit;
+        $this->data['openToken']     = base64_encode($this->session->userdata('token'));
+        $this->data['openSessionId'] = $this->session->userdata('openSessionId');
+        $this->data['apiKey']        = $this->config->item('opentok_key');
+         
+        $this->load->view("user/profile-feed-result", $this->data);
+      }else {
+          echo ("");
+      }
+        
+    }
     
     
     public function profileView($friendId)
@@ -171,6 +244,84 @@ class Profile extends CI_Controller
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
         $this->data['apiKey']        = $this->config->item('opentok_key');
         $this->load->view("user/profile-view", $this->data);
+        
+    }    
+    public function profileView_limited()
+    {
+		
+		 $fi   = $this->input->post('fi');
+        $la    = $this->input->post('la');
+		$friendId    = $this->input->post('frd');
+        
+        $this->data['friendList']    = $this->users_model->GetFriendList($friendId);
+        $this->data['photos']        = $this->profile_model->GetUserPhotos($friendId);
+        $this->data['profileViewer'] = $this->profile_model->GetProfileViewerList($friendId);
+        $this->data['mydata']        = $this->users_model->GetMyData($friendId);
+        
+       // print_r($this->data['mydata']);exit;
+        //$this->data['feeds'] = $this->profile_model->GetUserfeeds($friendId);
+        $myfeeds =          $this->profile_model->GetUserfeeds_limit($friendId,$fi,$la);
+		   if(sizeof($myfeeds) > 0){
+        $myfeedsurldetails = array();     
+        foreach ($myfeeds as $i => $item) {
+            $title = "";
+            $description= "";
+            $image = "";
+            $videoid = "";
+            $videoidEmbe = "";
+            $linkUrl = "";
+            $isLink = false;
+            preg_match_all('#\b(https|http)?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $item->feeds, $match);
+            if(sizeof($match[0]) > 0  && sizeof($item->image_name) < 2){
+                $linkPreview = new LinkPreview($match[0][0]);
+                $parsed = $linkPreview->getParsed();
+                $isLink = true;
+                foreach ($parsed as $parserName => $link) {
+                    //$parserName . PHP_EOL . PHP_EOL;
+                    //echo $link->getUrl() . PHP_EOL;
+                    //echo $link->getRealUrl() . PHP_EOL;
+                    $title = $link->getTitle() . PHP_EOL;
+                    $linkUrl  = $link->getUrl() . PHP_EOL;
+                    $description =  $link->getDescription() . PHP_EOL;
+                    $image =  $link->getImage() . PHP_EOL;
+                    if ($link instanceof VideoLink) {
+                        $videoid = $link->getVideoId() . PHP_EOL;
+                        $videoidEmbe = $link->getEmbedCode() . PHP_EOL;
+                        
+                    }
+                }
+            }		    
+            $itemVal = $item;           
+            $itemVal->islink = $isLink;
+            $itemVal->linkUrl = $linkUrl;
+            $itemVal->linktitle = $title;
+            $itemVal->linkdescription = $description;
+            $itemVal->videoEmbeded = $videoidEmbe;
+            $itemVal->linkimage = $image;
+            $myfeedsurldetails[$i] = $itemVal;
+        }
+        $this->data['feeds']   = $myfeedsurldetails;
+
+        $this->data['user']  = $this->users_model->userinfo($this->UserId);
+        $this->data['age']   = $this->users_model->friendage($friendId);
+        //print_r($this->data['age']);exit;
+        $result              = $this->profile_model->checkVisit(array(
+            'visitor_id' => $this->UserId,
+            'user_id' => $friendId
+        ));
+        if (empty($result)) {
+            $s = $this->profile_model->InsertVisit(array(
+                'user_id' => $friendId,
+                'visitor_id' => $this->UserId
+            ));
+        }
+        $this->data['openToken']     = base64_encode($this->session->userdata('token'));
+        $this->data['openSessionId'] = $this->session->userdata('openSessionId');
+        $this->data['apiKey']        = $this->config->item('opentok_key');
+         $this->load->view("user/profile-feed-result", $this->data);
+      }else {
+          echo ("");
+      }
         
     }
     public function settings()

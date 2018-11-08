@@ -4,6 +4,7 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 <script src="https://static.opentok.com/v2/js/opentok.js">
 </script>	
 <section class="cover-sec">
+<input type="text" name="frd" id="frd" value="<?php echo $mydata['user_id']; ?>" hidden > 
   <?php if($mydata['cover_photo']!=""){?>
   <img src="<?php echo base_url() .'uploads/cover_photo/'.$mydata['cover_photo'] ;?>" alt="">
   <?php }else{
@@ -170,8 +171,7 @@ $ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!
 					  ?>
 				  
 				<br>
-                    <button type="button" id="can" name="can" class="sendreq canreq" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
-                          </i> Cancel request
+                    <button type="button" id="can" name="can" class="sendreq canreq mb20" data-id="<?php echo $ab;?>" > <i class="fa fa-window-close" aria-hidden="true"></i> Cancel request
         </button>
 		
 		
@@ -192,8 +192,7 @@ $ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!
 		
 		
 		<br>
-                           <button type="button" id="canss" name="canss" class="sendreq confi" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
-                          </i> Confirm Request
+                           <button type="button" id="canss" name="canss" class="sendreq confi mb20" data-id="<?php echo $ab;?>" > <i class="fa fa-check-square-o" aria-hidden="true"></i>   Confirm Request
         </button>
 		
 		
@@ -203,8 +202,7 @@ $ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!
 		
 		
 		<br>
-                    <button type="button" id="send" name="send"  class="sendreq frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-check" aria-hidden="true">
-                          </i> Send request
+                    <button type="button" id="send" name="send"  class="sendreq frereq mb20" data-id="<?php echo $ab;?>"  > <i class="fa fa-paper-plane" aria-hidden="true"></i> Send request
         </button>
 		
 		
@@ -281,9 +279,10 @@ $ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!
               <!--user-tab-sec end-->
               <div class="product-feed-tab current" id="feed-dd">
                 <div class="posts-section">
-                  <?php 
-if(!empty($feeds)){
-foreach($feeds as $fd){?>
+					<div  id="postcontainer">
+                  <?php $r=0;
+if(!empty($feeds)){ 
+foreach($feeds as $fd){  if($r<2) {  ?>
                   <div class="post-bar">
                     <div class="like_bt">
                       <div class="post_topbar">
@@ -355,7 +354,7 @@ else
 
 														<?php if(strlen($fd->linkdescription)> 0){?>
 															<div class="link">
-															<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linkdescription ?></p></a> 
+															<a href="<?php echo $fd->linkUrl ?>" target="blank"><p><?php echo $fd->linkdescription ?></p></a> 
 															</div>
 														<?php } ?>
 
@@ -367,7 +366,7 @@ else
 												<?php } }?>	
 													
 													
-													<p class="feedp"><?php echo $fd->feeds;?>..... </p>
+													<p class="feedp"><a href="<?php echo $fd->linkUrl ?>" target="blank" class="feedp"> <?php echo $fd->feeds;?> </a> </p>
 										      <br>
 												</div>
                       <div class="job-status-bar">
@@ -386,8 +385,14 @@ else
                       </div>
                     </div>
                   </div>
-                  <?php } }?>
-                </div>
+<?php $r++; } } }
+else{ ?>
+						
+					<!--	<div class="download-box alert">
+<div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
+
+										</div>--><?php }?>
+                </div>  </div>
                 <!--posts-section end-->
               </div>
               <!--product-feed-tab end-->
@@ -451,7 +456,7 @@ else
                         </td>
                         <td>
                           <i id="dobs">
-                            <?php  echo $mydata['birth'];?> 
+                              <?php echo date("d/m/Y", strtotime($mydata['birth']));?>
                           </i>
                         </td>
                       </tr>
@@ -784,7 +789,7 @@ $ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$thi
 				  <?php 
 				  
 				   if($ab==$idu) {?>
-				     <button type="button" id="can" name="can" class="sendreq " data-id="<?php echo $ab;?>" > <i class="fa fa-user" aria-hidden="true"></i> </i> Friends
+				     <button type="button" id="can" name="can" class="sendreqch " data-id="<?php echo $ab;?>" > <i class="fa fa-user" aria-hidden="true"></i> </i> Friends
         </button>
 		<?php
 				   }
@@ -795,8 +800,7 @@ $ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$thi
 					  ?>
 				  
 				
-                    <button type="button" id="can" name="can" class="sendreq canreq" data-id="<?php echo $ab;?>" > <i class="fa fa-check" aria-hidden="true">
-                          </i><i class="fa fa-window-close" aria-hidden="true"></i> Cancel request
+                    <button type="button" id="can" name="can" class="sendreqch canreq" data-id="<?php echo $ab;?>" > <i class="fa fa-window-close" aria-hidden="true"></i> Cancel request
         </button>
 		
 		
@@ -807,7 +811,7 @@ $ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$thi
 				
                  <span>
 											
-												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab;  ?>" title="" data-id="<?php echo $ab ;?>" class="follow follow_friend "><i class="fa fa-video-camera cmsgq mb20 vbut" aria-hidden="true"></i></i></a>
+												<a href="<?php echo base_url(); ?>index.php/Profile/messages?user=<?php echo $ab;  ?>" title="" data-id="<?php echo $ab ;?>" class="follow follow_friend "><i class="fa fa-video-camera cmsgq  vbut" aria-hidden="true"></i></i></a>
 												
 												</span>
 		
@@ -817,7 +821,7 @@ $ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$thi
 		
 		
 		
-                           <button type="button" id="canss" name="canss" class="sendreq confi" data-id="<?php echo $ab;?>" > <i class="fa fa-check-square-o" aria-hidden="true"></i> Confirm Request
+                           <button type="button" id="canss" name="canss" class="sendreqch confi" data-id="<?php echo $ab;?>" > <i class="fa fa-check-square-o" aria-hidden="true"></i> Confirm Request
         </button>
 		
 		
@@ -827,7 +831,7 @@ $ab=	$frq->user_id;		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!=$thi
 		
 		
 	
-                    <button type="button" id="send" name="send"  class="sendreq frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-paper-plane" aria-hidden="true"></i> Send request
+                    <button type="button" id="send" name="send"  class="sendreqch frereq" data-id="<?php echo $ab;?>"  > <i class="fa fa-paper-plane" aria-hidden="true"></i> Send request
         </button>
 		
 		
@@ -1414,4 +1418,48 @@ include 'footer.php';?>
 		});		
 		}); 
 
+</script>
+
+
+<script type="text/javascript">
+var i=1;
+var j=1;
+    $(window).scroll(function () {
+		
+		
+        if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
+            var fi=i*2;
+			var la=(i+1)*2;
+		//	alert(fi);	alert(la);
+		var frd = $("#frd").val();
+		
+
+  $.ajax({
+            type: "POST",
+            url: "../profileView_limited",
+           data:{fi:fi,la:la,frd:frd},
+            dataType:"text", 
+            success: function(result){
+				//alert(result);
+				if(result.length > 0 ){
+					$('#postcontainer').append(result);
+				}
+			
+            //$("#feedResult").html(r); 
+            }
+          }
+                );
+
+
+
+
+
+
+
+
+
+		i++;
+        }
+		
+    });
 </script>

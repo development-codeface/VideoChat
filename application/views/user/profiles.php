@@ -168,7 +168,7 @@ $user=$this->session->userdata('user_id');?>
 												
 												?>
 									
-							<div class="col-lg-3 col-md-4 col-sm-6 col-12">
+							<div class="col-lg-3 col20">
 							<div class="company_profile_info" id="un_<?php echo $frq->user_id;?>">
 								<div class="company-up-info">
 								<?php if( $frq->status==1){?>
@@ -216,7 +216,12 @@ $user=$this->session->userdata('user_id');?>
 						</div>
 								<?php }} 
 								else{
-											?>		<label class="alert alert-danger">No Result found </label>
+											?>	
+											<div class="col-lg-12">
+											<label class="alert alert-danger">No Result found </label>
+											</div>
+											
+											
 										<?php	}?>
 						
 						
@@ -280,8 +285,9 @@ $user=$this->session->userdata('user_id');?>
 											?>	
 											<div class="col-lg-12">
 											<label class="alert alert-danger">No Result found </label>
+												 </div>
 										<?php	}?>
-							  				 </div>
+							  			
 							  			</div><!--requests-list end-->
 							  		</div>
 									</div><!--product-feed-tab end-->
@@ -345,8 +351,9 @@ $user=$this->session->userdata('user_id');?>
 											?>	
 											<div class="col-lg-12">
 											<label class="alert alert-danger">No Result found </label>
+											</div>
 										<?php	}?>
-							  				 </div>
+							  				 
 							  			</div><!--requests-list end-->
 							  		</div>
 									</div><!--product-feed-tab end-->

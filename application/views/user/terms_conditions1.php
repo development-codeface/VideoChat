@@ -350,12 +350,13 @@ To determine whether any of the third-party services it uses honor the “Do Not
  <footer>
 			<div class="footy-sec mn no-margin">
 				<div class="container">
-					<ul>
-							<li><a href="<?php echo base_url(); ?>index.php/Auth/privacy_policy" title="">Privacy Policy</a></li>
+						<ul>
+						
+							<li><a href="<?php echo base_url(); ?>index.php/Auth/cookies" title="">Cookies</a></li>
 				
-						<li><a href="<?php echo base_url(); ?>index.php/Auth/terms_conditions" title="">Terms Conditions</a></li>
-						<li><a href="">How it works </a></li>
-						<li><a href="" data-toggle="modal" data-target="#Contact">Contact </a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/Auth/terms_conditions" title="">User Terms & Privacy Policy</a></li>
+						<li><a href="<?php echo base_url(); ?>index.php/Auth/howitwork">How it works </a></li>
+						<li><a href="" data-toggle="modal" data-target="#Contact">Contact Us</a></li>
 					</ul>
 					<p>Copyright © 2018 IntBuddy. All rights reserved.</p>
 				

@@ -206,9 +206,10 @@ else{ ?>
                 <!--user-tab-sec end-->
                 <div class="product-feed-tab current" id="feed-dd">
                   <div class="posts-section">
+				  <div  id="postcontainer">
                     <?php 
-if(!empty($feeds)){
-foreach($feeds as $fd){?>
+if(!empty($feeds)){$m=0;
+foreach($feeds as $fd){     if($m <2 ) {	?>
                     <div class="post-bar">
                       <div class="post_topbar">
                         <div class="usy-dt">
@@ -365,7 +366,8 @@ list($date,$time)=explode(' ',$timestamp);
 												<?php } }?>	
 													
 													
-													<p class="feedp"><?php echo $fd->feeds;?>..... </p>
+													<p class="feedp"><a href="<?php echo $fd->linkUrl ?>" target="blank" class="feedp"><?php echo $fd->feeds;?>..... </p>
+													
 										      <br>
 												</div>
                       <div class="job-status-bar">
@@ -390,7 +392,7 @@ list($date,$time)=explode(' ',$timestamp);
                         </ul>
                       </div>
                     </div>
-                    <?php } }else{ ?>
+<?php $m++; }} }else{ ?>
                     <!--	<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 </div>-->
@@ -1667,4 +1669,51 @@ $(".buttonlo").click(function() {
 <script>
   normalConnection();
 </script>
+
+
+
+<script >
+
+var i=1;
+var j=1;
+    $(window).scroll(function () {
+		
+		
+        if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
+            var fi=i*2;
+			var la=(i+1)*2;
+		//	alert(fi);	alert(la);
+		
+
+  $.ajax({
+            type: "POST",
+            url: "../profile/myProfile_limit",
+           data:{fi:fi,la:la},
+            dataType:"text", 
+            success: function(result){
+				//alert(result);
+				if(result.length > 0 ){
+					$('#postcontainer').append(result);
+				}
+			
+            //$("#feedResult").html(r); 
+            }
+          }
+                );
+
+
+
+
+
+
+
+
+
+		i++;
+        }
+		
+    });
+</script>
+
+
 

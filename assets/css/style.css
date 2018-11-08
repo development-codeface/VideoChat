@@ -42,7 +42,7 @@ body {
 .imgfeed{    width: 100%;
     padding: 10px 0px;height:auto;}
 	.feedp{    padding-left: 0px!important;
-    color: #5d5f5f;}
+    color: #5d5f5f!important;}
 	.videmp iframe{width: 96%;}
 	.videmp{padding: 10px 0px; width: 100%;}
 	.vbut{       padding: 8px 15px 8px;
@@ -2644,8 +2644,9 @@ float: left;
     line-height: 23px;
     margin-top: 5px;
     font-weight: 600;
-    text-align: justify;
+    text-align: justify;    width: 98%;
 }
+.bonspin{font-size: 20px;    font-weight: 600;}
 .job_descp > p a {
 	color: #db325b;
 	font-weight: 600;
@@ -5420,8 +5421,8 @@ margin: 0;}
 }
 /* tab */
 
-/* tab */
-.sendreq{    color: #d03c72;
+
+.sendreqch{    color: #d03c72;
     font-size: 12px;
     cursor: pointer;
     background-color: #ffffff;
@@ -5434,13 +5435,13 @@ margin: 0;}
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;}
-	  /*
+	
 .sendreq {
       font-size: 13px;
     font-weight: 800;
     padding: 12px 22px;
     outline: none;
-    margin-top: 32px;
+    /* margin-top: 32px; */
     cursor: pointer;
     box-shadow: 0 3px 6px 0 rgba(23, 28, 33, 0.36);
     background-color: #F26E93;
@@ -5463,8 +5464,8 @@ margin: 0;}
     text-decoration: none;
     box-shadow: 0 10px 20px 0 rgba(23, 28, 33, 0.15), 0 4px 9px 0 rgba(23,28,33,.06);
 }
-*/
-.sendreq:hover {    background-color: #da5f7d;
+ 
+.sendreqch:hover {    background-color: #da5f7d;
     border: 2px solid #dd345d;
     color: #fff;}
 
@@ -8591,6 +8592,8 @@ input:checked + .toggle .toggle__handler{
 			background: #ca0202;
 			cursor:pointer;
 			}
+			.checkbox-labelch{background: #ad9393e6;}
+			/* background: #ad9393e6; */
 			.checkbox-label:before{
 			content:'';
 			display:block;
@@ -8874,34 +8877,43 @@ background:red;
 .linktitle p{    clear: both;}
 .feedImage img{    height: 335px;    width: 96%;
     object-fit: cover;}
+	
+	
+	
+	
 @media only screen and (max-width: 479px){ 
 header nav {
   
-    background-color: #db325b!important;
+    background-color:#fbfbfb!important;
  
 }
-.icfa ul li a {
-    color: #ffffff;
-    font-size: 14px;
+.serb div input {
+    width: 100%;
+    background-color: #fff;
+    height: 45px;
+    color: #423e3e;
+    font-size: 10px;
+    padding-left: 19px;
+    border-radius: 35px;
+    border: 1px solid #d3cfcf;
 }
-.icfa ul li a:hover {
-    color:#db325b;
-    
+.serb div button {
+    position: absolute;
+    top: 4px;
 }
-.icfa ul li a i {
-    font-size: 16px;
-    line-height: 10px;
-    color: white;
+.tab2 .nav-tabs2 li {
+    margin-bottom: 10px;
+    display: inline!important;    width: auto;
 }
+nav ul li a {
+padding: 12px 13px;}
+
 .footy-sec.mn ul {
     padding: 25px 0 0px 0!important;
 }
 .search-barmsg {
-    float: right;
-    width: 498px;
-    margin-top: 17px;
+       width: 498px;
     margin-bottom: 20px;
-    padding-left: 46px;
     text-align: right;
 }
 
@@ -8939,6 +8951,11 @@ header nav {
     text-transform: capitalize;
     margin-top: 10px;
     font-weight: 700;
+}
+.search-barmsg {
+    float: left;
+    margin-top: 0px;
+    text-align: right;
 }
 .vpos {
     z-index: 99;
@@ -9099,9 +9116,18 @@ width: 100%;}
     padding-left: 0px!important;
 }
 /* 24-9-14 */
+.logo img {
+    float: left!important;
+}
+.ed-opts > a {
+    left: 0px;
+}
 .user-account {
-    float: right!important;
-    position: relative;
+    margin-top: 10px;
+}
+.togl_div {
+    float: left;
+    margin: 15px 0px 0 0;
 }
 section {
     float: left;
@@ -9281,10 +9307,7 @@ button.close:hover {
 
 	}  
 @media only screen and (min-width: 992px) and (max-width: 1199px){ 
-.sub_div {
-    
-    height: 600px;
-	}
+
 }
 
 

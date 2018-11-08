@@ -55,7 +55,7 @@ $user=$this->session->userdata('user_id');?>
 													<div class="cp-field">
 												
 								
-												<textarea placeholder="Write something here..." name="feeds" id="feeds" required ></textarea>
+												<textarea placeholder="Write something here..." name="feeds" id="feeds"  ></textarea>
 												
 											</div>
 										
@@ -73,7 +73,7 @@ $user=$this->session->userdata('user_id');?>
 												
 											</div>
 											<?php $i=0; if(!empty($feeds)){
-												foreach($feeds as $fd){ if($i<5){		?>
+												foreach($feeds as $fd){ if($i<2){		?>
 										
 											<div class="post-bar" id="as">
 													<div class="post_topbar">
@@ -237,7 +237,7 @@ list($date,$time)=explode(' ',$timestamp);
 		</div><!--overview-box end-->	
 		
 					
-												<div class="job_descp">
+										                      <div class="job_descp">
 												<?php if($fd->islink){
 													   if(strlen($fd->videoEmbeded) > 0){?>
 															<div class="feedVideo videmp">
@@ -251,8 +251,9 @@ list($date,$time)=explode(' ',$timestamp);
 														
 														<?php if(strlen($fd->linktitle)>0){?>
 															<div class="linktitle">
-																<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linktitle ?> </p></a> 
+																<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linktitle ?>"></p></a> 
 															</div>
+															
 														<?php } ?>
 
 														<?php if(strlen($fd->linkdescription)> 0){?>
@@ -261,11 +262,16 @@ list($date,$time)=explode(' ',$timestamp);
 															</div>
 														<?php } ?>
 
-												<?php } ?>
+												<?php } else {
+													if(strlen($fd->image_name) > 0){ ?>
+															<div class="feedImage">
+																<img src="../../uploads/status/<?php echo $fd->image_name ?>" class="image-responsive imgfeed"> 
+															</div>
+												<?php } }?>	
 													
-													
-													<p  class="feedp"><?php echo $fd->feeds;?>..... </p>
-										
+													<div class="clearfix"></div>
+													<a href="<?php echo $fd->linkUrl ?>" target="blank" class="feedp"><?php echo $fd->feeds;?> </a></p>
+										      <br>
 												</div>
 				
 												
@@ -561,8 +567,8 @@ var j=1;
 		
 		
         if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
-            var fi=i*5;
-			var la=(i+1)*5;
+            var fi=i*2;
+			var la=(i+1)*2;
 		//	alert(fi);	alert(la);
 		
 

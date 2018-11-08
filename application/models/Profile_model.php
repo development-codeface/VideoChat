@@ -97,6 +97,35 @@ class Profile_model extends CI_Model
         //exit;
         return $result;
     }
+     public function GetAllfeedss_limit($userId,$fi,$la)
+    {
+          $this->db->select('DISTINCT(us.user_id),fi.image_name,us.gender,up.profile_pic,uf.created_at,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id,cf.country');
+        $this->db->from('users us');
+       
+        $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
+        $this->db->join('user_feed uf', 'uf.user_id= us.user_id', 'INNER');
+        $this->db->join('countries cf', 'cf.c_id= up.country_id', 'LEFT');
+        $this->db->join('user_feed_image fi', 'uf.id= fi.feed_id', 'LEFT');
+        //$this->db->join('hide_post hd', 'hd.feed_id = uf.id','LEFT');
+       
+		  
+        
+      
+        $this->db->or_where('us.user_id', $userId);
+        //$this->db->where_not_in('uf.id' ,'hd.feed_id');
+        $this->db->where('uf.status', 1);
+       // $this->db->where('um.status', 1);
+        
+        //$this->db->group_by('us.user_id'); 
+        
+        //$this->db->where('dm.ParentID',$params['DepartmentID']);
+        $this->db->order_by("uf.created_at", "desc");
+			$this->db->limit($la,$fi);
+        $result = $this->db->get()->result();
+        
+        //exit;
+        return $result;
+    }
     
     //get User feeds
     
@@ -111,6 +140,21 @@ class Profile_model extends CI_Model
         $this->db->where('us.user_id', $userId);
         $this->db->where('uf.status', 1);
         $this->db->order_by("uf.created_at", "desc");
+        $result = $this->db->get()->result();
+        return $result;
+    }  
+	public function GetUserfeeds_limit($userId,$fi,$la)
+    {
+        $this->db->select('DISTINCT(us.user_id),,fi.image_name,us.gender,up.profile_pic,uf.created_at,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id,cf.country');
+        $this->db->from('users us');
+        $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
+        $this->db->join('user_feed uf', 'uf.user_id= us.user_id', 'INNER');
+        $this->db->join('countries cf', 'cf.c_id= up.country_id', 'left');
+		 $this->db->join('user_feed_image fi', 'uf.id= fi.feed_id', 'LEFT');
+        $this->db->where('us.user_id', $userId);
+        $this->db->where('uf.status', 1);
+        $this->db->order_by("uf.created_at", "desc");
+		$this->db->limit($la,$fi);
         $result = $this->db->get()->result();
         return $result;
     }
