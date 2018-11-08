@@ -63,7 +63,7 @@ class Profile_model extends CI_Model
         
         //$this->db->where('dm.ParentID',$params['DepartmentID']);
         $this->db->order_by("uf.created_at", "desc");
-		$this->db->limit($fi, $la);
+		$this->db->limit($la,$fi);
         $result = $this->db->get()->result();
         
         //exit;

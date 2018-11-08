@@ -9,7 +9,7 @@ $user=$this->session->userdata('user_id');?>
 		<div class="container " >
 		<div class="row">
 		
-		<div class="col-md-8">
+		<div class="col-md-8" id="postcontainer">
 			<form method="post" action="<?php echo base_url(); ?>index.php/Profile/postFeed" name="signupform" id="signupform" enctype="multipart/form-data" class="form-horizontal">
 												
 		<div class="post-bar" style="background:white;">
@@ -573,8 +573,11 @@ var j=1;
             dataType:"text", 
             success: function(result){
 				//alert(result);
-			//	as.append(data);
-         $("#feedResult").html(r); 
+				if(result.length > 0 ){
+					$('#postcontainer').append(result);
+				}
+			
+            //$("#feedResult").html(r); 
             }
           }
                 );

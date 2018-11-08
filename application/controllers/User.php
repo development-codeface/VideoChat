@@ -89,8 +89,10 @@ class User extends CI_Controller
     {
 		  $fi   = $this->input->post('fi');
         $la    = $this->input->post('la');
+
        $myfeeds =          $this->profile_model->GetAllfeeds_limit($this->UserId,$fi,$la);
-	//   print_r($myfeeds);exit;
+    //   print_r($myfeeds);exit;
+      if(sizeof($myfeeds) > 0){
         $myfeedsurldetails = array();     
         foreach ($myfeeds as $i => $item) {
             $title = "";
@@ -131,14 +133,18 @@ class User extends CI_Controller
             log_message('error','here getstranger >>'.$this->session->userdata('user_id').'<< going to stranger >>'.print_r($itemVal, TRUE).'<<..');
         }
         $this->data['feeds']   = $myfeedsurldetails;
-        $this->data['friendOnline']  = $this->users_model->GetOnlineFriends($this->UserId);
+       /* $this->data['friendOnline']  = $this->users_model->GetOnlineFriends($this->UserId);
         $this->data['user']          = $this->users_model->userinfo($this->UserId);
         $this->data['UserId']        = $this->session->userdata('user_id');
         $this->data['openToken']     = base64_encode($this->session->userdata('token'));
         $this->data['openSessionId'] = $this->session->userdata('openSessionId');
-        $this->data['apiKey']        = $this->config->item('opentok_key');
+        $this->data['apiKey']        = $this->config->item('opentok_key');*/
         
-        $this->load->view("user/profile_feed_result", $this->data);
+        $this->load->view("user/profile-feed-result", $this->data);
+      }else {
+          echo ("");
+      }
+        
     }
   
     public function profileSearch()
