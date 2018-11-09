@@ -237,6 +237,7 @@ $( "#locationSave" ).on('click', function (e) {
   //var interest=$("#Interest_id").val();
   var interest = get_selected_items("select7","value");
   var interestList = interest.join(",");
+  
   if(interest!=""){
     $.ajax({
 		type: "POST",
@@ -246,15 +247,21 @@ $( "#locationSave" ).on('click', function (e) {
 
         success: function(data) {
 			
-			
+			var  i, x = "";
 			
            if(data.status==1){
 			   
 			    $("#skills-box").removeClass("open");
 				$(".wrapper").removeClass("overlay");
-			  $.each(data.intid, function(i,intid) {
-	$("#Interest_ar" ).append(intid);
-  });
+	
+  for (i in data.intid) {
+    x += data.intid[i] + "&emsp;";
+}
+
+document.getElementById("Interest_arrr").innerHTML = x;
+  
+  
+  
 		   }
 				
 			else{

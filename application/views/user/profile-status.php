@@ -118,10 +118,12 @@ $user=$this->session->userdata('user_id');?>
 $timestamp=$fd->created_at;
 list($date,$time)=explode(' ',$timestamp);
 //echo $time;
-
+//$now = new DateTime();
+//$now->setTimezone(new DateTimezone('Asia/Kolkata'));
+  //$cur_time=$now->format('Y-m-d H:i:s');
     $time_ago = strtotime($fd->created_at);
     $cur_time   = time();
-    $time_elapsed   = $cur_time - $time_ago;
+    $time_elapsed   = abs($cur_time - $time_ago);
     $seconds    = $time_elapsed ;
     $minutes    = round($time_elapsed / 60 );
     $hours      = round($time_elapsed / 3600);
@@ -130,6 +132,8 @@ list($date,$time)=explode(' ',$timestamp);
     $months     = round($time_elapsed / 2600640 );
     $years      = round($time_elapsed / 31207680 );
     // Seconds
+	echo $cur_time; echo $time_ago;
+	//echo $time_elapsed;exit;
     if($seconds <= 60){
         $ti= "just now";
     }
@@ -245,13 +249,13 @@ list($date,$time)=explode(' ',$timestamp);
 													   <?php }else{
 														   if(strlen($fd->linkimage) > 0){ ?>
 															<div class="feedImage">
-																<img src="<?php echo $fd->linkimage ?>"/ class="image-responsive imgfeed"> 
+																<img src="<?php echo $fd->linkimage ?>"/ target="blank" class="image-responsive imgfeed"> 
 															</div>
 														<?php } }?>
 														
 														<?php if(strlen($fd->linktitle)>0){?>
 															<div class="linktitle">
-																<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linktitle ?>"></p></a> 
+																<a href="<?php echo $fd->linkUrl ?>" target="blank" ><p><?php echo $fd->linktitle ?>"></p></a> 
 															</div>
 															
 														<?php } ?>
