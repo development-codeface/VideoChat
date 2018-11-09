@@ -315,7 +315,7 @@ list($date,$time)=explode(' ',$timestamp);
 													<ul class="ed-options" id="myModal">
 														
 																<li><a href="#" title="" class="ed-box-open" onclick="getFeeds(<?php echo $fd->id;?>)">Edit Post</a></li>
-														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeed/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
+														<li><a href="<?php echo base_url()."index.php/Profile/deleteFeedmyprofile/".$fd->id;?>" onclick="return confirm('Are you sure?')">Delete Post</a></li>
 													
 													</ul>
 														<!--li><a href="" data-toggle="modal" data-target="#myModalhid">Hide Post text</a></li-->
@@ -342,26 +342,26 @@ list($date,$time)=explode(' ',$timestamp);
 													   <?php }else{
 														   if(strlen($fd->linkimage) > 0){ ?>
 															<div class="feedImage">
-																<img src="<?php echo $fd->linkimage ?>"/ class="image-responsive imgfeed"> 
+																<img src="<?php echo $fd->linkimage ?>"/ target="blank" class="image-responsive imgfeed"> 
 															</div>
 														<?php } }?>
 														
 														<?php if(strlen($fd->linktitle)>0){?>
 															<div class="linktitle">
-																<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linktitle ?>"></p></a> 
+																<a href="<?php echo $fd->linkUrl ?>" target="blank"><p><?php echo $fd->linktitle ?>"></p></a> 
 															</div>
 														<?php } ?>
 
 														<?php if(strlen($fd->linkdescription)> 0){?>
 															<div class="link">
-															<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linkdescription ?></p></a> 
+															<a href="<?php echo $fd->linkUrl ?>" target="blank"><p><?php echo $fd->linkdescription ?></p></a> 
 															</div>
 														<?php } ?>
 
 												<?php } else {
 													if(strlen($fd->image_name) > 0){ ?>
 															<div class="feedImage">
-																<img src="../../uploads/status/<?php echo $fd->image_name ?>" class="image-responsive imgfeed"> 
+																<img src="../../uploads/status/<?php echo $fd->image_name ?>"  class="image-responsive imgfeed"> 
 															</div>
 												<?php } }?>	
 													
@@ -397,7 +397,7 @@ list($date,$time)=explode(' ',$timestamp);
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 </div>-->
                     <?php }?>
-                  </div>
+                  </div>  </div>
                   <!--posts-section end-->
                 </div>
                 <!--product-feed-tab end-->
@@ -482,12 +482,11 @@ list($date,$time)=explode(' ',$timestamp);
                             <?php  echo $mydata['ag'];?>
                           </i> 
 
-						  <td>
                           <i id="send"> 
                          
                           </i> 
-                        </td>
-                     </tr>
+                       
+                    
                       <?php
 }else if($status=="true")
 {
@@ -609,16 +608,21 @@ Public
        
     $res = $this->db->get()->result();
        ?> 
-<ul> <li ><?php
+<ul> <li >
+<a  id="Interest_arrr">
+<?php
 	foreach($res as $row)
 {?>
 
-  <a  id="Interest_ar">
+ 
                           <?php echo $row->intrest;?>
-						  </a>
+						
                     
+                  <?php //echo"," ?> &emsp;
         
 <?php }?>
+  </a>
+
 					
 		  </li>
 					  </ul>			
@@ -904,7 +908,46 @@ else{ ?>
                  
                 <div class="product-feed-tab" id="my-frd-list">
 				<h3 class="h3cl">My Friend list </h3>
+				  
+				  
+				  
+				  
+				  
+				  
+				  
+						  
+						  		<?php
+			$uid=$this->UserId = $this->session->userdata('user_id');
+			
+			    $query=$this->db->query("select friendlist_hide from user_profile where user_id=$uid");
+
+              $result=$query->result_array();
+                    
+                    foreach($result as $value){ 
+					$statusfriend=$value['friendlist_hide'];
+					
+					}
+					?>
+						  
+						   <div class="togl_div togl_divch">
+            <?php $currentStatusfr = ($statusfriend=='true')? "2" : "1";?> 
+            <?php $checkedfr = ($currentStatusfr== 1) ? "checkedfr=''" :  ""; ?>
+            <input type="checkbox" name="checkbox13" id="checkbox13" value="<?php echo $currentStatusfr?>" class="ios-toggle" <?php echo $checkedfr?> >
+            <label for="checkbox13" class="checkbox-label checkbox-labelch" data-off="Unhide" data-on="Hide" ></label>
+          </div>    
+                      
+				  
+				  
+				  
                   <div class="row">
+				  
+				  
+				  
+				  	
+                      
+				  
+				  
+				  
 				  
                     <?php if(!empty($friendList)){
 $i=1;
@@ -1620,6 +1663,56 @@ $(document).ready(function() {
 			             
 				
 		}); 
+		
+		
+		
+		
+		///////fried listhide///
+		
+		
+						  
+					   $('#checkbox13').change(function () {	
+				   
+    var status = $(this).val();
+	
+	
+	  //var uid =$(this).data('id');
+    $.ajax({
+      type: "POST",
+     url: "../Profile/update_friendlist_privacy",
+      data:{profilestatus:status},
+      dataType:"text", 
+      success: function(result){
+	
+        privacyChangeCallbackslist(result);
+        //location.reload();
+      }
+	
+ }); });
+
+
+ function privacyChangeCallbackslist(result){
+
+    var status = JSON.parse(result);
+    var publicStatus = "2";
+    if(status.visibility == "true"){
+      publicStatus   = "1"
+    }
+    $('#checkbox13').val(publicStatus);
+ }
+ 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 			
 </script>
 <script>
@@ -1638,10 +1731,8 @@ $(document).ready(function() {
       ,
       dataType:"text", 
       success: function(){
-        setInterval(function(){
-          window.location.href="../Profile/myProfile";
-        }
-                    , 1500);
+    //    id="req_<?php echo $frq->user_id;?>"
+                 location.reload();    
       }
     }
           );

@@ -258,6 +258,34 @@ $ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!
                         </span>
                       </a>
                     </li>
+					
+					
+					
+					
+					                    
+						  		<?php
+			$uid=$mydata['user_id'];
+			    $query=$this->db->query("select friendlist_hide from user_profile where user_id=$uid");
+
+              $result=$query->result_array();
+                    
+                    foreach($result as $value){ 
+					$status=$value['friendlist_hide'];
+					
+					}
+					
+					
+					?>
+					                       <?php if($status=="false")
+{
+?>
+        
+					
+					
+					
+					
+					
+					
                     <li data-tab="my-frd-list">
                       <a href="#" title="">
                         <i class="fa fa-address-card col-sdd" aria-hidden="true">
@@ -266,6 +294,7 @@ $ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!
                         </span>
                       </a>
                     </li>
+<?php } ?>
                     <!--li data-tab="payment-dd">
 <a href="#" title="">
 <i class="fa fa-money" aria-hidden="true"></i>
@@ -342,13 +371,13 @@ else
 													   <?php }else{
 														   if(strlen($fd->linkimage) > 0){ ?>
 															<div class="feedImage">
-																<img src="<?php echo $fd->linkimage ?>"/ class="image-responsive imgfeed"> 
+																<img src="<?php echo $fd->linkimage ?>"/ target="blank" class="image-responsive imgfeed"> 
 															</div>
 														<?php } }?>
 														
 														<?php if(strlen($fd->linktitle)>0){?>
 															<div class="linktitle">
-																<a href="<?php echo $fd->linkUrl ?>"><p><?php echo $fd->linktitle ?>"></p></a> 
+																<a href="<?php echo $fd->linkUrl ?>" target="blank"><p><?php echo $fd->linktitle ?>"></p></a> 
 															</div>
 														<?php } ?>
 
@@ -361,7 +390,7 @@ else
 												<?php } else {
 													if(strlen($fd->image_name) > 0){ ?>
 															<div class="feedImage">
-																<img src="../../uploads/status/<?php echo $fd->image_name ?>" class="image-responsive imgfeed"> 
+																<img src="<?php echo base_url() .'uploads/photos/'.$fd->image_name ; ?>" class="image-responsive imgfeed"> 
 															</div>
 												<?php } }?>	
 													
