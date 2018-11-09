@@ -209,7 +209,7 @@ else{ ?>
 				  <div  id="postcontainer">
                     <?php 
 if(!empty($feeds)){$m=0;
-foreach($feeds as $fd){     if($m <2 ) {	?>
+foreach($feeds as $fd){     	?>
                     <div class="post-bar">
                       <div class="post_topbar">
                         <div class="usy-dt">
@@ -392,7 +392,7 @@ list($date,$time)=explode(' ',$timestamp);
                         </ul>
                       </div>
                     </div>
-<?php $m++; }} }else{ ?>
+<?php } }else{ ?>
                     <!--	<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
 </div>-->
