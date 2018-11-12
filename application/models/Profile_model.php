@@ -384,7 +384,32 @@ class Profile_model extends CI_Model
     }
     
     
-    
+      
+     public function Getlinkfeeds($userId,$feed)
+    {
+        $this->db->select('DISTINCT(us.user_id),fi.image_name,us.gender,up.profile_pic,uf.created_at,up.nick_name,us.full_name,uf.feeds,uf.no_likes,uf.id,up.country_id,cf.country');
+        $this->db->from('users us');
+        $this->db->join('friends um', 'um.friend_id=us.user_id', 'LEFT');
+        $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
+        $this->db->join('user_feed uf', 'uf.user_id= us.user_id', 'INNER');
+        $this->db->join('countries cf', 'cf.c_id= up.country_id', 'LEFT');
+        $this->db->join('user_feed_image fi', 'uf.id= fi.feed_id', 'LEFT');
+        //$this->db->join('hide_post hd', 'hd.feed_id = uf.id','LEFT');
+       
+        
+          $this->db->where('uf.id',$feed);
+       // $this->db->where('um.status', 1);
+        
+        //$this->db->group_by('us.user_id'); 
+        
+        //$this->db->where('dm.ParentID',$params['DepartmentID']);
+        
+        $result = $this->db->get()->result();
+        
+        //exit;
+        return $result;
+    }
+     
     
     
     

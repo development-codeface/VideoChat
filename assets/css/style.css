@@ -39,6 +39,24 @@ body {
     overflow-x: hidden;
     font-weight: 500;     
 }
+.notchange{    color: #fff!important;
+   font-size: 16px!important;
+   font-weight: 500;
+   margin-top: 0px;
+   display: inline-block;
+   text-align: center;
+   padding: 10px 11px;
+   margin-right: 6px;
+   position: relative;
+   border-radius: 50px;
+   margin-top: -5px;
+   border: 0px;
+   background-image: linear-gradient(to right, #ff0844 -30%, #F26E93 80%);
+   webkit-box-shadow: 0 2px 10px 0 rgba(0,0,0,.18), 0 0px 0px 0 rgba(0,0,0,.15);
+   box-shadow: 0 2px 10px 0 rgba(0,0,0,.18), 0 0px 0px 0 rgba(0,0,0,.15);
+   cursor: pointer;}
+    .notchange:hover{    /* background-color: #F26E93; */
+   background-image: linear-gradient(#F26E93 -0%, #F26E93 0%);}
 .imgfeed{    width: 100%;
     padding: 10px 0px;height:auto;}
 	.feedp{    padding-left: 0px!important;
@@ -9144,26 +9162,18 @@ section {
 .menu-btn {
     margin-top: -44px;
 }
+.serb {
+    width: 100%;
+}
 /* 24-9-14 */
 }
 @media only screen and (min-width: 480px) and (max-width: 699px){
 header nav {
   
-    background-color: #db325b!important;
+    background-color: #fafafa!important;
  
 }
-.search-barmsg {
-    float: right;
-    width: 498px;
-    margin-top: 17px;
-    margin-bottom: 20px;
-    padding-left: 46px;
-    text-align: right;
-}
-.icfa ul li a {
-    color: #ffffff;
-    font-size: 14px;
-}
+
 .icfa ul li a span:before {background-color: #F26E93;
 content: '';
     display: block;
@@ -9204,15 +9214,10 @@ display: inline-block;
     position: relative;
 }
 
-.icfa ul li a:hover {
-    color: #f26e93;
-    font-size: 14px;
-}
-.icfa ul li a i {
-    font-size: 16px;
-    line-height: 10px;
-    color: white;
-}
+.cover-sec > a {
+top: 240px;}
+nav ul li a {
+padding: 10px 13px;}
 .footy-sec.mn ul {
     padding: 25px 0 0px 0!important;
 }
@@ -9298,10 +9303,99 @@ button.close:hover {
 .tab-feed.st2 ul li {
     margin-right: 12px;
 }
+main {
+    padding: 0px 0 0px 0!important;
+}
+header nav.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 9!important;
+}
+.modsty {
+    width: 238px!important;
+    margin: 0 auto;
+    padding: 29px!important;
+    border-radius: 10px;
+}
+.row-xm {
+    display: -ms-flexbox;
+    display: inherit;
+}
+.tab-feed ul li:last-child {
+    margin-right: 0;
+    border: none;
+}
+.logo {
+    width: 27%!important;
+    text-align: center;
+}
+.user-account {
+    float: left;
+    margin-top: 14px;
+    margin-bottom: 20px;
+}
+.serb {
+    width: 100%;
+}
 	}
 
 @media only screen and (min-width: 700px) and (max-width: 767px){
+	.row-xm {
+    display: -ms-flexbox;
+    display: inherit;
+}
+header nav {
 
+    background-color: #fafafa!important;
+
+}
+nav ul li a {
+padding: 12px 12px;}
+.user-account {
+    margin-top: 18px;
+}
+
+.company-title {
+      margin: 0px;
+    float: left;
+    width: 36%;
+}
+.prof {
+    margin-left: 0px!important;
+    float: right!important;
+}
+main {
+    padding: 0px 0 0px 0!important;
+}
+.tab-feed.st2 ul li {
+    margin-right: 12px;
+    padding: 11px;
+    background: white;
+}
+.user-tab-sec {
+    float: left;
+    width: 100%;
+    padding: 40px 0px 3px;
+}
+.serb {
+    width: 100%;
+}
+.full-width {
+    margin-bottom: 20px;
+margin-top: 23px;}
+.cover-sec > a {
+    display: inline-block;
+    color: #e06688;
+    font-size: 16px;
+    background-color: #fff;
+    border: 1px solid #e06688;
+    position: absolute;
+    top: 201px;
+    right: 0;
+    padding: 10px 15px;
+    font-weight: 600;
+    margin-right: 15px;
+}
 	}    
 @media only screen and (min-width: 768px) and (max-width: 991px){
 
@@ -9333,8 +9427,20 @@ nav ul li a {
 #chatHistory {
     padding-top: 10px;
     padding-bottom: 20px;
-    height: 580px;
+    height: 600px;
     overflow: auto;
+}
+.vpos {
+    z-index: 99;
+    position: absolute;
+    left: 66%;
+    top: 344px;
+    width: 139px;
+}
+.OT_publisher, .OT_subscriber {
+    position: relative;
+    min-width: 48px;
+    min-height: 143px!important;
 }
 }
 
@@ -9362,6 +9468,7 @@ nav ul li a {
 }
 .modsty20{    margin-left: 26%!important;    margin-top: 4%;}
 /* Styles */
+
 }
 
 

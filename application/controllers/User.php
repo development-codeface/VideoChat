@@ -207,7 +207,10 @@ class User extends CI_Controller
         
         $name     = $this->users_model->username($use);
         $myString = $name . " Accepted your friend request";
-        $name     = $this->users_model->insertnotification($myString, $params, $use);
+		
+		   $link =  base_url() .'index.php/Profile/profileView/'.$use;
+		
+        $name     = $this->users_model->insertnotification($myString, $params, $use,$link);
         
         
         $return = $this->users_model->AccetFriends($params, $this->UserId);
@@ -229,9 +232,10 @@ class User extends CI_Controller
         
         $name     = $this->users_model->username($use);
         $myString = $name . " sent a friend request to you";
-        
-        
-        $name = $this->users_model->insertnotification($myString, $params, $use);
+        $link =  base_url() .'index.php/Profile/profileView/'.$use;
+		
+     
+        $name = $this->users_model->insertnotification($myString, $params, $use,$link);
         
         
         
@@ -425,6 +429,7 @@ $ageuser=$age;
         $user_id = $this->input->post('Uid');
         
     }
+
 
     
     

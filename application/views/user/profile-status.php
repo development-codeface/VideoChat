@@ -7,7 +7,7 @@ $user=$this->session->userdata('user_id');?>
 	
 	<section class="pubsec min8">
 		<div class="container " >
-		<div class="row">
+		<div class="row row-xm">
 		
 		<div class="col-md-8" id="postcontainer">
 			<form method="post" action="<?php echo base_url(); ?>index.php/Profile/postFeed" name="signupform" id="signupform" enctype="multipart/form-data" class="form-horizontal">
@@ -73,7 +73,7 @@ $user=$this->session->userdata('user_id');?>
 												
 											</div>
 											<?php $i=0; if(!empty($feeds)){
-												foreach($feeds as $fd){ if($i<2){		?>
+												foreach($feeds as $fd){ 		?>
 										
 											<div class="post-bar" id="as">
 													<div class="post_topbar">
@@ -132,7 +132,7 @@ list($date,$time)=explode(' ',$timestamp);
     $months     = round($time_elapsed / 2600640 );
     $years      = round($time_elapsed / 31207680 );
     // Seconds
-	echo $cur_time; echo $time_ago;
+	//echo $cur_time; echo $time_ago;
 	//echo $time_elapsed;exit;
     if($seconds <= 60){
         $ti= "just now";
@@ -300,7 +300,7 @@ list($date,$time)=explode(' ',$timestamp);
 		</div>
 		
 		
-												<?php $i++;} }}else{ ?>
+												<?php  }}else{ ?>
 						
 					<!--	<div class="download-box alert">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>  No data &#8211; </div>
