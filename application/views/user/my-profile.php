@@ -145,7 +145,7 @@ else{ ?>
                   <!--star-descp end-->
                   <div class="tab-feed st2">
                     <ul>
-                      <li data-tab="feed-dd" class="active">
+                      <li data-tab="feed-dd" class="formact active" id="fgg">
                         <a href="#" title="">
                           <i class="fa fa-user" aria-hidden="true">
                           </i>
@@ -161,7 +161,7 @@ else{ ?>
                           </span>
                         </a>
                       </li>
-                      <li data-tab="portfolio-dd" >
+                      <li data-tab="portfolio-dd" class="formdel " id="asd">
                         <a href="#" title="">
                           <i class="fa fa-camera" aria-hidden="true">
                           </i>
@@ -204,7 +204,7 @@ else{ ?>
                   <!-- tab-feed end-->
                 </div>
                 <!--user-tab-sec end-->
-                <div class="product-feed-tab current" id="feed-dd">
+                <div class="product-feed-tab curact current" id="feed-dd">
                   <div class="posts-section">
 				  <div  id="postcontainer">
                     <?php 
@@ -633,22 +633,18 @@ Public
                   <!--user-profile-ov end-->
                 </div>
                 <!--product-feed-tab end-->
-                <div class="product-feed-tab" id="portfolio-dd">
+                <div class="product-feed-tab curdel" id="portfolio-dd">
                   <div class="portfolio-gallery-sec">
                     <h3>Photos
                     </h3>
-                    <div class="row">
+					<!--text-->
+					   <div class="row " id="fgfgh" style="display:none">
                       <div class="">
                         
 						
 						<form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadPhotos/'; ?>" id="myimg" name="myimg">
-										  <?php	
-$user_id =$this->session->userdata('user_id');
-	$data = $this->users_model->countimage($user_id);
-if($data <3)
-{
-	?>
-                          <div class="job_descp">
+
+                          <div class="job_descp formshow">
                             <input type ="hidden" name="abc" id="abc" value=
                                    <?php echo $mydata['user_id'] ?> >
                             <input name="photopublic" id="photopublic" type="file" >
@@ -662,25 +658,56 @@ if($data <3)
                             </button>
                           </div>
 						  </div>
+						
+	
+                        </div>
+						<!--text-->
+                    <div class="row " id="hghgyu">
+                      <div class="">
+                        
+						
+						<form method="post" enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url().'index.php/Profile/UploadPhotos/'; ?>" id="myimg" name="myimg">
+										  <?php	
+$user_id =$this->session->userdata('user_id');
+	$data = $this->users_model->countimage($user_id);
+if($data <3)
+{
+	?>
+                          <div class="job_descp formshow" id="sds">
+                            <input type ="hidden" name="abc" id="abc" value=
+                                   <?php echo $mydata['user_id'] ?> >
+                            <input name="photopublic" id="photopublic" type="file" >
+                          </div>
+                          </div>
+                        <div class="col-lg-3">
+								  
+	
+                          <div class="job-status-bar" id="sdss">
+                            <button type="submit" name="register" class="btn btn-success">Upload 
+                            </button>
+                          </div>
+						  </div>
 						    <?php  } else{?>
-		<div class="alert alert-danger">
+							<div class="col-lg-12">
+		<div class="alert alert-danger"  id="rrewer">
 <div class="msg"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Your Photo uploading limit is maximum please delete to continue !!! </div>
 
+										</div>
 										</div>
 										
 <?php }?>
                         </div>
                    
                       </form>
-                    <div class="gallery_pf">
-                      <div class="row">
+                    <div class="gallery_pf adrs">
+                      <div class="row ">
                         <?php $i=1;	foreach( $image as $row )
 {
 if($i<=3)
 {
 $i++;
 ?>
-                        <div class="col-lg-3  thumb containerg">
+                        <div class="col-lg-3  thumb containerg"  id="thu_<?php echo $row['id'];?>">
                           <a class="thumbnail" href="<?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" data-lightbox="imgGLR">
                             <img class="img-responsive" border="0" height="300" src="<?php echo base_url() .'uploads/photos/'.$row['file_name'] ; ?>" >
                           </a>
@@ -1441,7 +1468,7 @@ foreach($countries as $row)
     </div>
   </div>
 </div>
-<div class="modal fade" id="myModalhid" role="dialog">
+<div class="modal fade fgfg" id="myModalhid" role="dialog">
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content mp50">
@@ -1722,6 +1749,9 @@ $(document).ready(function() {
     selID =  ID;
   }
                        );
+					   function deletpic() {
+					 
+					   }
   function deleteimg() {
     $.ajax({
       type: "POST",
@@ -1732,7 +1762,22 @@ $(document).ready(function() {
       dataType:"text", 
       success: function(){
     //    id="req_<?php echo $frq->user_id;?>"
-                 location.reload();    
+        // location.reload(); 
+		  $('.fgfg').hide();
+		  $('.modal-backdrop').remove();    $('#rrewer').remove(); $('#fgfgh').show(); $('#sdss').hide();$('#sds').hide();
+		 // $('.formact').removeClass('active');	$('#sdss').hide();
+		 // $('.formact').removeClass('active');	
+		//   $('.curact').removeClass('current');
+		 
+		// $('.formdel').addClass('active'); 
+  			 
+				$("#thu_"+selID).remove();
+			//	  $('.curdel').addClass('current');	
+				 	
+				 $('#div .content').fadeOut(function() {
+                $(this).html(e).fadeIn();                  
+
+            });
       }
     }
           );
