@@ -502,14 +502,15 @@ class Profile extends CI_Controller
 	  {
 	  
                   $html .= '
-				<div class="notfication-details ">
+				<div class="notfication-details sds">
+				<div class="padchange">
                      <div class="noty-user-img">
                                               <img src="../../assets/images/resources/malemaleavatar.png" alt="">
                                               </div>
                                               <div class="notification-info">
                                  <a href= "'.$row->link.'" >                 <p> '.$row->messages.'</p> </a>
                                                 
-                                              </div></div>
+                                              </div></div></div>
                   ';
 				  
 	  }
@@ -517,28 +518,30 @@ class Profile extends CI_Controller
 	  
 	  {
 	      $html .= '
-				<div class="notfication-details ">
+				<div class="notfication-details sds">
+				<div class="padchange">
                      <div class="noty-user-img">
                                               <img src="../../assets/images/resources/femalemaleavatar.png" alt="">
                                               </div>
                                               <div class="notification-info">
                                                <a href= "'.$row->link.'" >                 <p> '.$row->messages.'</p> </a>
                                                 
-                                              </div></div>
+                                              </div></div></div>
                   ';
 				  
 	  }
 	  else{
   
                   $html .= '
-				<div class="notfication-details ">
+				<div class="notfication-details sds">
+				<div class="padchange">
                      <div class="noty-user-img">
                                               <img src="../../uploads/profile_pic/'.$row->profile_pic.'" alt="">
                                               </div>
                                               <div class="notification-info">
                                                   <p> '.$row->messages.'</p>
                                                 
-                                              </div></div>
+                                              </div></div></div>
                   ';
 				  
 			

@@ -26,7 +26,7 @@ include 'header.php';?>
  
 <section>
   <div class=" ">
-    <div class="row wio">
+    <div class="row wio row-xm">
      
 
       <div class="col-md-9 no_pad">
