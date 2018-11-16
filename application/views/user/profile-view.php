@@ -311,7 +311,7 @@ $ab=	$mydata['user_id'];		$i=0;	$fi=0;$ui=0; $f=0;$u=0; //if($mydata['user_id']!
 					<div  id="postcontainer">
                   <?php $r=0;
 if(!empty($feeds)){ 
-foreach($feeds as $fd){  if($r<2) {  ?>
+foreach($feeds as $fd){   ?>
                   <div class="post-bar">
                     <div class="like_bt">
                       <div class="post_topbar">
@@ -414,7 +414,7 @@ else
                       </div>
                     </div>
                   </div>
-<?php $r++; } } }
+<?php  } }
 else{ ?>
 						
 					<!--	<div class="download-box alert">

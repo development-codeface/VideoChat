@@ -69,7 +69,8 @@ class Userauthentication extends CI_Controller
                 }else{
                     $result = $this->users_model->InsertOnline($param);
                 }
-                redirect('user/profile',"refresh");
+                redirect('user/profile',"refresh");           
+                //redirect(base_url()."index.php/user/profile");
             }else{
                $data['userData'] = array();
             }
