@@ -39,7 +39,7 @@
 		
 		<div class="col-md-12">
 		<div class="widget widget-jobs">
-		                                <div class="sd-titles">
+		                                <div class="sd-titles sdres">
 											<h3>Terms of User Agreement</h3>
 											
 										</div>

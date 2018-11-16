@@ -144,6 +144,11 @@ toggle between hiding and showing the dropdown content */
             </div>
             <!--logo end-->
             <nav class="icfa">
+			<div class="menu-btn menures">
+             <a href="#" title="">
+               <i class="fa fa-window-close" aria-hidden="true"></i>
+             </a>
+           </div>
               <ul>
                 <li>
                   <a href="<?php echo base_url(); ?>index.php/user/profileSearch" title="">

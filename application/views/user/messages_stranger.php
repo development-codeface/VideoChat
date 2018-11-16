@@ -121,13 +121,13 @@ include 'header.php';?>
       <div class="modal-body pttop ">
       <div class="row ">
 	 <div class="col-md-1"> </div>
-	 <div class="col-md-5">
+	 <div class="col-md-5 col-xs-6">
 	   <button  data-clicked="unclicked" id='findmaleuser' class="malaa " href=""> <img src="<?php echo base_url(); ?>assets/images/resources/male-avatar.png" class="img-responsive"></button>
  <button  data-clicked="unclicked" id='findmaleuser' class="malaa " href="">Male</button>
 
 	
 	 </div>
-	 <div class="col-md-5"> 
+	 <div class="col-md-5 col-xs-6"> 
 	<button  data-clicked="unclicked" id='findfemaleuser' class="malaa " href=""> <img src="<?php echo base_url(); ?>assets/images/resources/fe-avatar.png" class="img-responsive"></button>
 	
 	  <button  data-clicked="unclicked" id='findfemaleuser' class="malaa " href="">Female</button>

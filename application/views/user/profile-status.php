@@ -117,15 +117,6 @@ $user=$this->session->userdata('user_id');?>
 
 $timestamp=$fd->created_at;
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	//function time_ago_in_php($timestamp){
   
   date_default_timezone_set("Asia/Kolkata");         

@@ -145,7 +145,7 @@ else{ ?>
                   <!--star-descp end-->
                   <div class="tab-feed st2">
                     <ul>
-                      <li data-tab="feed-dd" class="formact active" id="fgg">
+                      <li data-tab="feed-dd" class="formact " id="fgg">
                         <a href="#" title="">
                           <i class="fa fa-user" aria-hidden="true">
                           </i>
@@ -169,7 +169,7 @@ else{ ?>
                           </span>
                         </a>
                       </li>
-                      <li data-tab="my-frd">
+                      <li data-tab="my-frd active">
                         <a href="#" title="">
                           <i class="fa fa-users" aria-hidden="true">
                           </i>
@@ -204,7 +204,7 @@ else{ ?>
                   <!-- tab-feed end-->
                 </div>
                 <!--user-tab-sec end-->
-                <div class="product-feed-tab curact current" id="feed-dd">
+                <div class="product-feed-tab curact " id="feed-dd">
                   <div class="posts-section">
 				  <div  id="postcontainer">
                     <?php 
@@ -659,7 +659,7 @@ Public
                   <!--user-profile-ov end-->
                 </div>
                 <!--product-feed-tab end-->
-                <div class="product-feed-tab curdel" id="portfolio-dd">
+                <div class="product-feed-tab curdel current" id="portfolio-dd">
                   <div class="portfolio-gallery-sec">
                     <h3>Photos
                     </h3>
