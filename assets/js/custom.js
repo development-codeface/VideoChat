@@ -355,7 +355,7 @@ function friendRequest(userId){
 				
 				
 				$("#Interest_ar" ).html("<div class='alert alert-success'> Your Request has been sent </div>");
-				 window.setTimeout(function(){location.reload()},1000);
+				location.reload();
 				}
 
         },

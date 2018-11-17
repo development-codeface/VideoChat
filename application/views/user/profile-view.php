@@ -333,11 +333,113 @@ else
                           <?php }?>
                           <div class="usy-name">
                             <h3>
-                              <?php  echo $fd->full_name ;?>
-                            </h3>
-                          
-                          </div>
-                        </div>
+                              <?php   echo $fd->full_name ; ?></h3></a>
+															<span>
+                       		  
+                         														
+<?php
+ 
+
+$timestamp=$fd->created_at;
+
+	//function time_ago_in_php($timestamp){
+  
+  date_default_timezone_set("Asia/Kolkata");         
+  $time_ago        = strtotime($timestamp);
+  $current_time    = time();
+  $time_difference = $current_time - $time_ago;
+  $seconds         = $time_difference;
+  
+  $minutes = round($seconds / 60); // value 60 is seconds  
+  $hours   = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec  
+  $days    = round($seconds / 86400); //86400 = 24 * 60 * 60;  
+  $weeks   = round($seconds / 604800); // 7*24*60*60;  
+  $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60  
+  $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
+                
+  if ($seconds <= 60){
+
+   $ti= "Just Now";
+
+  } else if ($minutes <= 60){
+
+    if ($minutes == 1){
+
+      $ti= "one minute ago";
+
+    } else {
+
+      $ti= "$minutes minutes ago";
+
+    }
+
+  } else if ($hours <= 24){
+
+    if ($hours == 1){
+
+      $ti= "an hour ago";
+
+    } else {
+
+      $ti= "$hours hrs ago";
+
+    }
+
+  } else if ($days <= 7){
+
+    if ($days == 1){
+
+     $ti= "yesterday";
+
+    } else {
+
+      $ti= "$days days ago";
+
+    }
+
+  } else if ($weeks <= 4.3){
+
+    if ($weeks == 1){
+
+      $ti= "a week ago";
+
+    } else {
+
+      $ti= "$weeks weeks ago";
+
+    }
+
+  } else if ($months <= 12){
+
+    if ($months == 1){
+
+      $ti= "a month ago";
+
+    } else {
+
+      $ti= "$months months ago";
+
+    }
+
+  } else {
+    
+    if ($years == 1){
+
+      $ti="one year ago";
+
+    } else {
+
+      $ti= "$years years ago";
+
+    }
+  }
+
+?>						
+															
+									     <i class="fa fa-clock-o" aria-hidden="true"></i>  <?php  echo  $ti;?></span> &nbsp;<span>
+														</div>
+													</div>
+                    
                         <div class="ed-opts">
                           <a href="#" title="" class="ed-opts-open">
                             <i class="la la-ellipsis-v">
@@ -398,17 +500,26 @@ else
 													<p class="feedp"><a href="<?php echo $fd->linkUrl ?>" target="blank" class="feedp"> <?php echo $fd->feeds;?> </a> </p>
 										      <br>
 												</div>
-                      <div class="job-status-bar">
+                   <div class="job-status-bar">
                         <ul class="like-com">
                           <li>
-                            <i class="la la-heart heartr">
-                            </i> 
+						  <?php $fd->user_id=$this->session->userdata('user_id'); ?>
+                            <input type='text' name="uid" id="uid" value='<?php echo $fd->user_id; ?>' hidden >
+							<input type='text' name="fid" id="fid" value='<?php echo $fd->id; ?>' hidden >
+                            <a href="javascript:void(0)" onclick="setLike(<?php echo $fd->id;?>)">
+                              <i class="la la-heart heartr">
+                              </i> 
+                            </a>
                             <img src="<?php echo base_url(); ?>assets/images/liked-img.png" alt="">
                             <?php if($fd->no_likes!=0){?>
-                            <span>
+                            <span id="<?php echo $fd->id;?>">
                               <?php echo $fd->no_likes;?>
                             </span>
-                            <?php }?>
+                            <?php }else {?>
+                            <span id="<?php echo $fd->id;?>" style="display:none">
+                            </span>
+                            <?php 
+}?>
                           </li> 
                         </ul>
                       </div>

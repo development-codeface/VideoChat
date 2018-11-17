@@ -144,6 +144,11 @@ toggle between hiding and showing the dropdown content */
             </div>
             <!--logo end-->
             <nav class="icfa">
+			<div class="menu-btn menures">
+             <a href="#" title="">
+               <i class="fa fa-window-close" aria-hidden="true"></i>
+             </a>
+           </div>
               <ul>
                 <li>
                   <a href="<?php echo base_url(); ?>index.php/user/profileSearch" title="">
@@ -207,11 +212,11 @@ toggle between hiding and showing the dropdown content */
 				
 				?>
 				
-                <div class="ed-opts  form_wrapper notmsg">
+                <div class="ed-opts  form_wrapper ">
 				<?php if($cnt!=0){?>
 				<span class="count"><?php echo $cnt ?></span>
 				<?php } ?>
-                  <a   href ="#" id="mes" data-tooltip="Notifications" class=" not-box-open ed-opts-open follow_friends tooltip-bottom" data-id="<?php echo $user_id;?>" >
+                  <a   href ="#" id="mes" data-tooltip="Notifications" class=" not-box-open ed-opts-open follow_friends tooltip-bottom notchange" data-id="<?php echo $user_id;?>" >
                     <i class="fa fa-bell  "  aria-hidden="true">
                     </i>
                   </a>

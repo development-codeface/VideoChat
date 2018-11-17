@@ -7,7 +7,7 @@ $user=$this->session->userdata('user_id');?>
 	
 	<section class="pubsec min8">
 		<div class="container " >
-		<div class="row">
+		<div class="row row-xm">
 		
 		<div class="col-md-8" id="postcontainer">
 			<form method="post" action="<?php echo base_url(); ?>index.php/Profile/postFeed" name="signupform" id="signupform" enctype="multipart/form-data" class="form-horizontal">
@@ -116,76 +116,99 @@ $user=$this->session->userdata('user_id');?>
  
 
 $timestamp=$fd->created_at;
-list($date,$time)=explode(' ',$timestamp);
-//echo $time;
-//$now = new DateTime();
-//$now->setTimezone(new DateTimezone('Asia/Kolkata'));
-  //$cur_time=$now->format('Y-m-d H:i:s');
-    $time_ago = strtotime($fd->created_at);
-    $cur_time   = time();
-    $time_elapsed   = abs($cur_time - $time_ago);
-    $seconds    = $time_elapsed ;
-    $minutes    = round($time_elapsed / 60 );
-    $hours      = round($time_elapsed / 3600);
-    $days       = round($time_elapsed / 86400 );
-    $weeks      = round($time_elapsed / 604800);
-    $months     = round($time_elapsed / 2600640 );
-    $years      = round($time_elapsed / 31207680 );
-    // Seconds
-	//echo $cur_time; echo $time_ago;
-	//echo $time_elapsed;exit;
-    if($seconds <= 60){
-        $ti= "just now";
+
+//function time_ago_in_php($timestamp){
+  
+  date_default_timezone_set("Asia/Kolkata");         
+  $time_ago        = strtotime($timestamp);
+  $current_time    = time();
+  $time_difference = $current_time - $time_ago;
+  $seconds         = $time_difference;
+  
+  $minutes = round($seconds / 60); // value 60 is seconds  
+  $hours   = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec  
+  $days    = round($seconds / 86400); //86400 = 24 * 60 * 60;  
+  $weeks   = round($seconds / 604800); // 7*24*60*60;  
+  $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60  
+  $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
+                
+  if ($seconds <= 60){
+
+   $ti= "Just Now";
+
+  } else if ($minutes <= 60){
+
+    if ($minutes == 1){
+
+      $ti= "one minute ago";
+
+    } else {
+
+      $ti= "$minutes minutes ago";
+
     }
-    //Minutes
-    else if($minutes <=60){
-        if($minutes==1){
-           $ti= "one minute ago";
-        }
-        else{
-            $ti= "$minutes minutes ago";
-        }
+
+  } else if ($hours <= 24){
+
+    if ($hours == 1){
+
+      $ti= "an hour ago";
+
+    } else {
+
+      $ti= "$hours hrs ago";
+
     }
-    //Hours
-    else if($hours <=24){
-        if($hours==1){
-          $ti= "an hour ago";
-        }else{
-           $ti= "$hours hrs ago";
-        }
+
+  } else if ($days <= 7){
+
+    if ($days == 1){
+
+     $ti= "yesterday";
+
+    } else {
+
+      $ti= "$days days ago";
+
     }
-    //Days
-    else if($days <= 7){
-        if($days==1){
-            $ti= "yesterday";
-        }else{
-           $ti= "$days days ago";
-        }
+
+  } else if ($weeks <= 4.3){
+
+    if ($weeks == 1){
+
+      $ti= "a week ago";
+
+    } else {
+
+      $ti= "$weeks weeks ago";
+
     }
-    //Weeks
-    else if($weeks <= 4.3){
-        if($weeks==1){
-            $ti= "a week ago";
-        }else{
-            $ti= "$weeks weeks ago";
-        }
+
+  } else if ($months <= 12){
+
+    if ($months == 1){
+
+      $ti= "a month ago";
+
+    } else {
+
+      $ti= "$months months ago";
+
     }
-    //Months
-    else if($months <=12){
-        if($months==1){
-            $ti= "a month ago";
-        }else{
-            $ti= "$months months ago";
-        }
+
+  } else {
+    
+    if ($years == 1){
+
+      $ti="one year ago";
+
+    } else {
+
+      $ti= "$years years ago";
+
     }
-    //Years
-    else{
-        if($years==1){
-           $ti= "one year ago";
-        }else{
-            $ti= "$years years ago";
-        }
-    }
+  }
+//}
 
 ?>						
 															

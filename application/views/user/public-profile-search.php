@@ -9,9 +9,9 @@ $user=$this->session->userdata('user_id');?>
   <div class="container">
     <div class="pb-3">
     </div>
-    <div class="row">
+    <div class="row row-xm">
       <div class="col-md-12">
-        <div class="row">
+        <div class="row row-xm">
           <div class="col-md-12">
             <?php if(isset($_SESSION["success"])) { ?>
             <div class="alert alert-success">

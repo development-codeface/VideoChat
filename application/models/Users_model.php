@@ -7,14 +7,17 @@ class Users_model extends CI_Model
     public function __construct()
     {
     }
-    public function getUserLogin($username = null, $password = null)
+    public function getUserLogin($username, $password)
     {
-        $query = $this->db->get_where('users', array(
-            'user_name' => $username,
+		  $query = $this->db->query("SELECT  * from  users  WHERE  user_name='$username' OR Email='$username' and password='$password' and status=1");
+       /* $query = $this->db->or_where_in('users', array(
+            'user_name' => $username  ,
+			'Email' => $username,
+			
             'password' => $password,
             'status' => 1
 			
-        ));
+        ));*/
         return $query->row_array();
     }
 
@@ -691,10 +694,10 @@ class Users_model extends CI_Model
  
         
     }
-    function insertnotification($str, $fid, $uid)
+    function insertnotification($str, $fid, $uid,$link)
     {
-        $query = $this->db->query("INSERT INTO notification (messages ,fri_id,user_id)
-              VALUES ('$str',$fid,$uid) ");
+        $query = $this->db->query("INSERT INTO notification (messages ,fri_id,user_id,link)
+              VALUES ('$str',$fid,$uid,'$link') ");
         // echo $this->db->last_query();
         return 1;
     }
@@ -730,7 +733,7 @@ class Users_model extends CI_Model
     {
         $query = $this->db->query("
             
-            SELECT ns.messages,ns.fri_id,ns.user_id,up.profile_pic,us.gender   from notification ns 
+            SELECT ns.messages,ns.fri_id,ns.user_id,up.profile_pic,us.gender,ns.link   from notification ns 
             INNER JOIN
             user_profile up  ON up.user_id = ns.user_id
              INNER JOIN

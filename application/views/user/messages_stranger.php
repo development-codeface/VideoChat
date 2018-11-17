@@ -26,15 +26,15 @@ include 'header.php';?>
  
 <section>
   <div class=" ">
-    <div class="row wio">
+    <div class="row wio row-xm">
      
 
       <div class="col-md-9 no_pad">
  <div id="myvideo" class="" style="display:block; width:100%">
-          <div class="row">
+          <div class="row row-xm">
             <div class="col-md-12 no_pad">	
               <div id="videos">
-                <div class="row">
+                <div class="row row-xm">
                   <div class="col-md-12  ">
                     <div class="sub_div">
                   <div id="subscriber"></div>
@@ -121,13 +121,13 @@ include 'header.php';?>
       <div class="modal-body pttop ">
       <div class="row ">
 	 <div class="col-md-1"> </div>
-	 <div class="col-md-5">
+	 <div class="col-md-5 col-xs-6">
 	   <button  data-clicked="unclicked" id='findmaleuser' class="malaa " href=""> <img src="<?php echo base_url(); ?>assets/images/resources/male-avatar.png" class="img-responsive"></button>
  <button  data-clicked="unclicked" id='findmaleuser' class="malaa " href="">Male</button>
 
 	
 	 </div>
-	 <div class="col-md-5"> 
+	 <div class="col-md-5 col-xs-6"> 
 	<button  data-clicked="unclicked" id='findfemaleuser' class="malaa " href=""> <img src="<?php echo base_url(); ?>assets/images/resources/fe-avatar.png" class="img-responsive"></button>
 	
 	  <button  data-clicked="unclicked" id='findfemaleuser' class="malaa " href="">Female</button>

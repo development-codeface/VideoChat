@@ -67,7 +67,7 @@ $open_tokenId=base64_decode(urldecode($openToken));$user=$this->session->userdat
                     <div class="col-lg-12">
                       <p class="sav_bt">	
                         <!--button type="submit" id="basicinfo" >Submit</button-->
-                        <button type="submit" class="acceptser">Save Settings
+                        <button type="submit" class="acceptser">Save 
                         </button>
                       </p>
                       <div class="clearfix">

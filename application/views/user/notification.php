@@ -3,7 +3,7 @@ include 'header.php';
 $open_tokenId=base64_decode(urldecode($openToken));?>
 		<section class="pubsec min8"style="    margin-bottom: 26px;">
 		<div class="container">
-		<div class="row">
+		<div class="row row-xm">
 		
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
@@ -52,11 +52,11 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 								  				
 								  				<div class="notification-info">
 								  				    
-								  					<h3> <?php echo $frq->messages ?></h3>
+								  			 <a href= <?php echo $frq->link ?> >		<h3> <?php echo $frq->messages ?></h3> <a>
 								  					
 										
 										
-								  					<span>2 min ago</span>
+								  				
 								  					
 								  				</div><!--notification-info -->
 								  			

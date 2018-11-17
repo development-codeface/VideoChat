@@ -101,6 +101,72 @@ class Profile extends CI_Controller
         $this->load->view("user/my-profile", $this->data);
         
     }
+	 public function myProfile_image()
+    {
+         $this->data['sendRequest']    = $this->users_model->GetsendRequest($this->UserId);
+        $this->data['friendList']     = $this->users_model->GetFriendList($this->UserId);
+        $this->data['profileViewer']  = $this->profile_model->GetProfileViewerList($this->UserId);
+        $this->data['friendsRequest'] = $this->users_model->GetFriendsRequest($this->UserId);
+        $this->data['date']           = $this->users_model->fetch_dob($this->UserId);
+        $this->data['UserId']         = $this->session->userdata('user_id');
+        foreach ($this->data['date'] as $dos) {
+            $dob = $dos['dob'];
+        }
+      
+        $this->data['mydata']        = $this->users_model->GetMyData($this->UserId);
+        //print_r($this->data['mydata']);exit;
+        $this->data['user']          = $this->users_model->userinfo($this->UserId);
+        $this->data['image']         = $this->users_model->imageinfo($this->UserId);
+        $this->data['countries']     = $this->users_model->getAllcountries();
+		$this->data['intrest']     = $this->users_model->getAllintrest();
+        //print_r($this->UserId);exit;
+        $myfeeds =          $this->profile_model->GetAllfeedss($this->UserId);
+        $myfeedsurldetails = array();     
+        foreach ($myfeeds as $i => $item) {
+            $title = "";
+            $description= "";
+            $image = "";
+            $videoid = "";
+            $videoidEmbe = "";
+            $linkUrl = "";
+            $isLink = false;
+            preg_match_all('#\b(https|http)?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $item->feeds, $match);
+            if(sizeof($match[0]) > 0  && sizeof($item->image_name) < 2){
+                $linkPreview = new LinkPreview($match[0][0]);
+                $parsed = $linkPreview->getParsed();
+                $isLink = true;
+                foreach ($parsed as $parserName => $link) {
+                    //$parserName . PHP_EOL . PHP_EOL;
+                    //echo $link->getUrl() . PHP_EOL;
+                    //echo $link->getRealUrl() . PHP_EOL;
+                    $title = $link->getTitle() . PHP_EOL;
+                    $linkUrl  = $link->getUrl() . PHP_EOL;
+                    $description =  $link->getDescription() . PHP_EOL;
+                    $image =  $link->getImage() . PHP_EOL;
+                    if ($link instanceof VideoLink) {
+                        $videoid = $link->getVideoId() . PHP_EOL;
+                        $videoidEmbe = $link->getEmbedCode() . PHP_EOL;
+                        
+                    }
+                }
+            }		    
+            $itemVal = $item;           
+            $itemVal->islink = $isLink;
+            $itemVal->linkUrl = $linkUrl;
+            $itemVal->linktitle = $title;
+            $itemVal->linkdescription = $description;
+            $itemVal->videoEmbeded = $videoidEmbe;
+            $itemVal->linkimage = $image;
+            $myfeedsurldetails[$i] = $itemVal;
+        }
+        $this->data['feeds']   = $myfeedsurldetails;
+		//print_r($this->data['feeds']);exit;
+        $this->data['openToken']     = base64_encode($this->session->userdata('token'));
+        $this->data['openSessionId'] = $this->session->userdata('openSessionId');
+        $this->data['apiKey']        = $this->config->item('opentok_key');
+        $this->load->view("user/my-profile-image", $this->data);
+        
+    }
        public function myProfile_limit()
     {
 		 $fi   = $this->input->post('fi');
@@ -502,14 +568,15 @@ class Profile extends CI_Controller
 	  {
 	  
                   $html .= '
-				<div class="notfication-details ">
+				<div class="notfication-details sds">
+				<div class="padchange">
                      <div class="noty-user-img">
                                               <img src="../../assets/images/resources/malemaleavatar.png" alt="">
                                               </div>
                                               <div class="notification-info">
-                                                  <p> '.$row->messages.'</p>
+                                 <a href= "'.$row->link.'" >                 <p> '.$row->messages.'</p> </a>
                                                 
-                                              </div></div>
+                                              </div></div></div>
                   ';
 				  
 	  }
@@ -517,28 +584,30 @@ class Profile extends CI_Controller
 	  
 	  {
 	      $html .= '
-				<div class="notfication-details ">
+				<div class="notfication-details sds">
+				<div class="padchange">
                      <div class="noty-user-img">
                                               <img src="../../assets/images/resources/femalemaleavatar.png" alt="">
                                               </div>
                                               <div class="notification-info">
-                                                  <p> '.$row->messages.'</p>
+                                               <a href= "'.$row->link.'" >                 <p> '.$row->messages.'</p> </a>
                                                 
-                                              </div></div>
+                                              </div></div></div>
                   ';
 				  
 	  }
 	  else{
   
                   $html .= '
-				<div class="notfication-details ">
+				<div class="notfication-details sds">
+				<div class="padchange">
                      <div class="noty-user-img">
                                               <img src="../../uploads/profile_pic/'.$row->profile_pic.'" alt="">
                                               </div>
                                               <div class="notification-info">
                                                   <p> '.$row->messages.'</p>
                                                 
-                                              </div></div>
+                                              </div></div></div>
                   ';
 				  
 			
@@ -603,8 +672,8 @@ class Profile extends CI_Controller
 		{
         $name     = $this->users_model->username($uid);
         $myString = $name . " Liked your post";
-    
-        $name     = $this->users_model->insertnotification($myString, $fid, $uid);
+      $link =  base_url() .'index.php/Profile/notificationview/'.$feedId;
+        $name     = $this->users_model->insertnotification($myString, $fid, $uid,$link);
 		 } }
 		 
         $return   = $this->profile_model->setLike($feedId, $this->UserId);
@@ -837,7 +906,7 @@ class Profile extends CI_Controller
             
         }
         
-        redirect('/profile/myprofile', "refresh");
+        redirect('/profile/myProfile', "refresh");
         
         
     }
@@ -948,7 +1017,7 @@ class Profile extends CI_Controller
             
         }
         
-        redirect('/profile/myprofile', "refresh");
+        redirect('/profile/myProfile_image', "refresh");
         
         
     }
@@ -1366,5 +1435,61 @@ $data   = $this->users_model->age_hide_value($user_id );
             echo '{"status":"failed"}}';
         }
 }
+
+	public function notificationview()
+    {
+		$user_id = $this->session->userdata('user_id');
+         $feed         = $this->uri->segment('3');
+       $myfeeds = $this->profile_model->Getlinkfeeds($user_id,$feed);
+       $myfeedsurldetails = array();     
+        foreach ($myfeeds as $i => $item) {
+            $title = "";
+            $description= "";
+            $image = "";
+            $videoid = "";
+            $videoidEmbe = "";
+            $linkUrl = "";
+            $isLink = false;
+            preg_match_all('#\b(https|http)?://[^,\s()<>]+(?:\([\w\d]+\)|([^,[:punct:]\s]|/))#', $item->feeds, $match);
+            if(sizeof($match[0]) > 0 && sizeof($item->image_name) < 2){
+                $linkPreview = new LinkPreview($match[0][0]);
+                $parsed = $linkPreview->getParsed();
+                $isLink = true;
+                foreach ($parsed as $parserName => $link) {
+                    //$parserName . PHP_EOL . PHP_EOL;
+                    //echo $link->getUrl() . PHP_EOL;
+                    //echo $link->getRealUrl() . PHP_EOL;
+                    $title = $link->getTitle() . PHP_EOL;
+                    $linkUrl  = $link->getUrl() . PHP_EOL;
+                    $description =  $link->getDescription() . PHP_EOL;
+                    $image =  $link->getImage() . PHP_EOL;
+                    if ($link instanceof VideoLink) {
+                        $videoid = $link->getVideoId() . PHP_EOL;
+                        $videoidEmbe = $link->getEmbedCode() . PHP_EOL;
+                        
+                    }
+                }
+            }		    
+            $itemVal = $item;           
+            $itemVal->islink = $isLink;
+            $itemVal->linkUrl = $linkUrl;
+            $itemVal->linktitle = $title;
+            $itemVal->linkdescription = $description;
+            $itemVal->videoEmbeded = $videoidEmbe;
+            $itemVal->linkimage = $image;
+            $myfeedsurldetails[$i] = $itemVal;
+            log_message('error','here getstranger >>'.$this->session->userdata('user_id').'<< going to stranger >>'.print_r($itemVal, TRUE).'<<..');
+        }
+        $this->data['feeds']   = $myfeedsurldetails;
+        $this->data['friendOnline']  = $this->users_model->GetOnlineFriends($this->UserId);
+        $this->data['user']          = $this->users_model->userinfo($this->UserId);
+        $this->data['UserId']        = $this->session->userdata('user_id');
+        $this->data['openToken']     = base64_encode($this->session->userdata('token'));
+        $this->data['openSessionId'] = $this->session->userdata('openSessionId');
+        $this->data['apiKey']        = $this->config->item('opentok_key');
+        
+        $this->load->view("user/notification_view", $this->data);
+        
+    }
     
 }

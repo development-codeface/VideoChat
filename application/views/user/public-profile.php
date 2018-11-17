@@ -5,9 +5,9 @@ $open_tokenId=base64_decode(urldecode($openToken));?>
 </script>	
 <section class="banner-img1 text-white  min8">
   <div class="container ">
-    <div class="row">
+    <div class="row row-xm">
       <div class="col-md-12">
-        <div class="row">
+        <div class="row row-xm">
           <div class="col-md-12">
             <div class="tab-content" id="nav-tabContent">
               <div class="tab-pane tabbanc fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
