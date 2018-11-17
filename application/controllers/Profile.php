@@ -1077,12 +1077,15 @@ class Profile extends CI_Controller
                 $params['age_from'] = 46;
                 $params['age_to']   = 200;
             }
-		
-            $this->data['countries'] = $this->users_model->getAllcountries();
-            $params['user_id']       = $this->UserId;
-            $this->data['results']   = $this->users_model->GetSearchFriends($params);
-            
+        }else {
+            $params['searchkey'] = "";
+            $params['age']  = 0;
+            $params['gender'] = 0;
+            $params['country'] = 0;
         }
+        $this->data['countries'] = $this->users_model->getAllcountries();
+        $params['user_id']       = $this->UserId;
+        $this->data['results']   = $this->users_model->GetSearchFriends($params);
         $this->data['user']          = $this->users_model->userinfo($this->UserId);
         $this->data['selLokkingFor'] = $params['gender'];
         $this->data['searchKey']     = $params['searchkey'];
