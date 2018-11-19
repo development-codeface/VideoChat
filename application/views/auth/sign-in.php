@@ -2,10 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Live Chat</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="" />
-<meta name="keywords" content="" />
+ <title>Intbuddy: Video chat and social networking.
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Absolutely free website for real time one to one video chat and networking. Easy to connect with friends and family. Sign up and start chatting straight away hustle free." />
+    <meta name="keywords" content="" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/animate.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/line-awesome.css">

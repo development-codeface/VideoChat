@@ -43,22 +43,14 @@ include 'header.php';
 										<h4>Videochat</h4>
 										<div class="jobs-list">
 											<div class="job-info">
-												
-																<p>Friends – The tab will show all your online friends from your friend list. </p>
+												<h3>	<u>Friends</u></h3><p>  The tab will show all your online friends from your friend list. </p>
 																
-													
-											</div><!--job-info end-->
-										
-										</div><!--jobs-list end-->
-										<h4>Stranger </h4>
-										<div class="jobs-list">
-											<div class="job-info">
-												
+											
+												<h3><u>Stranger </u> </h3>
 																<p>You have 3 options. Male / female / Others. You will be connected with random people according to the option selected. </p>
 																<p>• Make sure you have kept the correct gender on your profile.</p>
 
 <p>• The stranger can only see your “Nick Name”</p>
-
 <p>• You have the option to add Strangers to your “Strange list”. Strangers added to this list can only view your Nick name. They cannot access your profile. </p>
 
 <p>• You can move a person from Stranger list to friend list if both parties accept the friend request. 
