@@ -72,16 +72,10 @@
 										<div class="jobs-list">
 											<div class="job-info">
 												
-																<p>Friends – The tab will show all your online friends from your friend list. </p>
+														<h3>	<u>Friends</u></h3><p>  The tab will show all your online friends from your friend list. </p>
 																
-													
-											</div><!--job-info end-->
-										
-										</div><!--jobs-list end-->
-										<h4>Stranger </h4>
-										<div class="jobs-list">
-											<div class="job-info">
-												
+											
+												<h3><u>Stranger </u> </h3>
 																<p>You have 3 options. Male / female / Others. You will be connected with random people according to the option selected. </p>
 																<p>• Make sure you have kept the correct gender on your profile.</p>
 
