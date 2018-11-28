@@ -1,3 +1,17 @@
+function requestWebApi(){
+    if(typeof(BASEURL) != 'undefined'){
+        var req = $.ajax({
+            type:"get",
+            url:BASEURL+"index.php/onlineuser/refreshui",
+            data:{}
+          });
+          req.done(function(){
+            console.log("Request successful!");
+          });
+    }
+  }
+setTimeout(requestWebApi, 60000);
+
 $(window).on("load", function() {
     "use strict";
 

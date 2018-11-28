@@ -20,7 +20,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/responsive.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/component.css">
-	
+	  <script>var BASEURL = '<?php echo base_url(); ?>';</script>
 		<script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/select7.css">
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/select7.js"></script>

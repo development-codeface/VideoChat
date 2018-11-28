@@ -45,6 +45,6 @@ class User extends CI_Model{
         }
         
         //return user ID
-        return $userID?$userID:FALSE;
+        return isset($userID)?$userID:FALSE;
     }
 }

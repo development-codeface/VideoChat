@@ -24,17 +24,20 @@ class User extends CI_Controller
         $this->load->library(array(
             'session',
             'upload',
-            'form_validation'
+            'form_validation',
+            'OnlineUsers'
         ));
         if ($this->session->userdata('user_name') == '') {
             redirect('login');
         }
+        
         $this->load->model('profile_model');
         $this->UserId = $this->session->userdata('user_id');
     }
     public function profile()
     {
-       $myfeeds =          $this->profile_model->GetAllfeeds($this->UserId);
+        //print_r($this->onlineusers->getAllonlineUserSession());                                    
+        $myfeeds =          $this->profile_model->GetAllfeeds($this->UserId);
         $myfeedsurldetails = array();     
         foreach ($myfeeds as $i => $item) {
             $title = "";
