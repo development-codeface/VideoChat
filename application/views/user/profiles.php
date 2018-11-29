@@ -165,6 +165,17 @@ $user=$this->session->userdata('user_id');?>
 									if(!empty($friendOnline)){
 											$i=1;
 											foreach($friendOnline as $frq){
+													
+													
+													foreach ( $sessionOnline as $new_arr1 ) {
+			 
+			 
+
+;
+												
+												if(($frq->user_id)==($new_arr1['user_id']))
+												{
+												
 												
 												?>
 									
@@ -214,7 +225,7 @@ $user=$this->session->userdata('user_id');?>
 			
 							</div><!--company_profile_info end-->
 						</div>
-								<?php }} 
+									<?php }} }}
 								else{
 											?>	
 											<div class="col-lg-12">

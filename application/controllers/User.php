@@ -36,7 +36,22 @@ class User extends CI_Controller
     }
     public function profile()
     {
-        //print_r($this->onlineusers->getAllonlineUserSession());                                    
+        $this->data['sessionOnline'] =$this->onlineusers->getAllonlineUserSession();   
+			
+		
+    
+   
+    // foreach ( $ads as $new_arr1 ) {
+			 
+			 
+//print_r($new_arr1['user_id']);
+//}
+        
+      
+                                  
+                                   
+                                 
+	
         $myfeeds =          $this->profile_model->GetAllfeeds($this->UserId);
         $myfeedsurldetails = array();     
         foreach ($myfeeds as $i => $item) {
@@ -79,6 +94,9 @@ class User extends CI_Controller
         }
         $this->data['feeds']   = $myfeedsurldetails;
         $this->data['friendOnline']  = $this->users_model->GetOnlineFriends($this->UserId);
+			//	print_r(  $this->data['sessionOnline'] );
+
+		//print_r(  $this->data['friendOnline'] );exit;
         $this->data['user']          = $this->users_model->userinfo($this->UserId);
         $this->data['UserId']        = $this->session->userdata('user_id');
         $this->data['openToken']     = base64_encode($this->session->userdata('token'));

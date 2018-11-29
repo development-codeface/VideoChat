@@ -19,7 +19,8 @@ class Profile extends CI_Controller
         ));
         $this->load->library(array(
             'upload',
-            'form_validation'
+            'form_validation',
+			 'OnlineUsers'
         ));
         $this->load->library('upload');
         $this->load->helper('array');
@@ -642,6 +643,8 @@ class Profile extends CI_Controller
     
     public function friends()
     {
+		$this->data['sessionOnline'] =$this->onlineusers->getAllonlineUserSession();   
+		
         $this->data['friendList']     = $this->users_model->GetFriendList($this->UserId);
         $this->data['friendOnline']   = $this->users_model->GetOnlineFriends($this->UserId);
         $this->data['friendsRequest'] = $this->users_model->GetFriendsRequest($this->UserId); 

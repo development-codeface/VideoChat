@@ -366,9 +366,24 @@ $timestamp=$fd->created_at;
 										<div class="suggestions-list">
 										<?php if(!empty($friendOnline)){
 											$i=1;
-											foreach($friendOnline as $frq){?>
+											
 										
 											
+												foreach($friendOnline as $frq){
+													
+													
+													foreach ( $sessionOnline as $new_arr1 ) {
+			 
+			 
+
+;
+												
+												if(($frq->user_id)==($new_arr1['user_id']))
+												{
+												
+													
+												
+												?>
 											<div class="suggestion-usd">
 										       <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
 											   
@@ -420,7 +435,7 @@ $timestamp=$fd->created_at;
 												
 												</span>
 											</div>
-										<?php }}else{ ?>
+												<?php }}}}else{ ?>
 						
 						<div class="col-lg-12">
 						<div class="alert alert-danger">
