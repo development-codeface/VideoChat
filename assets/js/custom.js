@@ -351,17 +351,27 @@ function friendRequest(userId){
 		dataType: 'json',
         success: function(data) {
             if(data.status==1){
-				$("#"+userId).remove();
-				
-				
-				$("#Interest_ar" ).html("<div class='alert alert-success'> Your Request has been sent </div>");
-				location.reload();
-				}
+				//$("#"+userId).remove();
+					$("#friend_"+frinedId).remove();
 
+				// window.setTimeout(function(){location.reload()},1000);
+				$('#Interest_ar').show();
+							
+				$("#Interest_ar" ).html("<div class='alert alert-success'> Your Request has been sent </div>").hide()
+            .fadeIn(1500, function() { $('#Interest_ar'); });
+           setTimeout(resetAll,2000);
+			}
         },
 
 		});
 }
+
+ function resetAll(){
+
+$('#Interest_ar').hide(); // Removing it as with next form submit you will be adding the div again in your code. 
+
+}
+        
 
 
 function getBranch(comapnyId,userId){

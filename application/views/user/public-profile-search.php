@@ -123,9 +123,9 @@ foreach($results as $frq){
 	
 if(($frq->user_id)!=($this->session->userdata('user_id'))) {
 	?>
-			  <div class="col-lg-2 col-md-2 col-sm-2 col-12">
-							<div class="company_profile_info">
-								<div class="company-up-info companyfont">								
+			  <div class="col-lg-2 col-md-2 col-sm-2 col-12" id="friend_<?php echo $frq->user_id;?>">
+							<div class="company_profile_info" >
+								<div class="company-up-info companyfont" >								
                 <div class="clearfix"></div>
                 <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>"> <div>
 									   <?php if($frq->profile_pic!=""){?>
