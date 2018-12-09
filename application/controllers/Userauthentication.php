@@ -29,7 +29,7 @@ class Userauthentication extends CI_Controller
             $userData['oauth_uid'] = $fbUserProfile['id'];
             $userData['full_name'] = $fbUserProfile['first_name']." ".$fbUserProfile['last_name'];
             $userData['email'] = $fbUserProfile['email'];
-            $userData['gender'] = 0;//$fbUserProfile['gender'];
+            $userData['gender'] = 2;//$fbUserProfile['gender'];
             $userData['user_name'] = $fbUserProfile['email'];
             $userData['password'] = "";
             $nickname = $fbUserProfile['name'];
