@@ -1060,6 +1060,15 @@ class Profile extends CI_Controller
         $this->data['apiKey']        = $this->config->item('opentok_key');
         
         $this->load->view("user/public-profile-search", $this->data);*/
+        if (count($_POST) > 0){
+            $this->session->set_userdata('post_data', $_POST );
+            redirect('/Profile/searchFreiend_name');
+        }else{
+            if($this->session->userdata('post_data')){
+              $_POST = $this->session->userdata('post_data');
+              $this->session->unset_userdata('post_data');
+            }
+        }
         $this->data['results'] = null;
         if (isset($_POST['search'])) {
             $params['gender']      = $this->input->post("looking");
@@ -1086,6 +1095,7 @@ class Profile extends CI_Controller
             $params['gender'] = 0;
             $params['country'] = 0;
         }
+        
         $this->data['countries'] = $this->users_model->getAllcountries();
         $params['user_id']       = $this->UserId;
         $this->data['results']   = $this->users_model->GetSearchFriends($params);
