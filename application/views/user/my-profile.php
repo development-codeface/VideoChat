@@ -1005,11 +1005,27 @@ else{ ?>
                     <?php if(!empty($friendList)){
 $i=1;
 
-foreach($friendList as $frq){?> 
+foreach($friendList as $frq){
+		$i=0;
+												foreach ( $sessionOnline as $new_arr1 ) {
+			 
+			 
+
+
+												
+												if(($new_arr1['user_id'])==($frq->user_id))
+												{
+												
+												$i=1;
+												}}
+	?> 
+
                     <div class="col-lg-4 col-md-4 col-sm-6 col-12"  id="un_<?php echo $frq->user_id;?>">
                       <div class="company_profile_info " >
                         <div class="company-up-info">	
-                          <?php if( $frq->status==1){?>
+                          <?php if($i==1)
+												{
+												?>
                           <i class="fa fa-circle msg-online" aria-hidden="true"> 
                             <span>Online
                             </span>
@@ -1072,6 +1088,85 @@ else
                   </div>
                 </div>
                 <div class="product-feed-tab" id="my-str-list">
+                    
+                       <!--stranger list --> 
+                       
+                       
+                       		
+						    <div class="requests-list widt100">
+						          <div class="col-md-12">
+		 <center>  <label color="red" id="Interest_ar">
+                         
+                        </center>
+						</div>
+                  <?php if(!empty($strangerList)){
+$i=1;
+foreach($strangerList as $frq){
+   
+    $user_id =$this->session->userdata('user_id');
+ $fid=$frq->user_id;
+ 
+  $query=$this->db->query("select * from friends where user_id=$user_id and friend_id=$fid or user_id=$fid and friend_id=$user_id ");
+
+              $result=$query->result_array();
+            
+ if($result == null)
+ {
+    
+	?>
+                  <div class="request-details request-detailsch" id="friend_<?php echo $frq->user_id;?>">
+                <a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">		       <div class="noty-user-img" id="img_<?php echo $frq->user_id;?>">
+                    	<a href="<?php echo base_url() .'index.php/Profile/profileView/'.$frq->user_id;?>">
+									
+									<?php if($frq->profile_pic!=""){?>
+											<img src="<?php echo base_url() .'uploads/profile_pic/'.$frq->profile_pic ;?>" alt="">
+											<?php }else{?>
+											<?php if($frq->gender==1)
+											{
+												?>
+											<img src="<?php echo base_url(); ?>assets/images/resources/malemaleavatar.png" alt="">
+											<?php
+											}
+											else
+											{ ?>
+												<img src="<?php echo base_url(); ?>assets/images/resources/femalemaleavatar.png" alt="">
+										<?php	} ?>
+											
+											<?php }?>
+									
+									
+                    </div>
+                    <div class="request-info" id="nam_<?php echo $frq->user_id;?>">
+					
+                      <h3>
+                        <?php echo $frq->full_name ;?>
+                      </h3>
+                      <!--<span>Graphic Designer</span>-->
+                    </div></a>
+                    <div class="accept-feat">
+                      <ul>
+                        <li>
+                       <button type="button" class="accept-req" onclick="friendRequest(<?php echo $frq->user_id;?>)"> 
+                          <i class="fa fa-paper-plane" aria-hidden="true"></i> &nbsp; Send request
+                        </button>
+                        </li>
+                        <li>
+                        <button type="button" data-id="<?php echo $frq->user_id;?>"  class="canc-reqstd"  id="canc-reqstd_<?php echo $frq->user_id;?>">
+                            <i class="la la-close">
+                            </i>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                    <!--accept-feat end-->
+                  </div>
+                  <!--request-detailse end-->
+                  <?php }}} ?>
+                </div>
+						
+                       
+                       
+                       <!--stranger end-->
                   <div class="row">
                   </div>
                 </div>
@@ -1718,7 +1813,26 @@ $(document).ready(function() {
 		}); 
 		
 		
+	  $('.canc-reqstd').click(function() { 
+	var uid =$(this).data('id'); 
+				$.ajax({
+			type: "POST",
+				url: "../Profile/stranger_cancel_request",
+				data:{uid:uid},
+				dataType:"text", 
+				success: function(result){
+					
+				
+					$("#reqstd_"+uid).remove();
+					/*var resultObj = JSON.parse(result)
+			 window.setTimeout(function(){location.reload()},1000);*/
+				}               
+		}); 		
+			             
+				
+		}); 
 		
+			
 		
 		///////fried listhide///
 		

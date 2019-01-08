@@ -228,6 +228,60 @@ class User extends CI_Controller
         
         $name     = $this->users_model->username($use);
         $myString = $name . " Accepted your friend request";
+        
+        
+        
+        
+        	////////////////////////////////////
+			$toEmail     = $this->users_model->useremail($params);
+		
+			$this->load->library('email');
+
+					$config = Array(
+					'protocol' => 'MAIL_DRIVER',
+					'MAIL_HOST' => 'mail.intbuddy.com',
+					'MAIL_PORT' => 26,
+					'MAIL_USERNAME' => 'cfemp08d@gmail.com',
+					'MAIL_PASSWORD' => 'J9#PPxLep1pO',
+					'mailtype'  => 'html', 
+					'charset'   => 'utf-8'
+				);
+
+			$this->email->initialize($config);
+			$this->email->set_newline("\r\n");
+
+			$clean = $this->security->xss_clean($this->input->post(NULL, TRUE));
+
+		           
+		
+
+			$message = '';                     
+
+			$message .= $name . " Accepted your friend request";                
+
+			//$toEmail = $this->input->post('reemail');
+			$to = $toEmail; # undefine 
+			$this->email->clear();
+			$this->email->from('info@intbuddy.com');
+			$this->email->to($to);
+			$this->email->subject('Intbuddy');
+			$this->email->message($message);
+
+			if(!$this->email->send())
+			{ 
+				echo "fail <br>";
+				echo $this->email->print_debugger();
+				/*$this->session->set_flashdata('flash_message', 'Password reset fail.');
+				redirect(site_url().'/main/register');*/
+			}
+		
+		
+		
+		
+		
+		
+		/////////////////////////
+        
 		
 		   $link =  base_url() .'index.php/Profile/profileView/'.$use;
 		
@@ -253,6 +307,59 @@ class User extends CI_Controller
         
         $name     = $this->users_model->username($use);
         $myString = $name . " sent a friend request to you";
+        
+        
+        
+		////////////////////////////////////
+			$toEmail     = $this->users_model->useremail($params);
+		
+			$this->load->library('email');
+
+					$config = Array(
+					'protocol' => 'MAIL_DRIVER',
+					'MAIL_HOST' => 'mail.intbuddy.com',
+					'MAIL_PORT' => 26,
+					'MAIL_USERNAME' => 'cfemp08d@gmail.com',
+					'MAIL_PASSWORD' => 'J9#PPxLep1pO',
+					'mailtype'  => 'html', 
+					'charset'   => 'utf-8'
+				);
+
+			$this->email->initialize($config);
+			$this->email->set_newline("\r\n");
+
+			$clean = $this->security->xss_clean($this->input->post(NULL, TRUE));
+
+		           
+		
+
+			$message = '';                     
+
+			$message .= $name . " sent a friend request to you";                 
+
+			//$toEmail = $this->input->post('reemail');
+			$to = $toEmail; # undefine 
+			$this->email->clear();
+			$this->email->from('info@intbuddy.com');
+			$this->email->to($to);
+			$this->email->subject('Intbuddy');
+			$this->email->message($message);
+
+			if(!$this->email->send())
+			{ 
+				echo "fail <br>";
+				echo $this->email->print_debugger();
+				/*$this->session->set_flashdata('flash_message', 'Password reset fail.');
+				redirect(site_url().'/main/register');*/
+			}
+		
+		
+		
+		
+		
+		
+		/////////////////////////
+        
         $link =  base_url() .'index.php/Profile/profileView/'.$use;
 		
      

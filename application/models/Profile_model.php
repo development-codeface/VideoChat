@@ -411,8 +411,23 @@ class Profile_model extends CI_Model
         //exit;
         return $result;
     }
-     
     
+      public function addstranger($fid, $uid)
+    {
+        $query = $this->db->query("INSERT INTO add_stranger (user_id ,friend_id)
+            VALUES ($uid,'$fid')");
+       // echo $this->db->last_query();exit;
+        return 1;
+        
+    }
+     
+     public function strangercheck($fid, $uid)
+    {
+        $query = $this->db->query("select * from add_stranger where user_id=$uid and friend_id=$fid and status=0");
+       // echo $this->db->last_query();exit;
+       return $query->result_array();
+        
+    }
     
     
 }

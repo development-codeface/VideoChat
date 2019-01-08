@@ -132,6 +132,24 @@ class Users_model extends CI_Model
         return $result;
     }
     
+    
+        public function GetstrangerList($userId)
+    {
+        $this->db->select('us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status');
+        $this->db->from('users us');
+        $this->db->join('add_stranger um', 'um.friend_id=us.user_id', 'INNER');
+        $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
+        $this->db->join('online_user od', 'od.user_id= us.user_id', 'LEFT');
+        $this->db->where('um.user_id', $userId);
+        $this->db->where('um.status', 0);
+        $this->db->group_by('us.user_id');
+        $this->db->order_by("od.logged_time", "ASC");
+        $result = $this->db->get()->result(); //echo $this->db->last_query();
+       // print_r($result);exit;
+        return $result;
+    }
+    
+
     //friendRequest
     public function GetFriendsRequest($userId)
     {
@@ -569,6 +587,12 @@ class Users_model extends CI_Model
         $query = $this->db->query("delete from friends where user_id=$friend and friend_id=$user_id ");
         return 1;
     }
+    	function cancelstrangerfriend($friend,$user_id)
+    {
+     //  $query = $this->db->query("delete from friends where user_id=$user_id and friend_id=$friend ");
+        $query = $this->db->query("delete from add_stranger where user_id=$user_id and friend_id=$friend ");
+        return 1;
+    }
 	function rejectfriend($friend,$user_id)
     {
        $query = $this->db->query("delete from friends where user_id=$user_id and friend_id=$friend ");
@@ -812,6 +836,16 @@ function checknolike($fid, $uid)
 	
 	
 	
-	
+	function useremail($uid)
+    {
+        $query = $this->db->query("select email from users where user_id=$uid");
+        foreach ($query->result() as $row) {
+            $email = $row->email;
+            
+        }
+        
+        return $email;
+        
+    }	
 	
 }

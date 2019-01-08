@@ -10,7 +10,7 @@ $( "#finduser").click(function() {
     } 
   });
 
-  $( "#findmaleuser").click(function() {
+  $( ".findmale").click(function() {
     if(isFristLoad()){ 
       USERPREFERENCE =1    
         getStranger(USERPREFERENCE);
@@ -19,7 +19,7 @@ $( "#finduser").click(function() {
     }   
   });
 
-  $( "#findfemaleuser").click(function() {
+  $( ".findfemale").click(function() {
     if(isFristLoad()){ 
       USERPREFERENCE =2   
         getStranger(USERPREFERENCE);
@@ -53,6 +53,8 @@ $( "#finduser").click(function() {
                 disconnect();
                 TOKEN   =  resultObj.token;
                 $("#nickname").html(resultObj.stranger_nikename);
+              // alert(resultObj.sid);
+               $("#name" ).val(resultObj.sid);
                 openOpentokConnection(resultObj.session_id);
                 if(typeof(resultObj["errorcode"]) == "undefined"){
                     $("#loadingmessage").hide();
@@ -101,7 +103,7 @@ $( "#finduser").click(function() {
   }
   function getStrangeUser(event){
     if(!isSameSesssion(event)){
-      $("#nickname").html(event.data.userName);
+    $("#nickname").html(event.data.userName);
     }
   }
 

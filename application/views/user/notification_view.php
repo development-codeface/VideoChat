@@ -1,6 +1,9 @@
+<!DOCTYPE html>
+<?php  include 'header.php' ;?>
 <?php
-include 'header.php';?>
-
+$open_tokenId=base64_decode(urldecode($openToken));
+$user=$this->session->userdata('user_id');?>
+<input type='text' name="uid" id="uid" value='<?php echo $user; ?>' hidden >
 <section class="pubsec min8">
 <div class="container">
 <div class="row">
@@ -13,7 +16,19 @@ include 'header.php';?>
 
 
 		<?php
-												foreach($feeds as $fd){ 		?>
+		if($feeds == null){
+?>
+											<center><h2>	<b><p>	<?php echo "This notification not available."?> </p>	</b>  </h2>  </center>
+										  <br>
+<?php }
+else
+{	
+
+												
+												foreach($feeds as $fd)
+{ 
+
+?>
 										
 											<div class="post-bar" id="as">
 													<div class="post_topbar">
@@ -52,88 +67,110 @@ include 'header.php';?>
 															
 															
 														
+                        														
 <?php
  
 
 $timestamp=$fd->created_at;
-list($date,$time)=explode(' ',$timestamp);
-//echo $time;
-//$now = new DateTime();
-//$now->setTimezone(new DateTimezone('Asia/Kolkata'));
-  //$cur_time=$now->format('Y-m-d H:i:s');
-    $time_ago = strtotime($fd->created_at);
-    $cur_time   = time();
-    $time_elapsed   = abs($cur_time - $time_ago);
-    $seconds    = $time_elapsed ;
-    $minutes    = round($time_elapsed / 60 );
-    $hours      = round($time_elapsed / 3600);
-    $days       = round($time_elapsed / 86400 );
-    $weeks      = round($time_elapsed / 604800);
-    $months     = round($time_elapsed / 2600640 );
-    $years      = round($time_elapsed / 31207680 );
-    // Seconds
-	//echo $cur_time; echo $time_ago;
-	//echo $time_elapsed;exit;
-    if($seconds <= 60){
-        $ti= "just now";
-    }
-    //Minutes
-    else if($minutes <=60){
-        if($minutes==1){
-           $ti= "one minute ago";
-        }
-        else{
-            $ti= "$minutes minutes ago";
-        }
-    }
-    //Hours
-    else if($hours <=24){
-        if($hours==1){
-          $ti= "an hour ago";
-        }else{
-           $ti= "$hours hrs ago";
-        }
-    }
-    //Days
-    else if($days <= 7){
-        if($days==1){
-            $ti= "yesterday";
-        }else{
-           $ti= "$days days ago";
-        }
-    }
-    //Weeks
-    else if($weeks <= 4.3){
-        if($weeks==1){
-            $ti= "a week ago";
-        }else{
-            $ti= "$weeks weeks ago";
-        }
-    }
-    //Months
-    else if($months <=12){
-        if($months==1){
-            $ti= "a month ago";
-        }else{
-            $ti= "$months months ago";
-        }
-    }
-    //Years
-    else{
-        if($years==1){
-           $ti= "one year ago";
-        }else{
-            $ti= "$years years ago";
-        }
+
+	//function time_ago_in_php($timestamp){
+  
+  date_default_timezone_set("Asia/Kolkata");         
+  $time_ago        = strtotime($timestamp);
+  $current_time    = time();
+  $time_difference = $current_time - $time_ago;
+  $seconds         = $time_difference;
+  
+  $minutes = round($seconds / 60); // value 60 is seconds  
+  $hours   = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec  
+  $days    = round($seconds / 86400); //86400 = 24 * 60 * 60;  
+  $weeks   = round($seconds / 604800); // 7*24*60*60;  
+  $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60  
+  $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
+                
+  if ($seconds <= 60){
+
+   $ti= "Just Now";
+
+  } else if ($minutes <= 60){
+
+    if ($minutes == 1){
+
+      $ti= "one minute ago";
+
+    } else {
+
+      $ti= "$minutes minutes ago";
+
     }
 
+  } else if ($hours <= 24){
+
+    if ($hours == 1){
+
+      $ti= "an hour ago";
+
+    } else {
+
+      $ti= "$hours hrs ago";
+
+    }
+
+  } else if ($days <= 7){
+
+    if ($days == 1){
+
+     $ti= "yesterday";
+
+    } else {
+
+      $ti= "$days days ago";
+
+    }
+
+  } else if ($weeks <= 4.3){
+
+    if ($weeks == 1){
+
+      $ti= "a week ago";
+
+    } else {
+
+      $ti= "$weeks weeks ago";
+
+    }
+
+  } else if ($months <= 12){
+
+    if ($months == 1){
+
+      $ti= "a month ago";
+
+    } else {
+
+      $ti= "$months months ago";
+
+    }
+
+  } else {
+    
+    if ($years == 1){
+
+      $ti="one year ago";
+
+    } else {
+
+      $ti= "$years years ago";
+
+    }
+  }
+
 ?>						
+																
 															
 															
 															
-															
-															
-                                                             <i class="fa fa-clock-o" aria-hidden="true"></i>  <?php  echo  $ti;?></span> &nbsp;<span>
+													       <i class="fa fa-clock-o" aria-hidden="true"></i>  <?php  echo  $ti;?></span> &nbsp;<span>
 														</div>
 													</div>
 													<div class="ed-opts form_wrapper"  >
@@ -149,7 +186,7 @@ list($date,$time)=explode(' ',$timestamp);
 															<li><a href=""  class="exp-bx-open">Hide Post</a></li>
 														
 													<?php }?>
-													</ul>
+												</ul>
 												</div>
 												</div>
 										
@@ -240,7 +277,8 @@ list($date,$time)=explode(' ',$timestamp);
 		</div>
 		
 		
-												<?php  } ?>
+						
+	<?php }} ?>
 							
 						
 					<div class="clearfix"></div>
@@ -266,6 +304,155 @@ list($date,$time)=explode(' ',$timestamp);
 <?php
 include 'footer.php';?>
 
-
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/custom.js">
+</script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://static.opentok.com/v2/js/opentok.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://static.opentok.com/v2/js/opentok.js"></script>
+
+<script type="text/javascript" >
+	var APIKEY 		= "<?php echo $apiKey ?>";
+	var SESSIONID 	= "<?php echo $openSessionId ?>";
+	var TOKEN     	= "<?php echo $open_tokenId ?>";
+	$(document).ready(function() {	
+		$('.follow_friend').click(function() { 
+			var uid =$(this).data('id'); 
+				$.ajax({
+					type: "POST",
+						url: "../Auth/fetch_data",
+						data:{uid:uid},
+						dataType:"text", 
+						success: function(result){
+							var resultObj = JSON.parse(result)
+						
+						}               
+				}); 				
+		}); 
+		$('.btnChat').click(function() { 
+			var uid =$(this).data('id'); 
+			$.ajax({
+				type: "POST",
+					url: "../User/fetch_data",
+					
+					data:{uid:uid},
+					dataType:"text", 
+					success: function(result){
+						var resultObj = JSON.parse(result)
+					//alert(resultObj.sessionId+""+resultObj.tokenId);
+				}               
+			}); 				
+		}); 
+	});
+
+    var box = $('.ed-options');
+    var link = $('.ed-opts-open');
+    $(document).click(function() {
+        box.hide(); //box1.hide();
+    });
+    box.click(function(e) {
+        e.stopPropagation();
+    });
+	$(".ed-opts-open").on("click", function(){
+	$(this).parent('.form_wrapper').find(box).show();
+});
+function getFeeds(intValue) {
+ 	var val=intValue;
+	$.ajax({
+		type: "POST",
+		url: "../edit_data",
+		
+		data:{val:val},
+		dataType:"text", 
+		success: function(result){
+		var resultObjt = JSON.parse(result)
+			
+			$("#feed-edit").val(resultObjt.feed); 
+			$("#feed-id").val(resultObjt.feedid);
+			
+			}                
+	}); 				
+}
+  $('.frc').click(function() { 
+	var fid =$(this).data('id'); 
+				$.ajax({
+			type: "POST",
+				url: "../Profile/hideFeed",
+				data:{fid:fid},
+				dataType:"text", 
+				success: function(result){
+					
+				
+					
+				}               
+		}); 		
+			             
+				
+		}); 
+
+</script>
+<audio id="callerTone" src="<?php echo base_url(); ?>assets/media/callertone.mp3" loop preload="auto"></audio>
+<audio id="msgTone" src="<?php echo base_url(); ?>assets/media/msgtone.mp3" preload="auto"></audio>
+<audio id="dialTone" src="<?php echo base_url(); ?>assets/media/dialtone.mp3" preload="auto"></audio>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/videochat.js">
+<!--<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/fakescroll.js"></script> -->
+<script>
+    normalConnection();
+</script>
+
+	<script>
+$(document).ready(function(){
+    $(window).unload(function(){
+        alert("Goodbye!");
+    });
+});
+</script>
+
+
+
+
+
+<script >
+
+var i=1;
+var j=1;
+    $(window).scroll(function () {
+		
+		
+        if ($(document).height() <= $(window).scrollTop() + $(window).height()) {
+            var fi=i*2;
+			var la=(i+1)*2;
+		//	alert(fi);	alert(la);
+		
+
+  $.ajax({
+            type: "POST",
+            url: "../user/profile_limit",
+           data:{fi:fi,la:la},
+            dataType:"text", 
+            success: function(result){
+				//alert(result);
+				if(result.length > 0 ){
+					$('#postcontainer').append(result);
+				}
+			
+            //$("#feedResult").html(r); 
+            }
+          }
+                );
+
+
+
+
+
+
+
+
+
+		i++;
+        }
+		
+    });
+</script>
+
+

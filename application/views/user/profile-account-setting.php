@@ -131,7 +131,7 @@ $open_tokenId=base64_decode(urldecode($openToken));$user=$this->session->userdat
 				  
 												<label class="containerc"> <a href="#" title="" class="exp-bx-open aqw"><small>Are you sure you want to deactivate your account?
 												</small></a>
-  <input type="checkbox"  name="agree" id="agree" value="agree" required>
+  <input type="checkbox"  name="agree" id="agree" value="agree" required style="    width: 0%;">
   <span class="checkmarkc"></span>
 </label>
                    

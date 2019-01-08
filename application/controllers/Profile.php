@@ -38,10 +38,13 @@ class Profile extends CI_Controller
     }
     public function myProfile()
     {
+		 $this->data['sessionOnline'] =$this->onlineusers->getAllonlineUserSession();   
+			
          $this->data['sendRequest']    = $this->users_model->GetsendRequest($this->UserId);
         $this->data['friendList']     = $this->users_model->GetFriendList($this->UserId);
         $this->data['profileViewer']  = $this->profile_model->GetProfileViewerList($this->UserId);
         $this->data['friendsRequest'] = $this->users_model->GetFriendsRequest($this->UserId);
+         $this->data['strangerList']     = $this->users_model->GetstrangerList($this->UserId);
         $this->data['date']           = $this->users_model->fetch_dob($this->UserId);
         $this->data['UserId']         = $this->session->userdata('user_id');
         foreach ($this->data['date'] as $dos) {
@@ -484,27 +487,31 @@ class Profile extends CI_Controller
         $this->users_model->clearoldstranger();
         //log_message('error', 'here getstranger >>'.$this->session->userdata('user_id').'<< going to getuser..');
         $resultval = $this->users_model->getStrangerAvaiUser($this->session->userdata('user_id'),$gender);
+        //print_r($resultval);
         $opentok = new OpenTok($this->config->item('opentok_key'), $this->config->item('opentok_secret'));
         $stranger_nickname = $resultval ['nick_name']!= null ? $resultval['nick_name'] : "" ;
         $my_name   = ""; 
+        $sid= $resultval ['user_id']!= null ? $resultval['user_id'] : "" ;
         //log_message('error','here getstranger >>'.$this->session->userdata('user_id').'<< going to stranger >>'.print_r($resultval, TRUE).'<<..');
         if(null != $resultval){  
             $resultval = $this->users_model->removeuserfromStranger($resultval['user_id']);
             $mydetails = $this->users_model->getUserFullDetails($this->session->userdata('user_id'));
             $resultval["myNickName"] = $mydetails['nick_name'];
+          $resultval["myid"]=$resultval ['user_id'];
         }else {
             $result = $this->users_model->stranger_update($this->session->userdata('user_id'));
             $resultval = $this->users_model->getUserFullDetails($this->session->userdata('user_id'));
             $resultval["errormsg"] = "No user";
             $resultval["errorcode"] = "1";
             $resultval["myNickName"]  = $resultval ['nick_name'];
+              $resultval["myid"]=$resultval ['user_id'];
         }
-        
+          $resultval['sid'] = $sid;
         $resultval['stranger_nikename'] = $stranger_nickname;
         //$resultval["myNickName"]  = $resultval["nick_name"];
         $opntok_tokenId    = $opentok->generateToken($resultval['session_id']);
         $resultval['token']  = $opntok_tokenId ;
-
+//print_r($resultval);exit;
         echo json_encode($resultval);
 
     }
@@ -667,6 +674,8 @@ class Profile extends CI_Controller
         $feedId = $this->input->post('feedId');
         $uid    = $this->input->post('Uid');
         $fid    = $this->input->post('fid');
+        
+        
 		
 		$nolik     = $this->users_model->checknolike($feedId, $uid);
 		if ($nolik!=1)
@@ -675,6 +684,62 @@ class Profile extends CI_Controller
 		{
         $name     = $this->users_model->username($uid);
         $myString = $name . " Liked your post";
+        
+        
+        	////////////////////////////////////
+			$toEmail     = $this->users_model->useremail($fid);
+		
+			$this->load->library('email');
+
+					$config = Array(
+					'protocol' => 'MAIL_DRIVER',
+					'MAIL_HOST' => 'mail.intbuddy.com',
+					'MAIL_PORT' => 26,
+					'MAIL_USERNAME' => 'cfemp08d@gmail.com',
+					'MAIL_PASSWORD' => 'J9#PPxLep1pO',
+					'mailtype'  => 'html', 
+					'charset'   => 'utf-8'
+				);
+
+			$this->email->initialize($config);
+			$this->email->set_newline("\r\n");
+
+			$clean = $this->security->xss_clean($this->input->post(NULL, TRUE));
+
+		           
+		
+
+			$message = '';                     
+
+		$message = $name . " Liked your post";               
+
+			//$toEmail = $this->input->post('reemail');
+			$to = $toEmail; # undefine 
+			$this->email->clear();
+			$this->email->from('info@intbuddy.com');
+			$this->email->to($to);
+			$this->email->subject('Intbuddy');
+			$this->email->message($message);
+
+			if(!$this->email->send())
+			{ 
+				echo "fail <br>";
+				echo $this->email->print_debugger();
+				/*$this->session->set_flashdata('flash_message', 'Password reset fail.');
+				redirect(site_url().'/main/register');*/
+			}
+		
+		
+		
+		
+		
+		
+		/////////////////////////
+        
+		
+        
+        
+        
       $link =  base_url() .'index.php/Profile/notificationview/'.$feedId;
         $name     = $this->users_model->insertnotification($myString, $fid, $uid,$link);
 		 } }
@@ -1063,12 +1128,13 @@ class Profile extends CI_Controller
         if (count($_POST) > 0){
             $this->session->set_userdata('post_data', $_POST );
             redirect('/Profile/searchFreiend_name');
-        }else{
+          }
+          else{
             if($this->session->userdata('post_data')){
               $_POST = $this->session->userdata('post_data');
               $this->session->unset_userdata('post_data');
             }
-        }
+          }
         $this->data['results'] = null;
         if (isset($_POST['search'])) {
             $params['gender']      = $this->input->post("looking");
@@ -1095,7 +1161,6 @@ class Profile extends CI_Controller
             $params['gender'] = 0;
             $params['country'] = 0;
         }
-        
         $this->data['countries'] = $this->users_model->getAllcountries();
         $params['user_id']       = $this->UserId;
         $this->data['results']   = $this->users_model->GetSearchFriends($params);
@@ -1366,6 +1431,18 @@ $data   = $this->users_model->age_hide_value($user_id );
                 'status' => 1
             ));
     }
+    
+    	public function stranger_cancel_request()
+    {
+      
+        $friend = $this->input->post('uid');
+		$user_id       = $this->session->userdata('user_id');
+      $result = $this->users_model->cancelstrangerfriend($friend,$user_id);
+  
+      echo json_encode(array(
+                'status' => 1
+            ));
+    }
 	public function reject_request()
     {
         
@@ -1507,5 +1584,18 @@ $data   = $this->users_model->age_hide_value($user_id );
         $this->load->view("user/notification_view", $this->data);
         
     }
+      public function addstranger()
+    {
     
+        
+        
+        $uid = 		$user_id = $this->session->userdata('user_id');
+        $fid   = $_POST['fid'];
+        $val= $this->profile_model->strangercheck($fid, $uid);
+      if($val == null)
+    {
+        $result = $this->profile_model->addstranger($fid, $uid);
+      }
+      
+    }
 }

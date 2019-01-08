@@ -85,14 +85,35 @@ $user=$this->session->userdata('user_id');?>
 											$i=1;
 											foreach($friendList as $frq)
 											{
+												//print_r($frq);
+												$i=0;
+												foreach ( $sessionOnline as $new_arr1 ) {
+			 
+			 
+
+
 												
+												if(($new_arr1['user_id'])==($frq->user_id))
+												{
+												
+												$i=1;
+												}}
 												?>
 										<div class="col-lg-3 col20">
 							<div class="company_profile_info" id="un_<?php echo $frq->user_id;?>">
 								<div class="company-up-info">
-								<?php if( $frq->status==1){?>
+								<?php 
+									
+									
+
+
+												
+												if($i==1)
+												{
+												
+									?>
 								<i class="fa fa-circle msg-online" aria-hidden="true"> <span>Online</span></i><?php }else{?>
-								<i class="fa fa-circle msg-off" aria-hidden="true"> <span>Offline</span></i><?php }?>
+												<i class="fa fa-circle msg-off" aria-hidden="true"> <span>Offline</span></i><?php }?>
 								<div class="ed-opts form_wrapper unfr">
                                                     <a title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
                                                     <ul class="ed-options unfrhide" data-id="<?php echo $frq->user_id;?>"    style="display: none;">
@@ -146,7 +167,7 @@ $user=$this->session->userdata('user_id');?>
 								<!-- <a href="profile-view.html" title="" class="view-more-pro">View Profile</a> -->
 							</div><!--company_profile_info end-->
 						</div>
-										<?php }}
+											<?php }}
 										
 											else{
 											?>	<div class="alert alert-danger"  >No Result Found !!!</div>

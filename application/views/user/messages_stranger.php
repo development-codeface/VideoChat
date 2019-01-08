@@ -7,7 +7,11 @@ $open_token=base64_decode(urldecode($openSession));
 //print_r($openSessionId);
 
 include 'header.php';?>
- 
+    <div class="col-md-12">
+		 <center>  <label color="red" id="Interest_ar">
+                         
+                        </center>
+						</div>
 <!--div >
 <div class="modal-content text-center">
 <button  name="cutcall" name="cutcall" class="btn btn-danger btn-sm dd" onclick="history.back();">stop</button>
@@ -42,11 +46,13 @@ include 'header.php';?>
 
 				       <div class="col-md-12 vidapp">
                  <div id="nickname" class="tell">  </div>
+                    <input type="text" name="name"  id="name" class="ftrs" hidden>
+                 
 				  <ul class="videoul">
           
           <!--<li><button name="cutcall" name="cutcall" class="bg-can " onclick="history.back();"> <i class="fa fa-angle-left" aria-hidden="true"></i></button></li> -->
 		    <li><button name="cutcall" id="" class="bg-can " onclick="history.back();"> <i class="fa fa-phone" aria-hidden="true"></i></button></li>
-          <li><button name="cutcall" name="cutcall" class="bg-view" onclick=""> <i class="fa fa-user-plus" aria-hidden="true"></i></button></li>
+          <li><button name="cutcall" name="cutcall" class="bg-view" onclick=""> <i class="fa fa-user-plus mrnf" aria-hidden="true"></i></button></li>
           <li><button name="cutcall" id="nextstranger" class="bg-can " onclick="nextstranger()" style="display:none"> <i class="fa fa-angle-right" aria-hidden="true"></i></button></li>
            
 				  </ul>
@@ -122,15 +128,15 @@ include 'header.php';?>
       <div class="row ">
 	 <div class="col-md-1"> </div>
 	 <div class="col-md-5 col-xs-6">
-	   <button  data-clicked="unclicked" id='findmaleuser' class="malaa " href=""> <img src="<?php echo base_url(); ?>assets/images/resources/male-avatar.png" class="img-responsive"></button>
- <button  data-clicked="unclicked" id='findmaleuser' class="malaa " href="">Male</button>
+	   <button  data-clicked="unclicked" id='findmaleuser' class="malaa findmale " href=""> <img src="<?php echo base_url(); ?>assets/images/resources/male-avatar.png" class="img-responsive"></button>
+ <button  data-clicked="unclicked" id='findmaleuser' class="malaa findmale " href="">Male</button>
 
 	
 	 </div>
 	 <div class="col-md-5 col-xs-6"> 
-	<button  data-clicked="unclicked" id='findfemaleuser' class="malaa " href=""> <img src="<?php echo base_url(); ?>assets/images/resources/fe-avatar.png" class="img-responsive"></button>
+	<button  data-clicked="unclicked" id='findfemaleuser' class="malaa findfemale " href=""> <img src="<?php echo base_url(); ?>assets/images/resources/fe-avatar.png" class="img-responsive"></button>
 	
-	  <button  data-clicked="unclicked" id='findfemaleuser' class="malaa " href="">Female</button>
+	  <button  data-clicked="unclicked" id='findfemaleuser' class="malaa findfemale " href="">Female</button>
 	 </div>
 	 	 <div class="col-md-1"> </div>
 	 </div>
@@ -228,3 +234,31 @@ function openFullscreen() {
     //openOpentokConnection ('<?php echo $openSessionId ?>');
     loadNextStranger();
 </script>
+<script>
+  $('.mrnf').click(function() { 
+	
+	  var fid = $("#name").val();
+				$.ajax({
+			type: "POST",
+				url: "../Profile/addstranger",
+				data:{fid:fid},
+				dataType:"text", 
+				success: function(result){
+					
+				$('#Interest_ar').show();
+							
+				$("#Interest_ar" ).html("<div class='alert alert-success'> Sucessfuly added to stranger list </div>").hide()
+            .fadeIn(1500, function() { $('#Interest_ar'); });
+           setTimeout(resetAll,2000);
+				}               
+		}); 		
+			             
+				
+		}); 
+		
+		function resetAll(){
+
+$('#Interest_ar').hide(); // Removing it as with next form submit you will be adding the div again in your code. 
+
+}
+		</script>

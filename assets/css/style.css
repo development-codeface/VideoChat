@@ -467,8 +467,8 @@ border: 1px solid #F26E93;
 .vpos{    
       z-index: 99;
     position: absolute;
-    left: 65%;
-    top: 353px;
+    left: 60%;
+    top: 323px;
     width: 220px;
 }
 .wio{    height: 10px;}
@@ -6922,6 +6922,17 @@ color: #383535;}
     margin-left: 7px;
     border-radius: 3px;
 }
+.canc-reqstd {
+	height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 27px;
+    border: 1px solid #ff507b;
+    background: #ff507b;
+    color: #ffffff;
+    margin-left: 7px;
+    border-radius: 3px;
+}
 .vitop{    float: right;
     background: #53d690;
     padding: 6px 11px 7px 11px;
@@ -8913,6 +8924,30 @@ background:red;
 	
 	
 @media only screen and (max-width: 479px){ 
+    .count {
+    position: absolute;
+    background: #17a2b8;
+    width: 10px;
+    font-size: 7px;
+    line-height: 9px;
+    color: white;
+    height: 10px;
+    z-index: 99;
+    text-align: center;
+    border-radius: 50px;
+    margin-top: -5px;
+}
+    .dar1{    display: none!important;
+}
+.dar2{display: none!important;}
+    .h3cl {
+    padding: 28px 60px 20px 16px;
+}
+.se_pad {
+    padding-top: 0rem!important;
+    padding-bottom: 6rem!important;
+    background: #eeeeee36;
+}
 .notification-info {
     width: 73%!important;
     padding: 0;
@@ -8980,7 +9015,7 @@ font-weight: 500;}
 }
 /* video */
 .modsty {
-    width: 100%!important;
+
     margin: 0 auto;
     padding: 0px;
     border-radius: 10px;
@@ -9099,7 +9134,7 @@ padding: 12px 13px;}
 }
 .sepro {
     padding: 3px;
-    margin-top: 107px;
+    margin-top: 60px;
 }
 .sepro h4 {
     font-size: 16px;
@@ -9144,15 +9179,25 @@ padding: 12px 13px;}
     margin-top: 21px;
     text-align: right;
 }
+.c_accet {
+    text-align: center;
+    margin: 0px 0 0 0;
+}
+.frmlook label {
+    margin: 6px 0;
+    color: #606060;
+    font-size: 14px;
+    font-weight: 600;
+}
 .pubsec {
     padding-top: 10px;
     background: transparent;
 }
 .search-bar {
-    float: left;
+      float: left;
     width: 268px;
-    margin-top: -19px;
-    margin-bottom: 20px;
+    margin-top: 11px;
+    margin-bottom: -12px;
     padding-left: 0;
 }
 .vidapp {
@@ -9521,6 +9566,11 @@ section {
 .menu-btn {
     display: block;
 }
+.frmlook{
+	    margin-top: 24px;
+    margin-bottom: -11px;
+	
+}
 header nav {
     position: fixed;
     top: 0;
@@ -9535,7 +9585,7 @@ width: 100%!important;}
 }
 .mgt {
     padding: 15px 60px!important;
-    margin-top: 43px!important;
+    margin-top: 44px!important;
 }
 /* sign */
 .sign-in-page {
@@ -9674,8 +9724,8 @@ margin-left: 0px;}
     margin-bottom: 20px;
     font-size: 12px;
     line-height: 16px;
-    width: 75px;
-    height: 23px;
+        width: 62px;
+    height: 25px;
     -webkit-border-radius: 18px;
     -moz-border-radius: 18px;
     border-radius: 18px;
@@ -9695,12 +9745,17 @@ body {
     position: absolute;
     z-index: 0;
     top: -6px;
-    left: 21px;
-    font-size: 11px;
+    left: 20px;
+    font-size: 8px;
     font-weight: 600;
     padding: 10px;
     text-align: right;
     color: #ffffff;
+}
+.ios-toggle:checked + .checkbox-label:after {
+    content: attr(data-on);
+    left: 0px;
+    width: 36px;
 }
 .checkbox-label:before {
     content: '';
@@ -9709,8 +9764,8 @@ body {
     z-index: 1;
     line-height: 34px;
     text-indent: 40px;
-    height: 23px;
-    width: 23px;
+    height: 25px;
+    width: 25px;
     -webkit-border-radius: 100%;
     -moz-border-radius: 100%;
     border-radius: 100%;
@@ -9723,7 +9778,7 @@ body {
     box-shadow: 0 3px 3px rgba(0,0,0,.2), 0 0 0 2px #dddddd;
 }
 .ios-toggle:checked + .checkbox-label:before {
-    left: calc(114% - 35px);
+    left: calc(114% - 34px);
     -webkit-box-shadow: 0 0 0 2px transparent, 0 3px 3px rgba(0,0,0,.3);
     -moz-box-shadow: 0 0 0 2px transparent,0 3px 3px rgba(0,0,0,.3);
     box-shadow: 0 0 0 2px transparent, 0 3px 3px rgba(0,0,0,.3);
@@ -9769,6 +9824,32 @@ body {
     padding: 0px 0 0 55px;
     display: none;
 }
+.pb-3c {
+    padding-bottom: 0px!important;
+}
+.linktitle p {
+    clear: both;
+    width: 100%;
+    word-wrap: break-word;
+}
+.link p{ width: 100%;
+    word-wrap: break-word;}
+    .acc-setting {
+    float: left;
+    width: 100%;
+    background-color: #fefefe;
+    margin-top: 32px;}
+    .padr20 {
+    padding: 18px;
+}
+.acceptser {
+    font-size: 16px;
+    box-shadow: 0 3px 6px 0 rgba(23, 28, 33, 0.36);
+    background-color: #F26E93;
+    background-image: linear-gradient(to right, #ff0844 -30%, #F26E93 80%);
+    color: #fff;
+    padding: 10px 20px;}
+
 }
 @media only screen and (min-width: 480px) and (max-width: 699px){
 	/* video */
@@ -9787,14 +9868,25 @@ body {
 .vpos {
     z-index: 99;
     position: absolute;
-    left: 35%;
-    top: 179px;
-    width: 112px;
+    right: 0px;
+    top: 159px;
+    width: 147px
 }
+.modsty20 {
+    margin-left: 0%!important;
+    margin-top: 4%!important;
+}
+
 .OT_publisher, .OT_subscriber {
     position: relative;
     min-width: 48px;
     min-height: 97px!important;
+}
+.modsty {
+    width: 100%!important;
+    margin: 0 auto;
+    padding: 29px!important;
+    border-radius: 10px;
 }
 .vidapp {
     position: absolute;
@@ -9817,7 +9909,7 @@ body {
     max-height: 80%;
     display: block;
     margin: 0;
-    width: 55%;
+    width: 100%;
     height: 267px;
     margin-top: 15%;
     background: #000;
@@ -10055,14 +10147,14 @@ main {
 header nav.active {
     opacity: 1;
     visibility: visible;
-    z-index: 9!important;
+    z-index: 99!important;
 }
 .selab label {
 
     margin-top: 20px;
 }
 .modsty {
-    width: 238px!important;
+   
     margin: 0 auto;
     padding: 29px!important;
     border-radius: 10px;
@@ -10087,24 +10179,77 @@ header nav.active {
 .serb {
     width: 100%;
 }
+.btnvide {
+
+    margin-bottom: 20px;}
 	}
 
 @media only screen and (min-width: 700px) and (max-width: 767px){
-	
-	.sub_div {
+    .wio {
+    height: 10px;
+    position: absolute;
+}
+    .tell {
+    color: #e9ecef;
+    position: fixed;
+    font-size: 31px;
+    text-transform: capitalize;
+    font-weight: 600;
+    top: 28%;
+    left: 22%;
+}
+.vpos {
+      z-index: 99;
+    position: absolute;
+    right: 0px;
+    top: 333px;
+    width: 170px;
+
+}
+.logo img {
+    width: 63px;
+}
+.togl_div {
+    float: left;
+    margin: 20px -4px 0 0;
+}
+.search-barmsg {
+    float: left;
+    margin-top: 15px;
+    text-align: right;
+}
+
+
+.search-barmsg {
+    margin-right: 0px;
+}
+.user-account {
+   
+    position: relative;
+}
+.OT_publisher, .OT_subscriber {
+    position: relative;
+    min-width: 48px;
+    min-height: 104px!important;
+}
+	.btnvide {
+
+    margin-bottom: 20px;}
+.sub_div {
     width: auto;
     max-width: 100%;
-    max-height: 80%;
+    max-height: 70%;
     display: block;
-    margin: 0 auto;
-    width: 70%;
-    height: 550px;
+    margin: 0;
+    width: 478px;
+    height: 462px;
     margin-top: 18%;
     background: #000;
     -webkit-box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.32);
     -moz-box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.32);
     box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.32);
 }
+
 	.col20 {
     -ms-flex: 0 0 50%;
     flex: 0 0 50%;
@@ -10139,7 +10284,7 @@ header nav {
 nav ul li a {
 padding: 12px 12px;}
 .user-account {
-    margin-top: 18px;
+    margin-top: -39px;
 }
 
 .company-title {
@@ -10189,6 +10334,48 @@ margin-top: 23px;}
     min-height: 900px;
 }
 
+    .wio {
+    height: 10px;
+    position: absolute;
+}
+    .tell {
+    color: #e9ecef;
+    position: fixed;
+    font-size: 31px;
+    text-transform: capitalize;
+    font-weight: 600;
+    top: 28%;
+    left: 22%;
+}
+.vpos {
+    z-index: 99;
+    position: absolute;
+    left: 54%;
+    top: 423px;
+    width: 210px;
+}
+.OT_publisher, .OT_subscriber {
+    position: relative;
+    min-width: 48px;
+    min-height: 104px!important;
+}
+	.btnvide {
+
+    margin-bottom: 20px;}
+.sub_div {
+    width: auto;
+    max-width: 100%;
+    max-height: 70%;
+    display: block;
+    margin: 0;
+    width: 678px;
+    height: 550px;
+    margin-top: 18%;
+    background: #000;
+    -webkit-box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.32);
+    -moz-box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.32);
+    box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.32);
+}
 
 	header nav {
    
@@ -10242,13 +10429,22 @@ margin-top: 23px;}
     padding-left: 20px;
 }
 .icfa ul li a {
-    color: #d9305b;
-    font-size: 15px;
-    font-weight: 300;
-    /* padding: 16px 24px; */
+       color: #d9305b;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 19px 25px!important;
     margin: 0 auto;
     display: block;
-    width: 221px;
+    width: 302px;
+}
+.frmlook label {
+    margin: 6px 0;
+    color: #606060;
+    font-size: 16px;
+    font-weight: 600;
+}
+.mt_48 {
+    margin-top: 0px;
 }
 header nav ul li {
     float: left;
@@ -10267,7 +10463,7 @@ padding: 12px 12px!important;
 	#chatHistory {
     padding-top: 10px;
     padding-bottom: 20px;
-    height: 415px;
+    height: 844px;
     overflow: auto;
 }
 .top_menu {
@@ -10284,14 +10480,13 @@ padding: 12px 12px!important;
     left: 15%;
 }
 .cht_hd {
-    position: fixed;
-    z-index: 9;
+ 
 }
 .vpos {
     z-index: 99;
     position: absolute;
     left: 61%;
-    top: 299px;
+    top: 399px;
     width: 150px;
 }
 	.mgt {
@@ -10328,19 +10523,35 @@ width: 346px!important;}
 }
 	}  
 @media only screen and (min-width: 992px) and (max-width: 1199px){ 
+.col20 {
+    -ms-flex: 0 0 20%;
+    flex: 0 0 20%;
+    max-width: 32%;
+}
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99999;
+    display: none;
+    overflow: hidden;
+    outline: 0;
+}
 .min8 {
     min-height: 900px;
 }
 
 
 .icfa ul li a {
-    color: #d9305b;
-    font-size: 15px;
-    font-weight: 300;
-    /* padding: 16px 24px; */
+       color: #d9305b;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 19px 25px!important;
     margin: 0 auto;
     display: block;
-    width: 221px;
+    width: 302px;
 }
 header nav {
     width: 100%!important;
@@ -10397,7 +10608,6 @@ nav ul li a {
     border-bottom: 1px solid #e4e4e4;
 }
 .modsty {
-    width: 352px!important;
     margin: 0 auto;
     padding: 29px!important;
     border-radius: 10px;
@@ -10409,8 +10619,17 @@ nav ul li a {
 #chatHistory {
     padding-top: 10px;
     padding-bottom: 20px;
-    height: 600px;
+    height: 825px;
     overflow: auto;
+}
+.tell {
+    color: #e9ecef;
+    position: fixed;
+    font-size: 31px;
+    text-transform: capitalize;
+    font-weight: 600;
+    top: 22%;
+    left: 15%;
 }
 .vpos {
     z-index: 99;
