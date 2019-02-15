@@ -99,7 +99,7 @@ class Users_model extends CI_Model
         );
     }
     //Online friends    
-    public function GetOnlineFriends($userId)
+   /* public function GetOnlineFriends($userId)
     {
         $this->db->select('us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status');
         $this->db->from('users us');
@@ -113,11 +113,31 @@ class Users_model extends CI_Model
         $this->db->order_by("od.logged_time", "ASC");
         $result = $this->db->get()->result();
         return $result;
+    }*/
+    
+    
+    
+    
+      public function GetOnlineFriends($userId)
+    {
+        $this->db->select('us.user_id,ANY_VALUE(us.gender),ANY_VALUE(up.profile_pic),ANY_VALUE(up.nick_name),ANY_VALUE(us.full_name),ANY_VALUE(od.logged_time),ANY_VALUE(od.status)');
+        $this->db->from('users us');
+        $this->db->join('friends um', 'um.friend_id=us.user_id', 'INNER');
+        $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
+        $this->db->join('online_user od', 'od.user_id= us.user_id', 'LEFT');
+        $this->db->where('um.user_id', $userId);
+        $this->db->where('um.status', 1);
+        $this->db->where('od.status', 1);
+        $this->db->group_by('us.user_id');
+        $this->db->order_by("ANY_VALUE(od.logged_time)", "ASC");
+        $result = $this->db->get()->result();
+        return $result;
     }
+    
     
     //friendsList(all)
     
-    public function GetFriendList($userId)
+ /*  public function GetFriendList($userId)
     {
         $this->db->select('us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status');
         $this->db->from('users us');
@@ -130,10 +150,31 @@ class Users_model extends CI_Model
         $this->db->order_by("od.logged_time", "ASC");
         $result = $this->db->get()->result();
         return $result;
-    }
+    } */
     
     
-        public function GetstrangerList($userId)
+    
+    
+    
+       public function GetFriendList($userId)
+    {
+        $this->db->select('us.user_id,us.gender,ANY_VALUE(up.profile_pic) as profile_pic,ANY_VALUE(up.nick_name),us.full_name,ANY_VALUE(od.logged_time),ANY_VALUE(od.status),um.status');
+        $this->db->from('users us');
+        $this->db->join('friends um', 'um.friend_id=us.user_id', 'INNER');
+        $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
+        $this->db->join('online_user od', 'od.user_id= us.user_id', 'LEFT');
+        $this->db->where('um.user_id', $userId);
+        $this->db->where('um.status', 1);
+        $this->db->group_by('us.user_id');
+        $this->db->order_by("ANY_VALUE(od.logged_time)", "ASC");
+        $result = $this->db->get()->result();
+        return $result;
+    } 
+    
+    
+  
+    
+  /*      public function GetstrangerList($userId)
     {
         $this->db->select('us.user_id,us.gender,up.profile_pic,up.nick_name,us.full_name,od.logged_time,od.status');
         $this->db->from('users us');
@@ -148,6 +189,29 @@ class Users_model extends CI_Model
        // print_r($result);exit;
         return $result;
     }
+    */
+    
+    
+    
+        public function GetstrangerList($userId)
+    {
+        $this->db->select('us.user_id,ANY_VALUE(us.gender),ANY_VALUE(up.profile_pic),ANY_VALUE(up.nick_name),ANY_VALUE(us.full_name),ANY_VALUE(od.logged_time),ANY_VALUE(od.status)');
+        $this->db->from('users us');
+        $this->db->join('add_stranger um', 'um.friend_id=us.user_id', 'INNER');
+        $this->db->join('user_profile up', 'up.user_id=us.user_id', 'INNER');
+        $this->db->join('online_user od', 'od.user_id= us.user_id', 'LEFT');
+        $this->db->where('um.user_id', $userId);
+        $this->db->where('um.status', 0);
+        $this->db->group_by('us.user_id');
+        $this->db->order_by("ANY_VALUE(od.logged_time)", "ASC");
+        $result = $this->db->get()->result(); //echo $this->db->last_query();
+       // print_r($result);exit;
+        return $result;
+    }
+    
+    
+    
+    
     
 
     //friendRequest
